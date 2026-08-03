@@ -108,7 +108,7 @@
 
 <script>
 const TODAY = new Date(); TODAY.setHours(0,0,0,0);
-const KEY = 'actividades:v1';
+const KEY = 'actividades:v2';
 let acts = [];
 
 const fmt = d => { if(!d) return null; const x=new Date(d+'T00:00:00'); return x.toLocaleDateString('es-MX',{day:'numeric',month:'short'}); };
@@ -144,14 +144,49 @@ function save(){
 
 function seed(){
   const t = iso(TODAY);
-  const rel = n => { const d=new Date(TODAY); d.setDate(d.getDate()+n); return iso(d); };
+  const mk = o => Object.assign({id:id(), status:'Nueva', done:0, total:0, compromiso:'', fin:'', updated:t, created:t, log:[]}, o);
   return [
-    {id:id(), title:'Análisis requerimiento — Leonardo (Marese)', status:'En proceso', done:60, total:100, compromiso:rel(-2), fin:rel(19), updated:rel(-3), created:rel(-10), log:[{date:rel(-10),amount:60}]},
-    {id:id(), title:'Revisar BL nuevos', status:'En proceso', done:5, total:100, compromiso:rel(2), fin:'', updated:t, created:rel(-1), log:[{date:t,amount:5}]},
-    {id:id(), title:'Burmester — machotes de contratos', status:'En proceso', done:2, total:7, compromiso:rel(12), fin:rel(58), updated:rel(-6), created:rel(-40), log:[{date:rel(-40),amount:1},{date:rel(-12),amount:1}]},
-    {id:id(), title:'CTR — indexado de productos', status:'En proceso', done:5, total:100, compromiso:rel(26), fin:'', updated:rel(-3), created:rel(-30), log:[{date:rel(-30),amount:5}]},
-    {id:id(), title:'API SERVIPROF — esperando cliente', status:'En espera', done:0, total:0, compromiso:'', fin:'', updated:rel(-5), created:rel(-20), log:[]},
-    {id:id(), title:'CTR — diferencia de centavos', status:'En proceso', done:0, total:0, compromiso:rel(0), fin:'', updated:rel(-1), created:rel(-14), log:[]},
+    // --- Focos rojos / proyectos en curso (fechas reales del tablero de scrum) ---
+    mk({title:'Nueva interface para construcción de contratos — Marese', status:'En proceso', compromiso:'2026-04-24', updated:'2026-05-21', created:'2026-04-02'}),
+    mk({title:'Nueva rentabilidad de contratos', status:'En proceso', compromiso:'2026-05-11', updated:'2026-05-22', created:'2026-04-02'}),
+    mk({title:'Burmester — machotes de contratos', status:'En proceso', done:2, total:7, compromiso:'2026-06-26', updated:'2026-07-27', created:'2026-04-02'}),
+    mk({title:'CTR — Wishlist, usuario en comentarios y productos nuevos', status:'En proceso', compromiso:'2026-06-26', updated:'2026-07-27', created:'2026-06-15'}),
+    mk({title:'CTR — diferencia de centavos (ECOMM vs SANTI)', status:'En proceso', compromiso:'2026-07-04', updated:'2026-07-27', created:'2026-06-19'}),
+    mk({title:'Diferencia de centavos — revisión general de documentos', status:'En proceso', compromiso:'2026-07-24', updated:'2026-07-27', created:'2026-07-22'}),
+    mk({title:'API SERVIPROF — API para levantar OS', status:'En espera', compromiso:'2026-07-24', updated:'2026-07-27', created:'2026-06-19'}),
+    mk({title:'Nuevo modelo de contrato — Implementaciones (BL ya en desarrollo)', status:'En proceso', compromiso:'2026-07-29', updated:'2026-07-30', created:'2026-07-22'}),
+    mk({title:'CTR — indexado de productos (Google)', status:'En proceso', done:5, total:100, compromiso:'2026-07-29', updated:'2026-07-30', created:'2026-07-22'}),
+
+    // --- Pila de BL ---
+    mk({title:'Revisar BL nuevos (bandeja de entrada)', status:'En proceso', total:100}),
+
+    // --- BL puntuales (OneNote / Slack) ---
+    mk({title:'BL 11814 — API de OS de solo lectura + dashboard'}),
+    mk({title:'BL 11827 — SAT: complemento de pago con sustitución'}),
+    mk({title:'BL 11816 — Complemento de pago: actualizar a vigente'}),
+    mk({title:'BL 11372 — Revisar comentario de Alexis (posible nuevo BL)'}),
+    mk({title:'BL 11755 — Costo promedio en ventas (ver con Andrea / Alondra)'}),
+    mk({title:'BL 11825 — Servicio: cantidades comprometidas (bolsa garantizada)'}),
+    mk({title:'BL 11216 — Advertencia por modificaciones al contrato en borrador', status:'En proceso'}),
+    mk({title:'Levantar el NL de "Campos" (documento de Word)'}),
+    mk({title:'Factura global desde notas de venta: regresa sin filtros y se tarda'}),
+    mk({title:'BL 11867 — Nueva forma de contrato (Oscar)', status:'Terminada'}),
+
+    // --- Encargos de standup / soporte ---
+    mk({title:'Validar XML del cliente'}),
+    mk({title:'Revisar ticket de recuperación de contraseña desde SANTI'}),
+    mk({title:'Revisar los dos tickets de Ale'}),
+    mk({title:'Corregir depreciación'}),
+    mk({title:'Soporte nuevo POS — meter el bloqueo'}),
+    mk({title:'Ventas por producto'}),
+    mk({title:'Revisar continuidad de montos: cotizaciones vs facturas'}),
+    mk({title:'Verificar tasado de consumo mínimo'}),
+    mk({title:'Venta: todo en inventario o físico (Alejandra)'}),
+    mk({title:'Revisar los BL de Leo y de Ale'}),
+    mk({title:'Programar junta de revisiones con Ricardo'}),
+
+    // --- ECOMM ---
+    mk({title:'ECOMM Wishlist — testcases (Yare) → QA → definir publicación', status:'En proceso'}),
   ];
 }
 function id(){ return 'a'+Math.random().toString(36).slice(2,9); }
