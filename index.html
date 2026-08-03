@@ -23,7 +23,7 @@
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:820px;margin:0 auto;padding:24px 18px 80px}
+  .wrap{max-width:1400px;margin:0 auto;padding:24px 22px 80px}
   .top{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:6px}
   h1{font-size:22px;font-weight:600;margin:0;letter-spacing:-.01em}
   .date{font-size:13px;color:var(--muted)}
@@ -76,6 +76,10 @@
   .adv .del:hover{background:var(--red-bg)}
   .empty{text-align:center;color:var(--muted);padding:48px 0;font-size:14px}
   .sec{font-size:12px;color:var(--faint);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin:22px 0 10px}
+  .grid{column-gap:12px}
+  .grid>.card{break-inside:avoid;-webkit-column-break-inside:avoid}
+  @media(min-width:860px){ .grid{column-count:2} }
+  @media(min-width:1200px){ .grid{column-count:3} }
 </style>
 
 <div class="wrap">
@@ -168,8 +172,8 @@ function render(){
 
   const list = document.getElementById('list');
   if(!acts.length){ list.innerHTML='<div class="empty">Sin actividades. Agrega la primera arriba.</div>'; return; }
-  let html = active.map(card).join('');
-  if(done.length) html += '<div class="sec">Terminadas</div>' + done.map(card).join('');
+  let html = '<div class="grid">' + active.map(card).join('') + '</div>';
+  if(done.length) html += '<div class="sec">Terminadas</div><div class="grid">' + done.map(card).join('') + '</div>';
   list.innerHTML = html;
 }
 
