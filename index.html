@@ -371,11 +371,16 @@ th{color:var(--honey-2)!important}
 /* ---------- La Mesa (contador de vidas) ---------- */
 .mesa{position:fixed;inset:0;background:#000;display:grid;gap:6px;padding:6px;z-index:30;user-select:none;-webkit-user-select:none;touch-action:manipulation;overflow:hidden;font-family:var(--font)}
 .pcell{position:relative;border-radius:18px;overflow:hidden;background:#1d140b;touch-action:none}
-.pbg{position:absolute;inset:0;background:#2a1d10 center/cover no-repeat;transition:filter .3s;z-index:0}
+.pbg{position:absolute;inset:0;background:#2a1d10 50% 0%/cover no-repeat;transition:filter .3s;z-index:0}
 .pbg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(14,10,6,.25),rgba(14,10,6,.72))}
 .pcell.dead .pbg{filter:grayscale(1) brightness(.4)}
 .pcell.starter{box-shadow:inset 0 0 0 3px var(--honey),inset 0 0 40px rgba(242,181,46,.35)}
 .prot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(var(--rot));--fs:80px}
+@supports (width:1cqw){
+  .pcell{container-type:size}
+  .pcell .prot{width:100cqw;height:100cqh;--fs:max(28px,min(36cqw,50cqh))}
+  .pcell[data-rot="90"] .prot,.pcell[data-rot="-90"] .prot{width:100cqh;height:100cqw;--fs:max(28px,min(36cqh,50cqw))}
+}
 .pname{position:absolute;top:12px;left:14px;align-items:flex-start!important;background:rgba(14,10,6,.62);border:1px solid rgba(242,181,46,.35);border-radius:999px;padding:5px 16px;color:var(--foam);cursor:pointer;display:flex;flex-direction:column;align-items:center;line-height:1.2;max-width:62%;z-index:4}
 .pname b{font-family:var(--brand);font-size:14px;color:var(--honey-2);letter-spacing:.03em}
 .pname span{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
@@ -395,7 +400,7 @@ th{color:var(--honey-2)!important}
 .pchip.on{color:var(--honey-2);border-color:rgba(242,181,46,.55)}
 .pchip.poison.on{color:#9BE06A;border-color:#5FA83A}
 .deadtxt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--brand);font-weight:800;font-size:calc(var(--fs)*.3);color:rgba(255,244,214,.82);letter-spacing:.08em;pointer-events:none;text-shadow:0 2px 12px #000;transform:rotate(-8deg);z-index:3;text-align:center;line-height:1}
-.startflag{position:absolute;top:14px;right:14px;background:var(--gold-text);color:var(--honey-ink);font-weight:800;font-size:12px;padding:3px 11px;border-radius:999px;z-index:4;letter-spacing:.06em;box-shadow:0 0 14px rgba(242,181,46,.6)}
+.startflag{position:absolute;top:70px;right:14px;background:var(--gold-text);color:var(--honey-ink);font-weight:800;font-size:12px;padding:3px 11px;border-radius:999px;z-index:4;letter-spacing:.06em;box-shadow:0 0 14px rgba(242,181,46,.6)}
 .roll{position:absolute;inset:0;display:none;align-items:center;justify-content:center;font-family:var(--brand);font-weight:800;font-size:calc(var(--fs)*.85);color:var(--honey-2);background:rgba(14,10,6,.78);z-index:7}
 .roll.show{display:flex}
 .roll.win{color:var(--honey-ink);background:rgba(242,181,46,.88)}
@@ -541,6 +546,113 @@ img.avatar{object-fit:cover;padding:0}
 .fmtbtn b{display:block;font-family:var(--brand);font-size:15px}
 .fmtbtn small{color:var(--muted);font-size:11px}
 .fmtbtn.on{border-color:var(--honey);box-shadow:0 0 0 2px rgba(242,181,46,.35);background:rgba(242,181,46,.1)}
+/* ---------- Menú «Más» ---------- */
+.more-list{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.more-it{display:flex;align-items:center;gap:14px;text-align:left;background:var(--surface-3);border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;color:var(--foam)}
+.more-it:hover{border-color:#8A6526}
+.more-it svg{width:26px;height:26px;color:var(--honey-2);flex-shrink:0}
+.more-it .avatar{width:30px;height:30px}
+.more-it b{display:block;font-size:15px}.more-it small{color:var(--muted);font-size:12px}
+.more-it.danger svg,.more-it.danger b{color:var(--danger)}
+/* ---------- Detalle de carta ---------- */
+.mcard[data-act="cardDetail"]{cursor:zoom-in}
+.modal.cdm{max-width:940px}
+.cd-nav{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.cd-nav .cd-pos{flex:1;text-align:center;color:var(--muted);font-size:13px}
+.cd-nav .btn:disabled{opacity:.4;cursor:default}
+.cd{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:24px;align-items:start}
+.cd-img .mcard{max-width:300px}
+.cd-img .cimg{border-radius:14px}
+.cd-st{margin-top:10px;display:inline-flex}
+.cd-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.cd-head h2{font-family:var(--brand);font-size:26px;margin:0;line-height:1.15;background:var(--gold-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cd-mana{display:flex;gap:3px;flex-shrink:0;padding-top:4px}
+.ms{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-size:13px;font-weight:800;box-shadow:0 1px 0 rgba(0,0,0,.6);vertical-align:middle;line-height:1}
+.ms.sm{width:17px;height:17px;font-size:10px;margin:0 1px}
+.cd-type{color:var(--muted);margin:4px 0 14px;font-size:14px}
+.cd-text{font-size:16px;line-height:1.6;color:var(--foam)}
+.cd-text p{margin:0 0 10px}
+.cd-text i{color:var(--muted)}
+.cd-pt{display:inline-block;margin-top:4px;background:var(--surface-3);border:1px solid #6B4E22;border-radius:10px;padding:6px 14px;font-family:var(--brand);font-weight:800;font-size:18px}
+.cd-sec{border-top:1px solid var(--line);margin-top:16px;padding-top:12px}
+.cd-sec h4{margin:0 0 8px;font-size:12px;color:var(--honey-2);text-transform:uppercase;letter-spacing:.06em}
+.cd-chips{display:flex;flex-wrap:wrap;gap:4px}
+.cd-legal{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px}
+.lg{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.lg::before{content:"";width:14px;height:14px;border-radius:50%;background:#555;flex-shrink:0}
+.lg.ok{color:var(--foam)}.lg.ok::before{background:#3D9B5A}
+.lg.ban::before{background:#D9533B}.lg.res::before{background:#E0A94A}
+.cd-link{display:inline-block;margin-top:10px;font-size:13px}
+@media (max-width:640px){.cd{grid-template-columns:1fr}.cd-img{max-width:260px;margin:0 auto}.cd-head h2{font-size:22px}}
+/* ---------- Partida por turnos ---------- */
+.pcell{transition:box-shadow .45s ease}
+.pcell.active{box-shadow:inset 0 0 0 4px var(--honey),inset 0 0 60px rgba(242,181,46,.35)}
+.turnbtn,.turn-fly{display:flex;align-items:center;gap:6px;background:var(--gold-text);color:var(--honey-ink);border:none;border-radius:999px;padding:10px 20px;font-weight:800;letter-spacing:.08em;font-size:14px;box-shadow:0 0 18px rgba(242,181,46,.6),0 4px 12px rgba(0,0,0,.5);white-space:nowrap}
+.turnbtn svg,.turn-fly svg{width:16px;height:16px}
+.turnbtn{position:absolute;left:50%;bottom:58px;transform:translateX(-50%);z-index:5;cursor:pointer;animation:tpulse 2.2s ease-in-out infinite}
+.turnbtn.arrive{animation:tarrive .45s cubic-bezier(.2,.9,.3,1.4),tpulse 2.2s ease-in-out .45s infinite}
+@keyframes tpulse{50%{box-shadow:0 0 30px rgba(255,216,107,.9),0 4px 12px rgba(0,0,0,.5)}}
+@keyframes tarrive{from{transform:translateX(-50%) scale(1.35)}to{transform:translateX(-50%) scale(1)}}
+.turn-fly{position:fixed;left:0;top:0;z-index:70;pointer-events:none}
+.rtimer{position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:4;background:rgba(14,10,6,.7);border:1px solid rgba(242,181,46,.45);color:var(--honey-2);border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700;white-space:nowrap}
+.lockov{position:absolute;left:50%;bottom:62px;transform:translateX(-50%);z-index:4;background:rgba(14,10,6,.8);border:1px dashed rgba(242,181,46,.6);color:var(--honey-2);border-radius:14px;padding:6px 14px;font-size:12px;font-weight:700;width:max-content;max-width:78%;text-align:center;pointer-events:none}
+.mesa.setup .life{opacity:.45}
+.hub.start .hexo{background:linear-gradient(180deg,#9BE06A,#3D9B5A)}
+.hub.start .hexi{flex-direction:column;gap:0}
+.hub.start .hexi svg{width:30px;height:30px;color:#9BE06A}
+.hub.start .hexi small{font-size:9px;font-weight:800;letter-spacing:.12em;color:#9BE06A}
+.hub.start{animation:hubBreath 1.8s ease-in-out infinite}
+@keyframes hubBreath{50%{transform:translate(-50%,-50%) scale(1.08)}}
+.hub.pop .hexo{animation:hubPop .4s cubic-bezier(.2,.9,.3,1.5)}
+@keyframes hubPop{from{transform:scale(.5) rotate(-60deg);opacity:.2}to{transform:none;opacity:1}}
+/* Espada con fuego animado */
+.psword{position:absolute;top:18px;right:20px;width:46px;height:46px;border-radius:50%;background:rgba(14,10,6,.72);border:1px solid rgba(255,255,255,.18);color:var(--muted);display:flex;align-items:center;justify-content:center;z-index:6;cursor:pointer;padding:0}
+.psword svg{width:24px;height:24px;position:relative;z-index:2}
+.psword.on{color:#FFF6D6;background:radial-gradient(circle at 50% 60%,#ff8a1f,#b3260b 75%);border-color:#ffcf6b;box-shadow:0 0 18px 4px rgba(255,120,20,.75);animation:swordGlow 1s ease-in-out infinite alternate}
+@keyframes swordGlow{to{box-shadow:0 0 28px 8px rgba(255,160,40,.9)}}
+.psword .fire{position:absolute;inset:-30px;pointer-events:none;z-index:1}
+.psword .fire::before{content:"";position:absolute;inset:20px;border-radius:50%;background:radial-gradient(circle,rgba(255,150,40,.55) 55%,rgba(255,90,0,.25) 80%,rgba(255,60,0,0));box-shadow:0 0 14px 6px rgba(255,110,10,.75),0 -6px 22px 8px rgba(255,170,40,.45);animation:fireGlow .5s ease-in-out infinite alternate}
+.psword .fire i{position:absolute;left:50%;top:50%;width:12px;height:20px;margin:-10px 0 0 -6px;border-radius:50% 50% 45% 45% / 70% 70% 30% 30%;background:radial-gradient(ellipse at 50% 85%,#fffbe0 0%,#ffe066 22%,#ff9a1f 48%,rgba(230,60,0,.8) 66%,rgba(200,30,0,0) 82%);mix-blend-mode:screen;transform:rotate(var(--a)) translateY(-24px) rotate(calc(var(--a) * -1)) ;animation:lick var(--d) ease-out var(--dl) infinite;opacity:0}
+.psword .fire i:nth-child(1){--a:0deg;--d:0.62s;--dl:-0s;width:14px;height:25px;margin:-14px 0 0 -7px;}
+.psword .fire i:nth-child(2){--a:30deg;--d:0.78s;--dl:-0.31s;width:14px;height:25px;margin:-14px 0 0 -7px;}
+.psword .fire i:nth-child(3){--a:60deg;--d:0.7s;--dl:-0.12s;width:14px;height:25px;margin:-14px 0 0 -7px;}
+.psword .fire i:nth-child(4){--a:90deg;--d:0.85s;--dl:-0.45s;}
+.psword .fire i:nth-child(5){--a:120deg;--d:0.66s;--dl:-0.2s;}
+.psword .fire i:nth-child(6){--a:150deg;--d:0.9s;--dl:-0.05s;}
+.psword .fire i:nth-child(7){--a:180deg;--d:0.74s;--dl:-0.38s;}
+.psword .fire i:nth-child(8){--a:210deg;--d:0.88s;--dl:-0.17s;}
+.psword .fire i:nth-child(9){--a:240deg;--d:0.68s;--dl:-0.5s;}
+.psword .fire i:nth-child(10){--a:270deg;--d:0.8s;--dl:-0.27s;}
+.psword .fire i:nth-child(11){--a:300deg;--d:0.72s;--dl:-0.09s;width:14px;height:25px;margin:-14px 0 0 -7px;}
+.psword .fire i:nth-child(12){--a:330deg;--d:0.84s;--dl:-0.41s;width:14px;height:25px;margin:-14px 0 0 -7px;}
+@keyframes lick{0%{opacity:0;translate:0 4px;scale:.55 .5}20%{opacity:1}60%{opacity:.9;scale:1 1.15}100%{opacity:0;translate:0 -14px;scale:.35 1.4}}
+@keyframes fireGlow{from{opacity:.75;transform:scale(.97)}to{opacity:1;transform:scale(1.05)}}
+@keyframes fireSpin{to{transform:rotate(360deg)}}
+.pcell.sword-on{box-shadow:inset 0 0 0 3px #ff8a1f,inset 0 0 70px rgba(255,90,20,.45)}
+.pcell.active.sword-on{box-shadow:inset 0 0 0 4px #ff8a1f,inset 0 0 70px rgba(255,90,20,.45)}
+.pcell.in-cmd .psword,.pcell.in-cmd .turnbtn,.pcell.in-cmd .rtimer,.pcell.in-cmd .lockov{visibility:hidden}
+/* Panel de comandante con animación */
+.cmdrecv{will-change:transform}
+.cmdrecv.dragging{pointer-events:none}
+.cmdrecv.anim-in{animation:recvIn .38s cubic-bezier(.2,.9,.25,1.12) both}
+.cmdrecv.anim-out{animation:recvOut .23s ease-in both}
+@keyframes recvIn{from{transform:translateX(var(--from,-100%))}to{transform:translateX(0)}}
+@keyframes recvOut{to{transform:translateX(var(--to,-100%));opacity:0}}
+.cmdgive.anim-in{animation:giveIn .4s cubic-bezier(.2,.8,.2,1) both}
+.cmdgive.anim-out{animation:giveOut .22s ease-in both}
+@keyframes giveIn{from{opacity:0;transform:perspective(700px) rotateX(-75deg) scale(.96)}to{opacity:1;transform:none}}
+@keyframes giveOut{to{opacity:0;transform:perspective(700px) rotateX(70deg) scale(.96)}}
+/* Títulos en Ranking */
+.rsec.titles{margin-bottom:18px}
+.tgrid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.tcard{background:linear-gradient(180deg,rgba(242,181,46,.12),rgba(36,26,15,.6));border:1px solid #6B4E22;border-radius:12px;padding:12px}
+.tcard .tk{font-family:var(--brand);font-size:13px;letter-spacing:.06em;color:var(--honey-2);margin-bottom:4px}
+.tcard b{display:block;font-size:17px}
+.tcard small{color:var(--muted);font-size:12px}
+.tcard.empty{opacity:.5}
+@media (prefers-reduced-motion: reduce){
+  .mesa *,.mesa *::before,.mesa *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
 </style>
 </head>
 <body>
@@ -667,6 +779,7 @@ const I = {
   nWish:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.8z"/></svg>',
   nMesa:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 2.5l8.5 5v9l-8.5 5-8.5-5v-9z"/><path d="M12 2.5L7 11h10zM7 11l-3.5-3.5M17 11l3.5-3.5M7 11l5 10.5M17 11l-5 10.5"/></svg>',
   nRank:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M12 14v4M8 21h8M9 18h6"/></svg>',
+  nMore:'<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2.2"/><circle cx="12" cy="12" r="2.2"/><circle cx="19" cy="12" r="2.2"/></svg>',
   install:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7v7M9 11l3 3 3-3M10 18.5h4"/></svg>',
   logout:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg>',
   warn:'<svg class="ico" style="width:12px;height:12px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L2 20h20z"/><path d="M12 10v4M12 17v.5"/></svg>',
@@ -739,8 +852,14 @@ const ST = {
 function toEntry(c){
   const face = (c.card_faces && c.card_faces[0]) || {};
   const iu = c.image_uris || face.image_uris || {};
-  const pr = c.prices || {};
-  return { name:c.name, img:iu.normal||'', small:iu.small||'', art:iu.art_crop||'', ci:c.color_identity||[], type:c.type_line||face.type_line||'', cmc:c.cmc||0, set:c.set, cn:c.collector_number, price: parseFloat(pr.usd || pr.usd_foil || pr.usd_etched || 0) || 0 };
+  const pr = c.prices || {}, faces = c.card_faces || [], lg = c.legalities || {};
+  const legal = {}; ['commander','standard','pioneer','modern','legacy','vintage','pauper','brawl'].forEach(f => { if(lg[f]) legal[f] = lg[f]; });
+  return { name:c.name, img:iu.normal||'', small:iu.small||'', art:iu.art_crop||'', ci:c.color_identity||[], type:c.type_line||face.type_line||'', cmc:c.cmc||0, set:c.set, cn:c.collector_number, price: parseFloat(pr.usd || pr.usd_foil || pr.usd_etched || 0) || 0,
+    mana: c.mana_cost != null ? c.mana_cost : faces.map(f => f.mana_cost).filter(Boolean).join(' // '),
+    oracle: c.oracle_text != null ? c.oracle_text : faces.map(f => `${f.name} — ${f.type_line || ''}\n${f.oracle_text || ''}${f.power != null ? `\n${f.power}/${f.toughness}` : ''}`).join('\n\n'),
+    pow: c.power != null ? c.power : face.power, tou: c.toughness != null ? c.toughness : face.toughness,
+    loy: c.loyalty != null ? c.loyalty : face.loyalty, def: c.defense != null ? c.defense : face.defense,
+    legal, edh: c.edhrec_rank || 0, edhUrl: (c.related_uris || {}).edhrec || '', gc: !!c.game_changer, rarity: c.rarity || '', setName: c.set_name || '', artist: c.artist || '', full: true };
 }
 let loadingCount = 0;
 let scryOffline = false;   // true cuando la última consulta a Scryfall falló
@@ -1212,13 +1331,14 @@ function render(){
   if(!user){ renderWelcome(); return; }
   if(view.tab === 'mesa'){ keepAwake(true); renderMesa(); return; }
   keepAwake(false);
-  const nWish = Object.keys(data.wish).length;
-  const tabsDef = [['decks','Mis mazos',I.nDecks,data.decks.length],['inv','Mi inventario',I.nInv,Object.keys(data.inv).length],['wish','Wishlist',I.nWish,nWish],['mesa','La Mesa',I.nMesa,null],['rank','Ranking',I.nRank,null]];
-  const shortLbl = { decks:'Mazos', inv:'Inventario', wish:'Wishlist', mesa:'La Mesa', rank:'Ranking' };
+  const tabsDef = [['decks','Mis mazos',I.nDecks],['inv','Mi inventario',I.nInv],['mesa','La Mesa',I.nMesa],['rank','Ranking',I.nRank],['more','Más',I.nMore]];
+  const shortLbl = { decks:'Mazos', inv:'Inventario', mesa:'La Mesa', rank:'Ranking', more:'Más' };
+  const isOn = t => view.tab === t || (t === 'more' && view.tab === 'wish');
+  const tabAct = t => t === 'more' ? 'data-act="moreMenu"' : `data-act="goTab" data-tab="${t}"`;
   $('#app').innerHTML = `
   <header class="topbar"><div class="topbar-in">
     <div class="brand" data-act="goTab" data-tab="decks">${markImg()}${wordmark()}</div>
-    <nav class="tabs">${tabsDef.map(([t, l, ic, n]) => `<button class="tab ${view.tab===t?'on':''}" data-act="goTab" data-tab="${t}" title="${l}">${ic}<span class="lbl">${l}</span>${n != null ? `<span class="cnt">${n}</span>` : ''}</button>`).join('')}</nav>
+    <nav class="tabs">${tabsDef.map(([t, l, ic]) => `<button class="tab ${isOn(t)?'on':''}" ${tabAct(t)} title="${l}">${ic}<span class="lbl">${l}</span></button>`).join('')}</nav>
     <div class="user">
       ${installAvailable() ? `<button class="icon-btn hide-m" data-act="installApp" title="Instalar la app">${I.install}</button>` : ''}
       <button class="plus-btn" data-act="newDeck" title="Nuevo mazo">${I.plus}</button>
@@ -1226,7 +1346,7 @@ function render(){
     </div>
   </div></header>
   <main id="main"></main>
-  <nav class="bnav">${tabsDef.map(([t, l, ic, n]) => `<button class="${view.tab===t?'on':''}" data-act="goTab" data-tab="${t}">${ic}${shortLbl[t]}${n ? `<span class="cnt">${n}</span>` : ''}</button>`).join('')}</nav>`;
+  <nav class="bnav">${tabsDef.map(([t, l, ic]) => `<button class="${isOn(t)?'on':''}" ${tabAct(t)}>${ic}${shortLbl[t]}</button>`).join('')}</nav>`;
   if(view.tab === 'decks') view.deckId ? renderDeck() : renderDecks();
   if(view.tab === 'inv') renderInv();
   if(view.tab === 'wish') renderWish();
@@ -1341,7 +1461,7 @@ function renderDeck(){
 
   <div class="deck-layout">
     <aside class="side">
-      ${cm ? `<div class="panel cmdr"><div class="cmdr-label">${I.crown}Comandante</div><div class="mcard s-${cardStatus(cm)}" style="position:relative">${cardImg(cm.name, '', cm.print)}${badgeHtml(d, cm, 48)}${starHtml(d, cm, 36)}</div></div>` : ''}
+      ${cm ? `<div class="panel cmdr"><div class="cmdr-label">${I.crown}Comandante</div><div class="mcard s-${cardStatus(cm)}" style="position:relative" data-act="cardDetail" data-deck="${d.id}" data-card="${esc(cm.name)}" title="Ver detalle">${cardImg(cm.name, '', cm.print)}${badgeHtml(d, cm, 48)}${starHtml(d, cm, 36)}</div></div>` : ''}
       <div class="panel">
         <h4>Estado del mazo</h4>
         ${['asig','disp','sin','no'].map(k => `<button class="sfilter ${sf===k?'on':''}" data-act="statusFilter" data-s="${k}"><span>${emb(ST[k].p, ST[k].gl, 22)}${ST[k].t}</span><b>${s.cnt[k]}</b></button>`).join('')}
@@ -1374,7 +1494,7 @@ function cardTile(d, c){
   const s = cardStatus(c);
   const over = overCopies(d.format, [c]).length > 0;
   const dupTxt = over ? (d.format === 'Commander' ? `${c.qty} copias` : `${c.qty} > ${(FORMAT_RULES[d.format]||{}).copies}`) : 'Repetida';
-  return `<div class="mcard s-${s}">
+  return `<div class="mcard s-${s}" data-act="cardDetail" data-deck="${d.id}" data-card="${esc(c.name)}" title="Ver detalle">
     ${cardImg(c.name, '', c.print)}
     ${badgeHtml(d, c, 40)}
     ${starHtml(d, c, 32)}
@@ -1554,8 +1674,138 @@ function openModal(html, wide){
   $('#modal-root').innerHTML = `<div class="modal-back" id="mback"><div class="modal ${wide?'wide':''}" role="dialog" aria-modal="true">${html}</div></div>`;
   $('#mback').addEventListener('mousedown', e => { if(e.target.id === 'mback') closeModal(); });
 }
-function closeModal(){ $('#modal-root').innerHTML = ''; }
+function closeModal(){ $('#modal-root').innerHTML = ''; cdState = null; }
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+
+// =========================================================
+//   DETALLE DE CARTA
+// =========================================================
+let cdState = null;   // { deckId, list:[nombres en el orden del mazo], idx }
+function deckOrder(d){
+  const sf = view.statusFilter;
+  const cm = d.cards.find(c => c.cmdr);
+  const main = d.cards.filter(c => !c.cmdr && (!sf || cardStatus(c) === sf));
+  const groups = {};
+  main.forEach(c => { const g = typeGroup(c.name); (groups[g] = groups[g] || []).push(c); });
+  const out = [];
+  if(cm && (!sf || cardStatus(cm) === sf)) out.push(cm.name);
+  GROUP_ORDER.filter(g => groups[g]).forEach(g => groups[g].sort((a,b) => a.name.localeCompare(b.name)).forEach(c => out.push(c.name)));
+  return out;
+}
+function openDetail(deckId, name){
+  const d = data.decks.find(x => x.id === deckId); if(!d) return;
+  const list = deckOrder(d);
+  let idx = list.findIndex(n => key(n) === key(name));
+  if(idx < 0){ list.unshift(name); idx = 0; }
+  cdState = { deckId, list, idx };
+  renderDetail();
+}
+// Símbolos de maná: {W} {2} {W/U} {T}…
+const MSYM = { W:['#F8F3D9','#3b3520'], U:['#3E8FD8','#fff'], B:['#3A3534','#eee'], R:['#D9533B','#fff'], G:['#3D9B5A','#fff'], C:['#CFCAC0','#333'] };
+function manaHtml(str, small){
+  if(!str) return '';
+  return esc(str).replace(/\{([^}]+)\}/g, (m, t) => {
+    const parts = t.split('/');
+    let bg = '#B9B5AD', fg = '#222', txt = t;
+    if(parts.length === 2 && MSYM[parts[0]] && MSYM[parts[1]]){ bg = `linear-gradient(135deg,${MSYM[parts[0]][0]} 50%,${MSYM[parts[1]][0]} 50%)`; fg = '#111'; txt = ''; }
+    else if(parts.length === 2 && parts[1] === 'P' && MSYM[parts[0]]){ bg = MSYM[parts[0]][0]; fg = MSYM[parts[0]][1]; txt = 'ϕ'; }
+    else if(parts.length === 2 && MSYM[parts[1]]){ bg = `linear-gradient(135deg,#B9B5AD 50%,${MSYM[parts[1]][0]} 50%)`; txt = parts[0]; }
+    else if(MSYM[t]){ bg = MSYM[t][0]; fg = MSYM[t][1]; txt = t === 'C' ? '◇' : ''; }
+    else if(t === 'T'){ txt = '↷'; } else if(t === 'Q'){ txt = '↶'; } else if(t === 'S'){ txt = '❄'; } else if(t === 'E'){ txt = 'E'; }
+    const glyph = MSYM[t] && t !== 'C' ? `<svg viewBox="0 0 48 48" width="70%" height="70%">${manaGlyph(t).replace(/#fff/g, MSYM[t][1])}</svg>` : txt;
+    return `<span class="ms ${small ? 'sm' : ''}" style="background:${bg};color:${fg}" title="{${t}}">${glyph}</span>`;
+  });
+}
+function oracleHtml(text){
+  if(!text) return '<p class="hint">Sin texto de reglas.</p>';
+  return text.split('\n').filter(l => l.trim()).map(l => {
+    let h = manaHtml(l, true);
+    h = h.replace(/\(([^)]*)\)/g, '<i>($1)</i>');
+    return `<p>${h}</p>`;
+  }).join('');
+}
+const LEGAL_LBL = { commander:'Commander', standard:'Standard', pioneer:'Pioneer', modern:'Modern', legacy:'Legacy', vintage:'Vintage', pauper:'Pauper', brawl:'Brawl' };
+const LEGAL_ST = { legal:['ok','Legal'], banned:['ban','Prohibida'], restricted:['res','Restringida'], not_legal:['no','No legal'] };
+async function fetchCardFull(name, print){
+  try{
+    let url;
+    if(print && print.startsWith('p:')){ const [set, cn] = print.slice(2).split('|'); url = `https://api.scryfall.com/cards/${encodeURIComponent(set)}/${encodeURIComponent(cn)}`; }
+    else url = 'https://api.scryfall.com/cards/named?exact=' + encodeURIComponent(name);
+    const r = await fetch(url); if(!r.ok) return null;
+    const c = await r.json(); const e = toEntry(c);
+    const k = key(name);
+    if(!cat[k] || cat[k].demo || cat[k].seed || !cat[k].full || !print) cat[k] = e;
+    if(print) cat[print] = e;
+    saveCat(); scryOffline = false; return e;
+  }catch(err){ scryOffline = true; return null; }
+}
+function renderDetail(){
+  if(!cdState) return;
+  const d = data.decks.find(x => x.id === cdState.deckId); if(!d){ closeModal(); return; }
+  const name = cdState.list[cdState.idx];
+  const c = d.cards.find(x => key(x.name) === key(name)); if(!c){ closeModal(); return; }
+  const e = (c.print && cat[c.print]) || cat[key(c.name)] || {};
+  const s = cardStatus(c), i = invInfo(c.name), n = cdState.list.length;
+  const pt = e.pow != null && e.pow !== undefined ? `${e.pow} / ${e.tou}` : e.loy != null ? `Lealtad ${e.loy}` : e.def != null ? `Defensa ${e.def}` : '';
+  const legal = e.legal ? Object.keys(LEGAL_LBL).filter(f => e.legal[f]).map(f => { const st = LEGAL_ST[e.legal[f]] || LEGAL_ST.not_legal; return `<span class="lg ${st[0]}" title="${st[1]}">${LEGAL_LBL[f]}</span>`; }).join('') : '';
+  const myDecks = data.decks.filter(x => x.cards.some(y => key(y.name) === key(c.name)));
+  const html = `
+    <div class="cd-nav">
+      <button class="btn sm" data-act="cdPrev" ${cdState.idx === 0 ? 'disabled' : ''}>${I.back}Anterior</button>
+      <span class="cd-pos">${cdState.idx + 1} / ${n}</span>
+      <button class="btn sm" data-act="cdNext" ${cdState.idx >= n - 1 ? 'disabled' : ''}>Siguiente<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      <button class="btn ghost sm cd-x" data-act="closeModal" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="cd">
+      <div class="cd-img">
+        <div class="mcard s-${s}" style="position:relative">${cardImg(c.name, '', c.print)}${badgeHtml(d, c, 52)}${starHtml(d, c, 40)}</div>
+        <div class="cd-st chip ${ST[s].chip}">${ST[s].t}${c.cmdr ? ' · Comandante' : ''}</div>
+      </div>
+      <div class="cd-info">
+        <div class="cd-head"><h2>${esc(e.name || c.name)}</h2><span class="cd-mana">${manaHtml(e.mana)}</span></div>
+        <div class="cd-type">${esc(e.type || '')}</div>
+        ${e.full ? `<div class="cd-text">${oracleHtml(e.oracle)}</div>` : `<div class="cd-text"><p class="hint">${scryOffline ? 'Sin conexión con Scryfall: el texto aparecerá cuando vuelva la conexión.' : 'Cargando el texto de la carta…'}</p></div>`}
+        ${pt ? `<div class="cd-pt">${esc(pt)}</div>` : ''}
+        <div class="cd-sec"><h4>En tu colección</h4>
+          <div class="cd-chips"><span class="chip">Tengo ${i.owned}</span><span class="chip info">Libres ${Math.max(0, i.free)}</span><span class="chip ok">Asignadas ${i.used}</span>${c.qty > 1 ? `<span class="chip">Este mazo usa ${c.qty}</span>` : ''}</div>
+          <div class="cd-chips" style="margin-top:6px">${myDecks.map(x => `<span class="chip mana">${esc(x.name)}</span>`).join('')}</div>
+        </div>
+        ${legal ? `<div class="cd-sec"><h4>Legalidad</h4><div class="cd-legal">${legal}</div></div>` : ''}
+        ${e.full ? `<div class="cd-sec"><h4>Datos</h4><div class="cd-chips">
+          ${e.edh ? `<span class="chip" title="Posición de popularidad general en EDHREC">EDHREC #${e.edh.toLocaleString('es-MX')}</span>` : ''}
+          ${e.price ? `<span class="chip">US$ ${e.price.toFixed(2)}</span>` : ''}
+          ${e.rarity ? `<span class="chip">${esc({common:'Común',uncommon:'Infrecuente',rare:'Rara',mythic:'Mítica'}[e.rarity] || e.rarity)}</span>` : ''}
+          ${e.setName ? `<span class="chip">${esc(e.setName)}</span>` : ''}
+          ${e.gc ? `<span class="chip warn" title="Carta marcada como Game Changer en Commander">Game Changer</span>` : ''}
+        </div>${e.edhUrl ? `<a class="cd-link" href="${esc(e.edhUrl)}" target="_blank" rel="noopener">Ver en EDHREC ↗</a>` : ''}</div>` : ''}
+      </div>
+    </div>`;
+  if($('#modal-root .modal.cdm')) $('#modal-root .modal.cdm').innerHTML = html;
+  else { openModal(html, true); const m = $('#modal-root .modal'); if(m) m.classList.add('cdm'); }
+  if(!e.full){
+    const want = cdState.idx;
+    fetchCardFull(c.name, c.print).then(r => { if(r && cdState && cdState.idx === want) renderDetail(); });
+  }
+}
+document.addEventListener('keydown', e => {
+  if(!cdState) return;
+  if(e.key === 'ArrowLeft') actions.cdPrev();
+  if(e.key === 'ArrowRight') actions.cdNext();
+});
+
+// ---------- Menú «Más» ----------
+function moreMenu(){
+  openModal(`
+    <h2>Más</h2>
+    <div class="more-list">
+      <button class="more-it" data-act="goTab" data-tab="wish">${I.nWish}<span><b>Wishlist</b><small>Lo que te falta para tus mazos y lo que quieres conseguir</small></span></button>
+      <button class="more-it" data-act="profileModal">${avatarHtml(user)}<span><b>Mi perfil</b><small>Nombre y foto que ven los demás</small></span></button>
+      ${!isStandalone() ? `<button class="more-it" data-act="${installAvailable() ? 'installApp' : 'profileModal'}">${I.install}<span><b>Instalar la app</b><small>Tenla en tu pantalla de inicio</small></span></button>` : ''}
+      <button class="more-it danger" data-act="logout">${I.logout}<span><b>Cerrar sesión</b><small>${esc(user.email)}</small></span></button>
+    </div>
+    <div class="modal-actions"><button class="btn ghost" data-act="closeModal">Cerrar</button></div>`);
+}
 
 // ---------- Nuevo / editar mazo ----------
 const cardLine = c => `${c.qty} ${c.name}${c.set ? ` (${String(c.set).toUpperCase()}) ${c.cn || ''}` : ''}`.trim();
@@ -1869,6 +2119,7 @@ function findDeckCard(deckId, name){
 const actions = {
   scrollExplore(){ const el = document.getElementById('que-es'); if(el) el.scrollIntoView({ behavior:'smooth' }); },
   goTab(el){
+    closeModal();
     view = { tab: el.dataset.tab, deckId:null, statusFilter:null }; render(); window.scrollTo(0,0);
     if(el.dataset.tab === 'rank' || el.dataset.tab === 'mesa') refreshGroup();
   },
@@ -1900,6 +2151,7 @@ const actions = {
       return;
     }
     d.updated = Date.now(); saveData(); renderKeepScroll();
+    if(cdState) renderDetail();
   },
   toggleStar(el){
     const { d, c } = findDeckCard(el.dataset.deck, el.dataset.card); if(!c) return;
@@ -1907,7 +2159,11 @@ const actions = {
     if(w && w.decks && w.decks[d.id]){ delete w.decks[d.id]; cleanWish(k); }
     else { wishEntry(c.name).decks[d.id] = Math.max(1, c.qty - c.assigned); }
     saveData(); renderKeepScroll();
+    if(cdState) renderDetail();
   },
+  cardDetail(el){ openDetail(el.dataset.deck, el.dataset.card); },
+  cdPrev(){ if(cdState && cdState.idx > 0){ cdState.idx--; renderDetail(); } },
+  cdNext(){ if(cdState && cdState.idx < cdState.list.length - 1){ cdState.idx++; renderDetail(); } },
   assignAllAsk(el){
     const d = data.decks.find(x => x.id === el.dataset.id), plan = planAssign(d);
     const total = plan.reduce((a,p) => a + p.add, 0);
@@ -1990,6 +2246,7 @@ const actions = {
   closeModal(){ closeModal(); },
   async logout(){ await flushData(); await auth.signOut(); },
   profileModal(){ profileModal(); },
+  moreMenu(){ moreMenu(); },
   installApp(){ installApp(); },
   noop(){}
 };
@@ -2177,6 +2434,33 @@ function renderRanking(){
     });
   });
   const rivals = Object.values(H).sort((a,b) => (b.beat - b.lost) - (a.beat - a.lost) || b.together - a.together);
+  // Títulos: solo partidas por turnos (tienen estadísticas detalladas)
+  const TS = {}, NEM = {}, FAST = {};
+  const tmatches = list.filter(m => m.mode === 'turns' && m.players.some(p => p.stats));
+  tmatches.forEach(m => {
+    m.players.forEach((p, i) => {
+      const s = p.stats; if(!s) return;
+      const pk = p.memberId || p.memberName;
+      const t = TS[pk] = TS[pk] || { name:p.memberName, dealt:0, kills:0, guard:0, given:0, gainSelf:0, turnMs:0, turns:0, games:0 };
+      t.games++; t.dealt += s.dealt || 0; t.kills += s.kills || 0; t.given += s.given || 0; t.gainSelf += s.gainSelf || 0; t.turnMs += s.turnMs || 0; t.turns += s.turns || 0;
+      if(s.alive || i === m.winner) t.guard += s.taken || 0;
+      Object.keys(s.dmgTo || {}).forEach(x => { const v = m.players[x]; if(!v) return; const vk = v.memberId || v.memberName; NEM[vk] = NEM[vk] || {}; NEM[vk][pk] = (NEM[vk][pk] || { name:p.memberName, dmg:0 }); NEM[vk][pk].dmg += s.dmgTo[x]; });
+    });
+    const wd = m.players[m.winner];
+    if(wd && wd.deckId && m.rounds){ const f = FAST[wd.deckId] = FAST[wd.deckId] || { name:wd.deckName, owner:wd.memberName, rounds:0, wins:0 }; f.rounds += m.rounds; f.wins++; }
+  });
+  const tsl = Object.values(TS);
+  const top = (fn) => tsl.filter(x => fn(x) > 0).sort((a,b) => fn(b) - fn(a))[0];
+  const nemesisOf = pk => { const n = NEM[pk]; if(!n) return null; return Object.values(n).sort((a,b) => b.dmg - a.dmg)[0]; };
+  const fastest = Object.values(FAST).sort((a,b) => a.rounds / a.wins - b.rounds / b.wins)[0];
+  const TITLES = [
+    ['El más letal', 'Más daño hecho en total', top(x => x.dealt), x => `${x.dealt} de daño`],
+    ['El verdugo', 'Más golpes finales', top(x => x.kills), x => `${x.kills} eliminaciones`],
+    ['Ministro de defensa', 'Más daño aguantado sin caer', top(x => x.guard), x => `${x.guard} de daño aguantado`],
+    ['El más cariñoso', 'Más vidas dadas a otros', top(x => x.given), x => `${x.given} vidas regaladas`],
+    ['El vampiro', 'Más vidas ganadas para sí', top(x => x.gainSelf), x => `${x.gainSelf} vidas ganadas`],
+    ['El que más piensa', 'Turnos más largos en promedio', top(x => x.turns ? x.turnMs / x.turns : 0), x => `${fmtMs(x.turnMs / x.turns)} por turno`]
+  ];
   const medal = i => `<span class="medal ${i < 3 ? 'm' + (i + 1) : ''}">${i + 1}</span>`;
   const thumb = (n, u) => `<span class="dthumb" style="${artOf(n, u) ? `background-image:url('${artOf(n, u)}')` : ''}"></span>`;
   const best = players[0], bestDeck = decks[0];
@@ -2195,9 +2479,14 @@ function renderRanking(){
     <div class="metric"><small>El que empieza gana</small><b>${pct(starterWins, list.length)}%</b><div class="sub">de las partidas</div></div>
   </div>
   ${!list.length ? `<div class="empty"><b>Todavía no hay partidas</b>Juega en La Mesa y guarda el resultado para empezar el ranking.</div>` : `
+  <div class="rsec titles"><h3><span>Títulos de la taberna</span><small class="hint" style="font-family:var(--font);letter-spacing:0">${tmatches.length} partida(s) por turnos</small></h3>
+    ${tmatches.length ? `<div class="tgrid2">${TITLES.map(([t, d, w, f]) => `<div class="tcard ${w ? '' : 'empty'}"><div class="tk">${t}</div><b>${w ? esc(w.name) : '—'}</b><small>${w ? f(w) : d}</small></div>`).join('')}
+      <div class="tcard ${fastest ? '' : 'empty'}"><div class="tk">El mazo más rápido</div><b>${fastest ? esc(fastest.name) : '—'}</b><small>${fastest ? `${esc(fastest.owner)} · gana en ${(fastest.rounds / fastest.wins).toFixed(1)} rondas` : 'Menos rondas para ganar'}</small></div></div>`
+      : `<p class="hint">Jueguen una «Partida por turnos» en La Mesa para desbloquear los títulos: el más letal, el verdugo, el ministro de defensa, el más cariñoso…</p>`}
+  </div>
   <div class="rank-grid">
     <div class="rsec"><h3><span>Jugadores</span></h3>
-      ${players.map((p, i) => `<div class="rrow">${medal(i)}<div class="rname"><b>${esc(p.name)}</b><small>Mazo estrella: ${esc(Object.entries(p.deckWins).sort((a,b)=>b[1]-a[1])[0]?.[0] || '—')}</small><div class="rbar"><i style="width:${pct(p.wins,p.games)}%"></i></div></div><div class="rstat"><b>${p.wins}</b>${p.games} partidas · ${pct(p.wins,p.games)}%</div></div>`).join('')}
+      ${players.map((p, i) => { const nm = nemesisOf(Object.keys(P).find(k => P[k] === p)); return `<div class="rrow">${medal(i)}<div class="rname"><b>${esc(p.name)}</b><small>Mazo estrella: ${esc(Object.entries(p.deckWins).sort((a,b)=>b[1]-a[1])[0]?.[0] || '—')}${nm ? ` · Némesis: ${esc(nm.name)}` : ''}</small><div class="rbar"><i style="width:${pct(p.wins,p.games)}%"></i></div></div><div class="rstat"><b>${p.wins}</b>${p.games} partidas · ${pct(p.wins,p.games)}%</div></div>`; }).join('')}
     </div>
     <div class="rsec"><h3><span>Mazos</span></h3>
       ${decks.slice(0, 10).map((d, i) => `<div class="rrow">${medal(i)}<div class="rdeck">${thumb(d.artCard, d.art)}<div class="rname"><b>${esc(d.name)}</b><small>${esc(d.owner)}${d.commander ? ' · ' + esc(d.commander) : ''}</small></div></div><div class="rstat"><b>${d.wins}</b>${d.games} partidas · ${pct(d.wins,d.games)}%</div></div>`).join('')}
@@ -2237,6 +2526,8 @@ const LAYOUTS = [
 const MANA_KEYS = ['W','U','B','R','G','C'];
 const PIPC = { W:['#F8F3D9','#5C5532'], U:['#3E8FD8','#fff'], B:['#3A3534','#D9D3D0'], R:['#D9533B','#fff'], G:['#3D9B5A','#fff'], C:['#B9B5AD','#333'] };
 const MICO = {
+  sword:'<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 3.5L19.3 8.2 10.2 17.3 6.7 13.8 15.8 4.7Z" fill="currentColor" fill-opacity=".35" stroke="currentColor" stroke-width="1.6"/><path d="M5.2 12.3l6.5 6.5" stroke="currentColor" stroke-width="2.4"/><path d="M8.4 15.6L4.2 19.8" stroke="currentColor" stroke-width="2.6"/><circle cx="3.6" cy="20.4" r="1.5" fill="currentColor"/></svg>',
+  play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>',
   dagger:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2 3v9h-4V5z" fill="currentColor"/><path d="M7 14h10M12 14v4"/><circle cx="12" cy="20" r="1.6" fill="currentColor"/></svg>',
   poison:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C15 7 19 10 19 15a7 7 0 0 1-14 0c0-5 4-8 7-13z"/><circle cx="9.6" cy="14.5" r="1.4" fill="#000"/><circle cx="14.4" cy="14.5" r="1.4" fill="#000"/></svg>',
   mana:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l8 5v10l-8 5-8-5V7z"/></svg>'
@@ -2264,7 +2555,9 @@ function newGame(layoutId, life, keep){
   const L = LAYOUTS.find(l => l.id === layoutId) || LAYOUTS[5];
   const old = keep && game ? game.players : [];
   const format = (game && game.format) || 'commander';
-  game = { layout:L.id, startLife:life, format, started:Date.now(), starter:null, prompted:false, cmdTarget:null,
+  const mode = (game && game.mode) || 'quick';
+  game = { layout:L.id, startLife:life, format, mode, phase: mode === 'turns' ? 'setup' : 'playing', turn:null, round:0, turnStart:0, turnLog:[], events:[], kills:{}, sword:null,
+    started:Date.now(), starter:null, prompted:false, cmdTarget:null,
     players: Array.from({ length:L.n }, (_, i) => { const p = newPlayer(life); if(old[i]){ p.member = old[i].member; p.deck = old[i].deck; p.cmdN = old[i].cmdN || 1; } return p; }) };
   saveGame();
 }
@@ -2273,6 +2566,9 @@ function normalizeGame(){
   if(!game) return;
   if(!game.format) game.format = game.startLife === 40 ? 'commander' : 'standard';
   if(game.cmdTarget === undefined) game.cmdTarget = null;
+  if(!game.mode){ game.mode = 'quick'; game.phase = 'playing'; }
+  game.events = game.events || []; game.turnLog = game.turnLog || []; game.kills = game.kills || {};
+  if(game.sword === undefined) game.sword = null;
   game.players.forEach(p => {
     p.cmdN = p.cmdN || 1;
     Object.keys(p.cmd || {}).forEach(j => { if(!Array.isArray(p.cmd[j])) p.cmd[j] = [p.cmd[j] || 0]; });
@@ -2292,20 +2588,23 @@ function loadGame(){
 const isDead = p => p.life <= 0 || p.poison >= 10 || Object.values(p.cmd || {}).some(v => (Array.isArray(v) ? v : [v]).some(x => x >= 21));
 const pName = i => { const p = game.players[i], m = p && p.member ? memberById(p.member) : null; return m ? m.name : `Jugador ${i + 1}`; };
 
-function renderMesa(){
+function renderMesa(animTurn){
   if(!game) loadGame();
   const L = curLayout();
   if(game.cmdTarget != null && (!cmdOn() || !game.players[game.cmdTarget])) game.cmdTarget = null;
   const cm = game.cmdTarget != null;
-  $('#app').innerHTML = `<div class="mesa ${cm ? 'cmd-mode' : ''}" id="mesa" style="grid-template-rows:repeat(${L.rows},1fr);grid-template-columns:repeat(${L.cols},1fr)">
+  const setup = lockedMesa();
+  $('#app').innerHTML = `<div class="mesa ${cm ? 'cmd-mode' : ''} ${setup ? 'setup' : ''} ${turnsPlaying() ? 'turns' : ''}" id="mesa" style="grid-template-rows:repeat(${L.rows},1fr);grid-template-columns:repeat(${L.cols},1fr)">
     ${game.players.map((_, i) => cellHtml(i)).join('')}
-    ${cm ? `<button class="hub" data-act="cmdExit" aria-label="Volver al juego" title="Volver al juego"><span class="hexo"><span class="hexi">${MICO.dagger}</span></span></button>`
-         : `<button class="hub" data-act="mesaMenu" aria-label="Menú de la mesa" title="Menú"><span class="hexo"><span class="hexi">${markImg()}<span class="x">✕</span></span></span></button>`}
+    ${cm ? `<button class="hub ${hubAnim || cmdAnim ? 'pop' : ''}" data-act="cmdExit" aria-label="Volver al juego" title="Volver al juego"><span class="hexo"><span class="hexi">${MICO.dagger}</span></span></button>`
+         : setup ? `<button class="hub start pop" data-act="turnSetup" aria-label="Iniciar partida" title="Iniciar partida"><span class="hexo"><span class="hexi">${MICO.play}<small>INICIAR</small></span></span></button>`
+         : `<button class="hub ${hubAnim ? 'pop' : ''}" data-act="mesaMenu" aria-label="Menú de la mesa" title="Menú"><span class="hexo"><span class="hexi">${markImg()}<span class="x">✕</span></span></span></button>`}
     <div id="mesaOv"></div>
   </div>`;
   mesaMenuOpen = false;
   requestAnimationFrame(sizeMesa);
   if(mesaPanel) renderCounters(mesaPanel.i, mesaPanel.t);
+  startTurnTick();
 }
 function cellHtml(i){
   const [r, c, rs, cs, rot] = curLayout().cells[i], p = game.players[i];
@@ -2315,22 +2614,25 @@ function cellHtml(i){
   const manaTot = MANA_KEYS.reduce((a, k) => a + (p.mana[k] || 0), 0);
   const T = game.cmdTarget;
   let overlay = '';
+  const ca = cmdAnim && cmdAnim.mode === 'in';
   if(T != null && T === i){
-    overlay = `<div class="cmdrecv"><div class="ct">COMANDANTE</div><div class="cs">Daño que has recibido</div>
+    const from = ca && cmdAnim.i === i && cmdAnim.from != null ? `--from:${cmdAnim.from}px` : '--from:-100%';
+    overlay = `<div class="cmdrecv ${ca ? 'anim-in' : ''}" style="${from}"><div class="ct">COMANDANTE</div><div class="cs">Daño que has recibido</div>
       <div class="cl">Vida: ${p.life}</div>
       <button class="cback" data-act="cmdExit">VOLVER AL JUEGO</button>
       <div class="ch">Suma el daño en la celda de cada rival. Desliza otra vez para salir.</div></div>`;
   } else if(T != null){
     const tgt = game.players[T], arr = (tgt.cmd && tgt.cmd[i]) || [], n = Math.min(MAX_CMDRS, p.cmdN || 1);
     const cmdrName = p.deck && p.deck.commander ? p.deck.commander.split(',')[0] : '';
-    overlay = `<div class="cmdgive"><div class="cg-head">Daño de comandante a ${esc(pName(T))}</div>
+    overlay = `<div class="cmdgive ${ca ? 'anim-in' : ''}"><div class="cg-head">Daño de comandante a ${esc(pName(T))}</div>
       <div class="cslots" style="--cn:${n === 1 ? 1 : n === 2 ? 1.6 : 2.1}">${Array.from({ length:n }, (_, k) => {
         const v = arr[k] || 0;
         return `<div class="cslot"><button class="cz m" data-act="cmdDmg" data-a="${i}" data-k="${k}" data-d="-1" aria-label="Restar daño">−</button><button class="cz p" data-act="cmdDmg" data-a="${i}" data-k="${k}" data-d="1" aria-label="Sumar daño">+</button><b class="cv ${v >= 21 ? 'hot' : ''}">${v}</b><small>${esc(k === 0 && cmdrName ? cmdrName : 'Comandante ' + (k + 1))}</small></div>`;
       }).join('')}</div>
       <div class="cg-foot">${n < MAX_CMDRS ? `<button data-act="cmdSlot" data-a="${i}" data-d="1">+ Comandante</button>` : ''}${n > 1 ? `<button data-act="cmdSlot" data-a="${i}" data-d="-1">− Comandante</button>` : ''}</div></div>`;
   }
-  return `<div class="pcell ${dead ? 'dead' : ''} ${game.starter === i ? 'starter' : ''} ${T != null ? 'in-cmd' : ''}" id="pc${i}" data-i="${i}" data-rot="${rot}" style="grid-row:${r} / span ${rs};grid-column:${c} / span ${cs}">
+  const tp = turnsPlaying(), act = tp && game.turn === i, sw = tp && game.sword === i;
+  return `<div class="pcell ${dead ? 'dead' : ''} ${!turnsOn() && game.starter === i ? 'starter' : ''} ${act ? 'active' : ''} ${sw ? 'sword-on' : ''} ${T != null ? 'in-cmd' : ''}" id="pc${i}" data-i="${i}" data-rot="${rot}" style="grid-row:${r} / span ${rs};grid-column:${c} / span ${cs}">
     <div class="prot" style="--rot:${rot}deg">
       ${art ? `<div class="pbg" style="background-image:url('${art}')"></div>` : `<div class="pbg free"><img src="${LOGO_SRC}" alt=""></div>`}
       <button class="pname" data-act="pickPlayer" data-i="${i}">${m ? `<b>${esc(m.name)}</b><span>${esc(p.deck ? p.deck.name : 'Toca para elegir mazo')}</span>` : `<b>Jugador ${i + 1}</b><span>Toca para elegir jugador y mazo</span>`}</button>
@@ -2345,7 +2647,10 @@ function cellHtml(i){
         <button class="pchip ${manaTot ? 'on' : ''}" data-act="counters" data-i="${i}" data-t="mana" title="Maná disponible">${MICO.mana}<span>${manaTot}</span></button>
         ${MANA_KEYS.filter(k => (p.mana[k] || 0) > 0).map(k => `<button class="mpip2" data-act="counters" data-i="${i}" data-t="mana" style="background:${PIPC[k][0]};color:${PIPC[k][1]}" title="Maná ${k}">${p.mana[k]}</button>`).join('')}
       </div>
-      ${game.starter === i ? '<div class="startflag">¡EMPIEZA!</div>' : ''}
+      ${!turnsOn() && game.starter === i ? '<div class="startflag">¡EMPIEZA!</div>' : ''}
+      ${tp && !dead ? `<button class="psword ${sw ? 'on' : ''}" data-act="swordToggle" data-i="${i}" title="Espada: atribuir daño o vidas a este jugador" aria-label="Espada">${sw ? `<span class="fire">${'<i></i>'.repeat(12)}</span>` : ''}${MICO.sword}</button>` : ''}
+      ${act ? `<div class="rtimer">Ronda ${game.round} · ${fmtMs(Date.now() - game.turnStart)}</div><button class="turnbtn" data-act="passTurn">${MICO.play}PASAR TURNO</button>` : ''}
+      ${lockedMesa() ? '<div class="lockov">Partida por turnos · toca INICIAR en el centro</div>' : ''}
       ${dead ? '<div class="deadtxt">SIN<br>CERVEZA</div>' : ''}
       <div class="roll" id="roll${i}"></div>
       ${overlay}
@@ -2353,13 +2658,18 @@ function cellHtml(i){
     </div>
   </div>`;
 }
+// Si el navegador entiende "container queries", el tamaño lo resuelve el CSS (también al girar la pantalla).
+// Si no, se mide con JS cada vez que la celda cambia de tamaño.
+const CQ = !!(window.CSS && CSS.supports && CSS.supports('width', '1cqw'));
 function sizeCell(cell){
+  if(CQ || !cell) return;
   const rot = Math.abs(+cell.dataset.rot), rc = cell.getBoundingClientRect(), side = rot === 90;
   const w = side ? rc.height : rc.width, h = side ? rc.width : rc.height, pr = cell.querySelector('.prot');
   pr.style.width = w + 'px'; pr.style.height = h + 'px';
   pr.style.setProperty('--fs', Math.max(28, Math.min(w * .36, h * .5)) + 'px');
 }
-function sizeMesa(){ document.querySelectorAll('.pcell').forEach(sizeCell); }
+const cellRO = (!CQ && 'ResizeObserver' in window) ? new ResizeObserver(es => es.forEach(e => sizeCell(e.target))) : null;
+function sizeMesa(){ document.querySelectorAll('.pcell').forEach(c => { sizeCell(c); if(cellRO) cellRO.observe(c); }); }
 function renderCell(i){
   const old = $('#pc' + i); if(!old) return;
   old.outerHTML = cellHtml(i);
@@ -2370,8 +2680,11 @@ let saveT = null;
 const saveGameSoon = () => { clearTimeout(saveT); saveT = setTimeout(saveGame, 300); };
 function changeLife(i, d){
   const p = game.players[i]; if(!p) return;
-  const wasDead = isDead(p);
+  if(lockedMesa()){ lockedToast(); return; }
+  const wasDead = isDead(p), src = curSource();
   p.life += d;
+  logEv('life', i, d);
+  trackKill(i, wasDead, src);
   const cell = $('#pc' + i); if(!cell) return;
   const lf = cell.querySelector('.life'); lf.textContent = p.life; lf.classList.add('bump'); setTimeout(() => lf.classList.remove('bump'), 90);
   lifeAcc[i] = (lifeAcc[i] || 0) + d;
@@ -2386,6 +2699,12 @@ function checkWinner(){
   if(alive.length === 1){
     game.prompted = true; saveGame();
     const w = alive[0];
+    if(turnsOn()){
+      showSheet(`<h3>¿Confirmar fin de partida?</h3>
+        <p class="lead">Queda en pie <b>${esc(pName(w))}</b>${game.players[w].deck ? ' con ' + esc(game.players[w].deck.name) : ''}. Si fue un error del marcador, corrígelo antes de confirmar.</p>
+        <div class="sheet-actions"><button class="btn ghost" data-act="mesaUndoClose">Corregir (deshacer último)</button><button class="btn ghost" data-act="mesaKeepPlaying">Seguir jugando</button><button class="btn primary" data-act="mesaSaveMatch" data-i="${w}">Confirmar y guardar</button></div>`);
+      return;
+    }
     showSheet(`<h3>¡${esc(pName(w))} se queda con la última cerveza!</h3>
       <p class="lead">${game.players[w].deck ? esc(game.players[w].deck.name) + ' gana la partida.' : 'Gana la partida.'} ¿La guardamos para el Ranking?</p>
       <div class="sheet-actions"><button class="btn ghost" data-act="mesaCloseOv">Seguir jugando</button><button class="btn primary" data-act="mesaSaveMatch" data-i="${w}">Guardar partida</button></div>`);
@@ -2402,7 +2721,8 @@ document.addEventListener('pointerdown', e => {
   if(!cell || e.target.closest('.cpanel')) return;
   const btn = e.target.closest('.lifebtn');
   if(btn) e.preventDefault();
-  const g = gesture = { i: +cell.dataset.i, rot: +cell.dataset.rot, x0: e.clientX, y0: e.clientY, btn, moved:false, held:false, swiped:false, rep:null, hold:null };
+  const pr = cell.querySelector('.prot'), side = Math.abs(+cell.dataset.rot) === 90, rc = cell.getBoundingClientRect();
+  const g = gesture = { i: +cell.dataset.i, rot: +cell.dataset.rot, x0: e.clientX, y0: e.clientY, btn, moved:false, held:false, swiped:false, rep:null, hold:null, drag:false, lx:0, w: side ? rc.height : rc.width, onButton: !!e.target.closest('button:not(.lifebtn)') };
   if(btn){
     const i = +btn.dataset.i, d = +btn.dataset.d;
     g.hold = setTimeout(() => { if(g.moved) return; g.held = true; changeLife(i, d * 10); g.rep = setInterval(() => changeLife(i, d * 10), 600); }, 550);
@@ -2414,12 +2734,34 @@ document.addEventListener('pointermove', e => {
   if(!g.moved && Math.hypot(dx, dy) > 12){ g.moved = true; if(!g.held) clearTimeout(g.hold); }
   if(g.swiped || g.held) return;
   const a = -g.rot * Math.PI / 180, lx = dx * Math.cos(a) - dy * Math.sin(a), ly = dx * Math.sin(a) + dy * Math.cos(a);
-  if(Math.abs(lx) > 55 && Math.abs(lx) > Math.abs(ly) * 1.4){ g.swiped = true; toggleCmd(g.i); }
+  g.lx = lx;
+  if(!g.drag && Math.abs(lx) > 14 && Math.abs(lx) > Math.abs(ly) * 1.3) g.drag = true;
+  if(!g.drag) return;
+  const cell = $('#pc' + g.i); if(!cell) return;
+  const T = game.cmdTarget;
+  if(T == null && cmdOn() && !lockedMesa()){ cmdPreview(cell, lx, g.w); }
+  else if(T === g.i){
+    const recv = cell.querySelector('.cmdrecv'); if(recv){ recv.style.transition = 'none'; recv.style.transform = `translateX(${lx}px)`; recv.style.opacity = Math.max(.3, 1 - Math.abs(lx) / g.w); }
+  }
 });
 const endGesture = () => {
   const g = gesture; if(!g) return;
   gesture = null;
   clearTimeout(g.hold); clearInterval(g.rep);
+  if(g.drag){
+    suppressClickUntil = Date.now() + 350; suppressCell = g.i;
+    const cell = $('#pc' + g.i), T = game.cmdTarget, far = Math.abs(g.lx) > Math.min(140, g.w * .3);
+    if(T == null){
+      const prev = cell && cell.querySelector('.cmdrecv.dragging');
+      if(far && cmdOn() && !lockedMesa()){ enterCmd(g.i, g.lx, g.w); }
+      else if(prev){ prev.style.transition = 'transform .25s ease, opacity .25s ease'; prev.style.transform = `translateX(${g.lx > 0 ? -g.w : g.w}px)`; prev.style.opacity = 0; setTimeout(() => prev.remove(), 260); if(!cmdOn() && far) mesaToast(`En ${curFormat().name} no se cuenta daño de comandante.`); }
+    } else if(T === g.i){
+      const recv = cell && cell.querySelector('.cmdrecv');
+      if(far) exitCmd(Math.sign(g.lx));
+      else if(recv){ recv.style.transition = 'transform .25s cubic-bezier(.2,.9,.25,1.2), opacity .2s'; recv.style.transform = ''; recv.style.opacity = ''; }
+    } else if(far){ enterCmd(g.i, null, g.w); }
+    return;
+  }
   if(g.swiped || g.moved){ suppressClickUntil = Date.now() + 350; suppressCell = g.i; return; }
   if(g.btn && !g.held) changeLife(+g.btn.dataset.i, +g.btn.dataset.d);
 };
@@ -2428,11 +2770,188 @@ document.addEventListener('pointercancel', () => { const g = gesture; if(g){ cle
 // Evita que un deslizamiento termine "tocando" un botón
 document.addEventListener('click', e => { const c = e.target.closest('.pcell'); if(c && +c.dataset.i === suppressCell && Date.now() < suppressClickUntil){ e.stopPropagation(); e.preventDefault(); } }, true);
 function toggleCmd(i){
-  if(!cmdOn()){ mesaToast(`En ${curFormat().name} no se cuenta daño de comandante.`); return; }
-  game.cmdTarget = game.cmdTarget === i ? null : i;
-  mesaPanel = null; saveGameSoon(); renderMesa();
+  if(game.cmdTarget === i) exitCmd(-1); else enterCmd(i, null, 0);
 }
 window.addEventListener('resize', () => { if(view.tab === 'mesa') sizeMesa(); });
+window.addEventListener('orientationchange', () => { if(view.tab === 'mesa') [80, 250, 600].forEach(t => setTimeout(sizeMesa, t)); });
+
+
+// =========================================================
+//   PARTIDA POR TURNOS · espada de origen · registro de eventos
+// =========================================================
+const turnsOn = () => game && game.mode === 'turns';
+const turnsPlaying = () => turnsOn() && game.phase === 'playing';
+const lockedMesa = () => turnsOn() && game.phase !== 'playing';
+const reduceMotion = () => window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+function lockedToast(){ mesaToast('Primero inicia la partida: toca el botón del centro.'); }
+// Origen de un cambio: la espada encendida o, si no, el jugador en turno
+const curSource = () => game.sword != null ? game.sword : game.turn;
+function logEv(k, x, d, src, slot){
+  if(!turnsPlaying() || !d) return;
+  const s = src != null ? src : curSource(), now = Date.now(), last = game.events[game.events.length - 1];
+  if(last && last.k === k && last.x === x && last.s === s && (last.slot || 0) === (slot || 0) && Math.sign(last.d) === Math.sign(d) && now - last.t < 1500){ last.d += d; last.t = now; }
+  else game.events.push({ t:now, r:game.round, a:game.turn, s, x, k, d, slot: slot || 0 });
+}
+function trackKill(x, wasDead, src){
+  if(!turnsPlaying()) return;
+  const dead = isDead(game.players[x]);
+  if(!wasDead && dead){ game.kills[x] = src != null ? src : curSource(); }
+  if(wasDead && !dead){ delete game.kills[x]; }
+}
+// Orden de los asientos en el sentido de las agujas del reloj (el turno pasa «a la izquierda»)
+function seatOrder(){
+  const m = $('#mesa'); if(!m) return game.players.map((_, i) => i);
+  const r = m.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  return game.players.map((_, i) => { const c = $('#pc' + i).getBoundingClientRect(); return { i, a: Math.atan2(c.top + c.height / 2 - cy, c.left + c.width / 2 - cx) }; })
+    .sort((p, q) => p.a - q.a).map(o => o.i);
+}
+function nextSeat(cur){
+  const ord = seatOrder(), n = ord.length, pos = ord.indexOf(cur);
+  for(let k = 1; k <= n; k++){ const c = ord[(pos + k) % n]; if(!isDead(game.players[c])) return c; }
+  return cur;
+}
+function startTurns(i){
+  game.phase = 'playing'; game.turn = i; game.starter = i; game.round = 1;
+  game.turnStart = Date.now(); game.started = Date.now(); game.events = []; game.turnLog = []; game.kills = {}; game.sword = null; game.prompted = false;
+  saveGame(); closeOv(); renderMesa(true);
+  mesaToast(`Empieza ${pName(i)} · ¡a jugar!`);
+}
+function passTurn(){
+  if(!turnsPlaying()) return;
+  const cur = game.turn, next = nextSeat(cur);
+  if(next === cur) return;
+  const ord = seatOrder(), n = ord.length, rel = x => (ord.indexOf(x) - ord.indexOf(game.starter) + n) % n;
+  const now = Date.now();
+  game.turnLog.push({ p:cur, ms: now - game.turnStart, r: game.round });
+  if(rel(next) <= rel(cur)) game.round++;
+  const fromBtn = $('#pc' + cur + ' .turnbtn'), fromRect = fromBtn ? fromBtn.getBoundingClientRect() : null, fromRot = +$('#pc' + cur).dataset.rot;
+  game.turn = next; game.turnStart = now; game.sword = null;
+  saveGameSoon();
+  game.players.forEach((_, i) => renderCell(i));
+  const toBtn = $('#pc' + next + ' .turnbtn');
+  if(fromRect && toBtn && !reduceMotion() && toBtn.animate){
+    toBtn.style.visibility = 'hidden';
+    const toRect = toBtn.getBoundingClientRect(), toRot = +$('#pc' + next).dataset.rot;
+    const fx = fromRect.left + fromRect.width / 2, fy = fromRect.top + fromRect.height / 2, tx = toRect.left + toRect.width / 2, ty = toRect.top + toRect.height / 2;
+    let dr = toRot - fromRot; while(dr > 180) dr -= 360; while(dr < -180) dr += 360;
+    const fly = document.createElement('div'); fly.className = 'turn-fly'; fly.innerHTML = `${MICO.play}PASAR TURNO`;
+    $('#mesa').appendChild(fly);
+    const T = (x, y, r, sc) => `translate(${x}px,${y}px) translate(-50%,-50%) rotate(${r}deg) scale(${sc})`;
+    fly.animate([
+      { transform: T(fx, fy, fromRot, 1), offset:0 },
+      { transform: T((fx + tx) / 2, (fy + ty) / 2, fromRot + dr / 2, 1.3), offset:.5 },
+      { transform: T(tx, ty, fromRot + dr, 1), offset:1 }
+    ], { duration:700, easing:'cubic-bezier(.5,0,.2,1)' }).onfinish = () => { fly.remove(); toBtn.style.visibility = ''; toBtn.classList.add('arrive'); };
+  }
+}
+function undoLast(){
+  const ev = game.events.pop(); if(!ev){ mesaToast('No hay movimientos para deshacer.'); return; }
+  const p = game.players[ev.x], wasDead = isDead(p);
+  if(ev.k === 'life') p.life -= ev.d;
+  else if(ev.k === 'poison') p.poison = Math.max(0, p.poison - ev.d);
+  else if(ev.k === 'cmd'){ const arr = (p.cmd[ev.s] = p.cmd[ev.s] || []); arr[ev.slot] = Math.max(0, (arr[ev.slot] || 0) - ev.d); p.life += ev.d; }
+  if(wasDead && !isDead(p)) delete game.kills[ev.x];
+  game.prompted = false; saveGameSoon(); renderCell(ev.x);
+  const what = ev.k === 'poison' ? 'veneno' : ev.k === 'cmd' ? 'daño de comandante' : 'vida';
+  mesaToast(`Deshecho: ${ev.d > 0 ? '+' : ''}${ev.d} de ${what} a ${pName(ev.x)}`);
+}
+function toggleSword(i){
+  if(!turnsPlaying()){ lockedToast(); return; }
+  if(isDead(game.players[i])) return;
+  game.sword = game.sword === i ? null : i;
+  saveGameSoon();
+  document.querySelectorAll('.pcell').forEach(c => {
+    const on = +c.dataset.i === game.sword;
+    c.classList.toggle('sword-on', on);
+    const b = c.querySelector('.psword');
+    if(b){
+      b.classList.toggle('on', on);
+      const f = b.querySelector('.fire');
+      if(on && !f) b.insertAdjacentHTML('afterbegin', `<span class="fire">${'<i></i>'.repeat(12)}</span>`);
+      if(!on && f) f.remove();
+    }
+  });
+  mesaToast(game.sword != null ? `${pName(i)} está haciendo daño o dando vidas: toca los contadores de los demás` : 'Espada apagada');
+}
+// Estadísticas de la partida a partir del registro de eventos
+function computeStats(){
+  const n = game.players.length;
+  const st = game.players.map(() => ({ dealt:0, taken:0, given:0, gainSelf:0, kills:0, cmdDealt:0, poisonDealt:0, turns:0, turnMs:0, dmgTo:{}, alive:true, killedBy:null }));
+  game.events.forEach(e => {
+    if(e.k === 'life' || e.k === 'cmd'){
+      if(e.d < 0){
+        const dmg = -e.d; st[e.x].taken += dmg;
+        if(e.s != null && e.s !== e.x){ st[e.s].dealt += dmg; st[e.s].dmgTo[e.x] = (st[e.s].dmgTo[e.x] || 0) + dmg; if(e.k === 'cmd') st[e.s].cmdDealt += dmg; }
+      } else if(e.d > 0 && e.k === 'life'){
+        if(e.s == null || e.s === e.x) st[e.x].gainSelf += e.d; else st[e.s].given += e.d;
+      }
+    } else if(e.k === 'poison' && e.d > 0 && e.s != null && e.s !== e.x) st[e.s].poisonDealt += e.d;
+  });
+  const log = game.turnLog.concat(game.phase === 'playing' && game.turn != null ? [{ p:game.turn, ms: Date.now() - game.turnStart }] : []);
+  log.forEach(t => { if(st[t.p]){ st[t.p].turns++; st[t.p].turnMs += t.ms; } });
+  Object.keys(game.kills).forEach(x => { const k = game.kills[x]; st[x].killedBy = k; if(k != null && +k !== +x && st[k]) st[k].kills++; });
+  game.players.forEach((p, i) => { st[i].alive = !isDead(p); });
+  return st.slice(0, n);
+}
+const fmtMs = ms => { const s = Math.round(ms / 1000), m = Math.floor(s / 60); return m >= 60 ? `${Math.floor(m / 60)}:${String(m % 60).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}` : `${m}:${String(s % 60).padStart(2, '0')}`; };
+let turnTick = null;
+function startTurnTick(){
+  clearInterval(turnTick);
+  if(!turnsPlaying()) return;
+  turnTick = setInterval(() => {
+    if(view.tab !== 'mesa' || !turnsPlaying()){ clearInterval(turnTick); return; }
+    const el = document.querySelector('#pc' + game.turn + ' .rtimer');
+    if(el) el.textContent = `Ronda ${game.round} · ${fmtMs(Date.now() - game.turnStart)}`;
+  }, 1000);
+}
+function turnSetupSheet(){
+  showSheet(`<h3>Partida por turnos</h3>
+    <p class="lead">Antes de empezar, revisa que cada lugar tenga su jugador y su mazo. Luego elige quién empieza o tiren el dado.</p>
+    <div class="wlist">${game.players.map((p, i) => `<button class="wbtn" data-act="startTurns" data-i="${i}"><span class="dthumb" style="${p.deck && artOf(p.deck.artCard, p.deck.art) ? `background-image:url('${artOf(p.deck.artCard, p.deck.art)}')` : ''}"></span><span><b>${esc(pName(i))}</b><br><small style="color:var(--muted)">${p.deck ? esc(p.deck.name) : 'Sin mazo'} · empieza</small></span></button>`).join('')}</div>
+    <div class="sheet-actions"><button class="btn ghost" data-act="mesaCloseOv">Cerrar</button><button class="btn primary" data-act="mesaRoll">Tirar d20</button></div>`);
+}
+function modeSheet(){
+  showSheet(`<h3>Modo de partida</h3>
+    <p class="lead">Las dos cuentan victorias para el Ranking. Solo «Por turnos» guarda quién hizo daño a quién, quién curó, quién remató y los títulos.</p>
+    <div class="fmtgrid" style="grid-template-columns:1fr">
+      <button class="fmtbtn ${game.mode === 'turns' ? 'on' : ''}" data-act="mesaSetMode" data-m="turns"><b>Partida por turnos</b><small>Iniciar partida, «Pasar turno», espada para triggers, deshacer y confirmar el final. Genera estadísticas detalladas.</small></button>
+      <button class="fmtbtn ${game.mode !== 'turns' ? 'on' : ''}" data-act="mesaSetMode" data-m="quick"><b>Partida rápida</b><small>Solo contadores, sin turnos. Cuenta para victorias.</small></button>
+    </div>
+    <p class="hint" style="margin-top:10px">Al cambiar de modo, la partida se reinicia; los jugadores y sus mazos se quedan.</p>
+    <div class="sheet-actions"><button class="btn ghost" data-act="mesaCloseOv">Cerrar</button></div>`);
+}
+
+// ---------- Daño de comandante con arrastre fluido ----------
+function cmdPreview(cell, lx, w){
+  const pr = cell.querySelector('.prot'); if(!pr) return null;
+  let el = pr.querySelector('.cmdrecv.dragging');
+  if(!el){
+    el = document.createElement('div'); el.className = 'cmdrecv dragging';
+    el.innerHTML = '<div class="ct">COMANDANTE</div><div class="cs">Daño que has recibido</div>';
+    pr.appendChild(el);
+  }
+  const p = Math.max(-w, Math.min(w, lx));
+  el.style.transform = `translateX(${p > 0 ? p - w : p + w}px)`;
+  el.style.opacity = Math.min(1, .35 + Math.abs(p) / w);
+  return el;
+}
+function enterCmd(i, lx, w){
+  if(!cmdOn()){ mesaToast(`En ${curFormat().name} no se cuenta daño de comandante.`); return; }
+  if(lockedMesa()){ lockedToast(); return; }
+  game.cmdTarget = i; mesaPanel = null; saveGameSoon();
+  cmdAnim = { mode:'in', i, from: lx == null ? null : (lx > 0 ? lx - w : lx + w) };
+  renderMesa();
+  cmdAnim = null;
+}
+function exitCmd(dir){
+  const done = () => { game.cmdTarget = null; saveGameSoon(); hubAnim = true; renderMesa(); hubAnim = false; };
+  if(reduceMotion()){ done(); return; }
+  const recv = document.querySelector('.cmdrecv:not(.dragging)');
+  if(recv) recv.style.setProperty('--to', (dir || -1) * 100 + '%');
+  document.querySelectorAll('.cmdrecv,.cmdgive').forEach(el => { el.classList.remove('anim-in'); el.classList.add('anim-out'); });
+  setTimeout(done, 230);
+}
+let cmdAnim = null, hubAnim = false;
 
 // ---------- Contadores: daño de comandante, veneno y maná ----------
 function renderCounters(i, t){
@@ -2464,11 +2983,15 @@ function closeOv(){
   $('#mesa').classList.remove('sheet-open', 'menu-open'); mesaMenuOpen = false;
 }
 function openMenu(){
-  const items = [['mesaLayout','Jugadores','#3CCB7F'],['mesaRoll','¿Quién empieza?','#38C6E8'],['mesaSettings','Ajustes','#A78BFA'],['mesaEnd','Terminar partida','#FF5C8A'],['mesaExit','Salir','#F2B52E'],['mesaReset','Reiniciar','#F5D76E']];
-  const R = Math.min(150, Math.min(innerWidth, innerHeight) * .3);
+  const items = [['mesaLayout','Jugadores','#3CCB7F']];
+  if(!turnsOn()) items.push(['mesaRoll','¿Quién empieza?','#38C6E8']);
+  items.push(['mesaMode', turnsOn() ? 'Modo: por turnos' : 'Modo: rápida', '#FF9F43']);
+  if(turnsPlaying()) items.push(['mesaUndo','Deshacer','#7DD3FC']);
+  items.push(['mesaSettings','Ajustes','#A78BFA'],['mesaEnd','Terminar partida','#FF5C8A'],['mesaExit','Salir','#F2B52E'],['mesaReset','Reiniciar','#F5D76E']);
+  const R = Math.min(165, Math.min(innerWidth, innerHeight) * .32), step = 360 / items.length;
   const ov = $('#mesaOv');
   ov.innerHTML = `<div class="ov-back" data-act="mesaCloseOv"></div>` + items.map(([act, label, col], k) => {
-    const ang = -90 + k * 60, rad = ang * Math.PI / 180;
+    const ang = -90 + k * step, rad = ang * Math.PI / 180;
     let rot = ang; if(rot > 90) rot -= 180; if(rot < -90) rot += 180;
     return `<button class="pill" data-act="${act}" style="background:${col};transform:translate(-50%,-50%) translate(${(Math.cos(rad) * R).toFixed(0)}px,${(Math.sin(rad) * R).toFixed(0)}px) rotate(${rot}deg);animation-delay:${k * 30}ms">${label}</button>`;
   }).join('');
@@ -2525,17 +3048,26 @@ async function rollStart(){
   const w = pool[0];
   $('#roll' + w).className = 'roll show win'; $('#roll' + w).innerHTML = '¡EMPIEZA!';
   await sleep(1300);
+  if(lockedMesa()){ startTurns(w); return; }
   game.starter = w; saveGame(); renderMesa();
   mesaToast(`Empieza ${pName(w)}`);
 }
 function saveMatch(w){
   const players = game.players.map(p => snapPlayer(p.member, p.deck ? { ...p.deck, artCard: p.deck.artCard } : null));
-  const m = { date:Date.now(), minutes: Math.max(1, Math.round((Date.now() - game.started) / 60000)), startLife: game.startLife, players, winner:w, starter: game.starter == null ? -1 : game.starter, createdBy: user.uid, createdByName: user.name };
+  const m = { date:Date.now(), minutes: Math.max(1, Math.round((Date.now() - game.started) / 60000)), startLife: game.startLife, players, winner:w, starter: game.starter == null ? -1 : game.starter, createdBy: user.uid, createdByName: user.name,
+    mode: game.mode || 'quick', format: game.format || '' };
+  if(turnsOn()){
+    const st = computeStats();
+    players.forEach((p, i) => { p.stats = st[i]; });
+    m.rounds = game.round;
+    m.events = game.events.slice(0, 2000).map(e => [e.r, e.a, e.s, e.x, e.k, e.d, e.slot || 0].join('|'));
+  }
   matchList.unshift({ ...m, id:'local-' + uid() });
   db.collection('mb_partidas').add(m).then(ref => { matchList[0].id = ref.id; }).catch(e => { console.error(e); mesaToast('No se pudo guardar la partida en la nube.'); });
   newGame(game.layout, game.startLife, true);
   renderMesa();
   mesaToast(`Partida guardada · Gana ${players[w].memberName}. ¡Salud!`);
+  if(turnsOn()) setTimeout(() => { if(view.tab === 'mesa' && lockedMesa()) turnSetupSheet(); }, 900);
 }
 const mesaActions = {
   mesaMenu(){ mesaMenuOpen ? closeOv() : openMenu(); },
@@ -2566,7 +3098,20 @@ const mesaActions = {
     newGame(layout, f.life, true); mesaPanel = null; renderMesa();
     mesaToast(`${f.name}: ${f.n} jugadores · ${f.life} vidas`);
   },
-  cmdExit(){ game.cmdTarget = null; saveGameSoon(); renderMesa(); },
+  cmdExit(){ exitCmd(-1); },
+  passTurn(){ passTurn(); },
+  swordToggle(el){ toggleSword(+el.dataset.i); },
+  turnSetup(){ turnSetupSheet(); },
+  startTurns(el){ startTurns(+el.dataset.i); },
+  mesaMode(){ modeSheet(); },
+  mesaSetMode(el){
+    game.mode = el.dataset.m;
+    newGame(game.layout, game.startLife, true); mesaPanel = null; renderMesa();
+    if(game.mode === 'turns') turnSetupSheet(); else mesaToast('Partida rápida');
+  },
+  mesaUndo(){ closeOv(); undoLast(); },
+  mesaUndoClose(){ closeOv(); undoLast(); },
+  mesaKeepPlaying(){ closeOv(); game.prompted = false; saveGameSoon(); },
   // Daño de comandante: lo suma el rival en su celda y se resta de la vida de quien lo recibe
   cmdDmg(el){
     const T = game.cmdTarget; if(T == null) return;
@@ -2575,7 +3120,11 @@ const mesaActions = {
     const arr = Array.isArray(tgt.cmd[a]) ? tgt.cmd[a] : (tgt.cmd[a] = []);
     const cur = arr[k] || 0, nv = Math.max(0, cur + d);
     if(nv === cur) return;
+    if(lockedMesa()){ lockedToast(); return; }
+    const wasDead = isDead(tgt);
     arr[k] = nv; tgt.life -= (nv - cur);
+    logEv('cmd', T, -(nv - cur), a, k);
+    trackKill(T, wasDead, a);
     saveGameSoon(); renderCell(a); renderCell(T); checkWinner();
   },
   cmdSlot(el){
@@ -2609,7 +3158,12 @@ const mesaActions = {
   closeCounters(el){ mesaPanel = null; const h = $('#cp' + el.dataset.i); if(h) h.innerHTML = ''; },
   cnt(el){
     const i = +el.dataset.i, p = game.players[i], d = +el.dataset.d, k = el.dataset.k;
-    if(k === 'poison'){ p.poison = Math.max(0, p.poison + d); }
+    if(k === 'poison'){
+      if(lockedMesa()){ lockedToast(); return; }
+      const wasDead = isDead(p), before = p.poison, src = curSource();
+      p.poison = Math.max(0, p.poison + d);
+      logEv('poison', i, p.poison - before); trackKill(i, wasDead, src);
+    }
     else { p.mana[el.dataset.j] = Math.max(0, (p.mana[el.dataset.j] || 0) + d); }
     saveGameSoon(); renderCell(i); checkWinner();
   },
