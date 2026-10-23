@@ -2,7 +2,16 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E0A06">
+<meta name="description" content="Tu taberna de mazos de Magic: inventario, mazos, wishlist, contador de vidas y ranking.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mana Beer">
 <title>Mana Beer · Tu taberna de mazos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -102,25 +111,55 @@ svg.ico{width:16px;height:16px;flex-shrink:0}
 @media (max-width:640px){.w-nav .links{display:none}.login-row{flex-direction:column}}
 
 /* ---------- Encabezado de la app ---------- */
-.topbar{position:sticky;top:0;z-index:20;background:rgba(14,10,6,.92);backdrop-filter:blur(10px)}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(14,10,6,.94);backdrop-filter:blur(10px);padding-top:env(safe-area-inset-top)}
 .topbar::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold-line);opacity:.7}
-.topbar-in{max-width:1320px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:22px;height:64px}
-.brand{display:flex;align-items:center;gap:10px;cursor:pointer}
+.topbar-in{max-width:1320px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px;height:78px}
+.brand{display:flex;align-items:center;gap:12px;cursor:pointer;flex-shrink:0}
 .mark{width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:50% 40%;border:2px solid #B9781A;box-shadow:0 0 0 2px rgba(255,216,107,.15),0 0 14px rgba(242,181,46,.35)}
+.brand .mark{width:54px;height:54px}
 .wordmark{font-family:var(--brand);font-weight:800;letter-spacing:.07em;line-height:1;background:var(--gold-text);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 0 rgba(0,0,0,.6))}
-.brand .wordmark{font-size:21px}
-.tabs{display:flex;gap:2px;height:100%;overflow-x:auto;flex:1}
-.tab{background:none;border:none;padding:0 14px;height:100%;cursor:pointer;color:var(--muted);font-weight:600;border-bottom:2px solid transparent;display:flex;align-items:center;gap:8px;white-space:nowrap;position:relative}
+.brand .wordmark{font-size:27px}
+.tabs{display:flex;gap:2px;height:100%;flex:1;justify-content:center;min-width:0}
+.tab{background:none;border:none;padding:0 13px;height:100%;cursor:pointer;color:var(--muted);font-weight:600;font-size:15px;border-bottom:3px solid transparent;display:flex;align-items:center;gap:8px;white-space:nowrap;position:relative}
+.tab svg{width:22px;height:22px;flex-shrink:0}
 .tab:hover{color:var(--foam)}
 .tab.on{color:var(--foam);border-bottom-color:var(--honey)}
-.tab.on::before{content:"";position:absolute;left:50%;bottom:-5px;width:8px;height:8px;background:var(--honey);transform:translateX(-50%) rotate(45deg)}
+.tab.on svg{color:var(--honey-2)}
+.tab.on::before{content:"";position:absolute;left:50%;bottom:-6px;width:9px;height:9px;background:var(--honey);transform:translateX(-50%) rotate(45deg)}
 .tab .cnt{background:var(--surface-3);color:var(--muted);font-size:11px;padding:1px 7px;border-radius:10px}
 .tab.on .cnt{background:rgba(242,181,46,.18);color:var(--honey-2)}
-.plus-btn{width:34px;height:34px;border-radius:50%;border:none;background:var(--gold-text);color:var(--honey-ink);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 0 12px rgba(242,181,46,.35)}
+.plus-btn{width:44px;height:44px;border-radius:50%;border:none;background:var(--gold-text);color:var(--honey-ink);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 0 14px rgba(242,181,46,.4);flex-shrink:0}
+.plus-btn svg{width:22px;height:22px}
 .plus-btn:hover{transform:scale(1.07)}
-.user{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px}
-.avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#B9781A,#5A3A12);color:var(--foam);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;border:1px solid #B9781A}
-@media (max-width:760px){.user .mail,.brand .wordmark,.user .demo{display:none}.topbar-in{gap:10px;padding:0 12px}}
+.user{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:13px;flex-shrink:0}
+.avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#B9781A,#5A3A12);color:var(--foam);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;border:1px solid #B9781A;flex-shrink:0;overflow:hidden}
+img.avatar{object-fit:cover;padding:0}
+.me{display:flex;align-items:center;gap:10px;background:rgba(36,26,15,.7);border:1px solid var(--line);border-radius:999px;padding:4px 14px 4px 4px;cursor:pointer;color:var(--foam);max-width:220px}
+.me:hover{border-color:#8A6526}
+.me .avatar{width:46px;height:46px;font-size:18px;border:2px solid #B9781A;box-shadow:0 0 12px rgba(242,181,46,.3)}
+.me .me-txt{display:flex;flex-direction:column;line-height:1.2;min-width:0;text-align:left}
+.me b{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.me small{font-size:11px;color:var(--faint)}
+.icon-btn{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--surface-2);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.icon-btn svg{width:21px;height:21px}
+.icon-btn:hover{color:var(--foam);border-color:#8A6526}
+.bnav{display:none}
+@media (max-width:1180px){.tab{padding:0 9px;font-size:14px}.tab .cnt{display:none}.me small{display:none}.brand .wordmark{font-size:23px}}
+@media (max-width:1020px){.me .me-txt{display:none}.me{padding:4px}.tab .lbl{display:none}.tab{padding:0 14px}.tab svg{width:25px;height:25px}}
+@media (max-width:900px){
+  .tabs,.user .hide-m{display:none}
+  .topbar-in{height:66px;gap:10px;padding:0 12px;justify-content:space-between}
+  .brand .mark{width:44px;height:44px}.brand .wordmark{font-size:21px}
+  .me .avatar{width:42px;height:42px}
+  .bnav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:25;background:rgba(14,10,6,.97);backdrop-filter:blur(10px);border-top:1px solid #4A3720;padding:6px 4px calc(6px + env(safe-area-inset-bottom));justify-content:space-around}
+  .bnav button{flex:1;background:none;border:none;color:var(--faint);display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;font-weight:600;padding:4px 0;cursor:pointer;position:relative}
+  .bnav button svg{width:25px;height:25px}
+  .bnav button.on{color:var(--honey-2)}
+  .bnav button.on::before{content:"";position:absolute;top:-7px;left:30%;right:30%;height:3px;border-radius:0 0 3px 3px;background:var(--honey)}
+  .bnav .cnt{position:absolute;top:0;left:calc(50% + 8px);background:var(--honey);color:var(--honey-ink);font-size:10px;font-weight:800;border-radius:9px;padding:0 5px;line-height:16px}
+  main{padding-bottom:calc(96px + env(safe-area-inset-bottom))!important}
+  .toast-box{bottom:calc(84px + env(safe-area-inset-bottom))!important}
+}
 
 /* ---------- Banda de cada pestaña ---------- */
 .band{position:relative;border-radius:16px;overflow:hidden;padding:30px 26px 26px;border:1px solid var(--line);background:var(--surface-2) center 28%/cover no-repeat;align-items:flex-end!important;min-height:150px}
@@ -432,6 +471,41 @@ th{color:var(--honey-2)!important}
 .boot .mark{width:84px;height:84px;animation:glow 2.4s ease-in-out infinite}
 .boot-bar{width:160px;height:3px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--honey),transparent);background-size:50% 100%;animation:lb 1.1s linear infinite}
 img.avatar{object-fit:cover;padding:0}
+/* ---------- Perfil ---------- */
+.av-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:10px;max-height:340px;overflow:auto;padding:4px}
+.av-opt{position:relative;aspect-ratio:1;border-radius:50%;border:3px solid transparent;background:var(--surface-3) center/cover;cursor:pointer;padding:0;outline:none}
+.av-opt.on{border-color:var(--honey);box-shadow:0 0 0 3px rgba(242,181,46,.3),0 0 16px rgba(242,181,46,.35)}
+.av-opt:hover{border-color:#8A6526}
+.av-opt span{position:absolute;inset:auto 0 -2px 0;font-size:10px;color:var(--foam);text-shadow:0 1px 3px #000;text-align:center;opacity:0;transition:opacity .15s}
+.av-opt:hover span{opacity:1}
+.prof-head{display:flex;gap:16px;align-items:center;margin:6px 0 4px}
+.prof-head .avatar{width:84px;height:84px;font-size:32px;border:3px solid #B9781A;box-shadow:0 0 18px rgba(242,181,46,.35)}
+.install-card{display:flex;gap:12px;align-items:center;background:rgba(242,181,46,.08);border:1px solid rgba(242,181,46,.35);border-radius:12px;padding:12px;margin-top:14px}
+.install-card img{width:48px;height:48px;border-radius:12px}
+.install-card div{flex:1;font-size:13px;color:var(--muted);line-height:1.5}
+.install-card b{color:var(--foam);display:block;font-size:14px}
+/* ---------- Celular: tablas como tarjetas, comandante compacto ---------- */
+@media (max-width:640px){
+  .tbl-wrap{background:none;border:none;overflow:visible}
+  .tbl-wrap table{min-width:0}
+  .tbl-wrap thead{display:none}
+  .tbl-wrap tbody, .tbl-wrap tr{display:block}
+  .tbl-wrap tr{display:grid;grid-template-columns:62px 1fr;column-gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:10px}
+  .tbl-wrap td{display:block;padding:3px 0;border:none;grid-column:2}
+  .tbl-wrap td:first-child{grid-column:1;grid-row:1 / span 9}
+  .tbl-wrap td[data-l]{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;flex-wrap:wrap}
+  .tbl-wrap td[data-l]::before{content:attr(data-l);color:var(--faint);font-size:12px}
+  .tbl-wrap td[colspan]{grid-column:1 / -1}
+  .thumb{width:62px}
+  .tbl-wrap .act-cell{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+  .cmdr .mcard{max-width:150px}
+  .side{gap:10px}
+  .deck-hero-in{padding:16px}
+  .deck-hero h1{font-size:24px}
+  .card-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px}
+  .page-h.band{padding:20px 16px 18px}
+  .page-h h1{font-size:25px}
+}
 </style>
 </head>
 <body>
@@ -474,14 +548,15 @@ const FIREBASE_CONFIG = {
   appId: "1:690980384937:web:9082171a3f18656427f9b8",
   measurementId: "G-PVDSPWSGQ9"
 };
-// Administrador: puede dar de alta y quitar integrantes
+// Administrador: puede borrar cualquier partida del Ranking
 const ADMIN_EMAILS = ['gacostat.che@gmail.com'];
 const ADMIN_EMAIL = ADMIN_EMAILS[0];
 const isAdminEmail = e => ADMIN_EMAILS.includes(String(e || '').toLowerCase());
 
 let user = null;             // { uid, email, name, photo, admin }
 let auth = null, db = null, fbReady = false;
-let loginMsg = '';           // mensaje en la pantalla de bienvenida (acceso denegado, errores)
+let loginMsg = '';           // mensaje en la pantalla de bienvenida (errores)
+let sessionDeckPick = null;  // mazo cuyo comandante adorna el banner en esta sesión
 let cat = store.get('cat', {});           // catálogo cacheado de Scryfall
 let data = { inv:{}, decks:[], wish:{} }; // inventario, mazos, wishlist del usuario
 let view = { tab:'decks', deckId:null, statusFilter:null };
@@ -503,7 +578,8 @@ async function loadData(){
   ((inv.exists && inv.data().items) || []).forEach(r => { if(r && r.name) data.inv[key(r.name)] = { name:r.name, qty:r.qty || 0 }; });
   ((wish.exists && wish.data().items) || []).forEach(w => { if(w && w.name) data.wish[key(w.name)] = { manual:0, decks:{}, note:'', added:Date.now(), ...w }; });
   decks.forEach(doc => data.decks.push({ ...doc.data(), id: doc.id }));
-  saved = { inv: JSON.stringify(Object.values(data.inv)), wish: JSON.stringify(Object.values(data.wish)), decks:{} };
+  seedCatalog();
+  saved = { inv: JSON.stringify(Object.values(data.inv)), wish: JSON.stringify(Object.values(data.wish)), decks:{}, pub:'' };
   data.decks.forEach(d => saved.decks[d.id] = JSON.stringify(d));
   usageCache = null;
 }
@@ -518,14 +594,17 @@ async function flushData(){
   saving = true; dirty = false;
   try{
     const ref = userRef(), batch = db.batch(); let ops = 0;
+    enrichStored();
     const inv = Object.values(data.inv), wish = Object.values(data.wish);
     const sInv = JSON.stringify(inv), sWish = JSON.stringify(wish), next = {};
+    const pub = publicDecks(), sPub = JSON.stringify(pub);
+    if(sPub !== saved.pub){ batch.set(ref, { publicDecks: pub, name: user.name }, { merge:true }); ops++; }
     if(sInv !== saved.inv){ batch.set(ref.collection('data').doc('inv'), { items: inv, updated: Date.now() }); ops++; }
     if(sWish !== saved.wish){ batch.set(ref.collection('data').doc('wish'), { items: wish, updated: Date.now() }); ops++; }
     data.decks.forEach(d => { const js = JSON.stringify(d); next[d.id] = js; if(saved.decks[d.id] !== js){ const { id, ...rest } = d; batch.set(ref.collection('decks').doc(d.id), rest); ops++; } });
     Object.keys(saved.decks).forEach(id => { if(!next[id]){ batch.delete(ref.collection('decks').doc(id)); ops++; } });
     if(ops) await batch.commit();
-    saved = { inv:sInv, wish:sWish, decks:next };
+    saved = { inv:sInv, wish:sWish, decks:next, pub:sPub };
   }catch(err){
     console.error(err); dirty = true;
     toast('No se pudo guardar en la nube. Revisa tu conexión; lo intentaremos de nuevo.');
@@ -533,7 +612,7 @@ async function flushData(){
   }finally{ saving = false; if(dirty && !saveTimer) saveTimer = setTimeout(flushData, 400); }
 }
 window.addEventListener('beforeunload', e => { if(dirty || saving){ flushData(); e.preventDefault(); e.returnValue = ''; } });
-function saveCat(){ const real = {}; Object.keys(cat).forEach(k => { if(!cat[k].demo) real[k] = cat[k]; }); store.set('cat', real); }
+function saveCat(){ const real = {}; Object.keys(cat).forEach(k => { if(!cat[k].demo && !cat[k].seed) real[k] = cat[k]; }); store.set('cat', real); }
 
 // ---------- Íconos de interfaz ----------
 const I = {
@@ -548,6 +627,12 @@ const I = {
   crown:'<svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg>',
   bag:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>',
   users:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg>',
+  nDecks:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="11" height="15" rx="2" transform="rotate(-8 8.5 12.5)"/><rect x="10" y="4" width="11" height="15" rx="2"/><path d="M15.5 8.5l1.5 2.5-1.5 2.5-1.5-2.5z"/></svg>',
+  nInv:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>',
+  nWish:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.8z"/></svg>',
+  nMesa:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 2.5l8.5 5v9l-8.5 5-8.5-5v-9z"/><path d="M12 2.5L7 11h10zM7 11l-3.5-3.5M17 11l3.5-3.5M7 11l5 10.5M17 11l-5 10.5"/></svg>',
+  nRank:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M12 14v4M8 21h8M9 18h6"/></svg>',
+  install:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 7v7M9 11l3 3 3-3M10 18.5h4"/></svg>',
   logout:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg>',
   warn:'<svg class="ico" style="width:12px;height:12px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L2 20h20z"/><path d="M12 10v4M12 17v.5"/></svg>',
   file:'<svg class="ico" style="width:30px;height:30px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></svg>'
@@ -572,6 +657,7 @@ function manaShield(c){
 }
 // Arte de fondo para la banda de cada pestaña
 function bandArt(idx){
+  if(idx === 0 && sessionDeckPick){ const d = data.decks.find(x => x.id === sessionDeckPick); const u = d && deckArtUrl(d); if(u) return u; }
   const arts = data.decks.map(d => deckArt(d)).filter(Boolean);
   return arts.length ? arts[idx % arts.length] : '';
 }
@@ -669,7 +755,7 @@ function setLoading(on){
 async function ensureCards(names){
   const orig = {};
   names.forEach(n => { if(n) orig[key(n)] = n.trim(); });
-  const need = Object.keys(orig).filter(k => !cat[k] || cat[k].demo);
+  const need = Object.keys(orig).filter(k => !cat[k] || cat[k].demo || cat[k].seed);
   const notFound = [];
   if(!need.length) return notFound;
   setLoading(true);
@@ -832,6 +918,51 @@ function initDemoCatalog(){
   });
 }
 
+// ---------- Imágenes guardadas en cada carta ----------
+// Cada carta guarda la dirección de su imagen de Scryfall (img). De ahí salen la miniatura y la ilustración,
+// así cargan al instante en cualquier dispositivo y la edición elegida no cambia.
+const imgSmall = u => u ? u.replace('/normal/', '/small/') : '';
+const imgArt = u => u ? u.replace('/normal/', '/art_crop/') : '';
+function catFor(name, print){
+  const e = (print && cat[print]) || cat[key(name)];
+  return (e && e.img && !e.demo && !e.missing) ? e : null;
+}
+function enrichOne(c){
+  const e = catFor(c.name, c.print);
+  if(!e) return false;
+  let ch = false;
+  if(c.img !== e.img){ c.img = e.img; ch = true; }
+  if(e.type && c.type !== e.type){ c.type = e.type; ch = true; }
+  if(e.ci && JSON.stringify(c.ci) !== JSON.stringify(e.ci)){ c.ci = e.ci; ch = true; }
+  return ch;
+}
+// Copia los datos de Scryfall a las cartas guardadas (mazos, inventario, wishlist)
+function enrichStored(){
+  let ch = false;
+  data.decks.forEach(d => (d.cards || []).forEach(c => { ch = enrichOne(c) || ch; }));
+  Object.values(data.inv).forEach(r => { ch = enrichOne(r) || ch; });
+  Object.values(data.wish).forEach(w => { ch = enrichOne(w) || ch; });
+  return ch;
+}
+// Al abrir la página, usa las imágenes guardadas mientras Scryfall responde
+function seedCatalog(){
+  const put = (k, c) => { if(!c.img || (cat[k] && !cat[k].demo && !cat[k].seed)) return; cat[k] = { name:c.name, img:c.img, small:imgSmall(c.img), art:imgArt(c.img), type:c.type || '', ci:c.ci || [], cmc:0, price:0, seed:true }; };
+  data.decks.forEach(d => (d.cards || []).forEach(c => { put(key(c.name), c); if(c.print) put(c.print, c); }));
+  Object.values(data.inv).forEach(r => put(key(r.name), r));
+  Object.values(data.wish).forEach(w => put(key(w.name), w));
+}
+function deckArtUrl(d){
+  const cards = d.cards || [];
+  const c = cards.find(x => x.cmdr) || cards.find(x => !BASICS.has(key(x.name)));
+  if(!c) return '';
+  const e = catFor(c.name, c.print);
+  return (e && e.art) || imgArt(c.img) || '';
+}
+// Lo único que ven los demás de tus mazos: nombre, formato, comandante e ilustración
+function publicDecks(){
+  return data.decks.map(d => { const cm = (d.cards || []).find(c => c.cmdr); return { id:d.id, name:d.name, format:d.format, commander: cm ? cm.name : '', artCard: deckArtCard(d), art: deckArtUrl(d) }; });
+}
+
 // ---------- Lógica de inventario ----------
 // Uso por carta: copias asignadas en todos los mazos y demanda total
 function usage(){
@@ -871,6 +1002,7 @@ function deckColors(d){
   return ['W','U','B','R','G'].filter(x => s.has(x));
 }
 function deckArt(d){
+  const u = deckArtUrl(d); if(u) return u;
   const cm = d.cards.find(c => c.cmdr);
   const pick = (cm && cat[key(cm.name)] && cat[key(cm.name)].art) ? cm : d.cards.find(c => (cat[key(c.name)] || {}).art && !BASICS.has(key(c.name)));
   return pick ? cat[key(pick.name)].art : '';
@@ -943,10 +1075,10 @@ function renderWelcome(){
       <p class="w-sub">Tu colección, tus mazos y lo que te falta, en la misma mesa. Mana Beer sabe en qué mazo está cada copia física y qué te toca conseguir.</p>
       <div class="login" id="loginForm">
         <h2>Pasa a la barra</h2>
-        <p>Mana Beer es exclusivo del grupo. Entra con tu cuenta de Google.</p>
+        <p>Entra con tu cuenta de Google. Cada quien lleva su propia colección.</p>
         <button class="btn primary gbtn" type="button" id="enterBtn"><svg viewBox="0 0 48 48" width="20" height="20" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Entrar con Google</button>
         <div class="err" id="loginErr">${esc(loginMsg)}</div>
-        <div class="note">Si es tu primera vez, pídele al administrador que dé de alta tu correo de Gmail.</div>
+        <div class="note">Tu inventario, tus mazos y tu wishlist solo los ves tú. En La Mesa los demás solo ven tu nombre y tus mazos.</div>
       </div>
       <div class="mana-row">${['W','U','B','R','G'].map(c => manaShield(c)).join('')}</div>
       <button class="explore" data-act="scrollExplore">CONOCE MÁS<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/><path d="M6 4l6 6 6-6" opacity=".5"/></svg></button>
@@ -1004,24 +1136,24 @@ async function onAuth(u){
   if(!u){ user = null; render(); return; }
   showLoading('Sirviendo tu mesa…');
   const email = (u.email || '').toLowerCase();
-  let member = null, ok = isAdminEmail(email);
-  try{ const doc = await db.collection('mb_miembros').doc(email).get(); if(doc.exists){ member = doc.data(); ok = true; } }catch(e){ /* sin permiso = no es integrante */ }
-  if(!ok){
-    loginMsg = `${email} todavía no está dado de alta en Mana Beer. Pídele al administrador que te agregue.`;
-    await auth.signOut(); return;
-  }
-  loginMsg = '';
-  user = { uid:u.uid, email, name: (member && member.name) || u.displayName || email.split('@')[0], photo: u.photoURL || '', admin: isAdminEmail(email) };
+  user = { uid:u.uid, email, googleName: u.displayName || email.split('@')[0], name: u.displayName || email.split('@')[0], photo: u.photoURL || '', avatar:null, admin: isAdminEmail(email) };
   try{
-    await userRef().set({ email, name:user.name, photo:user.photo, lastLogin:Date.now() }, { merge:true });
+    const prof = await userRef().get();
+    const p = prof.exists ? prof.data() : {};
+    if(p.displayName) user.name = p.displayName;
+    if(p.avatar) user.avatar = p.avatar;
+    const del = (window.firebase && firebase.firestore && firebase.firestore.FieldValue) ? firebase.firestore.FieldValue.delete() : null;
+    await userRef().set({ name:user.name, photo:user.photo, lastLogin:Date.now(), email: del }, { merge:true });
     await loadData();
-    await loadMembers();
-    await Promise.all([loadOthers(), loadMatches()]);
+    await Promise.all([loadPlayers(), loadMatches()]);
   }catch(e){
     console.error(e);
     loginMsg = 'No se pudo leer la base de datos. Revisa que las reglas de Firestore estén publicadas.';
     await auth.signOut(); return;
   }
+  loginMsg = '';
+  const withArt = data.decks.filter(d => d.cards && d.cards.length);
+  sessionDeckPick = withArt.length ? withArt[Math.floor(Math.random() * withArt.length)].id : null;
   view = { tab:'decks', deckId:null, statusFilter:null };
   render(); window.scrollTo(0,0);
   preloadAll();
@@ -1043,27 +1175,23 @@ function initFirebase(){
 // =========================================================
 function render(){
   if(!user){ renderWelcome(); return; }
-  if(view.tab === 'mesa'){ renderMesa(); return; }
+  if(view.tab === 'mesa'){ keepAwake(true); renderMesa(); return; }
+  keepAwake(false);
   const nWish = Object.keys(data.wish).length;
+  const tabsDef = [['decks','Mis mazos',I.nDecks,data.decks.length],['inv','Mi inventario',I.nInv,Object.keys(data.inv).length],['wish','Wishlist',I.nWish,nWish],['mesa','La Mesa',I.nMesa,null],['rank','Ranking',I.nRank,null]];
+  const shortLbl = { decks:'Mazos', inv:'Inventario', wish:'Wishlist', mesa:'La Mesa', rank:'Ranking' };
   $('#app').innerHTML = `
   <header class="topbar"><div class="topbar-in">
     <div class="brand" data-act="goTab" data-tab="decks">${markImg()}${wordmark()}</div>
-    <nav class="tabs">
-      <button class="tab ${view.tab==='decks'?'on':''}" data-act="goTab" data-tab="decks">Mis mazos <span class="cnt">${data.decks.length}</span></button>
-      <button class="tab ${view.tab==='inv'?'on':''}" data-act="goTab" data-tab="inv">Mi inventario <span class="cnt">${Object.keys(data.inv).length}</span></button>
-      <button class="tab ${view.tab==='wish'?'on':''}" data-act="goTab" data-tab="wish">Wishlist <span class="cnt">${nWish}</span></button>
-      <button class="tab" data-act="goTab" data-tab="mesa">La Mesa</button>
-      <button class="tab ${view.tab==='rank'?'on':''}" data-act="goTab" data-tab="rank">Ranking</button>
-    </nav>
+    <nav class="tabs">${tabsDef.map(([t, l, ic, n]) => `<button class="tab ${view.tab===t?'on':''}" data-act="goTab" data-tab="${t}" title="${l}">${ic}<span class="lbl">${l}</span>${n != null ? `<span class="cnt">${n}</span>` : ''}</button>`).join('')}</nav>
     <div class="user">
+      ${installAvailable() ? `<button class="icon-btn hide-m" data-act="installApp" title="Instalar la app">${I.install}</button>` : ''}
       <button class="plus-btn" data-act="newDeck" title="Nuevo mazo">${I.plus}</button>
-      <span class="mail">${esc(user.name)}</span>
-      ${user.photo ? `<img class="avatar" src="${esc(user.photo)}" alt="" referrerpolicy="no-referrer">` : `<span class="avatar">${esc(userName()[0].toUpperCase())}</span>`}
-      ${user.admin ? `<button class="btn ghost sm" data-act="membersModal" title="Integrantes del grupo">${I.users}</button>` : ''}
-      <button class="btn ghost sm" data-act="logout" title="Salir">${I.logout}</button>
+      <button class="me" data-act="profileModal" title="Mi perfil">${avatarHtml(user)}<span class="me-txt"><b>${esc(user.name)}</b><small>Mi perfil</small></span></button>
     </div>
   </div></header>
-  <main id="main"></main>`;
+  <main id="main"></main>
+  <nav class="bnav">${tabsDef.map(([t, l, ic, n]) => `<button class="${view.tab===t?'on':''}" data-act="goTab" data-tab="${t}">${ic}${shortLbl[t]}${n ? `<span class="cnt">${n}</span>` : ''}</button>`).join('')}</nav>`;
   if(view.tab === 'decks') view.deckId ? renderDeck() : renderDecks();
   if(view.tab === 'inv') renderInv();
   if(view.tab === 'wish') renderWish();
@@ -1297,13 +1425,13 @@ function renderInvBody(){
     return `<tr>
       <td>${c.small ? `<img class="thumb" src="${c.small}" alt="" loading="lazy">` : '<div class="thumb ph"></div>'}</td>
       <td class="cname"><b>${esc(c.name || r.name)}</b><small>${esc(c.type || (c.missing ? 'No encontrada en Scryfall' : ''))}</small></td>
-      <td>${owned ? `<input class="input qtyin" type="number" min="0" value="${r.qty}" data-inv="${esc(r.name)}">` : '<span class="chip">No la tengo</span>'}</td>
-      <td>${i.used ? `<span class="num-ok">${i.used}</span>` : '0'}</td>
-      <td>${Math.max(0, i.free)}</td>
-      <td>${i.missing ? `<span class="num-warn">${i.missing}</span>` : '—'}</td>
-      <td>${i.decks.map(x => `<span class="chip ok">${esc(x.name)}${x.n>1?' ×'+x.n:''}</span>`).join('') || '<span style="color:var(--faint)">—</span>'}</td>
-      <td style="white-space:nowrap;color:var(--muted)">${c.price ? 'US$ ' + c.price.toFixed(2) : '—'}</td>
-      <td>${owned ? `<button class="btn ghost sm danger" data-act="delInv" data-card="${esc(r.name)}" title="Quitar del inventario">${I.trash}</button>` : ''}</td>
+      <td data-l="Tengo">${owned ? `<input class="input qtyin" type="number" min="0" value="${r.qty}" data-inv="${esc(r.name)}">` : '<span class="chip">No la tengo</span>'}</td>
+      <td data-l="Asignadas">${i.used ? `<span class="num-ok">${i.used}</span>` : '0'}</td>
+      <td data-l="Libres">${Math.max(0, i.free)}</td>
+      <td data-l="Faltan">${i.missing ? `<span class="num-warn">${i.missing}</span>` : '—'}</td>
+      <td data-l="En mazos"><span>${i.decks.map(x => `<span class="chip ok">${esc(x.name)}${x.n>1?' ×'+x.n:''}</span>`).join('') || '<span style="color:var(--faint)">—</span>'}</span></td>
+      <td data-l="Precio" style="white-space:nowrap;color:var(--muted)">${c.price ? 'US$ ' + c.price.toFixed(2) : '—'}</td>
+      <td class="act-cell">${owned ? `<button class="btn ghost sm danger" data-act="delInv" data-card="${esc(r.name)}" title="Quitar del inventario">${I.trash}</button>` : ''}</td>
     </tr>`;
   }).join('') || `<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:30px">Ninguna carta coincide con los filtros.</td></tr>`;
   document.querySelectorAll('[data-inv]').forEach(inp => inp.addEventListener('change', e => {
@@ -1358,11 +1486,11 @@ function renderWishBody(){
     return `<tr>
       <td>${c.small ? `<img class="thumb" src="${c.small}" alt="" loading="lazy">` : '<div class="thumb ph"></div>'}</td>
       <td class="cname"><b>${esc(c.name || w.name)}</b><small>${esc(c.type || '')}</small></td>
-      <td><b style="font-size:16px">${wishTotal(w)}</b></td>
-      <td>${decks}${w.manual ? `<span class="chip">Manual ×${w.manual}</span>` : ''}</td>
-      <td>${inv}</td>
-      <td><input class="input" style="min-width:140px" placeholder="Ej. buscar foil" value="${esc(w.note)}" data-wnote="${esc(w.name)}"></td>
-      <td style="white-space:nowrap">
+      <td data-l="Cantidad"><b style="font-size:16px">${wishTotal(w)}</b></td>
+      <td data-l="Para"><span>${decks}${w.manual ? `<span class="chip">Manual ×${w.manual}</span>` : ''}</span></td>
+      <td data-l="Inventario">${inv}</td>
+      <td data-l="Nota"><input class="input" style="min-width:140px;flex:1" placeholder="Ej. buscar foil" value="${esc(w.note)}" data-wnote="${esc(w.name)}"></td>
+      <td class="act-cell" style="white-space:nowrap">
         <button class="btn sm" data-act="bought" data-card="${esc(w.name)}" title="Suma estas copias a tu inventario y la quita de la wishlist">${I.bag}Ya la compré</button>
         <button class="btn ghost sm danger" data-act="delWish" data-card="${esc(w.name)}" title="Quitar">${I.trash}</button>
       </td>
@@ -1826,7 +1954,8 @@ const actions = {
   },
   closeModal(){ closeModal(); },
   async logout(){ await flushData(); await auth.signOut(); },
-  membersModal(){ membersModal(); },
+  profileModal(){ profileModal(); },
+  installApp(){ installApp(); },
   noop(){}
 };
 document.addEventListener('click', e => {
@@ -1845,90 +1974,128 @@ function renderKeepScroll(){
 //   En el prototipo todo vive en este navegador; en la versión final será una sola base de datos
 //   (Firebase) donde cada integrante entra con su sesión y ve su información.
 // =========================================================
-let members = [];           // { id(correo), email, name, uid, photo }
-let othersDecks = {};       // uid → resumen de mazos de los demás integrantes
+let members = [];           // jugadores que han iniciado sesión: { id(uid), uid, name, photo, avatar, decks }
 let matchList = [];
-async function loadMembers(){
-  const [mm, us] = await Promise.all([db.collection('mb_miembros').get(), db.collection('mb_users').get()]);
-  const prof = {};
-  us.forEach(d => { const x = d.data(); if(x.email) prof[x.email.toLowerCase()] = { uid:d.id, ...x }; });
+async function loadPlayers(){
+  const us = await db.collection('mb_users').get();
   members = [];
-  const add = (email, name) => { const p = prof[email] || {}; members.push({ id:email, email, name: name || p.name || email.split('@')[0], uid: p.uid || '', photo: p.photo || '' }); };
-  mm.forEach(d => add(d.id, (d.data() || {}).name));
-  ADMIN_EMAILS.forEach(a => { if(prof[a] && !members.some(m => m.email === a)) add(a, prof[a].name); });
-  if(!members.some(m => isAdminEmail(m.email))) add(ADMIN_EMAIL, (prof[ADMIN_EMAIL] || {}).name);
+  us.forEach(d => { const x = d.data() || {}; members.push({ id:d.id, uid:d.id, name: x.displayName || x.name || 'Jugador', photo: x.photo || '', avatar: x.avatar || null, decks: x.publicDecks || [] }); });
+  if(user && !members.some(m => m.uid === user.uid)) members.push({ id:user.uid, uid:user.uid, name:user.name, photo:user.photo, avatar:user.avatar, decks:[] });
   members.sort((a,b) => a.name.localeCompare(b.name));
-}
-async function loadOthers(){
-  othersDecks = {};
-  await Promise.all(members.filter(m => m.uid && m.uid !== user.uid).map(async m => {
-    try{
-      const snap = await db.collection('mb_users').doc(m.uid).collection('decks').get();
-      othersDecks[m.uid] = snap.docs.map(doc => { const d = { ...doc.data(), id: doc.id }; const cm = (d.cards || []).find(c => c.cmdr); return { id:d.id, name:d.name, format:d.format, commander: cm ? cm.name : '', artCard: deckArtCard(d) }; });
-    }catch(e){ othersDecks[m.uid] = []; }
-  }));
 }
 async function loadMatches(){
   const snap = await db.collection('mb_partidas').orderBy('date', 'desc').limit(1000).get();
   matchList = snap.docs.map(d => ({ ...d.data(), id:d.id }));
 }
-function currentMember(){ return user ? members.find(m => m.email === user.email) : null; }
+function currentMember(){ return user ? members.find(m => m.uid === user.uid) : null; }
 const memberById = id => members.find(m => m.id === id);
 function deckArtCard(d){ d.cards = d.cards || []; const cm = d.cards.find(c => c.cmdr); if(cm) return cm.name; const c = d.cards.find(c => !BASICS.has(key(c.name))); return c ? c.name : ''; }
 function memberDecks(m){
   if(!m) return [];
-  if(user && m.email === user.email){
-    return data.decks.map(d => { const cm = d.cards.find(c => c.cmdr); return { id:d.id, owner:m.id, name:d.name, format:d.format, commander: cm ? cm.name : '', artCard: deckArtCard(d) }; });
-  }
-  return (othersDecks[m.uid] || []).map(d => ({ ...d, owner:m.id }));
+  if(user && m.uid === user.uid) return publicDecks().map(d => ({ ...d, owner:m.id }));
+  return (m.decks || []).map(d => ({ ...d, owner:m.id }));
+}
+// Foto de perfil: ilustración elegida, si no la foto de Google, si no la inicial
+function avatarHtml(p, extra){
+  const url = p && p.avatar && p.avatar.art ? p.avatar.art : (p && p.photo) || '';
+  const name = (p && p.name) || '?';
+  return url ? `<img class="avatar" src="${esc(url)}" alt="" referrerpolicy="no-referrer" ${extra || ''}>` : `<span class="avatar" ${extra || ''}>${esc(name[0].toUpperCase())}</span>`;
 }
 const allDecks = () => members.flatMap(memberDecks);
-const artOf = name => { const c = cat[key(name || '')]; return c && c.art ? c.art : ''; };
+const artOf = (name, url) => { if(url) return url; const c = cat[key(name || '')]; return c && c.art ? c.art : ''; };
 const avatar = name => `<span class="avatar" style="width:26px;height:26px;font-size:11px">${esc((name || '?')[0].toUpperCase())}</span>`;
 
 // ---------- Partidas (alimentan el Ranking) ----------
 function snapPlayer(memberId, d){
   const m = memberById(memberId);
-  return { memberId: memberId || '', memberName: m ? m.name : 'Invitado', deckId: d ? d.id : '', deckName: d ? d.name : 'Sin mazo', commander: d ? (d.commander || '') : '', artCard: d ? (d.artCard || d.commander || '') : '' };
+  return { memberId: memberId || '', memberName: m ? m.name : 'Invitado', deckId: d ? d.id : '', deckName: d ? d.name : 'Sin mazo', commander: d ? (d.commander || '') : '', artCard: d ? (d.artCard || d.commander || '') : '', art: d ? artOf(d.artCard, d.art) : '' };
 }
 const matches = () => matchList;
 
 async function refreshGroup(){
   try{
-    await loadMembers(); await Promise.all([loadOthers(), loadMatches()]);
-    const names = new Set(); Object.values(othersDecks).flat().forEach(d => { if(d.artCard) names.add(d.artCard); });
-    matchList.forEach(m => (m.players || []).forEach(p => { if(p.artCard) names.add(p.artCard); }));
-    await ensureCards([...names]);
+    await Promise.all([loadPlayers(), loadMatches()]);
     if(view.tab === 'rank') renderRanking();
   }catch(e){ console.error(e); }
 }
-function membersModal(){
+
+// =========================================================
+//   MI PERFIL
+// =========================================================
+const AVATAR_CARDS = ["Atraxa, Praetors' Voice", 'Edgar Markov', 'The Ur-Dragon', 'Krenko, Mob Boss', 'Elesh Norn, Grand Cenobite',
+  'Liliana of the Veil', 'Jace, the Mind Sculptor', 'Chandra, Torch of Defiance', 'Nissa, Who Shakes the World', 'Teferi, Hero of Dominaria',
+  'Gideon Jura', 'Sorin Markov', 'Urza, Lord High Artificer', 'Yawgmoth, Thran Physician', 'Omnath, Locus of Creation',
+  'Niv-Mizzet, Parun', 'Ghave, Guru of Spores', 'Meren of Clan Nel Toth', 'Lathril, Blade of the Elves', 'Isshin, Two Heavens as One',
+  'Prossh, Skyraider of Kher', 'Kenrith, the Returned King', 'Korvold, Fae-Cursed King', 'Muldrotha, the Gravetide', 'Breya, Etherium Shaper',
+  'Elenda, the Dusk Rose', 'Sliver Queen', 'Tymna the Weaver', 'Kaalia of the Vast', 'Teysa Karlov'];
+async function profileModal(){
+  let pick = user.avatar ? { ...user.avatar } : null;
+  const draw = () => {
+    const opts = AVATAR_CARDS.map(n => cat[key(n)]).filter(e => e && e.art && !e.demo);
+    const preview = { name: ($('#pfName') ? $('#pfName').value : user.name) || user.name, photo: user.photo, avatar: pick };
+    $('#pfHead').innerHTML = `${avatarHtml(preview)}<div><b style="font-size:18px">${esc(preview.name)}</b><div class="hint" style="margin-top:2px">${esc(user.email)}</div></div>`;
+    $('#pfGrid').innerHTML = (user.photo ? `<button class="av-opt ${!pick ? 'on' : ''}" data-pf="" style="background-image:url('${esc(user.photo)}')" title="Foto de Google"><span>Google</span></button>` : '')
+      + (opts.length ? opts.map(e => `<button class="av-opt ${pick && pick.card === e.name ? 'on' : ''}" data-pf="${esc(e.name)}" style="background-image:url('${e.art}')" title="${esc(e.name)}"><span>${esc(e.name.split(',')[0])}</span></button>`).join('')
+         : `<p class="hint" style="grid-column:1/-1">${scryOffline ? 'Sin conexión con Scryfall: las ilustraciones aparecerán cuando vuelva la conexión.' : 'Cargando ilustraciones…'}</p>`);
+    document.querySelectorAll('[data-pf]').forEach(b => b.onclick = () => {
+      const n = b.dataset.pf; pick = n ? { card:n, art: cat[key(n)].art } : null; draw();
+    });
+  };
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   openModal(`
-    <h2>Integrantes de Mana Beer</h2>
-    <p class="lead">Solo los correos de esta lista pueden entrar. Cada quien ve y edita lo suyo; todos ven los mazos del grupo en La Mesa y el Ranking.</p>
-    <div class="plan" id="mbList">${members.map(m => `<div><span>${esc(m.name)} <small style="color:var(--faint)">· ${esc(m.email)}${m.uid ? '' : ' · aún no entra'}</small></span>${isAdminEmail(m.email) ? '<b>Administrador</b>' : `<button class="btn ghost sm danger" data-act="memberDel" data-e="${esc(m.email)}" title="Quitar acceso">${I.trash}</button>`}</div>`).join('')}</div>
-    <label class="f">Agregar integrante</label>
-    <div style="display:grid;grid-template-columns:1.4fr 1fr auto;gap:8px">
-      <input class="input" id="mbEmail" type="email" placeholder="correo@gmail.com">
-      <input class="input" id="mbName" placeholder="Nombre (ej. Rafa)">
-      <button class="btn primary" id="mbAdd">${I.plus}Agregar</button>
-    </div>
-    <div class="err" id="mbErr" style="color:var(--danger);font-size:13px;margin-top:6px"></div>
-    <div class="modal-actions"><button class="btn ghost" data-act="closeModal">Cerrar</button></div>`, true);
-  $('#mbAdd').onclick = async () => {
-    const email = $('#mbEmail').value.trim().toLowerCase(), name = $('#mbName').value.trim();
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ $('#mbErr').textContent = 'Escribe un correo válido.'; return; }
-    if(!name){ $('#mbErr').textContent = 'Escribe el nombre con el que aparecerá.'; return; }
-    try{ await db.collection('mb_miembros').doc(email).set({ name, addedBy:user.email, added:Date.now() }); await loadMembers(); membersModal(); toast(`${name} ya puede entrar con ${email}.`); }
-    catch(e){ $('#mbErr').textContent = 'No se pudo guardar: ' + (e.message || e.code); }
+    <h2>Mi perfil</h2>
+    <div class="prof-head" id="pfHead"></div>
+    <label class="f">Nombre que se muestra</label>
+    <input class="input" id="pfName" maxlength="30" value="${esc(user.name)}" placeholder="${esc(user.googleName)}">
+    <p class="hint">Así te verán los demás en La Mesa y el Ranking. Si lo dejas vacío, se usa el de tu cuenta de Google (${esc(user.googleName)}).</p>
+    <label class="f">Foto de perfil · elige una ilustración</label>
+    <div class="av-grid" id="pfGrid"></div>
+    ${isStandalone() ? '' : installAvailable()
+      ? `<div class="install-card"><img src="apple-touch-icon.png" alt=""><div><b>Instala Mana Beer en tu celular</b>Ábrela como app, en pantalla completa y con su ícono.</div><button class="btn primary" data-act="installApp">${I.install}Instalar</button></div>`
+      : ios ? `<div class="install-card"><img src="apple-touch-icon.png" alt=""><div><b>Instálala en tu iPhone o iPad</b>En Safari toca el botón <b style="display:inline">Compartir</b> (cuadro con flecha) y luego <b style="display:inline">Agregar a pantalla de inicio</b>.</div></div>` : ''}
+    <div class="modal-actions" style="justify-content:space-between">
+      <button class="btn ghost danger" data-act="logout">${I.logout}Cerrar sesión</button>
+      <span style="display:flex;gap:10px"><button class="btn ghost" data-act="closeModal">Cancelar</button><button class="btn primary" id="pfSave">Guardar</button></span>
+    </div>`, true);
+  $('#pfName').addEventListener('input', draw);
+  draw();
+  if(AVATAR_CARDS.some(n => !cat[key(n)] || cat[key(n)].demo || cat[key(n)].seed)){ await ensureCards(AVATAR_CARDS); if($('#pfGrid')) draw(); }
+  $('#pfSave').onclick = async () => {
+    const name = $('#pfName').value.trim() || user.googleName;
+    const btn = $('#pfSave'); btn.disabled = true;
+    try{
+      await userRef().set({ displayName: name, name, avatar: pick || null }, { merge:true });
+      user.name = name; user.avatar = pick;
+      const me = currentMember(); if(me){ me.name = name; me.avatar = pick; }
+      closeModal(); render(); toast('Perfil actualizado.');
+    }catch(e){ btn.disabled = false; toast('No se pudo guardar el perfil: ' + (e.message || e.code)); }
   };
 }
-actions.memberDel = async el => {
-  const email = el.dataset.e, m = members.find(x => x.email === email);
-  if(!confirm(`¿Quitarle el acceso a ${m ? m.name : email}? Sus datos no se borran, pero ya no podrá entrar.`)) return;
-  try{ await db.collection('mb_miembros').doc(email).delete(); await loadMembers(); membersModal(); }
-  catch(e){ toast('No se pudo quitar: ' + (e.message || e.code)); }
-};
+
+// ---------- App instalable ----------
+let deferredInstall = null;
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredInstall = e; if(user && view.tab !== 'mesa') renderKeepScroll(); });
+window.addEventListener('appinstalled', () => { deferredInstall = null; toast('¡Mana Beer quedó instalada! Búscala en tu pantalla de inicio.'); if(user && view.tab !== 'mesa') renderKeepScroll(); });
+const isStandalone = () => (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+const installAvailable = () => !!deferredInstall && !isStandalone();
+async function installApp(){
+  if(!deferredInstall){ toast('Abre el menú del navegador y elige «Instalar app» o «Agregar a pantalla de inicio».'); return; }
+  deferredInstall.prompt();
+  try{ await deferredInstall.userChoice; }catch(e){}
+  deferredInstall = null; closeModal();
+}
+if('serviceWorker' in navigator && location.protocol === 'https:'){
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(e => console.warn('SW', e)));
+}
+// La Mesa: que la pantalla no se apague mientras juegan
+let wakeLock = null;
+async function keepAwake(on){
+  try{
+    if(on && 'wakeLock' in navigator && !wakeLock){ wakeLock = await navigator.wakeLock.request('screen'); wakeLock.addEventListener('release', () => { wakeLock = null; }); }
+    if(!on && wakeLock){ await wakeLock.release(); wakeLock = null; }
+  }catch(e){ wakeLock = null; }
+}
+document.addEventListener('visibilitychange', () => { if(document.visibilityState === 'visible' && user && view.tab === 'mesa') keepAwake(true); });
 
 // =========================================================
 //   RANKING
@@ -1946,7 +2113,7 @@ function renderRanking(){
       pp.games++;
       if(i === m.winner){ pp.wins++; pp.deckWins[p.deckName] = (pp.deckWins[p.deckName] || 0) + 1; }
       if(p.deckId){
-        const dd = D[p.deckId] = D[p.deckId] || { id:p.deckId, name:p.deckName, owner:p.memberName, commander:p.commander, artCard:p.artCard, games:0, wins:0 };
+        const dd = D[p.deckId] = D[p.deckId] || { id:p.deckId, name:p.deckName, owner:p.memberName, commander:p.commander, artCard:p.artCard, art:p.art, games:0, wins:0 };
         dd.games++; if(i === m.winner) dd.wins++;
       }
     });
@@ -1962,7 +2129,7 @@ function renderRanking(){
     if(me < 0) return;
     m.players.forEach((p, j) => {
       if(j === me || !p.deckId) return;
-      const h = H[p.deckId] = H[p.deckId] || { name:p.deckName, owner:p.memberName, artCard:p.artCard, together:0, beat:0, lost:0 };
+      const h = H[p.deckId] = H[p.deckId] || { name:p.deckName, owner:p.memberName, artCard:p.artCard, art:p.art, together:0, beat:0, lost:0 };
       h.together++;
       if(m.winner === me) h.beat++;
       if(m.winner === j) h.lost++;
@@ -1970,11 +2137,11 @@ function renderRanking(){
   });
   const rivals = Object.values(H).sort((a,b) => (b.beat - b.lost) - (a.beat - a.lost) || b.together - a.together);
   const medal = i => `<span class="medal ${i < 3 ? 'm' + (i + 1) : ''}">${i + 1}</span>`;
-  const thumb = n => `<span class="dthumb" style="${artOf(n) ? `background-image:url('${artOf(n)}')` : ''}"></span>`;
+  const thumb = (n, u) => `<span class="dthumb" style="${artOf(n, u) ? `background-image:url('${artOf(n, u)}')` : ''}"></span>`;
   const best = players[0], bestDeck = decks[0];
   $('#main').innerHTML = `
   <div class="page-h band" style="${bandStyle(3)}">
-    <div><div class="kicker">El salón de la fama</div><h1>Ranking</h1><p>Partidas guardadas en La Mesa por todos los integrantes de Mana Beer.</p></div>
+    <div><div class="kicker">El salón de la fama</div><h1>Ranking</h1><p>Partidas guardadas en La Mesa por todos los jugadores de Mana Beer.</p></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
       <select class="input" id="rkPeriod" style="width:auto"><option value="all" ${rankFilter.period==='all'?'selected':''}>Todas las partidas</option><option value="30" ${rankFilter.period==='30'?'selected':''}>Últimos 30 días</option></select>
       <button class="btn primary" data-act="goTab" data-tab="mesa">A La Mesa</button>
@@ -1992,16 +2159,16 @@ function renderRanking(){
       ${players.map((p, i) => `<div class="rrow">${medal(i)}<div class="rname"><b>${esc(p.name)}</b><small>Mazo estrella: ${esc(Object.entries(p.deckWins).sort((a,b)=>b[1]-a[1])[0]?.[0] || '—')}</small><div class="rbar"><i style="width:${pct(p.wins,p.games)}%"></i></div></div><div class="rstat"><b>${p.wins}</b>${p.games} partidas · ${pct(p.wins,p.games)}%</div></div>`).join('')}
     </div>
     <div class="rsec"><h3><span>Mazos</span></h3>
-      ${decks.slice(0, 10).map((d, i) => `<div class="rrow">${medal(i)}<div class="rdeck">${thumb(d.artCard)}<div class="rname"><b>${esc(d.name)}</b><small>${esc(d.owner)}${d.commander ? ' · ' + esc(d.commander) : ''}</small></div></div><div class="rstat"><b>${d.wins}</b>${d.games} partidas · ${pct(d.wins,d.games)}%</div></div>`).join('')}
+      ${decks.slice(0, 10).map((d, i) => `<div class="rrow">${medal(i)}<div class="rdeck">${thumb(d.artCard, d.art)}<div class="rname"><b>${esc(d.name)}</b><small>${esc(d.owner)}${d.commander ? ' · ' + esc(d.commander) : ''}</small></div></div><div class="rstat"><b>${d.wins}</b>${d.games} partidas · ${pct(d.wins,d.games)}%</div></div>`).join('')}
     </div>
     <div class="rsec"><h3><span>Enfrentamientos</span>
         <select class="input" id="rkDeck" style="width:auto;max-width:100%;font-family:var(--font);font-size:13px">${decks.map(d => `<option value="${d.id}" ${d.id===rankFilter.deck?'selected':''}>${esc(d.name)} (${esc(d.owner)})</option>`).join('')}</select></h3>
       <p class="hint" style="margin:-4px 0 8px">Contra cada rival: cuántas veces ganó este mazo con ese rival en la mesa, y cuántas ganó el rival.</p>
-      ${rivals.map(h => `<div class="rrow" style="grid-template-columns:1fr auto"><div class="rdeck">${thumb(h.artCard)}<div class="rname"><b>${esc(h.name)}</b><small>${esc(h.owner)} · ${h.together} partida(s) juntos</small></div></div><div class="rstat"><span class="chip ok">Le ganó ${h.beat}</span><span class="chip err">Perdió ${h.lost}</span></div></div>`).join('') || '<p class="hint">Este mazo aún no tiene enfrentamientos.</p>'}
+      ${rivals.map(h => `<div class="rrow" style="grid-template-columns:1fr auto"><div class="rdeck">${thumb(h.artCard, h.art)}<div class="rname"><b>${esc(h.name)}</b><small>${esc(h.owner)} · ${h.together} partida(s) juntos</small></div></div><div class="rstat"><span class="chip ok">Le ganó ${h.beat}</span><span class="chip err">Perdió ${h.lost}</span></div></div>`).join('') || '<p class="hint">Este mazo aún no tiene enfrentamientos.</p>'}
     </div>
     <div class="rsec"><h3><span>Últimas partidas</span></h3>
       <div class="hist">${list.slice(0, 8).map(m => `<div class="hrow"><span class="when">${new Date(m.date).toLocaleDateString('es-MX', { day:'numeric', month:'short' })} · ${m.minutes} min</span>
-        ${m.players.map((p, i) => `<span class="hp ${i===m.winner?'win':''} ${i===m.starter?'first':''}" title="${esc(p.memberName)} · ${esc(p.deckName)}${i===m.starter?' · empezó':''}"><i style="${artOf(p.artCard) ? `background-image:url('${artOf(p.artCard)}')` : ''}"></i>${esc(p.memberName)}${i===m.winner?' ★':''}</span>`).join('')}</div>`).join('')}</div>
+        ${m.players.map((p, i) => `<span class="hp ${i===m.winner?'win':''} ${i===m.starter?'first':''}" title="${esc(p.memberName)} · ${esc(p.deckName)}${i===m.starter?' · empezó':''}"><i style="${artOf(p.artCard, p.art) ? `background-image:url('${artOf(p.artCard, p.art)}')` : ''}"></i>${esc(p.memberName)}${i===m.winner?' ★':''}</span>`).join('')}</div>`).join('')}</div>
     </div>
   </div>`}`;
   const per = $('#rkPeriod'); if(per) per.onchange = e => { rankFilter.period = e.target.value; renderRanking(); };
@@ -2072,7 +2239,7 @@ function renderMesa(){
 function cellHtml(i){
   const [r, c, rs, cs, rot] = curLayout().cells[i], p = game.players[i];
   const m = p.member ? memberById(p.member) : null;
-  const art = p.deck ? artOf(p.deck.artCard) : '';
+  const art = p.deck ? artOf(p.deck.artCard, p.deck.art) : '';
   const dead = isDead(p);
   const cmdMax = Math.max(0, ...Object.values(p.cmd));
   const manaTot = MANA_KEYS.reduce((a, k) => a + (p.mana[k] || 0), 0);
@@ -2206,14 +2373,14 @@ function layoutSheet(){
 function pickPlayerSheet(i, memberId){
   const p = game.players[i];
   if(!memberId){
-    showSheet(`<h3>¿Quién se sienta aquí?</h3><p class="lead">Lugar ${i + 1}. Elige a un integrante de Mana Beer y luego su mazo.</p>
-      <div class="mgrid">${members.map(m => `<button class="mbtn ${p.member === m.id ? 'on' : ''}" data-act="pickMember" data-i="${i}" data-m="${m.id}"><span class="av">${esc(m.name[0].toUpperCase())}</span>${esc(m.name)}<small>${memberDecks(m).length} mazo(s)</small></button>`).join('')}</div>
+    showSheet(`<h3>¿Quién se sienta aquí?</h3><p class="lead">Lugar ${i + 1}. Elige a un jugador (los que ya han entrado a Mana Beer) y luego su mazo.</p>
+      <div class="mgrid">${members.map(m => `<button class="mbtn ${p.member === m.id ? 'on' : ''}" data-act="pickMember" data-i="${i}" data-m="${m.id}">${avatarHtml(m, 'style="width:52px;height:52px;font-size:20px;border:2px solid #B9781A"')}${esc(m.name)}${m.uid === user.uid ? ' (tú)' : ''}<small>${memberDecks(m).length} mazo(s)</small></button>`).join('')}</div>
       <div class="sheet-actions">${p.member ? `<button class="btn ghost danger" data-act="clearSeat" data-i="${i}">Dejar el lugar vacío</button>` : ''}<button class="btn ghost" data-act="mesaCloseOv">Cerrar</button></div>`);
     return;
   }
   const m = memberById(memberId), ds = memberDecks(m);
   showSheet(`<h3>${esc(m.name)}: ¿con qué mazo juega?</h3><p class="lead">La ilustración del comandante quedará de fondo en su contador.</p>
-    <div class="dgrid">${ds.map(d => `<button class="dbtn ${p.deck && p.deck.id === d.id ? 'on' : ''}" data-act="pickDeck" data-i="${i}" data-m="${m.id}" data-d="${d.id}" style="${artOf(d.artCard) ? `background-image:url('${artOf(d.artCard)}')` : ''}"><span><b>${esc(d.name)}</b><small>${esc(d.commander || d.format)}</small></span></button>`).join('') || '<p class="hint">Este integrante aún no tiene mazos cargados.</p>'}</div>
+    <div class="dgrid">${ds.map(d => `<button class="dbtn ${p.deck && p.deck.id === d.id ? 'on' : ''}" data-act="pickDeck" data-i="${i}" data-m="${m.id}" data-d="${d.id}" style="${artOf(d.artCard, d.art) ? `background-image:url('${artOf(d.artCard, d.art)}')` : ''}"><span><b>${esc(d.name)}</b><small>${esc(d.commander || d.format)}</small></span></button>`).join('') || '<p class="hint">Este jugador aún no tiene mazos cargados.</p>'}</div>
     <div class="sheet-actions"><button class="btn ghost" data-act="pickPlayer" data-i="${i}">Regresar</button><button class="btn" data-act="pickDeck" data-i="${i}" data-m="${m.id}" data-d="">Jugar sin mazo</button></div>`);
 }
 function mesaToast(msg){
@@ -2277,7 +2444,7 @@ const mesaActions = {
   mesaLife(el){ newGame(game.layout, +el.dataset.v, true); renderMesa(); mesaToast(`Vida inicial: ${el.dataset.v}`); },
   mesaEnd(){
     showSheet(`<h3>Terminar partida</h3><p class="lead">¿Quién ganó? La partida se guarda en el Ranking con los mazos de cada jugador.</p>
-      <div class="wlist">${game.players.map((p, i) => `<button class="wbtn ${isDead(p) ? 'out' : ''}" data-act="mesaSaveMatch" data-i="${i}"><span class="dthumb" style="${p.deck && artOf(p.deck.artCard) ? `background-image:url('${artOf(p.deck.artCard)}')` : ''}"></span><span><b>${esc(pName(i))}</b><br><small style="color:var(--muted)">${p.deck ? esc(p.deck.name) : 'Sin mazo'} · ${p.life} de vida${isDead(p) ? ' · fuera' : ''}</small></span></button>`).join('')}</div>
+      <div class="wlist">${game.players.map((p, i) => `<button class="wbtn ${isDead(p) ? 'out' : ''}" data-act="mesaSaveMatch" data-i="${i}"><span class="dthumb" style="${p.deck && artOf(p.deck.artCard, p.deck.art) ? `background-image:url('${artOf(p.deck.artCard, p.deck.art)}')` : ''}"></span><span><b>${esc(pName(i))}</b><br><small style="color:var(--muted)">${p.deck ? esc(p.deck.name) : 'Sin mazo'} · ${p.life} de vida${isDead(p) ? ' · fuera' : ''}</small></span></button>`).join('')}</div>
       <div class="sheet-actions"><button class="btn ghost danger" data-act="mesaDiscard">Descartar (no guardar)</button><button class="btn ghost" data-act="mesaCloseOv">Seguir jugando</button></div>`);
   },
   mesaSaveMatch(el){ closeOv(); saveMatch(+el.dataset.i); },
@@ -2287,7 +2454,7 @@ const mesaActions = {
   pickDeck(el){
     const i = +el.dataset.i, m = memberById(el.dataset.m), d = memberDecks(m).find(x => x.id === el.dataset.d);
     game.players[i].member = m.id;
-    game.players[i].deck = d ? { id:d.id, name:d.name, commander:d.commander, artCard:d.artCard } : null;
+    game.players[i].deck = d ? { id:d.id, name:d.name, commander:d.commander, artCard:d.artCard, art: artOf(d.artCard, d.art) } : null;
     saveGame(); closeOv(); renderCell(i);
   },
   clearSeat(el){ const i = +el.dataset.i; game.players[i].member = null; game.players[i].deck = null; saveGame(); closeOv(); renderCell(i); },
@@ -2312,13 +2479,14 @@ const mesaActions = {
 async function preloadAll(){
   const names = new Set();
   data.decks.forEach(d => d.cards.forEach(c => names.add(c.name)));
-  Object.values(othersDecks).flat().forEach(d => { if(d.artCard) names.add(d.artCard); });
-  matchList.forEach(m => (m.players || []).forEach(p => { if(p.artCard) names.add(p.artCard); }));
   Object.values(data.inv).forEach(r => names.add(r.name));
   Object.values(data.wish).forEach(w => names.add(w.name));
-  const before = Object.keys(cat).length;
+  const prints = [];
+  data.decks.forEach(d => d.cards.forEach(c => { if(c.set && c.cn) prints.push({ name:c.name, set:c.set, cn:c.cn }); }));
+  await ensurePrints(prints);
   await ensureCards([...names]);
-  if(Object.keys(cat).length !== before) renderKeepScroll();
+  if(enrichStored()) saveData(); else if(!saved.pub) saveData();
+  if(view.tab !== 'mesa') renderKeepScroll();
 }
 
 // ---------- Inicio ----------
