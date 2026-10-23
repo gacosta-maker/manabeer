@@ -370,8 +370,8 @@ th{color:var(--honey-2)!important}
 
 /* ---------- La Mesa (contador de vidas) ---------- */
 .mesa{position:fixed;inset:0;background:#000;display:grid;gap:6px;padding:6px;z-index:30;user-select:none;-webkit-user-select:none;touch-action:manipulation;overflow:hidden;font-family:var(--font)}
-.pcell{position:relative;border-radius:18px;overflow:hidden;background:#1d140b}
-.pbg{position:absolute;inset:0;background:#2a1d10 center/cover no-repeat;transition:filter .3s}
+.pcell{position:relative;border-radius:18px;overflow:hidden;background:#1d140b;touch-action:none}
+.pbg{position:absolute;inset:0;background:#2a1d10 center/cover no-repeat;transition:filter .3s;z-index:0}
 .pbg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(14,10,6,.25),rgba(14,10,6,.72))}
 .pcell.dead .pbg{filter:grayscale(1) brightness(.4)}
 .pcell.starter{box-shadow:inset 0 0 0 3px var(--honey),inset 0 0 40px rgba(242,181,46,.35)}
@@ -389,7 +389,7 @@ th{color:var(--honey-2)!important}
 .delta{position:absolute;left:50%;top:calc(50% - var(--fs)*.78);transform:translateX(-50%);font-weight:800;font-size:calc(var(--fs)*.24);color:var(--honey-2);opacity:0;transition:opacity .2s;pointer-events:none;z-index:3;text-shadow:0 2px 8px #000}
 .delta.neg{color:#FF9A8A}
 .delta.show{opacity:1}
-.pchips{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:4}
+.pchips{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:4;align-items:center;flex-wrap:nowrap}
 .pchip{display:flex;align-items:center;gap:5px;background:rgba(14,10,6,.68);border:1px solid rgba(255,255,255,.12);color:var(--muted);border-radius:999px;padding:5px 11px;font-weight:700;font-size:13px;cursor:pointer}
 .pchip svg{width:15px;height:15px}
 .pchip.on{color:var(--honey-2);border-color:rgba(242,181,46,.55)}
@@ -506,6 +506,41 @@ img.avatar{object-fit:cover;padding:0}
   .page-h.band{padding:20px 16px 18px}
   .page-h h1{font-size:25px}
 }
+/* ---------- La Mesa: fondo vacío, maná y daño de comandante ---------- */
+.pbg.free{background:radial-gradient(ellipse at 50% 40%,#3a2709 0%,#1a1208 55%,#0e0a06 100%)}
+.pbg.free::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,216,107,.10) 2px,transparent 3px),radial-gradient(circle,rgba(255,244,214,.06) 1.5px,transparent 2.5px);background-size:46px 46px,29px 29px;background-position:0 0,13px 21px}
+.pbg.free img{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-6deg);width:min(74%,440px);opacity:.38;filter:sepia(.45) saturate(1.3) drop-shadow(0 0 34px rgba(242,181,46,.45));mix-blend-mode:lighten;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 62%,transparent 100%)}
+.pbg.free::after{background:none}
+.mpips{position:absolute;top:12px;right:14px;display:flex;gap:6px;z-index:4;flex-wrap:wrap;justify-content:flex-end;max-width:50%}
+.mpip2{min-width:30px;height:30px;border-radius:50%;border:2px solid rgba(0,0,0,.45);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;padding:0 6px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.5)}
+.cbody{touch-action:pan-y}
+.cmdrecv{position:absolute;inset:0;z-index:6;background:#2B2734;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;padding:12px}
+.cmdrecv .ct{font-family:var(--brand);font-weight:800;font-size:min(calc(var(--fs)*.36),9vw);line-height:1.05;color:var(--foam);letter-spacing:.03em;max-width:96%;overflow-wrap:anywhere}
+.cmdrecv .cs{font-size:calc(var(--fs)*.17);font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.cmdrecv .cl{margin-top:6px;font-size:calc(var(--fs)*.2);color:var(--honey-2);font-weight:700}
+.cmdrecv .cback{margin-top:10px;background:var(--gold-text);color:var(--honey-ink);border:none;border-radius:999px;padding:8px 18px;font-weight:800;letter-spacing:.06em;font-size:13px;cursor:pointer}
+.cmdrecv .ch{font-size:11px;color:var(--faint);margin-top:6px;max-width:80%}
+.cmdgive{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;background:rgba(14,10,6,.55)}
+.pcell.in-cmd .life,.pcell.in-cmd .delta,.pcell.in-cmd .pchips,.pcell.in-cmd .lifezone,.pcell.in-cmd .pname,.pcell.in-cmd .startflag,.pcell.in-cmd .deadtxt{visibility:hidden}
+.cg-head{text-align:center;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--foam);padding:10px 8px 0;text-shadow:0 1px 4px #000}
+.cslots{flex:1;display:flex;min-height:0}
+.cslot{flex:1;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0}
+.cslot + .cslot{border-left:1px dashed rgba(255,244,214,.18)}
+.cslot .cv{font-family:var(--brand);font-weight:800;font-size:calc(var(--fs) / var(--cn));line-height:1;color:var(--foam);text-shadow:0 4px 18px rgba(0,0,0,.8);pointer-events:none}
+.cslot .cv.hot{color:#FF8A7A}
+.cslot small{font-size:11px;color:var(--muted);margin-top:4px;max-width:90%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none;text-shadow:0 1px 3px #000}
+.cz{position:absolute;top:0;bottom:0;width:50%;background:none;border:none;color:rgba(255,244,214,.35);font-size:26px;font-weight:300;cursor:pointer;display:flex;align-items:center;padding:0 8px}
+.cz.m{left:0;justify-content:flex-start}.cz.p{right:0;justify-content:flex-end}
+.cz:active{background:rgba(255,216,107,.08)}
+.cg-foot{display:flex;gap:8px;justify-content:center;padding:0 8px 10px}
+.cg-foot button{background:rgba(14,10,6,.75);border:1px solid rgba(242,181,46,.45);color:var(--honey-2);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer}
+.hexi svg{width:40px;height:40px;color:var(--honey-2)}
+.mesa.cmd-mode .hexo{background:linear-gradient(180deg,#FFF1C2,#F2B52E)}
+.fmtgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.fmtbtn{text-align:left;background:var(--surface-3);border:1px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;color:var(--foam)}
+.fmtbtn b{display:block;font-family:var(--brand);font-size:15px}
+.fmtbtn small{color:var(--muted);font-size:11px}
+.fmtbtn.on{border-color:var(--honey);box-shadow:0 0 0 2px rgba(242,181,46,.35);background:rgba(242,181,46,.1)}
 </style>
 </head>
 <body>
@@ -2022,16 +2057,22 @@ async function refreshGroup(){
 // =========================================================
 //   MI PERFIL
 // =========================================================
-const AVATAR_CARDS = ["Atraxa, Praetors' Voice", 'Edgar Markov', 'The Ur-Dragon', 'Krenko, Mob Boss', 'Elesh Norn, Grand Cenobite',
-  'Liliana of the Veil', 'Jace, the Mind Sculptor', 'Chandra, Torch of Defiance', 'Nissa, Who Shakes the World', 'Teferi, Hero of Dominaria',
-  'Gideon Jura', 'Sorin Markov', 'Urza, Lord High Artificer', 'Yawgmoth, Thran Physician', 'Omnath, Locus of Creation',
-  'Niv-Mizzet, Parun', 'Ghave, Guru of Spores', 'Meren of Clan Nel Toth', 'Lathril, Blade of the Elves', 'Isshin, Two Heavens as One',
-  'Prossh, Skyraider of Kher', 'Kenrith, the Returned King', 'Korvold, Fae-Cursed King', 'Muldrotha, the Gravetide', 'Breya, Etherium Shaper',
-  'Elenda, the Dusk Rose', 'Sliver Queen', 'Tymna the Weaver', 'Kaalia of the Vast', 'Teysa Karlov'];
+const AVATAR_CARDS = ['The Master of Keys', "Atraxa, Praetors' Voice", 'Edgar Markov', 'The Ur-Dragon', 'Krenko, Mob Boss',
+  'Elesh Norn, Grand Cenobite', 'Liliana of the Veil', 'Jace, the Mind Sculptor', 'Chandra, Torch of Defiance', 'Nissa, Who Shakes the World',
+  'Teferi, Hero of Dominaria', 'Gideon Jura', 'Sorin Markov', 'Urza, Lord High Artificer', 'Yawgmoth, Thran Physician',
+  'Omnath, Locus of Creation', 'Niv-Mizzet, Parun', 'Ghave, Guru of Spores', 'Meren of Clan Nel Toth', 'Lathril, Blade of the Elves',
+  'Isshin, Two Heavens as One', 'Prossh, Skyraider of Kher', 'Kenrith, the Returned King', 'Korvold, Fae-Cursed King', 'Muldrotha, the Gravetide',
+  'Breya, Etherium Shaper', 'Elenda, the Dusk Rose', 'Sliver Queen', 'Tymna the Weaver', 'Kaalia of the Vast',
+  'Teysa Karlov', 'Nicol Bolas, Dragon-God', 'Emrakul, the Aeons Torn', 'Ulamog, the Infinite Gyre', 'Kozilek, Butcher of Truth',
+  'Griselbrand', 'Sheoldred, the Apocalypse', 'Ragavan, Nimble Pilferer', 'Thrasios, Triton Hero', 'Kinnan, Bonder Prodigy',
+  'Grand Arbiter Augustin IV', "Kroxa, Titan of Death's Hunger", "Gishath, Sun's Avatar", 'Miirym, Sentinel Wyrm', 'Wilhelt, the Rotcleaver',
+  "Light-Paws, Emperor's Voice", 'Zur the Enchanter', 'Animar, Soul of Elements', 'Derevi, Empyrial Tactician', 'Hapatra, Vizier of Poisons',
+  'Selvala, Heart of the Wilds', 'Avacyn, Angel of Hope', 'Karador, Ghost Chieftain', 'Narset, Enlightened Master', 'Lord Windgrace',
+  'Rhys the Redeemed', 'Feather, the Redeemed', 'Najeela, the Blade-Blossom', 'The Gitrog Monster', 'Old Gnawbone'];
 async function profileModal(){
   let pick = user.avatar ? { ...user.avatar } : null;
   const draw = () => {
-    const opts = AVATAR_CARDS.map(n => cat[key(n)]).filter(e => e && e.art && !e.demo);
+    const opts = AVATAR_CARDS.map(n => cat[key(n)]).filter(e => e && e.art && !e.demo && !e.missing);
     const preview = { name: ($('#pfName') ? $('#pfName').value : user.name) || user.name, photo: user.photo, avatar: pick };
     $('#pfHead').innerHTML = `${avatarHtml(preview)}<div><b style="font-size:18px">${esc(preview.name)}</b><div class="hint" style="margin-top:2px">${esc(user.email)}</div></div>`;
     $('#pfGrid').innerHTML = (user.photo ? `<button class="av-opt ${!pick ? 'on' : ''}" data-pf="" style="background-image:url('${esc(user.photo)}')" title="Foto de Google"><span>Google</span></button>` : '')
@@ -2196,24 +2237,51 @@ const LAYOUTS = [
 const MANA_KEYS = ['W','U','B','R','G','C'];
 const PIPC = { W:['#F8F3D9','#5C5532'], U:['#3E8FD8','#fff'], B:['#3A3534','#D9D3D0'], R:['#D9533B','#fff'], G:['#3D9B5A','#fff'], C:['#B9B5AD','#333'] };
 const MICO = {
-  cmd:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg>',
+  dagger:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2 3v9h-4V5z" fill="currentColor"/><path d="M7 14h10M12 14v4"/><circle cx="12" cy="20" r="1.6" fill="currentColor"/></svg>',
   poison:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C15 7 19 10 19 15a7 7 0 0 1-14 0c0-5 4-8 7-13z"/><circle cx="9.6" cy="14.5" r="1.4" fill="#000"/><circle cx="14.4" cy="14.5" r="1.4" fill="#000"/></svg>',
   mana:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l8 5v10l-8 5-8-5V7z"/></svg>'
 };
 let game = null, mesaPanel = null, mesaMenuOpen = false;
 const lifeAcc = {}, lifeTimers = {};
 const curLayout = () => LAYOUTS.find(l => l.id === game.layout) || LAYOUTS[5];
-const newPlayer = life => ({ member:null, deck:null, life, poison:0, cmd:{}, mana:{ W:0, U:0, B:0, R:0, G:0, C:0 } });
+// Formatos: definen jugadores, vidas y si se cuenta daño de comandante
+const MESA_FORMATS = [
+  { id:'commander', name:'Commander', life:40, n:4, layout:'4a', cmd:true },
+  { id:'duel', name:'Commander 1 vs 1', life:20, n:2, layout:'2a', cmd:true },
+  { id:'brawl', name:'Brawl', life:25, n:2, layout:'2a', cmd:false },
+  { id:'standard', name:'Standard', life:20, n:2, layout:'2a', cmd:false },
+  { id:'pioneer', name:'Pioneer', life:20, n:2, layout:'2a', cmd:false },
+  { id:'modern', name:'Modern', life:20, n:2, layout:'2a', cmd:false },
+  { id:'pauper', name:'Pauper', life:20, n:2, layout:'2a', cmd:false },
+  { id:'legacy', name:'Legacy', life:20, n:2, layout:'2a', cmd:false },
+  { id:'vintage', name:'Vintage', life:20, n:2, layout:'2a', cmd:false }
+];
+const curFormat = () => MESA_FORMATS.find(f => f.id === (game && game.format)) || MESA_FORMATS[0];
+const cmdOn = () => curFormat().cmd;
+const MAX_CMDRS = 3;
+const newPlayer = life => ({ member:null, deck:null, life, poison:0, cmd:{}, cmdN:1, mana:{ W:0, U:0, B:0, R:0, G:0, C:0 } });
 function newGame(layoutId, life, keep){
   const L = LAYOUTS.find(l => l.id === layoutId) || LAYOUTS[5];
   const old = keep && game ? game.players : [];
-  game = { layout:L.id, startLife:life, started:Date.now(), starter:null, prompted:false,
-    players: Array.from({ length:L.n }, (_, i) => { const p = newPlayer(life); if(old[i]){ p.member = old[i].member; p.deck = old[i].deck; } return p; }) };
+  const format = (game && game.format) || 'commander';
+  game = { layout:L.id, startLife:life, format, started:Date.now(), starter:null, prompted:false, cmdTarget:null,
+    players: Array.from({ length:L.n }, (_, i) => { const p = newPlayer(life); if(old[i]){ p.member = old[i].member; p.deck = old[i].deck; p.cmdN = old[i].cmdN || 1; } return p; }) };
   saveGame();
+}
+// Partidas guardadas con la versión anterior
+function normalizeGame(){
+  if(!game) return;
+  if(!game.format) game.format = game.startLife === 40 ? 'commander' : 'standard';
+  if(game.cmdTarget === undefined) game.cmdTarget = null;
+  game.players.forEach(p => {
+    p.cmdN = p.cmdN || 1;
+    Object.keys(p.cmd || {}).forEach(j => { if(!Array.isArray(p.cmd[j])) p.cmd[j] = [p.cmd[j] || 0]; });
+  });
 }
 function saveGame(){ store.set('game_' + (user ? user.uid : ''), game); }
 function loadGame(){
   game = store.get('game_' + (user ? user.uid : ''), null);
+  normalizeGame();
   if(!game){
     newGame('4a', 40);
     const me = currentMember();
@@ -2221,15 +2289,18 @@ function loadGame(){
     saveGame();
   }
 }
-const isDead = p => p.life <= 0 || p.poison >= 10 || Object.values(p.cmd).some(v => v >= 21);
+const isDead = p => p.life <= 0 || p.poison >= 10 || Object.values(p.cmd || {}).some(v => (Array.isArray(v) ? v : [v]).some(x => x >= 21));
 const pName = i => { const p = game.players[i], m = p && p.member ? memberById(p.member) : null; return m ? m.name : `Jugador ${i + 1}`; };
 
 function renderMesa(){
   if(!game) loadGame();
   const L = curLayout();
-  $('#app').innerHTML = `<div class="mesa" id="mesa" style="grid-template-rows:repeat(${L.rows},1fr);grid-template-columns:repeat(${L.cols},1fr)">
+  if(game.cmdTarget != null && (!cmdOn() || !game.players[game.cmdTarget])) game.cmdTarget = null;
+  const cm = game.cmdTarget != null;
+  $('#app').innerHTML = `<div class="mesa ${cm ? 'cmd-mode' : ''}" id="mesa" style="grid-template-rows:repeat(${L.rows},1fr);grid-template-columns:repeat(${L.cols},1fr)">
     ${game.players.map((_, i) => cellHtml(i)).join('')}
-    <button class="hub" data-act="mesaMenu" aria-label="Menú de la mesa" title="Menú"><span class="hexo"><span class="hexi">${markImg()}<span class="x">✕</span></span></span></button>
+    ${cm ? `<button class="hub" data-act="cmdExit" aria-label="Volver al juego" title="Volver al juego"><span class="hexo"><span class="hexi">${MICO.dagger}</span></span></button>`
+         : `<button class="hub" data-act="mesaMenu" aria-label="Menú de la mesa" title="Menú"><span class="hexo"><span class="hexi">${markImg()}<span class="x">✕</span></span></span></button>`}
     <div id="mesaOv"></div>
   </div>`;
   mesaMenuOpen = false;
@@ -2241,11 +2312,27 @@ function cellHtml(i){
   const m = p.member ? memberById(p.member) : null;
   const art = p.deck ? artOf(p.deck.artCard, p.deck.art) : '';
   const dead = isDead(p);
-  const cmdMax = Math.max(0, ...Object.values(p.cmd));
   const manaTot = MANA_KEYS.reduce((a, k) => a + (p.mana[k] || 0), 0);
-  return `<div class="pcell ${dead ? 'dead' : ''} ${game.starter === i ? 'starter' : ''}" id="pc${i}" data-rot="${rot}" style="grid-row:${r} / span ${rs};grid-column:${c} / span ${cs}">
-    <div class="pbg" style="${art ? `background-image:url('${art}')` : ''}"></div>
+  const T = game.cmdTarget;
+  let overlay = '';
+  if(T != null && T === i){
+    overlay = `<div class="cmdrecv"><div class="ct">COMANDANTE</div><div class="cs">Daño que has recibido</div>
+      <div class="cl">Vida: ${p.life}</div>
+      <button class="cback" data-act="cmdExit">VOLVER AL JUEGO</button>
+      <div class="ch">Suma el daño en la celda de cada rival. Desliza otra vez para salir.</div></div>`;
+  } else if(T != null){
+    const tgt = game.players[T], arr = (tgt.cmd && tgt.cmd[i]) || [], n = Math.min(MAX_CMDRS, p.cmdN || 1);
+    const cmdrName = p.deck && p.deck.commander ? p.deck.commander.split(',')[0] : '';
+    overlay = `<div class="cmdgive"><div class="cg-head">Daño de comandante a ${esc(pName(T))}</div>
+      <div class="cslots" style="--cn:${n === 1 ? 1 : n === 2 ? 1.6 : 2.1}">${Array.from({ length:n }, (_, k) => {
+        const v = arr[k] || 0;
+        return `<div class="cslot"><button class="cz m" data-act="cmdDmg" data-a="${i}" data-k="${k}" data-d="-1" aria-label="Restar daño">−</button><button class="cz p" data-act="cmdDmg" data-a="${i}" data-k="${k}" data-d="1" aria-label="Sumar daño">+</button><b class="cv ${v >= 21 ? 'hot' : ''}">${v}</b><small>${esc(k === 0 && cmdrName ? cmdrName : 'Comandante ' + (k + 1))}</small></div>`;
+      }).join('')}</div>
+      <div class="cg-foot">${n < MAX_CMDRS ? `<button data-act="cmdSlot" data-a="${i}" data-d="1">+ Comandante</button>` : ''}${n > 1 ? `<button data-act="cmdSlot" data-a="${i}" data-d="-1">− Comandante</button>` : ''}</div></div>`;
+  }
+  return `<div class="pcell ${dead ? 'dead' : ''} ${game.starter === i ? 'starter' : ''} ${T != null ? 'in-cmd' : ''}" id="pc${i}" data-i="${i}" data-rot="${rot}" style="grid-row:${r} / span ${rs};grid-column:${c} / span ${cs}">
     <div class="prot" style="--rot:${rot}deg">
+      ${art ? `<div class="pbg" style="background-image:url('${art}')"></div>` : `<div class="pbg free"><img src="${LOGO_SRC}" alt=""></div>`}
       <button class="pname" data-act="pickPlayer" data-i="${i}">${m ? `<b>${esc(m.name)}</b><span>${esc(p.deck ? p.deck.name : 'Toca para elegir mazo')}</span>` : `<b>Jugador ${i + 1}</b><span>Toca para elegir jugador y mazo</span>`}</button>
       <div class="lifezone">
         <button class="lifebtn m" data-i="${i}" data-d="-1" aria-label="Restar vida">−</button>
@@ -2254,13 +2341,14 @@ function cellHtml(i){
       <div class="life">${p.life}</div>
       <div class="delta" id="dl${i}"></div>
       <div class="pchips">
-        <button class="pchip ${cmdMax ? 'on' : ''}" data-act="counters" data-i="${i}" data-t="cmd" title="Daño de comandante">${MICO.cmd}<span>${cmdMax}</span></button>
         <button class="pchip poison ${p.poison ? 'on' : ''}" data-act="counters" data-i="${i}" data-t="poison" title="Contadores de veneno">${MICO.poison}<span>${p.poison}</span></button>
         <button class="pchip ${manaTot ? 'on' : ''}" data-act="counters" data-i="${i}" data-t="mana" title="Maná disponible">${MICO.mana}<span>${manaTot}</span></button>
+        ${MANA_KEYS.filter(k => (p.mana[k] || 0) > 0).map(k => `<button class="mpip2" data-act="counters" data-i="${i}" data-t="mana" style="background:${PIPC[k][0]};color:${PIPC[k][1]}" title="Maná ${k}">${p.mana[k]}</button>`).join('')}
       </div>
       ${game.starter === i ? '<div class="startflag">¡EMPIEZA!</div>' : ''}
       ${dead ? '<div class="deadtxt">SIN<br>CERVEZA</div>' : ''}
       <div class="roll" id="roll${i}"></div>
+      ${overlay}
       <div id="cp${i}"></div>
     </div>
   </div>`;
@@ -2303,17 +2391,47 @@ function checkWinner(){
       <div class="sheet-actions"><button class="btn ghost" data-act="mesaCloseOv">Seguir jugando</button><button class="btn primary" data-act="mesaSaveMatch" data-i="${w}">Guardar partida</button></div>`);
   }
 }
-// Mantener presionado suma o resta de 10 en 10
+// Gestos en cada celda:
+//  · tocar − / +           → resta o suma 1 de vida
+//  · mantener presionado    → resta o suma de 10 en 10
+//  · deslizar a los lados   → modo daño de comandante para ese jugador (en su propio sentido de lectura)
+let gesture = null, suppressClickUntil = 0, suppressCell = -1;
 document.addEventListener('pointerdown', e => {
-  const b = e.target.closest('.lifebtn'); if(!b) return;
-  e.preventDefault();
-  const i = +b.dataset.i, d = +b.dataset.d;
-  changeLife(i, d);
-  let rep = null;
-  const hold = setTimeout(() => { changeLife(i, d * 9); rep = setInterval(() => changeLife(i, d * 10), 600); }, 550);
-  const up = () => { clearTimeout(hold); clearInterval(rep); window.removeEventListener('pointerup', up); window.removeEventListener('pointercancel', up); };
-  window.addEventListener('pointerup', up); window.addEventListener('pointercancel', up);
+  if(!game || view.tab !== 'mesa') return;
+  const cell = e.target.closest('.pcell');
+  if(!cell || e.target.closest('.cpanel')) return;
+  const btn = e.target.closest('.lifebtn');
+  if(btn) e.preventDefault();
+  const g = gesture = { i: +cell.dataset.i, rot: +cell.dataset.rot, x0: e.clientX, y0: e.clientY, btn, moved:false, held:false, swiped:false, rep:null, hold:null };
+  if(btn){
+    const i = +btn.dataset.i, d = +btn.dataset.d;
+    g.hold = setTimeout(() => { if(g.moved) return; g.held = true; changeLife(i, d * 10); g.rep = setInterval(() => changeLife(i, d * 10), 600); }, 550);
+  }
+}, { passive:false });
+document.addEventListener('pointermove', e => {
+  const g = gesture; if(!g) return;
+  const dx = e.clientX - g.x0, dy = e.clientY - g.y0;
+  if(!g.moved && Math.hypot(dx, dy) > 12){ g.moved = true; if(!g.held) clearTimeout(g.hold); }
+  if(g.swiped || g.held) return;
+  const a = -g.rot * Math.PI / 180, lx = dx * Math.cos(a) - dy * Math.sin(a), ly = dx * Math.sin(a) + dy * Math.cos(a);
+  if(Math.abs(lx) > 55 && Math.abs(lx) > Math.abs(ly) * 1.4){ g.swiped = true; toggleCmd(g.i); }
 });
+const endGesture = () => {
+  const g = gesture; if(!g) return;
+  gesture = null;
+  clearTimeout(g.hold); clearInterval(g.rep);
+  if(g.swiped || g.moved){ suppressClickUntil = Date.now() + 350; suppressCell = g.i; return; }
+  if(g.btn && !g.held) changeLife(+g.btn.dataset.i, +g.btn.dataset.d);
+};
+document.addEventListener('pointerup', endGesture);
+document.addEventListener('pointercancel', () => { const g = gesture; if(g){ clearTimeout(g.hold); clearInterval(g.rep); } gesture = null; });
+// Evita que un deslizamiento termine "tocando" un botón
+document.addEventListener('click', e => { const c = e.target.closest('.pcell'); if(c && +c.dataset.i === suppressCell && Date.now() < suppressClickUntil){ e.stopPropagation(); e.preventDefault(); } }, true);
+function toggleCmd(i){
+  if(!cmdOn()){ mesaToast(`En ${curFormat().name} no se cuenta daño de comandante.`); return; }
+  game.cmdTarget = game.cmdTarget === i ? null : i;
+  mesaPanel = null; saveGameSoon(); renderMesa();
+}
 window.addEventListener('resize', () => { if(view.tab === 'mesa') sizeMesa(); });
 
 // ---------- Contadores: daño de comandante, veneno y maná ----------
@@ -2322,17 +2440,14 @@ function renderCounters(i, t){
   mesaPanel = { i, t };
   const row = (label, val, attrs, hot) => `<div class="crow"><span>${label}</span><div class="ctr"><button data-act="cnt" ${attrs} data-d="-1">−</button><b class="${hot ? 'hot' : ''}">${val}</b><button data-act="cnt" ${attrs} data-d="1">+</button></div></div>`;
   let body = '';
-  if(t === 'cmd'){
-    body = game.players.map((q, j) => j === i ? '' : row(`De ${esc(pName(j))}${q.deck && q.deck.commander ? ' · ' + esc(q.deck.commander.split(',')[0]) : ''}`, p.cmd[j] || 0, `data-i="${i}" data-k="cmd" data-j="${j}"`, (p.cmd[j] || 0) >= 21)).join('')
-      + '<div class="cnote">El daño de comandante también resta vida. Con 21 de un mismo comandante, quedas fuera.</div>';
-  } else if(t === 'poison'){
+  if(t === 'poison'){
     body = row('Contadores de veneno', p.poison, `data-i="${i}" data-k="poison"`, p.poison >= 10) + '<div class="cnote">Con 10 contadores de veneno, quedas fuera.</div>';
   } else {
     body = MANA_KEYS.map(k => row(`<span class="mpip" style="background:${PIPC[k][0]};color:${PIPC[k][1]}">${k}</span>${{W:'Blanco',U:'Azul',B:'Negro',R:'Rojo',G:'Verde',C:'Incoloro'}[k]}`, p.mana[k] || 0, `data-i="${i}" data-k="mana" data-j="${k}"`)).join('')
       + `<button class="btn sm" style="align-self:center;margin-top:4px" data-act="manaClear" data-i="${i}">Vaciar reserva de maná</button>`;
   }
   host.innerHTML = `<div class="cpanel">
-    <div class="ctabs">${[['cmd','Comandante'],['poison','Veneno'],['mana','Maná']].map(([k, l]) => `<button class="ctab ${k === t ? 'on' : ''}" data-act="counters" data-i="${i}" data-t="${k}">${l}</button>`).join('')}</div>
+    <div class="ctabs">${[['poison','Veneno'],['mana','Maná']].map(([k, l]) => `<button class="ctab ${k === t ? 'on' : ''}" data-act="counters" data-i="${i}" data-t="${k}">${l}</button>`).join('')}</div>
     <div class="cbody">${body}</div>
     <button class="cclose" data-act="closeCounters" data-i="${i}" aria-label="Cerrar">✕</button></div>`;
 }
@@ -2431,15 +2546,47 @@ const mesaActions = {
   mesaSetLayout(el){ newGame(el.dataset.l, game.startLife, true); pickN = null; mesaPanel = null; renderMesa(); },
   mesaRoll(){ rollStart(); },
   mesaReset(){
-    showSheet(`<h3>¿Reiniciar la partida?</h3><p class="lead">Las vidas vuelven a ${game.startLife} y se borran veneno, daño de comandante y maná. Los jugadores y sus mazos se quedan.</p>
+    showSheet(`<h3>¿Reiniciar la partida?</h3><p class="lead">Las vidas vuelven a ${game.startLife} y se borran veneno, daño de comandante y maná. El formato (${curFormat().name}) se mantiene. Los jugadores y sus mazos se quedan.</p>
       <div class="sheet-actions"><button class="btn ghost" data-act="mesaCloseOv">Cancelar</button><button class="btn primary" data-act="mesaResetOk">Sí, reiniciar</button></div>`);
   },
   mesaResetOk(){ newGame(game.layout, game.startLife, true); mesaPanel = null; renderMesa(); mesaToast('Partida reiniciada'); },
   mesaSettings(){
-    showSheet(`<h3>Ajustes de la mesa</h3><p class="lead">Vida inicial de cada jugador. Al aplicar, la partida se reinicia.</p>
+    showSheet(`<h3>Ajustes de la mesa</h3><p class="lead">Elige el formato y la mesa se acomoda sola: jugadores, vidas y daño de comandante. Al cambiar, la partida se reinicia; los jugadores y sus mazos se quedan.</p>
+      <label class="f">Formato</label>
+      <div class="fmtgrid">${MESA_FORMATS.map(f => `<button class="fmtbtn ${f.id === game.format ? 'on' : ''}" data-act="mesaFormat" data-f="${f.id}"><b>${f.name}</b><small>${f.n} jugadores · ${f.life} vidas${f.cmd ? ' · comandante' : ''}</small></button>`).join('')}</div>
+      <label class="f">Vida inicial</label>
       <div class="optgrid">${[20,25,30,40,50].map(v => `<button class="optbtn ${v === game.startLife ? 'on' : ''}" data-act="mesaLife" data-v="${v}">${v}</button>`).join('')}</div>
-      <p class="hint" style="margin-top:12px">Commander se juega a 40. Formatos de 60 cartas, a 20.</p>
+      <p class="hint" style="margin-top:10px">Si quieren más o menos jugadores que los del formato, cámbialo en «Jugadores» del menú.</p>
       <div class="sheet-actions"><button class="btn ghost" data-act="mesaCloseOv">Cerrar</button></div>`);
+  },
+  mesaFormat(el){
+    const f = MESA_FORMATS.find(x => x.id === el.dataset.f); if(!f) return;
+    const layout = curLayout().n === f.n ? game.layout : f.layout;
+    game.format = f.id;
+    newGame(layout, f.life, true); mesaPanel = null; renderMesa();
+    mesaToast(`${f.name}: ${f.n} jugadores · ${f.life} vidas`);
+  },
+  cmdExit(){ game.cmdTarget = null; saveGameSoon(); renderMesa(); },
+  // Daño de comandante: lo suma el rival en su celda y se resta de la vida de quien lo recibe
+  cmdDmg(el){
+    const T = game.cmdTarget; if(T == null) return;
+    const a = +el.dataset.a, k = +el.dataset.k, d = +el.dataset.d, tgt = game.players[T];
+    tgt.cmd = tgt.cmd || {};
+    const arr = Array.isArray(tgt.cmd[a]) ? tgt.cmd[a] : (tgt.cmd[a] = []);
+    const cur = arr[k] || 0, nv = Math.max(0, cur + d);
+    if(nv === cur) return;
+    arr[k] = nv; tgt.life -= (nv - cur);
+    saveGameSoon(); renderCell(a); renderCell(T); checkWinner();
+  },
+  cmdSlot(el){
+    const a = +el.dataset.a, d = +el.dataset.d, p = game.players[a], n = p.cmdN || 1;
+    if(d > 0){ p.cmdN = Math.min(MAX_CMDRS, n + 1); }
+    else {
+      const used = game.players.some(q => q.cmd && Array.isArray(q.cmd[a]) && (q.cmd[a][n - 1] || 0) > 0);
+      if(used){ mesaToast('Ese comandante ya hizo daño: no se puede quitar.'); return; }
+      p.cmdN = Math.max(1, n - 1);
+    }
+    saveGameSoon(); renderCell(a);
   },
   mesaLife(el){ newGame(game.layout, +el.dataset.v, true); renderMesa(); mesaToast(`Vida inicial: ${el.dataset.v}`); },
   mesaEnd(){
@@ -2462,11 +2609,7 @@ const mesaActions = {
   closeCounters(el){ mesaPanel = null; const h = $('#cp' + el.dataset.i); if(h) h.innerHTML = ''; },
   cnt(el){
     const i = +el.dataset.i, p = game.players[i], d = +el.dataset.d, k = el.dataset.k;
-    if(k === 'cmd'){
-      const j = el.dataset.j, cur = p.cmd[j] || 0, nv = Math.max(0, cur + d);
-      if(nv === cur) return;
-      p.cmd[j] = nv; p.life -= (nv - cur);
-    } else if(k === 'poison'){ p.poison = Math.max(0, p.poison + d); }
+    if(k === 'poison'){ p.poison = Math.max(0, p.poison + d); }
     else { p.mana[el.dataset.j] = Math.max(0, (p.mana[el.dataset.j] || 0) + d); }
     saveGameSoon(); renderCell(i); checkWinner();
   },
