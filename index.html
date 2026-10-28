@@ -630,7 +630,7 @@ img.avatar{object-fit:cover;padding:0}
 @keyframes fireSpin{to{transform:rotate(360deg)}}
 .pcell.sword-on{box-shadow:inset 0 0 0 3px #ff8a1f,inset 0 0 70px rgba(255,90,20,.45)}
 .pcell.active.sword-on{box-shadow:inset 0 0 0 4px #ff8a1f,inset 0 0 70px rgba(255,90,20,.45)}
-.pcell.in-cmd .psword,.pcell.in-cmd .turnbtn,.pcell.in-cmd .rtimer,.pcell.in-cmd .lockov{visibility:hidden}
+.pcell.in-cmd .psword,.pcell.in-cmd .turnbtn,.pcell.in-cmd .pbl,.pcell.in-cmd .pbadges,.pcell.in-cmd .ptl,.pcell.in-cmd .rtimer,.pcell.in-cmd .lockov{visibility:hidden}
 /* Panel de comandante con animación */
 .cmdrecv{will-change:transform}
 .cmdrecv.dragging{pointer-events:none}
@@ -653,6 +653,157 @@ img.avatar{object-fit:cover;padding:0}
 @media (prefers-reduced-motion: reduce){
   .mesa *,.mesa *::before,.mesa *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+/* ===== v6 · nueva distribución del contador ===== */
+.prot{container-type:size;container-name:prot}
+.ptl{position:absolute;top:max(12px,7%);left:max(14px,6%);display:flex;flex-direction:column;align-items:flex-start;gap:14px;z-index:5;max-width:54%}
+.ptl .pname{position:relative;top:auto;left:auto;max-width:100%}
+.ptl .psword{position:relative;top:auto;right:auto;left:auto;flex:none}
+.pbadges{position:absolute;top:max(12px,7%);right:max(14px,6%);display:flex;gap:5px;z-index:4;pointer-events:none}
+.bdg{width:clamp(30px,11cqmin,54px);height:clamp(30px,11cqmin,54px);filter:drop-shadow(0 2px 4px rgba(0,0,0,.7))}
+.bdg svg{width:100%;height:100%;display:block}
+@container prot (max-width:360px){.pbadges .bdg:nth-child(n+4){display:none}}
+@container prot (max-width:260px){.pbadges .bdg:nth-child(n+3){display:none}.bdg{width:28px;height:28px}}
+.lifezone{inset:6% 6%}
+.lifebtn{padding:0 9%;font-size:calc(var(--fs)*.3);color:rgba(255,244,214,.34)}
+.life{font-size:calc(var(--fs)*.8);color:rgba(255,244,214,.8);text-shadow:0 4px 22px rgba(0,0,0,.6)}
+.delta{top:calc(50% - var(--fs)*.66)}
+/* Pasar turno / Iniciar: abajo a la izquierda, grande, con brillo que gira */
+.turnbtn{left:max(14px,6%);bottom:max(14px,8%);transform:none;padding:14px 26px;font-size:16px;gap:8px;overflow:hidden;isolation:isolate;background:transparent;animation:tglow 2.4s ease-in-out infinite}
+.turnbtn svg{width:18px;height:18px}
+.turnbtn::before{content:"";position:absolute;left:50%;top:50%;width:260%;aspect-ratio:1;translate:-50% -50%;background:conic-gradient(from 0deg,transparent 0 55%,rgba(255,255,255,.95) 70%,#FFE48A 78%,transparent 90%);animation:tspin 2.2s linear infinite;z-index:-2}
+.turnbtn::after{content:"";position:absolute;inset:3px;border-radius:inherit;background:var(--gold-text);z-index:-1}
+.turnbtn.arrive{animation:tarrive2 .45s cubic-bezier(.2,.9,.3,1.4),tglow 2.4s ease-in-out .45s infinite}
+@keyframes tspin{to{rotate:360deg}}
+@keyframes tglow{0%,100%{box-shadow:0 0 14px 2px rgba(255,216,107,.55),0 4px 12px rgba(0,0,0,.5)}50%{box-shadow:0 0 30px 8px rgba(255,236,160,.85),0 4px 12px rgba(0,0,0,.5)}}
+@keyframes tarrive2{from{transform:scale(1.35)}to{transform:scale(1)}}
+.turnbtn.start::before{background:conic-gradient(from 0deg,transparent 0 55%,rgba(255,255,255,.95) 70%,#C8F7A0 78%,transparent 90%)}
+.turnbtn.start::after{background:linear-gradient(180deg,#B5EE86,#3D9B5A)}
+.turnbtn.start{color:#0E2410;animation:tglowG 2.4s ease-in-out infinite}
+.turnbtn.start.pick{outline:3px solid #fff6d6;outline-offset:3px}
+@keyframes tglowG{0%,100%{box-shadow:0 0 14px 2px rgba(155,224,106,.55),0 4px 12px rgba(0,0,0,.5)}50%{box-shadow:0 0 30px 8px rgba(190,250,150,.85),0 4px 12px rgba(0,0,0,.5)}}
+.pbl{position:absolute;left:max(14px,6%);bottom:max(14px,8%);display:flex;align-items:center;gap:10px;z-index:5;max-width:56%}
+.pbl .turnbtn{position:relative;left:auto;bottom:auto;flex:none}
+.pbl .rtimer,.pbl .startflag{position:static;transform:none;text-align:center;line-height:1.25;white-space:nowrap}
+.pbl .rtimer{padding:4px 10px;border-radius:12px}
+/* Contadores activos: solo si tienen valor */
+.pchips{left:auto;right:max(14px,6%);bottom:max(14px,8%);transform:none;flex-wrap:wrap-reverse;justify-content:flex-end;max-width:44%;gap:6px}
+.pctr{display:flex;align-items:center;gap:4px;background:rgba(14,10,6,.72);border:1px solid rgba(242,181,46,.5);color:var(--honey-2);border-radius:999px;padding:4px 10px 4px 7px;font-weight:800;font-size:15px;cursor:pointer;line-height:1}
+.pctr svg{width:18px;height:18px}
+.pctr.poison{color:#9BE06A;border-color:#5FA83A}
+.pctr.energy{color:#7DD3FC;border-color:#3A8BB8}
+.pctr.exp{color:#E9D5FF;border-color:#8B5CF6}
+.pctr.tax{color:#FFD9A0}
+.pctr.tax small{font-size:10px;letter-spacing:.06em;font-weight:800}
+.cmdgive .cz{padding:0 12%}
+/* Panel de comandante + contadores */
+.cmdrecv .ct.small{font-size:min(calc(var(--fs)*.22),7vw);font-family:var(--font);font-weight:600;color:rgba(255,244,214,.82);letter-spacing:0;line-height:1.1}
+.cmdrecv .cmain{display:flex;flex-direction:column;align-items:center;gap:4px}
+.ctrrow{display:flex;gap:4px;margin-top:12px;align-items:stretch;justify-content:center;flex-wrap:nowrap;max-width:100%;overflow-x:auto;padding:4px 2px;background:rgba(0,0,0,.18);border-radius:12px}
+.vctr{display:flex;flex-direction:column;align-items:center;justify-content:space-between;width:40px;flex:none}
+.vctr button{width:38px;height:30px;border:none;background:none;color:#fff6d6;font-size:20px;font-weight:700;cursor:pointer;line-height:1;padding:0}
+.vctr button:active{background:rgba(255,216,107,.12);border-radius:8px}
+.vctr .vbox{width:35px;border:2px solid rgba(255,244,214,.85);border-radius:12px;display:flex;flex-direction:column;align-items:center;padding:4px 0 5px;gap:2px;color:#fff6d6}
+.vctr .vbox b{font-size:20px;font-family:var(--brand);line-height:1}
+.vctr .vbox i{display:flex;align-items:center;justify-content:center;height:20px;font-style:normal;font-size:10px;font-weight:800;letter-spacing:.02em}
+.vctr .vbox i svg{width:20px;height:20px}
+.vctr.on .vbox{border-color:var(--honey-2);color:var(--honey-2)}
+.vctr.poison.on .vbox{border-color:#9BE06A;color:#9BE06A}
+.vctr.hot .vbox{border-color:#FF8A7A;color:#FF8A7A}
+.vctr .mdot{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800}
+.ctrswitch{margin-top:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,244,214,.35);color:var(--honey-2);display:flex;align-items:center;gap:5px;cursor:pointer;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.06em}
+.ctrswitch svg{width:14px;height:14px}
+.ctrrow.mana .vctr{width:34px}.ctrrow.mana .vctr button{width:32px}.ctrrow.mana .vctr .vbox{width:31px}
+@container prot (max-height:300px){
+  .cmdrecv{flex-direction:row;gap:14px;justify-content:center}
+  .cmdrecv .ctrrow{margin-top:0}
+  .cmdrecv .ct.small{font-size:13px;max-width:120px}
+  .cmdrecv .cmain{max-width:130px;flex:none}
+  .cmdrecv .cl{margin-top:2px}
+}
+@container prot (max-height:200px){ .vctr button{height:24px} .vctr .vbox{padding:2px 0 3px} .vctr .vbox b{font-size:17px} .cmdrecv .cback{padding:6px 12px;font-size:11px;margin-top:6px} }
+@container prot (max-height:220px){.pbl .turnbtn{padding:11px 20px;font-size:14px}.ptl{gap:10px}}
+.ptl .psword .fire{transform:scale(.82)}
+.pcell.sword-on .ptl{gap:20px}
+/* Dados */
+.dicegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dicegrid .fmtbtn small{display:block}
+.roll small{bottom:14%}
+.roll.dim{display:flex;background:rgba(14,10,6,.7);color:transparent}
+@media (prefers-reduced-motion: reduce){ .turnbtn::before{animation:none} .turnbtn{animation:none} }
+
+/* ===== v7 · más grande, nombre del lado del menú ===== */
+.pname{padding:7px 18px}
+.pname b{font-size:17px}
+.pname span{font-size:13px}
+.psword{width:58px;height:58px}
+.psword svg{width:30px;height:30px}
+.bdg{width:clamp(28px,9.5cqmin,48px);height:clamp(28px,9.5cqmin,48px)}
+.lifebtn{font-size:calc(var(--fs)*.4);color:rgba(255,244,214,.42)}
+.turnbtn{padding:17px 30px;font-size:18px}
+.turnbtn svg{width:20px;height:20px}
+.pctr{font-size:19px;padding:6px 13px 6px 9px;gap:5px}
+.pctr svg{width:22px;height:22px}
+.pctr.tax small{font-size:12px}
+.mpip2{min-width:38px;height:38px;font-size:17px}
+.startflag{font-size:13px;padding:7px 14px}
+@container prot (max-height:220px){.pbl .turnbtn{padding:13px 22px;font-size:16px}.psword{width:50px;height:50px}.pname b{font-size:15px}.pname span{font-size:12px}}
+/* Nombre y espada del lado del menú; insignias del lado contrario */
+.pcell.flip .ptl{left:auto;right:max(14px,6%);align-items:flex-end}
+.pcell.flip .pname{align-items:flex-end!important;text-align:right}
+.pcell.flip .pbadges{right:auto;left:max(14px,6%);flex-direction:row-reverse}
+.pcell.flip .pbl{left:auto;right:max(14px,6%);flex-direction:row-reverse}
+.pcell.flip .pchips{right:auto;left:max(14px,6%);justify-content:flex-start}
+/* Contadores del panel: más grandes */
+.ctrrow{gap:6px;padding:6px 4px}
+.vctr{width:52px}
+.vctr button{width:50px;height:42px;font-size:28px}
+.vctr .vbox{width:46px;border-radius:14px;padding:6px 0 7px}
+.vctr .vbox b{font-size:26px}
+.vctr .vbox i{height:24px;font-size:12px}
+.vctr .vbox i svg{width:24px;height:24px}
+.ctrrow.mana{display:grid;grid-template-columns:repeat(2,auto);gap:6px;overflow:visible}
+@container prot (max-height:300px){.cmdrecv.mana .ct{display:none}.cmdrecv.mana .cmain{max-width:112px}}
+@container prot (min-height:301px){.ctrrow.mana{grid-template-columns:repeat(3,auto)}}
+.hctr{display:flex;align-items:center;gap:4px;border:2px solid rgba(255,244,214,.5);border-radius:14px;padding:2px}
+.hctr.on{border-color:var(--honey-2)}
+.hctr button{width:34px;height:40px;border:none;background:none;color:#fff6d6;font-size:26px;font-weight:700;cursor:pointer;padding:0;line-height:1}
+.hctr button:active{background:rgba(255,216,107,.12);border-radius:10px}
+.hctr b{min-width:24px;text-align:center;font-family:var(--brand);font-size:22px;color:#fff6d6}
+.hctr.on b{color:var(--honey-2)}
+.hctr .mdot{width:22px;height:22px;font-size:12px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;flex:none}
+@container prot (max-height:300px){ .cmdrecv .cmain{max-width:120px} }
+@container prot (max-height:200px){ .vctr button{height:34px} .vctr .vbox{padding:3px 0 4px} .vctr .vbox b{font-size:22px} .hctr button{width:36px;height:34px} }
+.ctrswitch{padding:7px 14px;font-size:12px}
+@container prot (min-height:380px){
+  .pname{padding:10px 24px}.pname b{font-size:22px}.pname span{font-size:16px}
+  .psword{width:72px;height:72px}.psword svg{width:38px;height:38px}
+  .pbl .turnbtn{padding:22px 38px;font-size:22px}.turnbtn svg{width:24px;height:24px}
+  .pbl .rtimer{font-size:15px}
+  .pctr{font-size:24px;padding:8px 16px 8px 11px}.pctr svg{width:28px;height:28px}
+  .mpip2{min-width:46px;height:46px;font-size:21px}
+  .vctr{width:64px}.vctr button{width:62px;height:52px;font-size:34px}.vctr .vbox{width:58px}.vctr .vbox b{font-size:32px}.vctr .vbox i svg{width:30px;height:30px}
+  .hctr button{width:48px;height:50px;font-size:30px}.hctr b{font-size:28px;min-width:32px}.hctr .mdot{width:28px;height:28px;font-size:14px}
+  .cmdrecv .cback{font-size:16px;padding:11px 24px}.ctrswitch{font-size:14px;padding:9px 18px}
+}
+.pundo{width:52px;height:52px;flex:none;border-radius:50%;background:rgba(14,10,6,.78);border:1.5px solid rgba(242,181,46,.6);color:var(--honey-2);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;box-shadow:0 2px 10px rgba(0,0,0,.5)}
+.pundo svg{width:26px;height:26px}
+.pundo:active{transform:scale(.92);background:rgba(242,181,46,.2)}
+.pundo.off{opacity:.35}
+@container prot (min-height:380px){.pundo{width:64px;height:64px}.pundo svg{width:32px;height:32px}}
+@container prot (max-height:220px){.pundo{width:46px;height:46px}}
+/* Botón central: ¿Quién empieza? → PLAY */
+.hub.who,.hub.start{width:96px;height:106px}
+.hub.who .hexo{background:linear-gradient(180deg,#FFE08A,#E08A1E)}
+.hub.who .hexi{flex-direction:column;gap:2px}
+.hub.who .hexi svg{width:30px;height:30px;color:var(--honey-2)}
+.hub.who .hexi small{font-size:10px;font-weight:800;letter-spacing:.06em;color:var(--honey-2);text-align:center;line-height:1.15}
+.hub.who{animation:hubBreath 1.8s ease-in-out infinite}
+.hub.start .hexi svg{width:40px;height:40px}
+.hub.start .hexi small{font-size:13px;letter-spacing:.16em}
+.hubalt{position:absolute;left:50%;top:calc(50% + 64px);transform:translateX(-50%);z-index:41;background:rgba(14,10,6,.85);border:1px solid rgba(242,181,46,.55);color:var(--honey-2);border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;letter-spacing:.06em;cursor:pointer}
+.mesa.sheet-open .hubalt,.mesa.menu-open .hubalt{display:none}
+.wbtn.on{border-color:var(--honey);box-shadow:0 0 0 2px rgba(242,181,46,.4)}
 </style>
 </head>
 <body>
@@ -2271,7 +2422,7 @@ let matchList = [];
 async function loadPlayers(){
   const us = await db.collection('mb_users').get();
   members = [];
-  us.forEach(d => { const x = d.data() || {}; members.push({ id:d.id, uid:d.id, name: x.displayName || x.name || 'Jugador', photo: x.photo || '', avatar: x.avatar || null, decks: x.publicDecks || [] }); });
+  us.forEach(d => { const x = d.data() || {}; members.push({ id:d.id, uid:d.id, name: x.displayName || x.name || 'Jugador', photo: x.photo || '', avatar: x.avatar || null, decks: x.publicDecks || [], badges: x.badges || [] }); });
   if(user && !members.some(m => m.uid === user.uid)) members.push({ id:user.uid, uid:user.uid, name:user.name, photo:user.photo, avatar:user.avatar, decks:[] });
   members.sort((a,b) => a.name.localeCompare(b.name));
 }
@@ -2530,9 +2681,136 @@ const MICO = {
   play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>',
   dagger:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2 3v9h-4V5z" fill="currentColor"/><path d="M7 14h10M12 14v4"/><circle cx="12" cy="20" r="1.6" fill="currentColor"/></svg>',
   poison:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C15 7 19 10 19 15a7 7 0 0 1-14 0c0-5 4-8 7-13z"/><circle cx="9.6" cy="14.5" r="1.4" fill="#000"/><circle cx="14.4" cy="14.5" r="1.4" fill="#000"/></svg>',
-  mana:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l8 5v10l-8 5-8-5V7z"/></svg>'
+  mana:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l8 5v10l-8 5-8-5V7z"/></svg>',
+  undo:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 9.5A8 8 0 1 1 4.2 14.5"/><path d="M4 3.8v5.9h5.9"/></svg>',
+  phyx:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><ellipse cx="12" cy="12.5" rx="7" ry="6"/><path d="M12 3v19"/></svg>',
+  energy:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 2L5 13.5h6L9.5 22 19 9.5h-6.2z"/></svg>',
+  exp:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2.5l8 4.6v9.8l-8 4.6-8-4.6V7.1z"/><path d="M9.5 8.5h5M9.5 12h4M9.5 15.5h5M9.5 8.5v7" stroke-linecap="round"/></svg>',
+  dice:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2l8.5 5v10L12 22l-8.5-5V7z"/><path d="M12 2v6.5M3.5 7l8.5 1.5L20.5 7M12 8.5L6.5 17h11z"/></svg>'
 };
-let game = null, mesaPanel = null, mesaMenuOpen = false;
+
+// =========================================================
+//   INSIGNIAS · escalera de logros (las primeras fáciles, luego cada vez más difíciles)
+// =========================================================
+// 7 formas (de la más simple a la más elaborada) × 7 colores.
+// Las metas fáciles usan la forma 1; cada forma nueva es más difícil de conseguir.
+const BCOLOR = [
+  { name:'Bronce',    c:['#1F0C03','#4E240C','#8A4C22','#C27E48','#E8B98C'] },
+  { name:'Plata',     c:['#16191D','#3C444D','#7C8794','#B9C2CC','#E3E8EE'] },
+  { name:'Oro',       c:['#2A1802','#664108','#A87512','#DDAA3C','#F3D88E'] },
+  { name:'Zafiro',    c:['#030B1E','#0A2459','#1D4FA3','#5C91D8','#B9D6F5'] },
+  { name:'Esmeralda', c:['#021509','#08381C','#177038','#4FB070','#B5E6C3'] },
+  { name:'Rubí',      c:['#1E0104','#520711','#951A2B','#D4545F','#F2B8BC'] },
+  { name:'Amatista',  c:['#0E0422','#2F1561','#5E37A8','#9878D8','#D6C6F5'] }
+];
+const BSHAPE = ['Ficha','Emblema','Escudo','Alado','Escudo alado','Corona','Leyenda'];
+const BTIER = Object.fromEntries(BSHAPE.map((n, k) => [k + 1, { name:n }]));
+const BICON = {
+  dot:'<circle cx="12" cy="12" r="5"/>',
+  die:'<path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 2v6M3 7l9 1 9-1M12 8l-6.5 9.5h13zM5.5 17.5L12 22l6.5-4.5" fill="none" stroke="rgba(0,0,0,.5)" stroke-width="1.3" stroke-linejoin="round"/>',
+  crown:'<path d="M3 18h18l-1.6-10-4.6 4.2L12 5l-2.8 7.2L4.6 8z"/><rect x="3" y="19" width="18" height="2.4" rx="1"/><circle cx="12" cy="14.5" r="1.5" fill="rgba(0,0,0,.5)"/>',
+  swords:'<g><path d="M2.5 2.5h3.2l9.3 9.3-3.2 3.2-9.3-9.3z"/><path d="M10 17.5l7.5-7.5 1.6 1.6-7.5 7.5z"/><path d="M16.5 16.5l4.5 4.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></g><g transform="translate(24 0) scale(-1 1)"><path d="M2.5 2.5h3.2l9.3 9.3-3.2 3.2-9.3-9.3z"/><path d="M10 17.5l7.5-7.5 1.6 1.6-7.5 7.5z"/><path d="M16.5 16.5l4.5 4.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></g>',
+  tomb:'<path d="M6 20V10a6 6 0 0 1 12 0v10z"/><path d="M12 8.5v7M9 11h6" stroke="rgba(0,0,0,.5)" stroke-width="1.9" stroke-linecap="round"/><rect x="3" y="19.5" width="18" height="2.5" rx="1"/>',
+  chalice:'<path d="M5.5 3h13c0 5.5-2.8 8.5-6.5 8.5S5.5 8.5 5.5 3z"/><path d="M10.8 11h2.4v6h-2.4z"/><path d="M6.5 21.5c0-2.6 2.4-4.2 5.5-4.2s5.5 1.6 5.5 4.2z"/><path d="M8 5.5h8" stroke="rgba(0,0,0,.5)" stroke-width="1.2"/>',
+  cards:'<rect x="3" y="5" width="10.5" height="14.5" rx="1.6" transform="rotate(-14 8.3 12.3)"/><rect x="10" y="3.5" width="10.5" height="14.5" rx="1.6" transform="rotate(10 15.3 10.8)"/><rect x="11.8" y="5.6" width="6.8" height="7" rx=".8" transform="rotate(10 15.3 10.8)" fill="rgba(0,0,0,.5)"/>',
+  tapped:'<rect x="2.5" y="8" width="15" height="11" rx="1.6"/><rect x="4.5" y="10" width="7" height="7" rx=".8" fill="rgba(0,0,0,.5)"/><path d="M15.5 3.5a6.5 6.5 0 0 1 5.2 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M22.5 7l-1.4 3.6-3.1-2z"/>',
+  flame:'<path d="M12 2c1 4 5 5.5 5 11a5 5 0 0 1-10 0c0-2.5 1.2-4 2.5-5 0 2 .8 3 2 3.5C11 9 11 5.5 12 2z"/>',
+  bolt:'<path d="M13.5 2L5 13.5h6L9.5 22 19 9.5h-6.2z"/>',
+  shield:'<path d="M12 2.5l8 3v6c0 5-3.6 8.6-8 10-4.4-1.4-8-5-8-10v-6z"/><path d="M12 6v12" stroke="rgba(0,0,0,.5)" stroke-width="1.4"/>',
+  tower:'<path d="M6 22V9h-1.5V4h3v2h2V4h5v2h2V4h3v5H18v13h-4v-5a2 2 0 0 0-4 0v5z"/><rect x="10.8" y="10" width="2.4" height="3.5" rx="1.2" fill="rgba(0,0,0,.5)"/>',
+  claws:'<path d="M5 3c2.5 5 3 11 .5 18M11.5 2c2.5 6 2.5 13 0 20M18 3c2.5 5 2.5 12-.5 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>',
+  crystal:'<path d="M12 1.5l6.5 6.5L12 22.5 5.5 8z"/><path d="M5.5 8h13M12 1.5v21M8.5 8L12 22.5 15.5 8" fill="none" stroke="rgba(0,0,0,.5)" stroke-width="1.1"/>',
+  spark:'<path d="M12 1l2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6z"/><circle cx="12" cy="12" r="2.2" fill="rgba(0,0,0,.5)"/>',
+  portal:'<path d="M12 12.5a1.2 1.2 0 1 1 1.2-1.2 3.4 3.4 0 1 1-6.6 1.2 5.6 5.6 0 1 1 11-1.6A7.8 7.8 0 1 1 4 12" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>'
+};
+// t = forma (1 fácil … 7 leyenda) · c = color (0-6) · i = ícono
+const BADGES = [
+  { id:'mesa1',     t:1, c:0, i:'die',    name:'Primera ronda',       d:'Juega tu primera mesa.' },
+  { id:'win1',      t:1, c:2, i:'crown',  name:'Primera victoria',    d:'Gana una mesa.' },
+  { id:'dmg100',    t:1, c:1, i:'swords',  name:'Cien heridas',        d:'Inflige 100 de daño en total.' },
+  { id:'kill1',     t:1, c:5, i:'tomb',  name:'Primera sangre',      d:'Da tu primer golpe final.' },
+  { id:'heal50',    t:1, c:4, i:'chalice',  name:'Buena vibra',         d:'Da 50 vidas a otros jugadores.' },
+  { id:'deck1',     t:1, c:3, i:'cards',   name:'Constructor',         d:'Juega con un mazo tuyo cargado.' },
+  { id:'mesa10',    t:1, c:6, i:'tapped',    name:'Parroquiano',         d:'Juega 10 mesas.' },
+  { id:'mesa25',    t:2, c:0, i:'die',    name:'Cliente frecuente',   d:'Juega 25 mesas.' },
+  { id:'win10',     t:2, c:2, i:'crown',  name:'Diez coronas',        d:'Gana 10 mesas.' },
+  { id:'dmg1000',   t:2, c:1, i:'flame',  name:'Mil heridas',         d:'Inflige 1,000 de daño en total.' },
+  { id:'kill10',    t:2, c:5, i:'tomb',  name:'Verdugo',             d:'Da 10 golpes finales.' },
+  { id:'heal300',   t:2, c:4, i:'chalice',  name:'Corazón de oro',      d:'Da 300 vidas a otros jugadores.' },
+  { id:'deck5',     t:2, c:3, i:'cards',   name:'Arsenal',             d:'Gana con 5 mazos distintos.' },
+  { id:'win25',     t:3, c:2, i:'crown',  name:'Campeón local',       d:'Gana 25 mesas.' },
+  { id:'groups3',   t:3, c:3, i:'tower', name:'Visitante',           d:'Gana una mesa en 3 grupos diferentes.' },
+  { id:'streak3',   t:3, c:6, i:'bolt',   name:'En racha',            d:'Gana 3 mesas seguidas.' },
+  { id:'win50',     t:4, c:2, i:'crown',  name:'Señor de la taberna', d:'Gana 50 mesas.' },
+  { id:'groups5',   t:4, c:3, i:'tower', name:'Trotamundos',         d:'Gana una mesa en 5 grupos diferentes.' },
+  { id:'tank',      t:4, c:1, i:'shield', name:'Muralla',             d:'Gana una mesa de 4+ jugadores recibiendo 40 o más de daño.' },
+  { id:'streak5',   t:5, c:6, i:'bolt',   name:'Imparable',           d:'Gana 5 mesas seguidas.' },
+  { id:'triple',    t:5, c:5, i:'claws',  name:'Masacre',             d:'Elimina a 3 jugadores en una sola mesa.' },
+  { id:'untouch',   t:6, c:1, i:'shield', name:'Intocable',           d:'Gana una mesa de 4+ jugadores sin recibir daño.' },
+  { id:'win200',    t:6, c:2, i:'spark',   name:'Leyenda',             d:'Gana 200 mesas.' },
+  { id:'countries2',t:7, c:6, i:'portal',  name:'Planeswalker',        d:'Juega en dos países diferentes.' }
+];
+const badgeById = id => BADGES.find(b => b.id === id);
+const HEX = (cx, cy, r) => [0,1,2,3,4,5].map(k => { const a = (k * 60 - 90) * Math.PI / 180; return (cx + r * Math.cos(a)).toFixed(1) + ',' + (cy + r * Math.sin(a)).toFixed(1); }).join(' ');
+const SHIELD = (s, dy) => `M32 ${7 + dy}l${18 * s} ${8 * s}-${1.5 * s} ${22 * s}C${32 + 14 * s} ${49 * s + dy + (1 - s) * 30} ${32 + 7 * s} ${55 * s + dy + (1 - s) * 30} 32 ${59 * s + dy + (1 - s) * 30}c-${7 * s} -${4 * s} -${14 * s} -${10 * s} -${16.5 * s} -${22 * s}L${32 - 18 * s} ${15 * s + dy + (1 - s) * 8}z`;
+function badgeSvg(b){
+  const [dp, dk, md, lt, hi] = BCOLOR[b.c || 0].c, g = `bg${b.t}_${b.c || 0}`, t = b.t;
+  // Degradados: metal pulido (bandas diagonales), hueco interior, borde y brillo
+  const defs = `<defs>
+    <linearGradient id="${g}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${hi}"/><stop offset=".18" stop-color="${lt}"/><stop offset=".38" stop-color="${md}"/><stop offset=".5" stop-color="${lt}"/><stop offset=".62" stop-color="${md}"/><stop offset=".85" stop-color="${dk}"/><stop offset="1" stop-color="${dp}"/></linearGradient>
+    <linearGradient id="${g}w" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${lt}"/><stop offset=".35" stop-color="${md}"/><stop offset=".7" stop-color="${dk}"/><stop offset="1" stop-color="${dp}"/></linearGradient>
+    <radialGradient id="${g}r" cx=".5" cy=".38" r=".7"><stop offset="0" stop-color="${md}"/><stop offset=".55" stop-color="${dk}"/><stop offset="1" stop-color="${dp}"/></radialGradient>
+    <linearGradient id="${g}s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${hi}"/><stop offset=".5" stop-color="${md}"/><stop offset="1" stop-color="${dp}"/></linearGradient>
+    <linearGradient id="${g}g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".42" stop-color="#fff" stop-opacity=".06"/><stop offset=".43" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="${g}i" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${hi}"/><stop offset=".55" stop-color="${lt}"/><stop offset="1" stop-color="${md}"/></linearGradient>
+    <radialGradient id="${g}j" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="${lt}"/><stop offset="1" stop-color="${dk}"/></radialGradient>
+  </defs>`;
+  // Pieza de metal: relleno pulido + borde degradado + brillo superior + filo oscuro
+  const metal = (shape) => `${shape(`fill="url(#${g})" stroke="${dp}" stroke-width="2.6"`)}${shape(`fill="none" stroke="url(#${g}s)" stroke-width="1.2"`)}${shape(`fill="url(#${g}g)"`)}`;
+  const recess = (shape) => `${shape(`fill="url(#${g}r)" stroke="${dp}" stroke-width="1.4"`)}${shape(`fill="none" stroke="${hi}" stroke-opacity=".35" stroke-width=".8" transform="translate(0 .8)"`)}`;
+  const icon = (sc, y) => { const tr = `translate(${32 - 12 * sc} ${y - 12 * sc}) scale(${sc})`, ic = BICON[b.i] || BICON.dot;
+    return `<g transform="translate(0 1.2)"><g transform="${tr}" fill="${dp}" color="${dp}" opacity=".7">${ic}</g></g><g transform="${tr}" fill="url(#${g}i)" color="${lt}">${ic}</g>`; };
+  const P = d => a => `<path d="${d}" ${a}/>`, G = (pts) => a => `<polygon points="${pts}" ${a}/>`;
+  const SH = 'M32 7l18 8-1.5 22C46 49 39 55 32 59c-7-4-14-10-16.5-22L14 15z';
+  const SH2 = 'M32 9l18 8-1.5 22C46 51 39 57 32 61c-7-4-14-10-16.5-22L14 17z';
+  const IN = 'M32 14l12 5.5-1 15.5C41.5 43 37 48 32 51c-5-3-9.5-8-11-16L20 19.5z';
+  const IN2 = 'M32 16l12 5.5-1 15.5C41.5 45 37 50 32 53c-5-3-9.5-8-11-16L20 21.5z';
+  const WL = 'M16 26C10 24 4 20 1 14c1 9 4 15 9 18-3 0-6-1-8-2 3 5 8 8 14 8z', WR = 'M48 26c6-2 12-6 15-12-1 9-4 15-9 18 3 0 6-1 8-2-3 5-8 8-14 8z';
+  const WL2 = 'M15 36c-6 1-10 0-13-2 3 5 8 8 14 8z', WR2 = 'M49 36c6 1 10 0 13-2-3 5-8 8-14 8z';
+  const feathers = `<path d="M13 27l-8-6M12 31l-8-3M13 35l-7 0M51 27l8-6M52 31l8-3M51 35l7 0" stroke="${dp}" stroke-opacity=".45" stroke-width="1"/>`;
+  const wings = (big) => `${P(WL)(`fill="url(#${g}w)" stroke="${dp}" stroke-width="1.6"`)}${P(WR)(`fill="url(#${g}w)" stroke="${dp}" stroke-width="1.6"`)}${feathers}${big ? `${P(WL2)(`fill="url(#${g}w)" stroke="${dp}" stroke-width="1.4"`)}${P(WR2)(`fill="url(#${g}w)" stroke="${dp}" stroke-width="1.4"`)}` : ''}`;
+  const horns = `${P('M22 16C14 12 9 6 7 0c6 4 12 6 17 8z')(`fill="url(#${g}w)" stroke="${dp}" stroke-width="1.4"`)}${P('M42 16c8-4 13-10 15-16-6 4-12 6-17 8z')(`fill="url(#${g}w)" stroke="${dp}" stroke-width="1.4"`)}`;
+  const gem = (y) => `<path d="M32 ${y - 5}l4.5 5-4.5 5-4.5-5z" fill="url(#${g}j)" stroke="${dp}" stroke-width="1.3"/><path d="M30.6 ${y - 2.6}l1.4-1.4" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>`;
+  const crown = `${P('M22 8l4 4 6-7 6 7 4-4-1 7H23z')(`fill="url(#${g})" stroke="${dp}" stroke-width="1.3"`)}<circle cx="32" cy="9.5" r="1.6" fill="url(#${g}j)"/>`;
+  const stars = `<g fill="url(#${g}i)" stroke="${dp}" stroke-width=".6"><path d="M25.5 44l1 2 2.2.3-1.6 1.5.4 2.2-2-1-2 1 .4-2.2-1.6-1.5 2.2-.3z"/><path d="M38.5 44l1 2 2.2.3-1.6 1.5.4 2.2-2-1-2 1 .4-2.2-1.6-1.5 2.2-.3z"/></g>`;
+  let body = '';
+  if(t === 1){        // Ficha: hexágono de metal liso
+    body = `${metal(G(HEX(32, 32, 22)))}${icon(.8, 32)}`;
+  } else if(t === 2){ // Emblema: hexágono con bisel y hueco
+    body = `${metal(G(HEX(32, 32, 25)))}${recess(G(HEX(32, 32, 18)))}${icon(.72, 32)}`;
+  } else if(t === 3){ // Escudo con gema
+    body = `${metal(P(SH))}${recess(P(IN))}${icon(.78, 32)}${gem(9)}`;
+  } else if(t === 4){ // Alado
+    body = `${wings(false)}${metal(G(HEX(32, 33, 21)))}${recess(G(HEX(32, 33, 15)))}${icon(.66, 33)}`;
+  } else if(t === 5){ // Escudo alado con estrellas
+    body = `${wings(true)}${metal(P(SH))}${recess(P(IN))}${icon(.7, 31)}${stars}${gem(9)}`;
+  } else if(t === 6){ // Corona: cuernos, alas, corona y aro
+    body = `${horns}${wings(true)}${metal(P(SH2))}${recess(P(IN2))}${icon(.7, 34)}${crown}<circle cx="32" cy="62" r="2.4" fill="none" stroke="url(#${g}s)" stroke-width="1.8"/>`;
+  } else {            // Leyenda: aura, rayos, laurel, cuernos, alas, corona y gema
+    const rays = Array.from({ length:16 }, (_, k) => { const an = (k * 22.5 - 90) * Math.PI / 180; return `<path d="M32 32L${(32 + 31 * Math.cos(an)).toFixed(1)} ${(32 + 31 * Math.sin(an)).toFixed(1)}" stroke="${k % 2 ? lt : hi}" stroke-width="${k % 2 ? 1.2 : 2.4}" stroke-opacity=".75" stroke-linecap="round"/>`; }).join('');
+    body = `<circle cx="32" cy="32" r="30" fill="url(#${g}r)" opacity=".55"/>${rays}${horns}${wings(true)}
+      <path d="M14 44c4 8 10 13 18 15M50 44c-4 8-10 13-18 15" fill="none" stroke="url(#${g}s)" stroke-width="2.4"/><g fill="url(#${g}i)" stroke="${dp}" stroke-width=".5"><ellipse cx="16" cy="47" rx="3.2" ry="1.7" transform="rotate(50 16 47)"/><ellipse cx="20" cy="52" rx="3.2" ry="1.7" transform="rotate(35 20 52)"/><ellipse cx="25" cy="56" rx="3.2" ry="1.7" transform="rotate(20 25 56)"/><ellipse cx="48" cy="47" rx="3.2" ry="1.7" transform="rotate(-50 48 47)"/><ellipse cx="44" cy="52" rx="3.2" ry="1.7" transform="rotate(-35 44 52)"/><ellipse cx="39" cy="56" rx="3.2" ry="1.7" transform="rotate(-20 39 56)"/></g>
+      ${metal(P('M32 10l16.5 7.4-1.4 20.2C44.8 48.6 38.4 54.1 32 57.8c-6.4-3.7-12.8-9.2-15.1-20.2L15.5 17.4z'))}${recess(P('M32 17l11 5-1 14C40.5 43 36.5 47.5 32 50c-4.5-2.5-8.5-7-10-14L21 22z'))}${icon(.66, 33)}
+      ${crown}<circle cx="32" cy="3.6" r="3.2" fill="url(#${g}j)" stroke="${dp}" stroke-width="1"/><circle cx="31" cy="2.6" r=".9" fill="#fff"/>`;
+  }
+  return `<svg viewBox="0 0 64 64" aria-label="${esc(b.name)}">${defs}${body}</svg>`;
+}
+// Las insignias más altas del jugador (más difíciles primero)
+function topBadges(m, n){
+  const ids = (m && m.badges) || [];
+  return ids.map(badgeById).filter(Boolean).sort((a, b) => b.t - a.t || BADGES.indexOf(b) - BADGES.indexOf(a)).slice(0, n || 5);
+}
+let game = null, mesaPanel = null, mesaMenuOpen = false, ctrMana = {}, mesaMenuForce = false;
 const lifeAcc = {}, lifeTimers = {};
 const curLayout = () => LAYOUTS.find(l => l.id === game.layout) || LAYOUTS[5];
 // Formatos: definen jugadores, vidas y si se cuenta daño de comandante
@@ -2550,7 +2828,7 @@ const MESA_FORMATS = [
 const curFormat = () => MESA_FORMATS.find(f => f.id === (game && game.format)) || MESA_FORMATS[0];
 const cmdOn = () => curFormat().cmd;
 const MAX_CMDRS = 3;
-const newPlayer = life => ({ member:null, deck:null, life, poison:0, cmd:{}, cmdN:1, mana:{ W:0, U:0, B:0, R:0, G:0, C:0 } });
+const newPlayer = life => ({ member:null, deck:null, life, poison:0, tax:[0,0,0], energy:0, exp:0, cmd:{}, cmdN:1, mana:{ W:0, U:0, B:0, R:0, G:0, C:0 } });
 function newGame(layoutId, life, keep){
   const L = LAYOUTS.find(l => l.id === layoutId) || LAYOUTS[5];
   const old = keep && game ? game.players : [];
@@ -2571,6 +2849,8 @@ function normalizeGame(){
   if(game.sword === undefined) game.sword = null;
   game.players.forEach(p => {
     p.cmdN = p.cmdN || 1;
+    if(!Array.isArray(p.tax)) p.tax = [0,0,0];
+    p.energy = p.energy || 0; p.exp = p.exp || 0;
     Object.keys(p.cmd || {}).forEach(j => { if(!Array.isArray(p.cmd[j])) p.cmd[j] = [p.cmd[j] || 0]; });
   });
 }
@@ -2591,13 +2871,14 @@ const pName = i => { const p = game.players[i], m = p && p.member ? memberById(p
 function renderMesa(animTurn){
   if(!game) loadGame();
   const L = curLayout();
-  if(game.cmdTarget != null && (!cmdOn() || !game.players[game.cmdTarget])) game.cmdTarget = null;
+  if(game.cmdTarget != null && !game.players[game.cmdTarget]) game.cmdTarget = null;
   const cm = game.cmdTarget != null;
   const setup = lockedMesa();
   $('#app').innerHTML = `<div class="mesa ${cm ? 'cmd-mode' : ''} ${setup ? 'setup' : ''} ${turnsPlaying() ? 'turns' : ''}" id="mesa" style="grid-template-rows:repeat(${L.rows},1fr);grid-template-columns:repeat(${L.cols},1fr)">
     ${game.players.map((_, i) => cellHtml(i)).join('')}
     ${cm ? `<button class="hub ${hubAnim || cmdAnim ? 'pop' : ''}" data-act="cmdExit" aria-label="Volver al juego" title="Volver al juego"><span class="hexo"><span class="hexi">${MICO.dagger}</span></span></button>`
-         : setup ? `<button class="hub start pop" data-act="turnSetup" aria-label="Iniciar partida" title="Iniciar partida"><span class="hexo"><span class="hexi">${MICO.play}<small>INICIAR</small></span></span></button>`
+         : setup && game.phase === 'ready' ? `<button class="hub start pop" data-act="mesaPlay" aria-label="Iniciar partida" title="Iniciar partida"><span class="hexo"><span class="hexi">${MICO.play}<small>PLAY</small></span></span></button><button class="hubalt" data-act="whoStarts">Cambiar</button>`
+         : setup && !mesaMenuForce ? `<button class="hub who pop" data-act="whoStarts" aria-label="¿Quién empieza?" title="¿Quién empieza?"><span class="hexo"><span class="hexi">${MICO.dice}<small>¿QUIÉN<br>EMPIEZA?</small></span></span></button>`
          : `<button class="hub ${hubAnim ? 'pop' : ''}" data-act="mesaMenu" aria-label="Menú de la mesa" title="Menú"><span class="hexo"><span class="hexi">${markImg()}<span class="x">✕</span></span></span></button>`}
     <div id="mesaOv"></div>
   </div>`;
@@ -2605,6 +2886,12 @@ function renderMesa(animTurn){
   requestAnimationFrame(sizeMesa);
   if(mesaPanel) renderCounters(mesaPanel.i, mesaPanel.t);
   startTurnTick();
+}
+// ¿El botón del menú (centro de la mesa) queda a la derecha de este jugador, visto desde su lado?
+function hubOnRight(i){
+  const L = curLayout(), [r, c, rs, cs, rot] = L.cells[i];
+  const vx = -((c - 1 + cs / 2) - L.cols / 2), vy = -((r - 1 + rs / 2) - L.rows / 2), a = rot * Math.PI / 180;
+  return vx * Math.cos(a) + vy * Math.sin(a) > 0.01;
 }
 function cellHtml(i){
   const [r, c, rs, cs, rot] = curLayout().cells[i], p = game.players[i];
@@ -2617,11 +2904,12 @@ function cellHtml(i){
   const ca = cmdAnim && cmdAnim.mode === 'in';
   if(T != null && T === i){
     const from = ca && cmdAnim.i === i && cmdAnim.from != null ? `--from:${cmdAnim.from}px` : '--from:-100%';
-    overlay = `<div class="cmdrecv ${ca ? 'anim-in' : ''}" style="${from}"><div class="ct">COMANDANTE</div><div class="cs">Daño que has recibido</div>
+    overlay = `<div class="cmdrecv ${ca ? 'anim-in' : ''} ${ctrMana[i] ? 'mana' : ''}" style="${from}"><div class="cmain"><div class="ct small">${cmdOn() ? 'Daño recibido de comandantes' : 'Contadores'}</div>
       <div class="cl">Vida: ${p.life}</div>
       <button class="cback" data-act="cmdExit">VOLVER AL JUEGO</button>
-      <div class="ch">Suma el daño en la celda de cada rival. Desliza otra vez para salir.</div></div>`;
-  } else if(T != null){
+      <button class="ctrswitch" data-act="ctrMana" data-i="${i}">${ctrMana[i] ? MICO.phyx + 'CONTADORES' : MICO.mana + 'MANÁ'}</button></div>
+      ${ctrRow(i)}</div>`;
+  } else if(T != null && cmdOn()){
     const tgt = game.players[T], arr = (tgt.cmd && tgt.cmd[i]) || [], n = Math.min(MAX_CMDRS, p.cmdN || 1);
     const cmdrName = p.deck && p.deck.commander ? p.deck.commander.split(',')[0] : '';
     overlay = `<div class="cmdgive ${ca ? 'anim-in' : ''}"><div class="cg-head">Daño de comandante a ${esc(pName(T))}</div>
@@ -2632,31 +2920,55 @@ function cellHtml(i){
       <div class="cg-foot">${n < MAX_CMDRS ? `<button data-act="cmdSlot" data-a="${i}" data-d="1">+ Comandante</button>` : ''}${n > 1 ? `<button data-act="cmdSlot" data-a="${i}" data-d="-1">− Comandante</button>` : ''}</div></div>`;
   }
   const tp = turnsPlaying(), act = tp && game.turn === i, sw = tp && game.sword === i;
-  return `<div class="pcell ${dead ? 'dead' : ''} ${!turnsOn() && game.starter === i ? 'starter' : ''} ${act ? 'active' : ''} ${sw ? 'sword-on' : ''} ${T != null ? 'in-cmd' : ''}" id="pc${i}" data-i="${i}" data-rot="${rot}" style="grid-row:${r} / span ${rs};grid-column:${c} / span ${cs}">
+  const inCmd = T != null && (T === i || cmdOn());
+  const setupT = lockedMesa(), bdg = m ? topBadges(m, 5) : [];
+  return `<div class="pcell ${dead ? 'dead' : ''} ${!turnsOn() && game.starter === i ? 'starter' : ''} ${act ? 'active' : ''} ${sw ? 'sword-on' : ''} ${inCmd ? 'in-cmd' : ''} ${hubOnRight(i) ? 'flip' : ''}" id="pc${i}" data-i="${i}" data-rot="${rot}" style="grid-row:${r} / span ${rs};grid-column:${c} / span ${cs}">
     <div class="prot" style="--rot:${rot}deg">
       ${art ? `<div class="pbg" style="background-image:url('${art}')"></div>` : `<div class="pbg free"><img src="${LOGO_SRC}" alt=""></div>`}
-      <button class="pname" data-act="pickPlayer" data-i="${i}">${m ? `<b>${esc(m.name)}</b><span>${esc(p.deck ? p.deck.name : 'Toca para elegir mazo')}</span>` : `<b>Jugador ${i + 1}</b><span>Toca para elegir jugador y mazo</span>`}</button>
+      <div class="ptl">
+        <button class="pname" data-act="pickPlayer" data-i="${i}">${m ? `<b>${esc(m.name)}</b><span>${esc(p.deck ? p.deck.name : 'Toca para elegir mazo')}</span>` : `<b>Jugador ${i + 1}</b><span>Toca para elegir jugador y mazo</span>`}</button>
+        ${tp && !dead ? `<button class="psword ${sw ? 'on' : ''}" data-act="swordToggle" data-i="${i}" title="Espada: atribuir daño o vidas a este jugador" aria-label="Espada">${sw ? `<span class="fire">${'<i></i>'.repeat(12)}</span>` : ''}${MICO.sword}</button>` : ''}
+      </div>
+      ${bdg.length ? `<div class="pbadges">${bdg.map(b => `<span class="bdg" title="${esc(b.name)} · ${BSHAPE[b.t - 1]}">${badgeSvg(b)}</span>`).join('')}</div>` : ''}
       <div class="lifezone">
         <button class="lifebtn m" data-i="${i}" data-d="-1" aria-label="Restar vida">−</button>
         <button class="lifebtn p" data-i="${i}" data-d="1" aria-label="Sumar vida">+</button>
       </div>
       <div class="life">${p.life}</div>
       <div class="delta" id="dl${i}"></div>
-      <div class="pchips">
-        <button class="pchip poison ${p.poison ? 'on' : ''}" data-act="counters" data-i="${i}" data-t="poison" title="Contadores de veneno">${MICO.poison}<span>${p.poison}</span></button>
-        <button class="pchip ${manaTot ? 'on' : ''}" data-act="counters" data-i="${i}" data-t="mana" title="Maná disponible">${MICO.mana}<span>${manaTot}</span></button>
-        ${MANA_KEYS.filter(k => (p.mana[k] || 0) > 0).map(k => `<button class="mpip2" data-act="counters" data-i="${i}" data-t="mana" style="background:${PIPC[k][0]};color:${PIPC[k][1]}" title="Maná ${k}">${p.mana[k]}</button>`).join('')}
-      </div>
+      ${ctrChips(i)}
       ${!turnsOn() && game.starter === i ? '<div class="startflag">¡EMPIEZA!</div>' : ''}
-      ${tp && !dead ? `<button class="psword ${sw ? 'on' : ''}" data-act="swordToggle" data-i="${i}" title="Espada: atribuir daño o vidas a este jugador" aria-label="Espada">${sw ? `<span class="fire">${'<i></i>'.repeat(12)}</span>` : ''}${MICO.sword}</button>` : ''}
-      ${act ? `<div class="rtimer">Ronda ${game.round} · ${fmtMs(Date.now() - game.turnStart)}</div><button class="turnbtn" data-act="passTurn">${MICO.play}PASAR TURNO</button>` : ''}
-      ${lockedMesa() ? '<div class="lockov">Partida por turnos · toca INICIAR en el centro</div>' : ''}
+      ${act ? `<div class="pbl"><button class="turnbtn" data-act="passTurn">${MICO.play}PASAR TURNO</button><button class="pundo ${game.events.length ? '' : 'off'}" data-act="mesaUndo" aria-label="Deshacer el último movimiento" title="Deshacer el último movimiento">${MICO.undo}</button><div class="rtimer">Ronda ${game.round}<br>${fmtMs(Date.now() - game.turnStart)}</div></div>` : ''}
+      ${setupT && game.phase === 'ready' && game.starter === i ? '<div class="pbl"><div class="startflag">¡EMPIEZA! · mulligan y luego PLAY</div></div>' : ''}
       ${dead ? '<div class="deadtxt">SIN<br>CERVEZA</div>' : ''}
       <div class="roll" id="roll${i}"></div>
       ${overlay}
       <div id="cp${i}"></div>
     </div>
   </div>`;
+}
+// Contadores del jugador: veneno, impuesto de comandante, energía, experiencia y maná
+function ctrList(i){
+  const p = game.players[i], L = [];
+  L.push({ k:'poison', v:p.poison, ico:MICO.phyx, cls:'poison', hot:p.poison >= 10, t:'Veneno' });
+  if(cmdOn()) for(let j = 0; j < Math.min(MAX_CMDRS, p.cmdN || 1); j++) L.push({ k:'tax', j, v:(p.tax[j] || 0), ico:`TAX${(p.cmdN || 1) > 1 ? j + 1 : ''}`, cls:'tax', t:'Impuesto de comandante' + ((p.cmdN || 1) > 1 ? ' ' + (j + 1) : '') });
+  L.push({ k:'energy', v:p.energy, ico:MICO.energy, cls:'energy', t:'Energía' });
+  L.push({ k:'exp', v:p.exp, ico:MICO.exp, cls:'exp', t:'Experiencia' });
+  return L;
+}
+function ctrRow(i){
+  const p = game.players[i], mana = ctrMana[i];
+  const vc = (attrs, v, icon, cls, hot, title) => `<div class="vctr ${cls} ${v ? 'on' : ''} ${hot ? 'hot' : ''}" title="${title}"><button data-act="cnt" ${attrs} data-d="1" aria-label="Sumar">+</button><div class="vbox"><b>${v}</b><i>${icon}</i></div><button data-act="cnt" ${attrs} data-d="-1" aria-label="Restar">−</button></div>`;
+  const items = mana
+    ? MANA_KEYS.map(k => `<div class="hctr ${(p.mana[k] || 0) ? 'on' : ''}" title="Maná ${k}"><button data-act="cnt" data-i="${i}" data-k="mana" data-j="${k}" data-d="-1" aria-label="Restar">−</button><span class="mdot" style="background:${PIPC[k][0]};color:${PIPC[k][1]}">${k}</span><b>${p.mana[k] || 0}</b><button data-act="cnt" data-i="${i}" data-k="mana" data-j="${k}" data-d="1" aria-label="Sumar">+</button></div>`).join('')
+    : ctrList(i).map(c => vc(`data-i="${i}" data-k="${c.k}"${c.j != null ? ` data-j="${c.j}"` : ''}`, c.v, c.ico, c.cls, c.hot, c.t)).join('');
+  return `<div class="ctrrow ${mana ? 'mana' : ''}">${items}</div>`;
+}
+function ctrChips(i){
+  const p = game.players[i];
+  const on = ctrList(i).filter(c => c.v > 0).map(c => `<button class="pctr ${c.cls}" data-act="openCtr" data-i="${i}" title="${c.t}">${c.k === 'tax' ? `<small>${c.ico}</small>` : c.ico}${c.v}</button>`);
+  MANA_KEYS.filter(k => (p.mana[k] || 0) > 0).forEach(k => on.push(`<button class="mpip2" data-act="openCtr" data-i="${i}" data-m="1" style="background:${PIPC[k][0]};color:${PIPC[k][1]}" title="Maná ${k}">${p.mana[k]}</button>`));
+  return on.length ? `<div class="pchips">${on.join('')}</div>` : '';
 }
 // Si el navegador entiende "container queries", el tamaño lo resuelve el CSS (también al girar la pantalla).
 // Si no, se mide con JS cada vez que la celda cambia de tamaño.
@@ -2683,7 +2995,7 @@ function changeLife(i, d){
   if(lockedMesa()){ lockedToast(); return; }
   const wasDead = isDead(p), src = curSource();
   p.life += d;
-  logEv('life', i, d);
+  logEv('life', i, d); syncUndo();
   trackKill(i, wasDead, src);
   const cell = $('#pc' + i); if(!cell) return;
   const lf = cell.querySelector('.life'); lf.textContent = p.life; lf.classList.add('bump'); setTimeout(() => lf.classList.remove('bump'), 90);
@@ -2739,7 +3051,7 @@ document.addEventListener('pointermove', e => {
   if(!g.drag) return;
   const cell = $('#pc' + g.i); if(!cell) return;
   const T = game.cmdTarget;
-  if(T == null && cmdOn() && !lockedMesa()){ cmdPreview(cell, lx, g.w); }
+  if(T == null && !lockedMesa()){ cmdPreview(cell, lx, g.w); }
   else if(T === g.i){
     const recv = cell.querySelector('.cmdrecv'); if(recv){ recv.style.transition = 'none'; recv.style.transform = `translateX(${lx}px)`; recv.style.opacity = Math.max(.3, 1 - Math.abs(lx) / g.w); }
   }
@@ -2753,8 +3065,8 @@ const endGesture = () => {
     const cell = $('#pc' + g.i), T = game.cmdTarget, far = Math.abs(g.lx) > Math.min(140, g.w * .3);
     if(T == null){
       const prev = cell && cell.querySelector('.cmdrecv.dragging');
-      if(far && cmdOn() && !lockedMesa()){ enterCmd(g.i, g.lx, g.w); }
-      else if(prev){ prev.style.transition = 'transform .25s ease, opacity .25s ease'; prev.style.transform = `translateX(${g.lx > 0 ? -g.w : g.w}px)`; prev.style.opacity = 0; setTimeout(() => prev.remove(), 260); if(!cmdOn() && far) mesaToast(`En ${curFormat().name} no se cuenta daño de comandante.`); }
+      if(far && !lockedMesa()){ enterCmd(g.i, g.lx, g.w); }
+      else if(prev){ prev.style.transition = 'transform .25s ease, opacity .25s ease'; prev.style.transform = `translateX(${g.lx > 0 ? -g.w : g.w}px)`; prev.style.opacity = 0; setTimeout(() => prev.remove(), 260); if(far && lockedMesa()) lockedToast(); }
     } else if(T === g.i){
       const recv = cell && cell.querySelector('.cmdrecv');
       if(far) exitCmd(Math.sign(g.lx));
@@ -2783,7 +3095,7 @@ const turnsOn = () => game && game.mode === 'turns';
 const turnsPlaying = () => turnsOn() && game.phase === 'playing';
 const lockedMesa = () => turnsOn() && game.phase !== 'playing';
 const reduceMotion = () => window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-function lockedToast(){ mesaToast('Primero inicia la partida: toca el botón del centro.'); }
+function lockedToast(){ mesaToast(game.phase === 'ready' ? 'Cuando terminen los mulligan, toquen PLAY en el centro.' : 'Primero elijan quién empieza (botón del centro).'); }
 // Origen de un cambio: la espada encendida o, si no, el jugador en turno
 const curSource = () => game.sword != null ? game.sword : game.turn;
 function logEv(k, x, d, src, slot){
@@ -2811,6 +3123,7 @@ function nextSeat(cur){
   return cur;
 }
 function startTurns(i){
+  mesaMenuForce = false;
   game.phase = 'playing'; game.turn = i; game.starter = i; game.round = 1;
   game.turnStart = Date.now(); game.started = Date.now(); game.events = []; game.turnLog = []; game.kills = {}; game.sword = null; game.prompted = false;
   saveGame(); closeOv(); renderMesa(true);
@@ -2844,6 +3157,7 @@ function passTurn(){
     ], { duration:700, easing:'cubic-bezier(.5,0,.2,1)' }).onfinish = () => { fly.remove(); toBtn.style.visibility = ''; toBtn.classList.add('arrive'); };
   }
 }
+function syncUndo(){ document.querySelectorAll('.pundo').forEach(b => b.classList.toggle('off', !game.events.length)); }
 function undoLast(){
   const ev = game.events.pop(); if(!ev){ mesaToast('No hay movimientos para deshacer.'); return; }
   const p = game.players[ev.x], wasDead = isDead(p);
@@ -2871,19 +3185,19 @@ function toggleSword(i){
       if(!on && f) f.remove();
     }
   });
-  mesaToast(game.sword != null ? `${pName(i)} está haciendo daño o dando vidas: toca los contadores de los demás` : 'Espada apagada');
+  mesaToast(game.sword != null ? `Espada de ${pName(i)}: todo lo que cambie (también su propia vida) cuenta como suyo` : `Espada apagada · los cambios vuelven a contar para ${pName(game.turn)}`);
 }
 // Estadísticas de la partida a partir del registro de eventos
 function computeStats(){
   const n = game.players.length;
-  const st = game.players.map(() => ({ dealt:0, taken:0, given:0, gainSelf:0, kills:0, cmdDealt:0, poisonDealt:0, turns:0, turnMs:0, dmgTo:{}, alive:true, killedBy:null }));
+  const st = game.players.map(() => ({ dealt:0, taken:0, given:0, gainSelf:0, gainFrom:0, kills:0, cmdDealt:0, poisonDealt:0, turns:0, turnMs:0, dmgTo:{}, alive:true, killedBy:null }));
   game.events.forEach(e => {
     if(e.k === 'life' || e.k === 'cmd'){
       if(e.d < 0){
         const dmg = -e.d; st[e.x].taken += dmg;
         if(e.s != null && e.s !== e.x){ st[e.s].dealt += dmg; st[e.s].dmgTo[e.x] = (st[e.s].dmgTo[e.x] || 0) + dmg; if(e.k === 'cmd') st[e.s].cmdDealt += dmg; }
       } else if(e.d > 0 && e.k === 'life'){
-        if(e.s == null || e.s === e.x) st[e.x].gainSelf += e.d; else st[e.s].given += e.d;
+        if(e.s == null || e.s === e.x) st[e.x].gainSelf += e.d; else { st[e.s].given += e.d; st[e.x].gainFrom += e.d; }
       }
     } else if(e.k === 'poison' && e.d > 0 && e.s != null && e.s !== e.x) st[e.s].poisonDealt += e.d;
   });
@@ -2901,7 +3215,7 @@ function startTurnTick(){
   turnTick = setInterval(() => {
     if(view.tab !== 'mesa' || !turnsPlaying()){ clearInterval(turnTick); return; }
     const el = document.querySelector('#pc' + game.turn + ' .rtimer');
-    if(el) el.textContent = `Ronda ${game.round} · ${fmtMs(Date.now() - game.turnStart)}`;
+    if(el) el.innerHTML = `Ronda ${game.round}<br>${fmtMs(Date.now() - game.turnStart)}`;
   }, 1000);
 }
 function turnSetupSheet(){
@@ -2927,7 +3241,7 @@ function cmdPreview(cell, lx, w){
   let el = pr.querySelector('.cmdrecv.dragging');
   if(!el){
     el = document.createElement('div'); el.className = 'cmdrecv dragging';
-    el.innerHTML = '<div class="ct">COMANDANTE</div><div class="cs">Daño que has recibido</div>';
+    el.innerHTML = `<div class="cmain"><div class="ct small">${cmdOn() ? 'Daño recibido de comandantes' : 'Contadores'}</div></div>`;
     pr.appendChild(el);
   }
   const p = Math.max(-w, Math.min(w, lx));
@@ -2936,7 +3250,6 @@ function cmdPreview(cell, lx, w){
   return el;
 }
 function enterCmd(i, lx, w){
-  if(!cmdOn()){ mesaToast(`En ${curFormat().name} no se cuenta daño de comandante.`); return; }
   if(lockedMesa()){ lockedToast(); return; }
   game.cmdTarget = i; mesaPanel = null; saveGameSoon();
   cmdAnim = { mode:'in', i, from: lx == null ? null : (lx > 0 ? lx - w : lx + w) };
@@ -2979,15 +3292,16 @@ function showSheet(html){
 }
 function closeOv(){
   const ov = $('#mesaOv'); if(!ov) return;
+  if(mesaMenuForce && mesaMenuOpen && lockedMesa()){ mesaMenuForce = false; ov.classList.remove('on'); ov.innerHTML = ''; mesaMenuOpen = false; renderMesa(); return; }
   ov.classList.remove('on'); ov.innerHTML = '';
   $('#mesa').classList.remove('sheet-open', 'menu-open'); mesaMenuOpen = false;
 }
 function openMenu(){
-  const items = [['mesaLayout','Jugadores','#3CCB7F']];
-  if(!turnsOn()) items.push(['mesaRoll','¿Quién empieza?','#38C6E8']);
+  const items = [['mesaLayout','Jugadores','#3CCB7F'],[lockedMesa() ? 'whoStarts' : 'mesaRoll','¿Quién empieza?','#F59E0B'],['mesaDice','Dados','#38C6E8']];
   items.push(['mesaMode', turnsOn() ? 'Modo: por turnos' : 'Modo: rápida', '#FF9F43']);
-  if(turnsPlaying()) items.push(['mesaUndo','Deshacer','#7DD3FC']);
-  items.push(['mesaSettings','Ajustes','#A78BFA'],['mesaEnd','Terminar partida','#FF5C8A'],['mesaExit','Salir','#F2B52E'],['mesaReset','Reiniciar','#F5D76E']);
+  items.push(['mesaSettings','Ajustes','#A78BFA']);
+  if(!lockedMesa()) items.push(['mesaEnd','Terminar partida','#FF5C8A']);
+  items.push(['mesaExit','Salir','#F2B52E'],['mesaReset','Reiniciar','#F5D76E']);
   const R = Math.min(165, Math.min(innerWidth, innerHeight) * .32), step = 360 / items.length;
   const ov = $('#mesaOv');
   ov.innerHTML = `<div class="ov-back" data-act="mesaCloseOv"></div>` + items.map(([act, label, col], k) => {
@@ -3048,9 +3362,48 @@ async function rollStart(){
   const w = pool[0];
   $('#roll' + w).className = 'roll show win'; $('#roll' + w).innerHTML = '¡EMPIEZA!';
   await sleep(1300);
-  if(lockedMesa()){ startTurns(w); return; }
-  game.starter = w; saveGame(); renderMesa();
-  mesaToast(`Empieza ${pName(w)}`);
+  setStarter(w);
+}
+
+// ---------- Dados: quién empieza, d20/d6, jugador al azar, moneda ----------
+function diceSheet(){
+  showSheet(`<h3>Dados</h3><p class="lead">El resultado aparece en el contador de cada jugador, de frente a él. No inicia la partida.</p>
+    <div class="fmtgrid dicegrid">
+      <button class="fmtbtn" data-act="mesaRoll"><b>¿Quién empieza?</b><small>Cada jugador tira un d20; el más alto empieza.</small></button>
+      <button class="fmtbtn" data-act="diceRoll" data-k="pick"><b>Jugador al azar</b><small>Para decidir a quién atacar o a quién ayudar.</small></button>
+      <button class="fmtbtn" data-act="diceRoll" data-k="20"><b>Tirar d20</b><small>Un dado de 20 caras.</small></button>
+      <button class="fmtbtn" data-act="diceRoll" data-k="6"><b>Tirar d6</b><small>Un dado de 6 caras.</small></button>
+      <button class="fmtbtn" data-act="diceRoll" data-k="coin"><b>Moneda</b><small>Cara o cruz.</small></button>
+    </div>
+    <div class="sheet-actions"><button class="btn ghost" data-act="mesaCloseOv">Cerrar</button></div>`);
+}
+async function diceRoll(kind){
+  closeOv();
+  const all = game.players.map((_, i) => i), rolls = all.map(i => $('#roll' + i)).filter(Boolean);
+  const face = () => kind === 'coin' ? (Math.random() < .5 ? 'CARA' : 'CRUZ') : kind === 'pick' ? '?' : 1 + Math.floor(Math.random() * +kind);
+  for(let t = 0; t < 14; t++){ const v = face(); rolls.forEach(r => { r.className = 'roll show'; r.innerHTML = v; }); await sleep(40 + t * 7); }
+  if(kind === 'pick'){
+    const alive = all.filter(i => !isDead(game.players[i])), w = alive[Math.floor(Math.random() * alive.length)];
+    all.forEach(i => { const r = $('#roll' + i); if(!r) return; if(i === w){ r.className = 'roll show win'; r.innerHTML = '¡ELEGIDO!'; } else { r.className = 'roll show'; r.innerHTML = `<small>${esc(pName(w))}</small>`; } });
+  } else {
+    const v = face(), lbl = kind === 'coin' ? 'MONEDA' : 'd' + kind;
+    rolls.forEach(r => { r.className = 'roll show'; r.innerHTML = v + `<small>${lbl}</small>`; });
+  }
+  await sleep(2200);
+  rolls.forEach(r => { r.className = 'roll'; r.innerHTML = ''; });
+}
+
+// ---------- ¿Quién empieza? (partida por turnos) ----------
+function whoStartsSheet(){
+  showSheet(`<h3>¿Quién empieza?</h3>
+    <p class="lead">Elijan a quien empieza o tiren el dado. Después hagan mulligan con calma: la partida arranca hasta tocar <b>PLAY</b>.</p>
+    <div class="wlist">${game.players.map((p, i) => `<button class="wbtn ${game.starter === i ? 'on' : ''}" data-act="pickStarter" data-i="${i}"><span class="dthumb" style="${p.deck && artOf(p.deck.artCard, p.deck.art) ? `background-image:url('${artOf(p.deck.artCard, p.deck.art)}')` : ''}"></span><span><b>${esc(pName(i))}</b><br><small style="color:var(--muted)">${p.deck ? esc(p.deck.name) : 'Sin mazo'} · empieza</small></span></button>`).join('')}</div>
+    <div class="sheet-actions"><button class="btn ghost" data-act="showMenu">Mostrar menú</button><button class="btn primary" data-act="mesaRoll">${MICO.dice} Tirar d20</button></div>`);
+}
+function setStarter(i){
+  game.starter = i; if(lockedMesa()) game.phase = 'ready';
+  saveGame(); closeOv(); renderMesa();
+  mesaToast(lockedMesa() ? `Empieza ${pName(i)} · hagan mulligan y toquen PLAY` : `Empieza ${pName(i)}`);
 }
 function saveMatch(w){
   const players = game.players.map(p => snapPlayer(p.member, p.deck ? { ...p.deck, artCard: p.deck.artCard } : null));
@@ -3067,7 +3420,6 @@ function saveMatch(w){
   newGame(game.layout, game.startLife, true);
   renderMesa();
   mesaToast(`Partida guardada · Gana ${players[w].memberName}. ¡Salud!`);
-  if(turnsOn()) setTimeout(() => { if(view.tab === 'mesa' && lockedMesa()) turnSetupSheet(); }, 900);
 }
 const mesaActions = {
   mesaMenu(){ mesaMenuOpen ? closeOv() : openMenu(); },
@@ -3077,6 +3429,14 @@ const mesaActions = {
   mesaLayoutN(el){ pickN = +el.dataset.n; layoutSheet(); },
   mesaSetLayout(el){ newGame(el.dataset.l, game.startLife, true); pickN = null; mesaPanel = null; renderMesa(); },
   mesaRoll(){ rollStart(); },
+  whoStarts(){ whoStartsSheet(); },
+  pickStarter(el){ setStarter(+el.dataset.i); },
+  showMenu(){ closeOv(); mesaMenuForce = true; renderMesa(); openMenu(); },
+  mesaPlay(){ if(game.starter != null) startTurns(game.starter); },
+  mesaDice(){ diceSheet(); },
+  diceRoll(el){ diceRoll(el.dataset.k); },
+  ctrMana(el){ const i = +el.dataset.i; ctrMana[i] = !ctrMana[i]; renderCell(i); },
+  openCtr(el){ const i = +el.dataset.i; ctrMana[i] = !!el.dataset.m; enterCmd(i, null, 0); },
   mesaReset(){
     showSheet(`<h3>¿Reiniciar la partida?</h3><p class="lead">Las vidas vuelven a ${game.startLife} y se borran veneno, daño de comandante y maná. El formato (${curFormat().name}) se mantiene. Los jugadores y sus mazos se quedan.</p>
       <div class="sheet-actions"><button class="btn ghost" data-act="mesaCloseOv">Cancelar</button><button class="btn primary" data-act="mesaResetOk">Sí, reiniciar</button></div>`);
@@ -3107,9 +3467,10 @@ const mesaActions = {
   mesaSetMode(el){
     game.mode = el.dataset.m;
     newGame(game.layout, game.startLife, true); mesaPanel = null; renderMesa();
-    if(game.mode === 'turns') turnSetupSheet(); else mesaToast('Partida rápida');
+    mesaMenuForce = false; renderMesa();
+    if(game.mode === 'turns') whoStartsSheet(); else mesaToast('Partida rápida');
   },
-  mesaUndo(){ closeOv(); undoLast(); },
+  mesaUndo(){ closeOv(); undoLast(); syncUndo(); },
   mesaUndoClose(){ closeOv(); undoLast(); },
   mesaKeepPlaying(){ closeOv(); game.prompted = false; saveGameSoon(); },
   // Daño de comandante: lo suma el rival en su celda y se resta de la vida de quien lo recibe
@@ -3123,7 +3484,7 @@ const mesaActions = {
     if(lockedMesa()){ lockedToast(); return; }
     const wasDead = isDead(tgt);
     arr[k] = nv; tgt.life -= (nv - cur);
-    logEv('cmd', T, -(nv - cur), a, k);
+    logEv('cmd', T, -(nv - cur), a, k); syncUndo();
     trackKill(T, wasDead, a);
     saveGameSoon(); renderCell(a); renderCell(T); checkWinner();
   },
@@ -3162,8 +3523,10 @@ const mesaActions = {
       if(lockedMesa()){ lockedToast(); return; }
       const wasDead = isDead(p), before = p.poison, src = curSource();
       p.poison = Math.max(0, p.poison + d);
-      logEv('poison', i, p.poison - before); trackKill(i, wasDead, src);
+      logEv('poison', i, p.poison - before); trackKill(i, wasDead, src); syncUndo();
     }
+    else if(k === 'tax'){ const j = +el.dataset.j; p.tax[j] = Math.max(0, (p.tax[j] || 0) + d); }
+    else if(k === 'energy' || k === 'exp'){ p[k] = Math.max(0, (p[k] || 0) + d); }
     else { p.mana[el.dataset.j] = Math.max(0, (p.mana[el.dataset.j] || 0) + d); }
     saveGameSoon(); renderCell(i); checkWinner();
   },
