@@ -804,6 +804,80 @@ img.avatar{object-fit:cover;padding:0}
 .hubalt{position:absolute;left:50%;top:calc(50% + 64px);transform:translateX(-50%);z-index:41;background:rgba(14,10,6,.85);border:1px solid rgba(242,181,46,.55);color:var(--honey-2);border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;letter-spacing:.06em;cursor:pointer}
 .mesa.sheet-open .hubalt,.mesa.menu-open .hubalt{display:none}
 .wbtn.on{border-color:var(--honey);box-shadow:0 0 0 2px rgba(242,181,46,.4)}
+
+/* ===== v10 · grupos, confirmación de jugadores y logros ===== */
+.rk-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.rk-actions .input{width:auto;min-width:170px;max-width:240px}
+.btn.icon{padding:8px 10px}.btn.icon svg{width:18px;height:18px}
+.mig-card{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:rgba(242,181,46,.1);border:1px dashed var(--honey);border-radius:12px;padding:12px 14px;margin:-6px 0 18px}
+.mig-card b{display:block;color:var(--honey-2);font-family:var(--brand)}
+.gerr{color:var(--danger);font-size:13px;min-height:1em;margin:8px 0 0}
+.gseg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gseg button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;background:var(--surface-3);border:1px solid var(--line);border-radius:10px;padding:10px 12px;color:var(--foam);font-weight:700;cursor:pointer;text-align:left}
+.gseg button svg{width:18px;height:18px;color:var(--honey-2)}
+.gseg button small{font-weight:400;color:var(--muted);font-size:12px}
+.gseg button.on{border-color:var(--honey);box-shadow:0 0 0 2px rgba(242,181,46,.35);background:rgba(242,181,46,.12)}
+.gres{margin-top:12px;display:flex;flex-direction:column;gap:8px;max-height:52vh;overflow:auto}
+.grow{display:grid;grid-template-columns:36px 1fr auto;gap:10px;align-items:center;background:var(--surface-3);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.gico{width:36px;height:36px;border-radius:50%;background:rgba(242,181,46,.12);color:var(--honey-2);display:flex;align-items:center;justify-content:center}
+.gico svg{width:18px;height:18px}
+.gname{min-width:0}.gname b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.gname small{color:var(--muted);font-size:12px}
+.gpass{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:0 4px 6px 46px}
+.gpass .input{flex:1;min-width:140px}.gpass .gerr{width:100%;margin:0}
+.gmem{display:flex;flex-direction:column;max-height:42vh;overflow:auto}
+.gm{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:7px 4px;border-bottom:1px solid var(--line)}
+.gacts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.wbtn .gico2{width:44px;height:44px;border-radius:10px;background:rgba(242,181,46,.12);display:flex;align-items:center;justify-content:center;color:var(--honey-2);flex:none}
+.wbtn .gico2 svg{width:22px;height:22px}
+.rbadges{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
+.rbadges .bdg{width:28px;height:28px}
+.ach-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:18px;margin-bottom:18px}
+@media (max-width:900px){.ach-grid{grid-template-columns:1fr}}
+.mybadges{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:12px}
+.mybadge{display:flex;flex-direction:column;align-items:center;text-align:center;gap:3px;font-size:12px}
+.mybadge .bdg{width:62px;height:62px;filter:drop-shadow(0 3px 5px rgba(0,0,0,.6))}
+.mybadge small{color:var(--muted);font-size:11px}
+.achscroll{max-height:380px;overflow:auto;padding-right:6px}
+.achsh{font-family:var(--brand);font-size:12px;letter-spacing:.08em;color:var(--honey-2);margin:10px 0 2px}
+.achrow{display:grid;grid-template-columns:42px 1fr auto;gap:10px;align-items:center;padding:6px 2px;border-bottom:1px solid var(--line)}
+.achrow .bdg{width:42px;height:42px}
+.achrow.lock .bdg{filter:grayscale(1) brightness(.55);opacity:.55}
+.achrow.lock b{color:var(--muted)}
+.achrow b{font-size:14px;display:block}.achrow small{color:var(--muted);font-size:12px;display:block}
+.achrow .pbar{height:4px;background:var(--surface-3);border-radius:4px;margin-top:4px;overflow:hidden}.achrow .pbar i{display:block;height:100%;background:var(--gold-text)}
+.achrow .aok{color:#9BE06A;font-weight:800;font-size:16px}.achrow .apr{white-space:nowrap}
+.stsub{font-family:var(--brand);font-size:13px;color:var(--honey-2);margin:14px 0 6px;letter-spacing:.05em}
+.stsub:first-of-type{margin-top:0}
+.stgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.st{background:var(--surface-3);border-radius:10px;padding:8px 10px;min-width:0}
+.st small{display:block;color:var(--muted);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.st b{display:block;font-size:18px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* Aviso de invitación (del lado del jugador invitado) */
+#inviteOv{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:16px}
+#inviteOv.on{display:flex}
+.inv-back{position:absolute;inset:0;background:rgba(5,4,8,.78)}
+.inv-card{position:relative;max-width:380px;width:100%;background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--honey);border-radius:16px;padding:22px 20px;text-align:center;box-shadow:0 0 40px rgba(242,181,46,.3);animation:hubPop .35s cubic-bezier(.2,.9,.3,1.3)}
+.inv-k{display:flex;gap:6px;align-items:center;justify-content:center;color:var(--honey-2);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.inv-k svg{width:16px;height:16px}
+.inv-card h3{font-family:var(--brand);font-size:21px;margin:10px 0 6px}
+.inv-card p{color:var(--muted);margin:0 0 12px;line-height:1.45}
+.inv-t{font-size:13px;color:var(--muted)}.inv-t b{display:block;font-size:34px;color:var(--honey-2);font-family:var(--brand);line-height:1.1}
+.inv-a{display:flex;gap:10px;justify-content:center;margin-top:14px}.inv-a .btn{flex:1;justify-content:center;padding:13px;font-size:15px}
+/* Espera de confirmación (del lado de la mesa) */
+.waitbox{display:flex;justify-content:center;margin:14px 0 6px}
+.waitring{--p:1;width:118px;height:118px;border-radius:50%;background:conic-gradient(var(--honey) calc(var(--p) * 360deg), rgba(255,255,255,.08) 0);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+.waitring::before{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--surface)}
+.waitring b,.waitring small{position:relative}.waitring b{font-size:40px;font-family:var(--brand);color:var(--honey-2);line-height:1}.waitring small{color:var(--muted);font-size:11px}
+.pname.wait{border-color:#E0A11F;animation:waitPulse 1.2s ease-in-out infinite}
+.pname.wait span{color:var(--honey-2)}
+@keyframes waitPulse{50%{box-shadow:0 0 0 5px rgba(242,181,46,.35)}}
+/* PLAY: rojo y parpadeando mientras falten confirmaciones; dorado cuando todos aceptaron */
+.hub.start .hexo{background:linear-gradient(180deg,#FFE48A,#C98A12)}
+.hub.start .hexi svg,.hub.start .hexi small{color:var(--honey-2)}
+.hub.start{animation:hubBreath 1.8s ease-in-out infinite}
+.hub.start.wait .hexo{background:linear-gradient(180deg,#FF8A8A,#B3141F)}
+.hub.start.wait .hexi svg,.hub.start.wait .hexi small{color:#FF8A8A}
+.hub.start.wait{animation:hubAlarm .8s ease-in-out infinite}
+@keyframes hubAlarm{0%,100%{transform:translate(-50%,-50%) scale(1);filter:drop-shadow(0 4px 14px rgba(0,0,0,.8))}50%{transform:translate(-50%,-50%) scale(1.1);filter:drop-shadow(0 0 22px rgba(255,50,50,.95))}}
 </style>
 </head>
 <body>
@@ -1449,7 +1523,9 @@ async function onAuth(u){
     if(p.avatar) user.avatar = p.avatar;
     const del = (window.firebase && firebase.firestore && firebase.firestore.FieldValue) ? firebase.firestore.FieldValue.delete() : null;
     await userRef().set({ name:user.name, photo:user.photo, lastLogin:Date.now(), email: del }, { merge:true });
+    user.badges = p.badges || [];
     await loadData();
+    await loadGroups();
     await Promise.all([loadPlayers(), loadMatches()]);
   }catch(e){
     console.error(e);
@@ -1462,6 +1538,8 @@ async function onAuth(u){
   view = { tab:'decks', deckId:null, statusFilter:null };
   render(); window.scrollTo(0,0);
   preloadAll();
+  updateMyBadges(true);
+  startInviteListener();
 }
 function initFirebase(){
   if(!window.firebase || /PEGA/.test(FIREBASE_CONFIG.apiKey)){ loginMsg = window.firebase ? 'Falta pegar la configuración de Firebase en el archivo.' : 'No se pudo cargar Firebase. Revisa tu conexión.'; return false; }
@@ -2395,10 +2473,20 @@ const actions = {
     downloadSheet(rows, 'wishlist_manabeer', 'Wishlist');
   },
   closeModal(){ closeModal(); },
-  async logout(){ await flushData(); await auth.signOut(); },
+  async logout(){ stopInviteListener(); await flushData(); await auth.signOut(); },
   profileModal(){ profileModal(); },
   moreMenu(){ moreMenu(); },
   installApp(){ installApp(); },
+  createGroup(){ createGroupModal(); },
+  searchGroup(){ searchGroupModal(); },
+  joinGroup(el){ joinGroup(el.dataset.g); },
+  joinGroupPass(el){ const v = ($('#gpi_' + el.dataset.g) || {}).value || ''; if(!v.trim()){ const e = $('#gpe_' + el.dataset.g); if(e) e.textContent = 'Escribe la contraseña.'; return; } joinGroup(el.dataset.g, v.trim()); },
+  groupAdmin(el){ groupAdminModal(el.dataset.g); },
+  gRole(el){ setGroupRole(el.dataset.g, el.dataset.u, el.dataset.r === '1').catch(e => toast('No se pudo cambiar: ' + (e.message || e.code))); },
+  gKick(el){ kickFromGroup(el.dataset.g, el.dataset.u); },
+  gLeave(el){ leaveGroup(el.dataset.g); },
+  gDelete(el){ deleteGroup(el.dataset.g); },
+  migrateMB(){ migrateModal(); },
   noop(){}
 };
 document.addEventListener('click', e => {
@@ -2417,18 +2505,36 @@ function renderKeepScroll(){
 //   En el prototipo todo vive en este navegador; en la versión final será una sola base de datos
 //   (Firebase) donde cada integrante entra con su sesión y ve su información.
 // =========================================================
-let members = [];           // jugadores que han iniciado sesión: { id(uid), uid, name, photo, avatar, decks }
+let members = [];           // perfiles públicos de los jugadores de mis grupos (y el mío)
 let matchList = [];
-async function loadPlayers(){
-  const us = await db.collection('mb_users').get();
-  members = [];
-  us.forEach(d => { const x = d.data() || {}; members.push({ id:d.id, uid:d.id, name: x.displayName || x.name || 'Jugador', photo: x.photo || '', avatar: x.avatar || null, decks: x.publicDecks || [], badges: x.badges || [] }); });
-  if(user && !members.some(m => m.uid === user.uid)) members.push({ id:user.uid, uid:user.uid, name:user.name, photo:user.photo, avatar:user.avatar, decks:[] });
-  members.sort((a,b) => a.name.localeCompare(b.name));
+let myGroups = [];          // grupos donde estoy: { id, name, nameKey, open, limit, owner, admins, uids }
+const gKey = n => String(n || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/\s+/g, ' ').trim().replace(/\//g, '-');
+const groupById = id => myGroups.find(g => g.id === id);
+const isGroupAdmin = g => !!(g && user && (g.owner === user.uid || (g.admins || []).includes(user.uid)));
+const FV = () => firebase.firestore.FieldValue;
+async function loadGroups(){
+  try{
+    const snap = await db.collection('mb_grupos').where('uids', 'array-contains', user.uid).get();
+    myGroups = snap.docs.map(d => ({ ...d.data(), id:d.id })).sort((a, b) => a.name.localeCompare(b.name));
+  }catch(e){ console.warn('grupos', e); myGroups = []; }
 }
+async function loadPlayers(){
+  const ids = new Set([user.uid]);
+  myGroups.forEach(g => (g.uids || []).forEach(u => ids.add(u)));
+  const docs = await Promise.all([...ids].map(id => db.collection('mb_users').doc(id).get().catch(() => null)));
+  members = [];
+  docs.forEach(d => { if(!d || !d.exists) return; const x = d.data() || {}; members.push({ id:d.id, uid:d.id, name: x.displayName || x.name || 'Jugador', photo: x.photo || '', avatar: x.avatar || null, decks: x.publicDecks || [], badges: x.badges || [] }); });
+  if(!members.some(m => m.uid === user.uid)) members.push({ id:user.uid, uid:user.uid, name:user.name, photo:user.photo, avatar:user.avatar, decks:[], badges: user.badges || [] });
+  members.sort((a, b) => a.name.localeCompare(b.name));
+}
+// Mis partidas (de todos los grupos) + todas las partidas de mis grupos
 async function loadMatches(){
-  const snap = await db.collection('mb_partidas').orderBy('date', 'desc').limit(1000).get();
-  matchList = snap.docs.map(d => ({ ...d.data(), id:d.id }));
+  const qs = [db.collection('mb_partidas').where('uids', 'array-contains', user.uid).get()];
+  myGroups.forEach(g => qs.push(db.collection('mb_partidas').where('gid', '==', g.id).get()));
+  const snaps = await Promise.all(qs.map(q => q.catch(e => { console.warn('partidas', e); return null; })));
+  const map = {};
+  snaps.forEach(sn => sn && sn.docs.forEach(d => { map[d.id] = { ...d.data(), id:d.id }; }));
+  matchList = Object.values(map).sort((a, b) => b.date - a.date);
 }
 function currentMember(){ return user ? members.find(m => m.uid === user.uid) : null; }
 const memberById = id => members.find(m => m.id === id);
@@ -2457,7 +2563,9 @@ const matches = () => matchList;
 
 async function refreshGroup(){
   try{
+    await loadGroups();
     await Promise.all([loadPlayers(), loadMatches()]);
+    updateMyBadges();
     if(view.tab === 'rank') renderRanking();
   }catch(e){ console.error(e); }
 }
@@ -2546,19 +2654,485 @@ async function keepAwake(on){
 }
 document.addEventListener('visibilitychange', () => { if(document.visibilityState === 'visible' && user && view.tab === 'mesa') keepAwake(true); });
 
+
+// =========================================================
+//   GRUPOS · cada tienda o comunidad (crear, buscar, entrar, administrar)
+// =========================================================
+const GICO = {
+  lock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>',
+  open:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="10.5" width="13" height="10" rx="2"/><path d="M13 10.5V6.5a4 4 0 0 1 8 0V8"/></svg>',
+  gear:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>',
+  tower:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 22V9h-1.5V4h3v2h2V4h5v2h2V4h3v5H18v13h-4v-5a2 2 0 0 0-4 0v5z"/></svg>',
+  guest:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>'
+};
+function createGroupModal(){
+  openModal(`<h2>Crear grupo</h2><p class="lead">Un grupo es la comunidad de una tienda o de tus amigos. En La Mesa solo podrás sentar a jugadores de tu grupo, y el Ranking muestra quién es el más fuerte ahí.</p>
+    <label class="f">Nombre del grupo</label><input class="input" id="gName" maxlength="40" placeholder="Ej. Neko Games">
+    <label class="f">Cantidad de jugadores (máximo 50)</label><input class="input" id="gLimit" type="number" min="2" max="50" value="50">
+    <label class="f">Tipo de grupo</label>
+    <div class="gseg"><button class="on" data-gopen="1">${GICO.open}Abierto<small>Cualquiera puede entrar</small></button><button data-gopen="0">${GICO.lock}Cerrado<small>Entran con contraseña</small></button></div>
+    <div id="gPassBox" style="display:none"><label class="f">Contraseña del grupo</label><input class="input" id="gPass" maxlength="40" placeholder="Compártela con tus jugadores"></div>
+    <p class="gerr" id="gErr"></p>
+    <div class="modal-actions"><button class="btn ghost" data-act="closeModal">Cancelar</button><button class="btn primary" id="gCreate">Crear grupo</button></div>`);
+  let open = true;
+  document.querySelectorAll('[data-gopen]').forEach(b => b.onclick = () => { open = b.dataset.gopen === '1'; document.querySelectorAll('[data-gopen]').forEach(x => x.classList.toggle('on', x === b)); $('#gPassBox').style.display = open ? 'none' : ''; });
+  $('#gName').focus();
+  $('#gCreate').onclick = async () => {
+    const name = $('#gName').value.trim().replace(/\s+/g, ' '), limit = Math.max(2, Math.min(50, parseInt($('#gLimit').value, 10) || 50)), pass = $('#gPass').value.trim(), err = $('#gErr');
+    err.textContent = '';
+    if(name.length < 3){ err.textContent = 'Escribe un nombre de al menos 3 letras.'; return; }
+    if(!open && pass.length < 3){ err.textContent = 'Escribe una contraseña de al menos 3 caracteres.'; return; }
+    const btn = $('#gCreate'); btn.disabled = true;
+    try{
+      const k = gKey(name);
+      const taken = await db.collection('mb_nombres').doc(k).get();
+      if(taken.exists){ err.textContent = 'Ya existe un grupo con ese nombre. Elige otro.'; btn.disabled = false; return; }
+      const ref = db.collection('mb_grupos').doc();
+      const g = { name, nameKey:k, open, limit, owner:user.uid, admins:[user.uid], uids:[user.uid], created:Date.now() };
+      const b = db.batch();
+      b.set(ref, g);
+      b.set(db.collection('mb_nombres').doc(k), { gid:ref.id });
+      if(!open) b.set(ref.collection('privado').doc('clave'), { pass });
+      b.set(ref.collection('miembros').doc(user.uid), { uid:user.uid, name:user.name, joined:Date.now(), k:'' });
+      await b.commit();
+      rankFilter.scope = ref.id; store.set('rankScope', ref.id);
+      closeModal(); toast(`Grupo «${name}» creado. Comparte el nombre${open ? '' : ' y la contraseña'} con tus jugadores.`);
+      await refreshGroup();
+    }catch(e){ console.error(e); err.textContent = 'No se pudo crear el grupo: ' + (e.message || e.code); btn.disabled = false; }
+  };
+}
+let gFound = [];
+function searchGroupModal(){
+  openModal(`<h2>Buscar grupo</h2><p class="lead">Escribe el nombre del grupo de tu tienda o comunidad.</p>
+    <input class="input" id="gq" placeholder="Ej. Neko" autocomplete="off">
+    <div id="gRes" class="gres"><p class="hint">Escribe al menos 2 letras.</p></div>
+    <div class="modal-actions"><button class="btn ghost" data-act="closeModal">Cerrar</button></div>`);
+  let t = null;
+  $('#gq').addEventListener('input', () => { clearTimeout(t); t = setTimeout(runGroupSearch, 300); });
+  $('#gq').focus();
+}
+async function runGroupSearch(){
+  const q = gKey($('#gq') ? $('#gq').value : ''), box = $('#gRes'); if(!box) return;
+  if(q.length < 2){ box.innerHTML = '<p class="hint">Escribe al menos 2 letras.</p>'; return; }
+  box.innerHTML = '<p class="hint">Buscando…</p>';
+  try{
+    const sn = await db.collection('mb_grupos').orderBy('nameKey').startAt(q).endAt(q + '').limit(20).get();
+    gFound = sn.docs.map(d => ({ ...d.data(), id:d.id }));
+    box.innerHTML = gFound.length ? gFound.map(g => {
+      const n = (g.uids || []).length, mine = (g.uids || []).includes(user.uid), full = n >= g.limit;
+      return `<div class="grow"><div class="gico">${g.open ? GICO.open : GICO.lock}</div><div class="gname"><b>${esc(g.name)}</b><small>${n}/${g.limit} jugadores · ${g.open ? 'Abierto' : 'Cerrado'}</small></div>
+        ${mine ? '<span class="chip ok">Ya eres miembro</span>' : full ? '<span class="chip">Lleno</span>' : `<button class="btn primary sm" data-act="joinGroup" data-g="${g.id}">Entrar</button>`}</div>
+        ${!mine && !full && !g.open ? `<div class="gpass" id="gp_${g.id}" style="display:none"><input class="input" placeholder="Contraseña del grupo" id="gpi_${g.id}"><button class="btn primary sm" data-act="joinGroupPass" data-g="${g.id}">Aceptar</button><p class="gerr" id="gpe_${g.id}"></p></div>` : ''}`;
+    }).join('') : '<p class="hint">No hay grupos que empiecen con ese nombre.</p>';
+  }catch(e){ console.error(e); box.innerHTML = '<p class="gerr">No se pudo buscar. Revisa tu conexión.</p>'; }
+}
+async function joinGroup(gid, pass){
+  const g = gFound.find(x => x.id === gid); if(!g) return;
+  if(!g.open && pass == null){ const box = $('#gp_' + gid); if(box){ box.style.display = ''; $('#gpi_' + gid).focus(); } return; }
+  const er = $('#gpe_' + gid); if(er) er.textContent = '';
+  try{
+    const ref = db.collection('mb_grupos').doc(gid), b = db.batch();
+    b.set(ref.collection('miembros').doc(user.uid), { uid:user.uid, name:user.name, joined:Date.now(), k: g.open ? '' : String(pass) });
+    b.update(ref, { uids: FV().arrayUnion(user.uid) });
+    await b.commit();
+    if(!g.open) ref.collection('miembros').doc(user.uid).update({ k:'' }).catch(() => {});
+    rankFilter.scope = gid; store.set('rankScope', gid);
+    closeModal(); toast(`¡Bienvenido a ${g.name}!`);
+    await refreshGroup();
+  }catch(e){
+    console.warn(e);
+    const msg = g.open ? 'No se pudo entrar al grupo (puede que ya esté lleno).' : 'Contraseña incorrecta.';
+    if(er) er.textContent = msg; else toast(msg);
+  }
+}
+// Perfiles que aún no tengo (jugadores que entraron después)
+async function ensureProfiles(uids){
+  const miss = (uids || []).filter(u => !memberById(u)); if(!miss.length) return;
+  const docs = await Promise.all(miss.map(id => db.collection('mb_users').doc(id).get().catch(() => null)));
+  docs.forEach(d => { if(!d || !d.exists) return; const x = d.data() || {}; members.push({ id:d.id, uid:d.id, name: x.displayName || x.name || 'Jugador', photo: x.photo || '', avatar: x.avatar || null, decks: x.publicDecks || [], badges: x.badges || [] }); });
+}
+async function freshGroup(gid){
+  const g = groupById(gid); if(!g) return null;
+  try{ const d = await db.collection('mb_grupos').doc(gid).get(); if(d.exists) Object.assign(g, d.data()); await ensureProfiles(g.uids); }catch(e){ console.warn(e); }
+  return g;
+}
+async function groupAdminModal(gid){
+  const g = await freshGroup(gid); if(!g) return;
+  const adm = isGroupAdmin(g), own = g.owner === user.uid, n = (g.uids || []).length;
+  let pass = '';
+  if(adm && !g.open){ try{ const c = await db.collection('mb_grupos').doc(gid).collection('privado').doc('clave').get(); pass = c.exists ? (c.data().pass || '') : ''; }catch(e){} }
+  const mem = (g.uids || []).map(u => memberById(u) || { id:u, uid:u, name:'Jugador' })
+    .sort((a, b) => (b.uid === g.owner) - (a.uid === g.owner) || ((g.admins || []).includes(b.uid)) - ((g.admins || []).includes(a.uid)) || a.name.localeCompare(b.name));
+  openModal(`<h2>${esc(g.name)}</h2><p class="lead">${n}/${g.limit} jugadores · ${g.open ? 'Grupo abierto' : 'Grupo cerrado'}${own ? ' · eres el dueño' : adm ? ' · eres administrador' : ''}</p>
+    ${adm ? `<div class="gadm">
+      <label class="f">Nombre del grupo</label><input class="input" id="gaName" maxlength="40" value="${esc(g.name)}">
+      <label class="f">Cantidad de jugadores (máximo 50)</label><input class="input" id="gaLimit" type="number" min="${Math.max(2, n)}" max="50" value="${g.limit}">
+      <label class="f">Tipo de grupo</label>
+      <div class="gseg"><button class="${g.open ? 'on' : ''}" data-gaopen="1">${GICO.open}Abierto<small>Cualquiera puede entrar</small></button><button class="${g.open ? '' : 'on'}" data-gaopen="0">${GICO.lock}Cerrado<small>Entran con contraseña</small></button></div>
+      <div id="gaPassBox" style="${g.open ? 'display:none' : ''}"><label class="f">Contraseña del grupo</label><input class="input" id="gaPass" maxlength="40" value="${esc(pass)}"><p class="hint">Si la cambias, los que ya están dentro se quedan.</p></div>
+      <p class="gerr" id="gaErr"></p>
+      <div style="display:flex;justify-content:flex-end"><button class="btn primary" id="gaSave">Guardar cambios</button></div></div>` : ''}
+    <label class="f" style="margin-top:16px">Jugadores</label>
+    <div class="gmem">${mem.map(m => { const isOwn = m.uid === g.owner, isAdm = (g.admins || []).includes(m.uid);
+      return `<div class="gm">${avatarHtml(m, 'style="width:34px;height:34px;font-size:14px"')}<div class="gname"><b>${esc(m.name)}${m.uid === user.uid ? ' (tú)' : ''}</b><small>${isOwn ? 'Dueño' : isAdm ? 'Administrador' : 'Jugador'}</small></div>
+        <div class="gacts">${adm && !isOwn && m.uid !== user.uid ? `<button class="btn ghost sm" data-act="gRole" data-g="${gid}" data-u="${m.uid}" data-r="${isAdm ? 0 : 1}">${isAdm ? 'Quitar admin' : 'Hacer admin'}</button><button class="btn ghost sm danger" data-act="gKick" data-g="${gid}" data-u="${m.uid}">Sacar</button>` : ''}</div></div>`; }).join('')}</div>
+    <div class="modal-actions" style="justify-content:space-between">
+      ${own ? `<button class="btn ghost danger" data-act="gDelete" data-g="${gid}">Borrar grupo</button>` : `<button class="btn ghost danger" data-act="gLeave" data-g="${gid}">Salir del grupo</button>`}
+      <button class="btn ghost" data-act="closeModal">Cerrar</button></div>`, true);
+  if(adm){
+    let open = g.open;
+    document.querySelectorAll('[data-gaopen]').forEach(b => b.onclick = () => { open = b.dataset.gaopen === '1'; document.querySelectorAll('[data-gaopen]').forEach(x => x.classList.toggle('on', x === b)); $('#gaPassBox').style.display = open ? 'none' : ''; });
+    $('#gaSave').onclick = () => saveGroupEdits(gid, open);
+  }
+}
+async function saveGroupEdits(gid, open){
+  const g = groupById(gid), err = $('#gaErr'), n = (g.uids || []).length; err.textContent = '';
+  const name = $('#gaName').value.trim().replace(/\s+/g, ' '), limit = parseInt($('#gaLimit').value, 10) || g.limit, pass = $('#gaPass') ? $('#gaPass').value.trim() : '';
+  if(name.length < 3){ err.textContent = 'Escribe un nombre de al menos 3 letras.'; return; }
+  if(limit < Math.max(2, n) || limit > 50){ err.textContent = `La cantidad de jugadores debe estar entre ${Math.max(2, n)} y 50.`; return; }
+  if(!open && pass.length < 3){ err.textContent = 'Escribe una contraseña de al menos 3 caracteres.'; return; }
+  try{
+    const ref = db.collection('mb_grupos').doc(gid), k = gKey(name), b = db.batch();
+    if(k !== g.nameKey){
+      const t = await db.collection('mb_nombres').doc(k).get();
+      if(t.exists){ err.textContent = 'Ya existe un grupo con ese nombre.'; return; }
+      b.set(db.collection('mb_nombres').doc(k), { gid });
+      b.delete(db.collection('mb_nombres').doc(g.nameKey));
+    }
+    b.update(ref, { name, nameKey:k, open, limit });
+    if(!open) b.set(ref.collection('privado').doc('clave'), { pass });
+    await b.commit();
+    Object.assign(g, { name, nameKey:k, open, limit });
+    closeModal(); toast('Grupo actualizado.'); renderRanking();
+  }catch(e){ console.error(e); err.textContent = 'No se pudo guardar: ' + (e.message || e.code); }
+}
+function confirmModal(title, text, okLabel, fn){
+  openModal(`<h2>${title}</h2><p class="lead">${text}</p><div class="modal-actions"><button class="btn ghost" data-act="closeModal">Cancelar</button><button class="btn primary" id="cfOk">${okLabel}</button></div>`);
+  $('#cfOk').onclick = async () => { $('#cfOk').disabled = true; try{ await fn(); }catch(e){ console.error(e); toast('No se pudo completar: ' + (e.message || e.code)); } closeModal(); };
+}
+async function setGroupRole(gid, u, on){
+  const g = groupById(gid);
+  await db.collection('mb_grupos').doc(gid).update({ admins: on ? FV().arrayUnion(u) : FV().arrayRemove(u) });
+  g.admins = on ? [...new Set([...(g.admins || []), u])] : (g.admins || []).filter(x => x !== u);
+  groupAdminModal(gid);
+}
+function kickFromGroup(gid, u){
+  const g = groupById(gid), m = memberById(u);
+  confirmModal('¿Sacar del grupo?', `${esc(m ? m.name : 'Este jugador')} dejará de estar en ${esc(g.name)}. Sus partidas anteriores se conservan. Podrá volver a entrar ${g.open ? 'cuando quiera' : 'si conoce la contraseña'}.`, 'Sí, sacarlo', async () => {
+    const ref = db.collection('mb_grupos').doc(gid), b = db.batch();
+    b.update(ref, { uids: FV().arrayRemove(u), admins: FV().arrayRemove(u) });
+    b.delete(ref.collection('miembros').doc(u));
+    await b.commit();
+    g.uids = g.uids.filter(x => x !== u); g.admins = (g.admins || []).filter(x => x !== u);
+    toast('Jugador fuera del grupo.'); setTimeout(() => groupAdminModal(gid), 50);
+  });
+}
+function leaveGroup(gid){
+  const g = groupById(gid);
+  confirmModal('¿Salir del grupo?', `Dejarás de ver las estadísticas de ${esc(g.name)} y ya no podrán sentarte en sus mesas. Tus partidas se conservan en «Mi trayectoria».`, 'Sí, salir', async () => {
+    const ref = db.collection('mb_grupos').doc(gid), b = db.batch();
+    const upd = { uids: FV().arrayRemove(user.uid) }; if((g.admins || []).includes(user.uid)) upd.admins = FV().arrayRemove(user.uid);
+    b.update(ref, upd);
+    b.delete(ref.collection('miembros').doc(user.uid));
+    await b.commit();
+    if(game && game.gid === gid){ game.gid = null; saveGame(); }
+    rankFilter.scope = 'me'; store.set('rankScope', 'me');
+    toast(`Saliste de ${g.name}.`); await refreshGroup();
+  });
+}
+function deleteGroup(gid){
+  const g = groupById(gid);
+  confirmModal('¿Borrar el grupo?', `Se borra <b>${esc(g.name)}</b> para todos sus jugadores. Las partidas jugadas se conservan en la trayectoria de cada uno. Esta acción no se puede deshacer.`, 'Sí, borrar', async () => {
+    const ref = db.collection('mb_grupos').doc(gid);
+    await ref.collection('privado').doc('clave').delete().catch(() => {});
+    await db.collection('mb_nombres').doc(g.nameKey).delete().catch(() => {});
+    await ref.delete();
+    if(game && game.gid === gid){ game.gid = null; saveGame(); }
+    rankFilter.scope = 'me'; store.set('rankScope', 'me');
+    toast('Grupo borrado.'); await refreshGroup();
+  });
+}
+// Paso único (solo administrador): crea «Mana Beer» con los jugadores actuales y le pasa las partidas anteriores
+function migrateModal(){
+  confirmModal('Crear el grupo Mana Beer', 'Se crea el grupo cerrado <b>Mana Beer</b> (contraseña <b>CheLas</b>) con todos los jugadores registrados hoy, sin que tengan que poner contraseña. Las partidas anteriores pasan a ese grupo y se les borran los datos de daño y vidas; solo se conservan victorias y derrotas.', 'Crear y pasar partidas', migrateManaBeer);
+}
+async function migrateManaBeer(){
+  if(!user.admin) return;
+  const gid = 'manabeer', k = 'mana beer', ref = db.collection('mb_grupos').doc(gid);
+  const ex = await ref.get();
+  if(!ex.exists){
+    const us = await db.collection('mb_users').get();
+    const uids = [user.uid, ...us.docs.map(d => d.id).filter(id => id !== user.uid)].slice(0, 50);
+    const b = db.batch();
+    b.set(ref, { name:'Mana Beer', nameKey:k, open:false, limit:50, owner:user.uid, admins:[user.uid], uids, created:Date.now() });
+    b.set(db.collection('mb_nombres').doc(k), { gid });
+    b.set(ref.collection('privado').doc('clave'), { pass:'CheLas' });
+    await b.commit();
+  }
+  const ms = await db.collection('mb_partidas').get();
+  let b2 = db.batch(), n = 0, pend = 0;
+  for(const d of ms.docs){
+    const m = d.data(); if(m.gid) continue;
+    const players = (m.players || []).map(p => { const q = { ...p }; delete q.stats; return q; });
+    const nm = { ...m, players, gid, gname:'Mana Beer', uids:[...new Set(players.map(p => p.memberId).filter(Boolean))] };
+    delete nm.events;
+    b2.set(db.collection('mb_partidas').doc(d.id), nm); n++; pend++;
+    if(pend >= 400){ await b2.commit(); b2 = db.batch(); pend = 0; }
+  }
+  if(pend) await b2.commit();
+  rankFilter.scope = gid; store.set('rankScope', gid);
+  toast(`Grupo Mana Beer listo · ${n} partida(s) pasadas al grupo.`);
+  await refreshGroup();
+}
+
+// =========================================================
+//   CONFIRMACIÓN DE JUGADORES EN LA MESA (30 segundos)
+// =========================================================
+const INV_MS = 30000;
+let invWatch = {}, waitSeat = null, waitTick = null;
+async function sendInvite(i){
+  const p = game.players[i], g = groupById(game.gid), now = Date.now();
+  const ref = db.collection('mb_invites').doc();
+  p.inv = ref.id; p.invExp = now + INV_MS; p.conf = 'wait'; saveGame();
+  try{
+    await ref.set({ from:user.uid, fromName:user.name, to:p.member, toName:(memberById(p.member) || {}).name || '', gid: game.gid || '', gname: g ? g.name : '', seat:i, created:now, expires: now + INV_MS, status:'pending' });
+  }catch(e){ console.error(e); mesaToast('No se pudo enviar la solicitud.'); clearSeatState(i); saveGame(); renderCell(i); refreshHub(); return; }
+  watchInvite(i);
+}
+function watchInvite(i){
+  const p = game.players[i]; if(!p || !p.inv) return;
+  stopWatch(i);
+  const id = p.inv, w = invWatch[i] = { id };
+  w.unsub = db.collection('mb_invites').doc(id).onSnapshot(sn => {
+    const x = sn.exists ? sn.data() : null, q = game && game.players[i];
+    if(!x || !q || q.inv !== id) return;
+    if(x.status === 'accepted'){ stopWatch(i); q.conf = 'ok'; q.inv = null; q.invExp = 0; game.lastAct = Date.now(); saveGame(); renderCell(i); refreshHub(); onSeatConfirmed(i); }
+    else if(x.status === 'rejected'){ stopWatch(i); const n = pName(i); clearSeatState(i); saveGame(); renderCell(i); refreshHub(); if(waitSeat === i){ waitSeat = null; closeOv(); } mesaToast(`${n} no aceptó.`); }
+  }, e => console.warn('invite', e));
+  w.timer = setTimeout(() => expireInvite(i, id), Math.max(0, p.invExp - Date.now()));
+}
+function stopWatch(i){ const w = invWatch[i]; if(w){ if(w.unsub) w.unsub(); clearTimeout(w.timer); delete invWatch[i]; } }
+function expireInvite(i, id){
+  const p = game && game.players[i]; if(!p || p.inv !== id) return;
+  const n = pName(i); cancelInvite(i); renderCell(i); refreshHub();
+  if(waitSeat === i){ waitSeat = null; closeOv(); }
+  mesaToast(`${n} no respondió a tiempo: el lugar queda como invitado.`);
+}
+function cancelInvite(i, keepSeat){
+  const p = game.players[i]; if(!p) return;
+  stopWatch(i);
+  if(p.inv) db.collection('mb_invites').doc(p.inv).update({ status:'cancelled', at:Date.now() }).catch(() => {});
+  if(keepSeat){ p.inv = null; p.invExp = 0; } else clearSeatState(i);
+  saveGame();
+}
+function clearSeatState(i){ const p = game.players[i]; stopWatch(i); p.member = null; p.deck = null; p.conf = null; p.inv = null; p.invExp = 0; }
+function seatMember(i, mid){
+  const p = game.players[i];
+  if(p.inv) cancelInvite(i, true);
+  if(p.member !== mid) p.deck = null;
+  p.member = mid; game.lastAct = Date.now();
+  if(mid === user.uid){ p.conf = 'ok'; saveGame(); renderCell(i); refreshHub(); pickPlayerSheet(i, mid); return; }
+  p.conf = 'wait'; saveGame(); renderCell(i); refreshHub();
+  sendInvite(i); waitingSheet(i);
+}
+function waitingSheet(i){
+  const p = game.players[i];
+  showSheet(`<h3>Esperando confirmación</h3><p class="lead"><b>${esc(pName(i))}</b> debe aceptar desde su cuenta, en su Mana Beer abierta.</p>
+    <div class="waitbox"><div class="waitring" id="waitRing"><b id="waitSec">30</b><small>segundos</small></div></div>
+    <div class="sheet-actions"><button class="btn ghost danger" data-act="cancelWait" data-i="${i}">Cancelar</button><button class="btn ghost" data-act="pickOther" data-i="${i}">Elegir a otro</button></div>`);
+  waitSeat = i;
+  clearInterval(waitTick);
+  const tick = () => {
+    const el = $('#waitSec'); if(!el || waitSeat !== i){ clearInterval(waitTick); return; }
+    const ms = Math.max(0, (p.invExp || 0) - Date.now()); el.textContent = Math.ceil(ms / 1000);
+    $('#waitRing').style.setProperty('--p', (ms / INV_MS).toFixed(3));
+  };
+  tick(); waitTick = setInterval(tick, 200);
+}
+function onSeatConfirmed(i){
+  if(waitSeat === i){ waitSeat = null; pickPlayerSheet(i, game.players[i].member, true); }
+  else mesaToast(`${pName(i)} confirmó.`);
+}
+// Al abrir La Mesa: retoma las solicitudes que siguen vivas y libera las vencidas
+function resumeInvites(){
+  if(!game) return;
+  game.players.forEach((p, i) => {
+    if(p.conf !== 'wait' || invWatch[i]) return;
+    if(!p.inv || (p.invExp || 0) <= Date.now()){ if(p.inv) db.collection('mb_invites').doc(p.inv).update({ status:'cancelled', at:Date.now() }).catch(() => {}); clearSeatState(i); saveGame(); }
+    else watchInvite(i);
+  });
+}
+const seatPending = () => game ? game.players.map((p, i) => (p.member && p.conf !== 'ok') ? i : -1).filter(i => i >= 0) : [];
+function pendingToast(){ const w = seatPending(); mesaToast(`Falta que confirme${w.length > 1 ? 'n' : ''}: ${w.map(pName).join(', ')}`); }
+function blocked(){
+  if(lockedMesa()){ lockedToast(); return true; }
+  if(seatPending().length){ pendingToast(); return true; }
+  return false;
+}
+function refreshHub(){
+  const h = document.querySelector('#mesa > .hub'); if(!h) return;
+  const alt = document.querySelector('#mesa > .hubalt'); if(alt) alt.remove();
+  h.outerHTML = hubHtml();
+}
+// Del lado del invitado: aviso en cualquier pantalla de la app
+let invUnsub = null, invShown = null, invTick = null;
+function startInviteListener(){
+  stopInviteListener();
+  try{
+    invUnsub = db.collection('mb_invites').where('to', '==', user.uid).where('status', '==', 'pending').onSnapshot(sn => {
+      const now = Date.now();
+      const list = sn.docs.map(d => ({ ...d.data(), id:d.id })).filter(x => x.expires > now).sort((a, b) => b.created - a.created);
+      const x = list[0];
+      if(!x){ hideInvite(); return; }
+      if(invShown && invShown.id === x.id) return;
+      showInvite(x);
+    }, e => console.warn('invites', e));
+  }catch(e){ console.warn(e); }
+}
+function stopInviteListener(){ if(invUnsub){ invUnsub(); invUnsub = null; } hideInvite(); }
+function showInvite(x){
+  invShown = x;
+  let el = $('#inviteOv'); if(!el){ el = document.createElement('div'); el.id = 'inviteOv'; document.body.appendChild(el); }
+  el.innerHTML = `<div class="inv-back"></div><div class="inv-card" role="dialog" aria-modal="true"><div class="inv-k">${MICO.dice}La Mesa${x.gname ? ' · ' + esc(x.gname) : ''}</div>
+    <h3>${esc(x.fromName)} te sentó en su mesa</h3><p>Lugar ${x.seat + 1}. Si aceptas, esta partida cuenta para tu Ranking y tus insignias.</p>
+    <div class="inv-t"><b id="invSec">30</b> segundos para responder</div>
+    <div class="inv-a"><button class="btn ghost" id="invNo">Rechazar</button><button class="btn primary" id="invYes">Aceptar</button></div></div>`;
+  el.className = 'on';
+  $('#invYes').onclick = () => answerInvite(x, 'accepted');
+  $('#invNo').onclick = () => answerInvite(x, 'rejected');
+  clearInterval(invTick);
+  const tick = () => { const sec = Math.max(0, Math.ceil((x.expires - Date.now()) / 1000)), e = $('#invSec'); if(e) e.textContent = sec; if(sec <= 0) hideInvite(); };
+  tick(); invTick = setInterval(tick, 250);
+}
+function hideInvite(){ clearInterval(invTick); invShown = null; const el = $('#inviteOv'); if(el){ el.className = ''; el.innerHTML = ''; } }
+async function answerInvite(x, status){
+  hideInvite();
+  try{ await db.collection('mb_invites').doc(x.id).update({ status, at:Date.now() }); toast(status === 'accepted' ? `Listo: estás en la mesa de ${x.fromName}.` : 'Rechazaste la invitación.'); }
+  catch(e){ toast('Esa invitación ya no está disponible.'); }
+}
+
+// =========================================================
+//   LOGROS · se calculan con mis partidas guardadas
+// =========================================================
+let myAch = null;
+function myMatches(){ return user ? matchList.filter(m => (m.uids || []).includes(user.uid)).sort((a, b) => a.date - b.date) : []; }
+function computeAchievements(me){
+  const A = { games:0, wins:0, best:0, cur:0, dealt:0, kills:0, maxLife:0, winDecks:new Set(), winGroups:new Set(), killsBy:{}, killDecks:{}, beatenBy:{}, focus50:false, split2:false, split3:false, resist:0, unbreak:false, untouch:false, triple:false, revenge:false };
+  myMatches().forEach(m => {
+    const i = (m.players || []).findIndex(p => p.memberId === me); if(i < 0) return;
+    const P = m.players[i], win = m.winner === i;
+    A.games++;
+    if(win){ A.wins++; A.cur++; A.best = Math.max(A.best, A.cur); if(P.deckId) A.winDecks.add(P.deckId); if(m.gid) A.winGroups.add(m.gid); } else A.cur = 0;
+    A.maxLife = Math.max(A.maxLife, P.maxLife || 0);
+    const s = P.stats;
+    if(m.mode === 'turns' && s){
+      A.dealt += s.dealt || 0;
+      const to = s.dmgTo || {};
+      const big = Object.keys(to).filter(x => +x !== i && to[x] >= 50).length;
+      if(big >= 1) A.focus50 = true; if(big >= 2) A.split2 = true; if(big >= 3) A.split3 = true;
+      if(s.alive) A.resist = Math.max(A.resist, s.taken || 0);
+      const opp = m.players.map((q, j) => j).filter(j => j !== i);
+      if(s.alive && opp.length && opp.every(j => (((m.players[j].stats || {}).dmgTo || {})[i] || 0) >= 100)) A.unbreak = true;
+      if(win && m.players.length >= 4 && !(s.taken > 0)) A.untouch = true;
+      let k = 0;
+      m.players.forEach((q, j) => {
+        if(j === i || !q.stats || q.stats.killedBy == null || +q.stats.killedBy !== i) return;
+        k++;
+        const v = q.memberId; if(!v) return;
+        A.killsBy[v] = (A.killsBy[v] || 0) + 1;
+        (A.killDecks[v] = A.killDecks[v] || new Set()).add(P.deckId || '-');
+        if((A.beatenBy[v] || 0) >= 5) A.revenge = true;
+      });
+      A.kills += k; if(k >= 3) A.triple = true;
+    }
+    const W = m.players[m.winner];
+    if(!win && W && W.memberId) A.beatenBy[W.memberId] = (A.beatenBy[W.memberId] || 0) + 1;
+  });
+  const maxV = Math.max(0, ...Object.values(A.killsBy)), maxDecks = Math.max(0, ...Object.values(A.killDecks).map(x => x.size));
+  const got = new Set(), prog = {};
+  const chk = (id, cur, goal) => { prog[id] = [Math.min(cur, goal), goal]; if(cur >= goal) got.add(id); };
+  const b = v => v ? 1 : 0;
+  chk('win1', A.wins, 1); chk('dmg100', A.dealt, 100); chk('kill1', A.kills, 1); chk('life50', A.maxLife, 50); chk('mesa10', A.games, 10); chk('streak2', A.best, 2); chk('constructor', maxDecks, 3);
+  chk('mesa25', A.games, 25); chk('win10', A.wins, 10); chk('life100', A.maxLife, 100); chk('aggro3', maxV, 3); chk('streak3', A.best, 3); chk('focus50', b(A.focus50), 1); chk('resist50', A.resist, 50);
+  chk('dmg1000', A.dealt, 1000); chk('kill10', A.kills, 10); chk('deck5', A.winDecks.size, 5); chk('streak4', A.best, 4); chk('aggro5', maxV, 5); chk('split2', b(A.split2), 1); chk('win25', A.wins, 25);
+  chk('streak5', A.best, 5); chk('revenge', b(A.revenge), 1); chk('split3', b(A.split3), 1); chk('resist100', A.resist, 100); chk('groups3', A.winGroups.size, 3); chk('win50', A.wins, 50); chk('triple', b(A.triple), 1);
+  chk('streak6', A.best, 6); chk('streak7', A.best, 7); chk('groups5', A.winGroups.size, 5); chk('untouch', b(A.untouch), 1);
+  chk('streak8', A.best, 8); chk('streak9', A.best, 9); chk('unbreak', b(A.unbreak), 1); chk('win200', A.wins, 200); chk('life1000', A.maxLife, 1000);
+  chk('streak10', A.best, 10); chk('titan', A.resist, 1000); prog.countries2 = [0, 1];
+  return { got, prog, A };
+}
+// Cada quien calcula sus insignias y las guarda en su perfil público
+async function updateMyBadges(silent){
+  if(!user) return;
+  myAch = computeAchievements(user.uid);
+  const ids = BADGES.filter(b => myAch.got.has(b.id)).map(b => b.id), prev = user.badges || [];
+  if(ids.join(',') === prev.join(',')) return;
+  const nuevos = ids.filter(id => !prev.includes(id));
+  user.badges = ids; const me = currentMember(); if(me) me.badges = ids;
+  try{ await userRef().set({ badges: ids }, { merge:true }); }catch(e){ console.warn('insignias', e); }
+  if(!silent && nuevos.length) toast(`¡Nueva insignia: ${nuevos.map(id => badgeById(id).name).join(', ')}!`);
+}
+
 // =========================================================
 //   RANKING
 // =========================================================
-let rankFilter = { period:'all', deck:'' };
+let rankFilter = { scope:null, deck:'', myDeck:'' };
+function rankScope(){
+  let sc = rankFilter.scope || store.get('rankScope', null);
+  if(sc !== 'me' && !groupById(sc)) sc = myGroups[0] ? myGroups[0].id : 'me';
+  rankFilter.scope = sc; return sc;
+}
+const pct = (w, g) => g ? Math.round(w / g * 100) : 0;
+const medal = i => `<span class="medal ${i < 3 ? 'm' + (i + 1) : ''}">${i + 1}</span>`;
+const thumb = (n, u) => `<span class="dthumb" style="${artOf(n, u) ? `background-image:url('${artOf(n, u)}')` : ''}"></span>`;
+const bdgRow = (m, n) => { const bs = topBadges(m, n); return bs.length ? `<div class="rbadges">${bs.map(b => `<span class="bdg" title="${esc(b.name)}">${badgeSvg(b)}</span>`).join('')}</div>` : ''; };
+function rankHead(sc, g, sub){
+  return `<div class="page-h band" style="${bandStyle(3)}">
+    <div><div class="kicker">El salón de la fama</div><h1>Ranking</h1><p>${sub}</p></div>
+    <div class="rk-actions">
+      <select class="input" id="rkScope" aria-label="Grupos">${myGroups.map(x => `<option value="${x.id}" ${x.id === sc ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}<option value="me" ${sc === 'me' ? 'selected' : ''}>★ Mi trayectoria</option></select>
+      ${g ? `<button class="btn icon" data-act="groupAdmin" data-g="${g.id}" title="Grupo: jugadores y ajustes" aria-label="Administrar grupo">${GICO.gear}</button>` : ''}
+      <button class="btn" data-act="searchGroup">${I.search}Buscar grupo</button>
+      <button class="btn primary" data-act="createGroup">${I.plus}Crear grupo</button>
+    </div>
+  </div>
+  ${user.admin && !groupById('manabeer') ? `<div class="mig-card"><div><b>Grupo Mana Beer</b>Crea el grupo con tus amigos registrados y pásale las partidas que ya existen.</div><button class="btn primary" data-act="migrateMB">Crear y pasar partidas</button></div>` : ''}`;
+}
+function headToHead(list, deckId){
+  const H = {};
+  list.forEach(m => {
+    const me = m.players.findIndex(p => p.deckId === deckId);
+    if(me < 0) return;
+    m.players.forEach((p, j) => {
+      if(j === me || !p.deckId) return;
+      const h = H[p.deckId] = H[p.deckId] || { name:p.deckName, owner:p.memberName, artCard:p.artCard, art:p.art, together:0, beat:0, lost:0 };
+      h.together++; if(m.winner === me) h.beat++; if(m.winner === j) h.lost++;
+    });
+  });
+  return Object.values(H).sort((a, b) => (b.beat - b.lost) - (a.beat - a.lost) || b.together - a.together);
+}
+const h2hRows = rivals => rivals.map(h => `<div class="rrow" style="grid-template-columns:1fr auto"><div class="rdeck">${thumb(h.artCard, h.art)}<div class="rname"><b>${esc(h.name)}</b><small>${esc(h.owner)} · ${h.together} partida(s) juntos</small></div></div><div class="rstat"><span class="chip ok">Le ganó ${h.beat}</span><span class="chip err">Perdió ${h.lost}</span></div></div>`).join('') || '<p class="hint">Este mazo aún no tiene enfrentamientos.</p>';
+const histRows = list => `<div class="hist">${list.slice(0, 8).map(m => `<div class="hrow"><span class="when">${new Date(m.date).toLocaleDateString('es-MX', { day:'numeric', month:'short' })} · ${m.minutes} min${m.gname ? ' · ' + esc(m.gname) : ''}</span>
+  ${m.players.map((p, i) => `<span class="hp ${i === m.winner ? 'win' : ''} ${i === m.starter ? 'first' : ''}" title="${esc(p.memberName)} · ${esc(p.deckName)}${i === m.starter ? ' · empezó' : ''}"><i style="${artOf(p.artCard, p.art) ? `background-image:url('${artOf(p.artCard, p.art)}')` : ''}"></i>${esc(p.memberName)}${i === m.winner ? ' ★' : ''}</span>`).join('')}</div>`).join('') || '<p class="hint">Aún no hay partidas.</p>'}</div>`;
+function bindRankControls(){
+  const sc = $('#rkScope'); if(sc) sc.onchange = e => { rankFilter.scope = e.target.value; store.set('rankScope', e.target.value); renderRanking(); };
+  const rd = $('#rkDeck'); if(rd) rd.onchange = e => { rankFilter.deck = e.target.value; renderRanking(); };
+  const md = $('#rkMyDeck'); if(md) md.onchange = e => { rankFilter.myDeck = e.target.value; renderRanking(); };
+}
 function renderRanking(){
-  const list = matches().filter(m => rankFilter.period === 'all' || m.date > Date.now() - 30 * 864e5);
+  const sc = rankScope();
+  if(sc === 'me') renderRankingMe(); else renderRankingGroup(groupById(sc));
+  bindRankControls();
+}
+function renderRankingGroup(g){
+  const list = matchList.filter(m => m.gid === g.id);
   const P = {}, D = {};
   let starterWins = 0;
   list.forEach(m => {
     if(m.starter === m.winner) starterWins++;
     m.players.forEach((p, i) => {
-      const pk = p.memberId || p.memberName;
-      const pp = P[pk] = P[pk] || { name:p.memberName, games:0, wins:0, deckWins:{} };
+      if(!p.memberId) return;
+      const pp = P[p.memberId] = P[p.memberId] || { id:p.memberId, name:p.memberName, games:0, wins:0, deckWins:{} };
       pp.games++;
       if(i === m.winner){ pp.wins++; pp.deckWins[p.deckName] = (pp.deckWins[p.deckName] || 0) + 1; }
       if(p.deckId){
@@ -2567,43 +3141,29 @@ function renderRanking(){
       }
     });
   });
-  const pct = (w, g) => g ? Math.round(w / g * 100) : 0;
-  const players = Object.values(P).sort((a,b) => b.wins - a.wins || pct(b.wins,b.games) - pct(a.wins,a.games));
-  const decks = Object.values(D).sort((a,b) => b.wins - a.wins || pct(b.wins,b.games) - pct(a.wins,a.games));
+  const players = Object.values(P).sort((a, b) => b.wins - a.wins || pct(b.wins, b.games) - pct(a.wins, a.games));
+  const decks = Object.values(D).sort((a, b) => b.wins - a.wins || pct(b.wins, b.games) - pct(a.wins, a.games));
   if(!rankFilter.deck || !D[rankFilter.deck]) rankFilter.deck = decks[0] ? decks[0].id : '';
-  // Enfrentamientos del mazo elegido contra cada rival
-  const H = {};
-  list.forEach(m => {
-    const me = m.players.findIndex(p => p.deckId === rankFilter.deck);
-    if(me < 0) return;
-    m.players.forEach((p, j) => {
-      if(j === me || !p.deckId) return;
-      const h = H[p.deckId] = H[p.deckId] || { name:p.deckName, owner:p.memberName, artCard:p.artCard, art:p.art, together:0, beat:0, lost:0 };
-      h.together++;
-      if(m.winner === me) h.beat++;
-      if(m.winner === j) h.lost++;
-    });
-  });
-  const rivals = Object.values(H).sort((a,b) => (b.beat - b.lost) - (a.beat - a.lost) || b.together - a.together);
-  // Títulos: solo partidas por turnos (tienen estadísticas detalladas)
+  const rivals = headToHead(list, rankFilter.deck);
+  // Títulos del grupo: solo partidas por turnos (tienen estadísticas detalladas)
   const TS = {}, NEM = {}, FAST = {};
   const tmatches = list.filter(m => m.mode === 'turns' && m.players.some(p => p.stats));
   tmatches.forEach(m => {
     m.players.forEach((p, i) => {
-      const s = p.stats; if(!s) return;
-      const pk = p.memberId || p.memberName;
+      const st = p.stats; if(!st || !p.memberId) return;
+      const pk = p.memberId;
       const t = TS[pk] = TS[pk] || { name:p.memberName, dealt:0, kills:0, guard:0, given:0, gainSelf:0, turnMs:0, turns:0, games:0 };
-      t.games++; t.dealt += s.dealt || 0; t.kills += s.kills || 0; t.given += s.given || 0; t.gainSelf += s.gainSelf || 0; t.turnMs += s.turnMs || 0; t.turns += s.turns || 0;
-      if(s.alive || i === m.winner) t.guard += s.taken || 0;
-      Object.keys(s.dmgTo || {}).forEach(x => { const v = m.players[x]; if(!v) return; const vk = v.memberId || v.memberName; NEM[vk] = NEM[vk] || {}; NEM[vk][pk] = (NEM[vk][pk] || { name:p.memberName, dmg:0 }); NEM[vk][pk].dmg += s.dmgTo[x]; });
+      t.games++; t.dealt += st.dealt || 0; t.kills += st.kills || 0; t.given += st.given || 0; t.gainSelf += st.gainSelf || 0; t.turnMs += st.turnMs || 0; t.turns += st.turns || 0;
+      if(st.alive || i === m.winner) t.guard += st.taken || 0;
+      Object.keys(st.dmgTo || {}).forEach(x => { const v = m.players[x]; if(!v || !v.memberId) return; const vk = v.memberId; NEM[vk] = NEM[vk] || {}; NEM[vk][pk] = (NEM[vk][pk] || { name:p.memberName, dmg:0 }); NEM[vk][pk].dmg += st.dmgTo[x]; });
     });
     const wd = m.players[m.winner];
     if(wd && wd.deckId && m.rounds){ const f = FAST[wd.deckId] = FAST[wd.deckId] || { name:wd.deckName, owner:wd.memberName, rounds:0, wins:0 }; f.rounds += m.rounds; f.wins++; }
   });
   const tsl = Object.values(TS);
-  const top = (fn) => tsl.filter(x => fn(x) > 0).sort((a,b) => fn(b) - fn(a))[0];
-  const nemesisOf = pk => { const n = NEM[pk]; if(!n) return null; return Object.values(n).sort((a,b) => b.dmg - a.dmg)[0]; };
-  const fastest = Object.values(FAST).sort((a,b) => a.rounds / a.wins - b.rounds / b.wins)[0];
+  const top = fn => tsl.filter(x => fn(x) > 0).sort((a, b) => fn(b) - fn(a))[0];
+  const nemesisOf = pk => { const n = NEM[pk]; if(!n) return null; return Object.values(n).sort((a, b) => b.dmg - a.dmg)[0]; };
+  const fastest = Object.values(FAST).sort((a, b) => a.rounds / a.wins - b.rounds / b.wins)[0];
   const TITLES = [
     ['El más letal', 'Más daño hecho en total', top(x => x.dealt), x => `${x.dealt} de daño`],
     ['El verdugo', 'Más golpes finales', top(x => x.kills), x => `${x.kills} eliminaciones`],
@@ -2612,48 +3172,106 @@ function renderRanking(){
     ['El vampiro', 'Más vidas ganadas para sí', top(x => x.gainSelf), x => `${x.gainSelf} vidas ganadas`],
     ['El que más piensa', 'Turnos más largos en promedio', top(x => x.turns ? x.turnMs / x.turns : 0), x => `${fmtMs(x.turnMs / x.turns)} por turno`]
   ];
-  const medal = i => `<span class="medal ${i < 3 ? 'm' + (i + 1) : ''}">${i + 1}</span>`;
-  const thumb = (n, u) => `<span class="dthumb" style="${artOf(n, u) ? `background-image:url('${artOf(n, u)}')` : ''}"></span>`;
   const best = players[0], bestDeck = decks[0];
-  $('#main').innerHTML = `
-  <div class="page-h band" style="${bandStyle(3)}">
-    <div><div class="kicker">El salón de la fama</div><h1>Ranking</h1><p>Partidas guardadas en La Mesa por todos los jugadores de Mana Beer.</p></div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-      <select class="input" id="rkPeriod" style="width:auto"><option value="all" ${rankFilter.period==='all'?'selected':''}>Todas las partidas</option><option value="30" ${rankFilter.period==='30'?'selected':''}>Últimos 30 días</option></select>
-      <button class="btn primary" data-act="goTab" data-tab="mesa">A La Mesa</button>
-    </div>
-  </div>
+  $('#main').innerHTML = rankHead(g.id, g, `Partidas de <b>${esc(g.name)}</b> · ${(g.uids || []).length} jugador(es) en el grupo.`) + `
   <div class="metrics">
-    <div class="metric"><small>Partidas jugadas</small><b>${list.length}</b><div class="sub">${list.reduce((a,m)=>a+m.minutes,0)} min en la mesa</div></div>
-    <div class="metric"><small>Campeón de la taberna</small><b style="font-family:var(--brand)">${best ? esc(best.name) : '—'}</b><div class="sub">${best ? `${best.wins} victorias · ${pct(best.wins,best.games)}%` : ''}</div></div>
+    <div class="metric"><small>Partidas jugadas</small><b>${list.length}</b><div class="sub">${list.reduce((a, m) => a + (m.minutes || 0), 0)} min en la mesa</div></div>
+    <div class="metric"><small>Campeón de ${esc(g.name)}</small><b style="font-family:var(--brand)">${best ? esc(best.name) : '—'}</b><div class="sub">${best ? `${best.wins} victorias · ${pct(best.wins, best.games)}%` : ''}</div></div>
     <div class="metric"><small>Mazo más ganador</small><b style="font-size:17px">${bestDeck ? esc(bestDeck.name) : '—'}</b><div class="sub">${bestDeck ? `${esc(bestDeck.owner)} · ${bestDeck.wins} victorias` : ''}</div></div>
     <div class="metric"><small>El que empieza gana</small><b>${pct(starterWins, list.length)}%</b><div class="sub">de las partidas</div></div>
   </div>
-  ${!list.length ? `<div class="empty"><b>Todavía no hay partidas</b>Juega en La Mesa y guarda el resultado para empezar el ranking.</div>` : `
-  <div class="rsec titles"><h3><span>Títulos de la taberna</span><small class="hint" style="font-family:var(--font);letter-spacing:0">${tmatches.length} partida(s) por turnos</small></h3>
+  ${!list.length ? `<div class="empty"><b>Todavía no hay partidas en ${esc(g.name)}</b>Elijan este grupo en el menú de La Mesa, siéntense y guarden el resultado para empezar el ranking.</div>` : `
+  <div class="rsec titles"><h3><span>Títulos de ${esc(g.name)}</span><small class="hint" style="font-family:var(--font);letter-spacing:0">${tmatches.length} partida(s) por turnos</small></h3>
     ${tmatches.length ? `<div class="tgrid2">${TITLES.map(([t, d, w, f]) => `<div class="tcard ${w ? '' : 'empty'}"><div class="tk">${t}</div><b>${w ? esc(w.name) : '—'}</b><small>${w ? f(w) : d}</small></div>`).join('')}
       <div class="tcard ${fastest ? '' : 'empty'}"><div class="tk">El mazo más rápido</div><b>${fastest ? esc(fastest.name) : '—'}</b><small>${fastest ? `${esc(fastest.owner)} · gana en ${(fastest.rounds / fastest.wins).toFixed(1)} rondas` : 'Menos rondas para ganar'}</small></div></div>`
       : `<p class="hint">Jueguen una «Partida por turnos» en La Mesa para desbloquear los títulos: el más letal, el verdugo, el ministro de defensa, el más cariñoso…</p>`}
   </div>
   <div class="rank-grid">
     <div class="rsec"><h3><span>Jugadores</span></h3>
-      ${players.map((p, i) => { const nm = nemesisOf(Object.keys(P).find(k => P[k] === p)); return `<div class="rrow">${medal(i)}<div class="rname"><b>${esc(p.name)}</b><small>Mazo estrella: ${esc(Object.entries(p.deckWins).sort((a,b)=>b[1]-a[1])[0]?.[0] || '—')}${nm ? ` · Némesis: ${esc(nm.name)}` : ''}</small><div class="rbar"><i style="width:${pct(p.wins,p.games)}%"></i></div></div><div class="rstat"><b>${p.wins}</b>${p.games} partidas · ${pct(p.wins,p.games)}%</div></div>`; }).join('')}
+      ${players.map((p, i) => { const nm = nemesisOf(p.id); return `<div class="rrow">${medal(i)}<div class="rname"><b>${esc(p.name)}</b><small>Mazo estrella: ${esc(Object.entries(p.deckWins).sort((a, b) => b[1] - a[1])[0]?.[0] || '—')}${nm ? ` · Némesis: ${esc(nm.name)}` : ''}</small><div class="rbar"><i style="width:${pct(p.wins, p.games)}%"></i></div>${bdgRow(memberById(p.id), 5)}</div><div class="rstat"><b>${p.wins}</b>${p.games} partidas · ${pct(p.wins, p.games)}%</div></div>`; }).join('')}
     </div>
     <div class="rsec"><h3><span>Mazos</span></h3>
-      ${decks.slice(0, 10).map((d, i) => `<div class="rrow">${medal(i)}<div class="rdeck">${thumb(d.artCard, d.art)}<div class="rname"><b>${esc(d.name)}</b><small>${esc(d.owner)}${d.commander ? ' · ' + esc(d.commander) : ''}</small></div></div><div class="rstat"><b>${d.wins}</b>${d.games} partidas · ${pct(d.wins,d.games)}%</div></div>`).join('')}
+      ${decks.slice(0, 10).map((d, i) => `<div class="rrow">${medal(i)}<div class="rdeck">${thumb(d.artCard, d.art)}<div class="rname"><b>${esc(d.name)}</b><small>${esc(d.owner)}${d.commander ? ' · ' + esc(d.commander) : ''}</small></div></div><div class="rstat"><b>${d.wins}</b>${d.games} partidas · ${pct(d.wins, d.games)}%</div></div>`).join('')}
     </div>
     <div class="rsec"><h3><span>Enfrentamientos</span>
-        <select class="input" id="rkDeck" style="width:auto;max-width:100%;font-family:var(--font);font-size:13px">${decks.map(d => `<option value="${d.id}" ${d.id===rankFilter.deck?'selected':''}>${esc(d.name)} (${esc(d.owner)})</option>`).join('')}</select></h3>
-      <p class="hint" style="margin:-4px 0 8px">Contra cada rival: cuántas veces ganó este mazo con ese rival en la mesa, y cuántas ganó el rival.</p>
-      ${rivals.map(h => `<div class="rrow" style="grid-template-columns:1fr auto"><div class="rdeck">${thumb(h.artCard, h.art)}<div class="rname"><b>${esc(h.name)}</b><small>${esc(h.owner)} · ${h.together} partida(s) juntos</small></div></div><div class="rstat"><span class="chip ok">Le ganó ${h.beat}</span><span class="chip err">Perdió ${h.lost}</span></div></div>`).join('') || '<p class="hint">Este mazo aún no tiene enfrentamientos.</p>'}
+        <select class="input" id="rkDeck" style="width:auto;max-width:100%;font-family:var(--font);font-size:13px">${decks.map(d => `<option value="${d.id}" ${d.id === rankFilter.deck ? 'selected' : ''}>${esc(d.name)} (${esc(d.owner)})</option>`).join('')}</select></h3>
+      <p class="hint" style="margin:-4px 0 8px">Mazos jugados en ${esc(g.name)}. Contra cada rival: cuántas veces ganó este mazo con ese rival en la mesa, y cuántas ganó el rival.</p>
+      ${h2hRows(rivals)}
     </div>
-    <div class="rsec"><h3><span>Últimas partidas</span></h3>
-      <div class="hist">${list.slice(0, 8).map(m => `<div class="hrow"><span class="when">${new Date(m.date).toLocaleDateString('es-MX', { day:'numeric', month:'short' })} · ${m.minutes} min</span>
-        ${m.players.map((p, i) => `<span class="hp ${i===m.winner?'win':''} ${i===m.starter?'first':''}" title="${esc(p.memberName)} · ${esc(p.deckName)}${i===m.starter?' · empezó':''}"><i style="${artOf(p.artCard, p.art) ? `background-image:url('${artOf(p.artCard, p.art)}')` : ''}"></i>${esc(p.memberName)}${i===m.winner?' ★':''}</span>`).join('')}</div>`).join('')}</div>
-    </div>
+    <div class="rsec"><h3><span>Últimas partidas</span></h3>${histRows(list)}</div>
   </div>`}`;
-  const per = $('#rkPeriod'); if(per) per.onchange = e => { rankFilter.period = e.target.value; renderRanking(); };
-  const rd = $('#rkDeck'); if(rd) rd.onchange = e => { rankFilter.deck = e.target.value; renderRanking(); };
+}
+function renderRankingMe(){
+  const me = user.uid, L = myMatches().slice().reverse();
+  const S = { games:0, wins:0, mins:0, starts:0, startWins:0, turnMs:0, turns:0, dealt:0, taken:0, kills:0, gain:0, given:0, tgames:0, best:0, cur:0, deaths:0 };
+  const decks = {}, rivals = {}, groups = {};
+  myMatches().forEach(m => {
+    const i = m.players.findIndex(p => p.memberId === me); if(i < 0) return;
+    const P = m.players[i], win = m.winner === i;
+    S.games++; S.mins += m.minutes || 0;
+    if(win){ S.wins++; S.cur++; S.best = Math.max(S.best, S.cur); } else S.cur = 0;
+    if(m.starter === i){ S.starts++; if(win) S.startWins++; }
+    const gg = groups[m.gid || '-'] = groups[m.gid || '-'] || { name: m.gname || 'Sin grupo', games:0, wins:0 }; gg.games++; if(win) gg.wins++;
+    const dk = P.deckId || '-';
+    const d = decks[dk] = decks[dk] || { id:dk, name:P.deckName || 'Sin mazo', commander:P.commander, artCard:P.artCard, art:P.art, games:0, wins:0, dealt:0, tg:0, vs:{} };
+    d.games++; if(win) d.wins++;
+    if(P.stats){ const st = P.stats; S.tgames++; S.dealt += st.dealt || 0; S.taken += st.taken || 0; S.kills += st.kills || 0; S.gain += st.gainSelf || 0; S.given += st.given || 0; S.turnMs += st.turnMs || 0; S.turns += st.turns || 0; if(!st.alive) S.deaths++; d.dealt += st.dealt || 0; d.tg++; }
+    m.players.forEach((q, j) => {
+      if(j === i || !q.memberId) return;
+      const r = rivals[q.memberId] = rivals[q.memberId] || { name:q.memberName, games:0, myWins:0, theirWins:0, killedMe:0, iKilled:0 };
+      r.games++; if(win) r.myWins++; if(m.winner === j) r.theirWins++;
+      if(P.stats && P.stats.killedBy != null && +P.stats.killedBy === j) r.killedMe++;
+      if(q.stats && q.stats.killedBy != null && +q.stats.killedBy === i) r.iKilled++;
+      const v = d.vs[q.memberId] = d.vs[q.memberId] || { name:q.memberName, w:0, l:0 }; if(win) v.w++; if(m.winner === j) v.l++;
+    });
+  });
+  const R = Object.values(rivals), D = Object.values(decks).sort((a, b) => b.wins - a.wins || b.games - a.games);
+  const pick = (arr, fn) => arr.filter(x => fn(x) > 0).sort((a, b) => fn(b) - fn(a))[0];
+  const nemesis = pick(R, x => x.theirWins), victim = pick(R, x => x.iKilled), strong = pick(R, x => x.myWins - x.theirWins), weak = pick(R, x => x.theirWins - x.myWins);
+  const myDecks = D.filter(d => d.id !== '-');
+  if(!rankFilter.myDeck || !myDecks.some(d => d.id === rankFilter.myDeck)) rankFilter.myDeck = myDecks[0] ? myDecks[0].id : '';
+  const ach = myAch || computeAchievements(me), mine = BADGES.filter(b => ach.got.has(b.id)).sort((a, b) => b.t - a.t);
+  const tile = (l, v, sub) => `<div class="st"><small>${l}</small><b>${v}</b>${sub ? `<small>${sub}</small>` : ''}</div>`;
+  const bestDeck = D.filter(d => d.wins)[0];
+  $('#main').innerHTML = rankHead('me', null, 'Tu trayectoria: todas tus partidas de todos tus grupos.') + `
+  <div class="metrics">
+    <div class="metric"><small>Partidas jugadas</small><b>${S.games}</b><div class="sub">${S.mins} min en la mesa</div></div>
+    <div class="metric"><small>Victorias</small><b>${S.wins}</b><div class="sub">${pct(S.wins, S.games)}% de tus partidas</div></div>
+    <div class="metric"><small>Mejor racha</small><b>${S.best}</b><div class="sub">Racha actual: ${S.cur}</div></div>
+    <div class="metric"><small>Mi mazo más ganador</small><b style="font-size:17px">${bestDeck ? esc(bestDeck.name) : '—'}</b><div class="sub">${bestDeck ? `${bestDeck.wins} victorias · ${pct(bestDeck.wins, bestDeck.games)}%` : ''}</div></div>
+  </div>
+  <div class="ach-grid">
+    <div class="rsec titles" style="margin:0"><h3><span>Mis insignias</span><small class="hint" style="font-family:var(--font);letter-spacing:0">${mine.length} de ${BADGES.length}</small></h3>
+      ${mine.length ? `<div class="mybadges">${mine.map(b => `<div class="mybadge"><span class="bdg">${badgeSvg(b)}</span><b>${esc(b.name)}</b><small>${BSHAPE[b.t - 1]}</small></div>`).join('')}</div>` : '<p class="hint">Aún no tienes insignias. Gana tu primera mesa para conseguir «Primera victoria».</p>'}
+    </div>
+    <div class="rsec"><h3><span>Logros</span><small class="hint" style="font-family:var(--font);letter-spacing:0">desbloqueados y por conseguir</small></h3>
+      <div class="achscroll">${BSHAPE.map((sh, k) => { const bs = BADGES.filter(b => b.t === k + 1); if(!bs.length) return ''; return `<div class="achsh">${k + 1} · ${sh}</div>` + bs.map(b => { const ok = ach.got.has(b.id), pr = ach.prog[b.id] || [0, 1];
+        return `<div class="achrow ${ok ? '' : 'lock'}"><span class="bdg">${badgeSvg(b)}</span><div><b>${esc(b.name)}</b><small>${esc(b.d)}</small>${!ok && pr[1] > 1 ? `<div class="pbar"><i style="width:${Math.round(pr[0] / pr[1] * 100)}%"></i></div>` : ''}</div>${ok ? '<span class="aok">✓</span>' : pr[1] > 1 ? `<small class="apr">${pr[0]}/${pr[1]}</small>` : '<small class="apr">🔒</small>'}</div>`; }).join(''); }).join('')}</div>
+    </div>
+  </div>
+  ${!S.games ? `<div class="empty"><b>Todavía no tienes partidas guardadas</b>Entra o crea un grupo, siéntate en La Mesa con al menos otro jugador registrado y guarden el resultado.</div>` : `
+  <div class="rank-grid">
+    <div class="rsec"><h3><span>Mis estadísticas</span></h3>
+      <div class="stsub">Resumen</div>
+      <div class="stgrid">${tile('Victorias', `${pct(S.wins, S.games)}%`, `${S.wins} de ${S.games}`)}${tile('Cuando empiezo', `${pct(S.startWins, S.starts)}%`, `gané ${S.startWins} de ${S.starts}`)}${tile('Partida promedio', `${S.games ? Math.round(S.mins / S.games) : 0} min`)}${tile('Mi turno promedio', S.turns ? fmtMs(S.turnMs / S.turns) : '—')}</div>
+      <div class="stsub">Combate <small class="hint" style="font-family:var(--font)">· ${S.tgames} partida(s) por turnos</small></div>
+      <div class="stgrid">${tile('Daño hecho', S.dealt)}${tile('Daño recibido', S.taken)}${tile('Golpes finales', S.kills)}${tile('Vidas ganadas', S.gain)}${tile('Vidas regaladas', S.given)}${tile('Veces eliminado', S.deaths)}</div>
+      <div class="stsub">Rivales</div>
+      <div class="stgrid">${tile('Mi némesis', nemesis ? esc(nemesis.name) : '—', nemesis ? `me ha ganado ${nemesis.theirWins}` : '')}${tile('Mi víctima favorita', victim ? esc(victim.name) : '—', victim ? `lo he eliminado ${victim.iKilled}` : '')}${tile('Soy fuerte contra', strong ? esc(strong.name) : '—', strong ? `${strong.myWins} a ${strong.theirWins}` : '')}${tile('Me cuesta contra', weak ? esc(weak.name) : '—', weak ? `${weak.myWins} a ${weak.theirWins}` : '')}</div>
+      <div class="stsub">Por grupo</div>
+      ${Object.values(groups).map(x => `<div class="rrow" style="grid-template-columns:1fr auto"><div class="rname"><b>${esc(x.name)}</b><div class="rbar"><i style="width:${pct(x.wins, x.games)}%"></i></div></div><div class="rstat"><b>${x.wins}</b>${x.games} partidas · ${pct(x.wins, x.games)}%</div></div>`).join('')}
+    </div>
+    <div class="rsec"><h3><span>Mis mazos</span></h3>
+      ${D.map((d, i) => { const vs = Object.values(d.vs), bestR = vs.filter(v => v.w > v.l).sort((a, b) => (b.w - b.l) - (a.w - a.l))[0], worstR = vs.filter(v => v.l > v.w).sort((a, b) => (b.l - b.w) - (a.l - a.w))[0];
+        return `<div class="rrow">${medal(i)}<div class="rdeck">${thumb(d.artCard, d.art)}<div class="rname"><b>${esc(d.name)}</b><small>${d.tg ? `${Math.round(d.dealt / d.tg)} de daño promedio · ` : ''}${bestR ? `fuerte contra ${esc(bestR.name)}` : ''}${bestR && worstR ? ' · ' : ''}${worstR ? `le cuesta contra ${esc(worstR.name)}` : ''}</small></div></div><div class="rstat"><b>${d.wins}</b>${d.games} partidas · ${pct(d.wins, d.games)}%</div></div>`; }).join('')}
+    </div>
+    <div class="rsec"><h3><span>Enfrentamientos</span>
+        <select class="input" id="rkMyDeck" style="width:auto;max-width:100%;font-family:var(--font);font-size:13px">${myDecks.map(d => `<option value="${d.id}" ${d.id === rankFilter.myDeck ? 'selected' : ''}>${esc(d.name)}</option>`).join('')}</select></h3>
+      <p class="hint" style="margin:-4px 0 8px">Tus mazos contra los mazos con los que jugaron: cuántas veces ganó el tuyo y cuántas el rival.</p>
+      ${myDecks.length ? h2hRows(headToHead(L, rankFilter.myDeck)) : '<p class="hint">Juega con un mazo cargado para ver sus enfrentamientos.</p>'}
+    </div>
+    <div class="rsec"><h3><span>Mis últimas partidas</span></h3>${histRows(L)}</div>
+  </div>`}`;
 }
 
 // =========================================================
@@ -2723,32 +3341,49 @@ const BICON = {
   spark:'<path d="M12 1l2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6z"/><circle cx="12" cy="12" r="2.2" fill="rgba(0,0,0,.5)"/>',
   portal:'<path d="M12 12.5a1.2 1.2 0 1 1 1.2-1.2 3.4 3.4 0 1 1-6.6 1.2 5.6 5.6 0 1 1 11-1.6A7.8 7.8 0 1 1 4 12" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>'
 };
-// t = forma (1 fácil … 7 leyenda) · c = color (0-6) · i = ícono
+// t = forma (1 fácil … 7 leyenda) · c = color (0 Bronce, 1 Plata, 2 Oro, 3 Zafiro, 4 Esmeralda, 5 Rubí, 6 Amatista) · i = ícono
+// «Matar», «daño» y «resistir» solo se cuentan en partidas por turnos (son las que registran quién le hizo qué a quién).
 const BADGES = [
-  { id:'mesa1',     t:1, c:0, i:'die',    name:'Primera ronda',       d:'Juega tu primera mesa.' },
-  { id:'win1',      t:1, c:2, i:'crown',  name:'Primera victoria',    d:'Gana una mesa.' },
-  { id:'dmg100',    t:1, c:1, i:'swords',  name:'Cien heridas',        d:'Inflige 100 de daño en total.' },
-  { id:'kill1',     t:1, c:5, i:'tomb',  name:'Primera sangre',      d:'Da tu primer golpe final.' },
-  { id:'heal50',    t:1, c:4, i:'chalice',  name:'Buena vibra',         d:'Da 50 vidas a otros jugadores.' },
-  { id:'deck1',     t:1, c:3, i:'cards',   name:'Constructor',         d:'Juega con un mazo tuyo cargado.' },
-  { id:'mesa10',    t:1, c:6, i:'tapped',    name:'Parroquiano',         d:'Juega 10 mesas.' },
-  { id:'mesa25',    t:2, c:0, i:'die',    name:'Cliente frecuente',   d:'Juega 25 mesas.' },
-  { id:'win10',     t:2, c:2, i:'crown',  name:'Diez coronas',        d:'Gana 10 mesas.' },
-  { id:'dmg1000',   t:2, c:1, i:'flame',  name:'Mil heridas',         d:'Inflige 1,000 de daño en total.' },
-  { id:'kill10',    t:2, c:5, i:'tomb',  name:'Verdugo',             d:'Da 10 golpes finales.' },
-  { id:'heal300',   t:2, c:4, i:'chalice',  name:'Corazón de oro',      d:'Da 300 vidas a otros jugadores.' },
-  { id:'deck5',     t:2, c:3, i:'cards',   name:'Arsenal',             d:'Gana con 5 mazos distintos.' },
-  { id:'win25',     t:3, c:2, i:'crown',  name:'Campeón local',       d:'Gana 25 mesas.' },
-  { id:'groups3',   t:3, c:3, i:'tower', name:'Visitante',           d:'Gana una mesa en 3 grupos diferentes.' },
-  { id:'streak3',   t:3, c:6, i:'bolt',   name:'En racha',            d:'Gana 3 mesas seguidas.' },
-  { id:'win50',     t:4, c:2, i:'crown',  name:'Señor de la taberna', d:'Gana 50 mesas.' },
-  { id:'groups5',   t:4, c:3, i:'tower', name:'Trotamundos',         d:'Gana una mesa en 5 grupos diferentes.' },
-  { id:'tank',      t:4, c:1, i:'shield', name:'Muralla',             d:'Gana una mesa de 4+ jugadores recibiendo 40 o más de daño.' },
-  { id:'streak5',   t:5, c:6, i:'bolt',   name:'Imparable',           d:'Gana 5 mesas seguidas.' },
-  { id:'triple',    t:5, c:5, i:'claws',  name:'Masacre',             d:'Elimina a 3 jugadores en una sola mesa.' },
-  { id:'untouch',   t:6, c:1, i:'shield', name:'Intocable',           d:'Gana una mesa de 4+ jugadores sin recibir daño.' },
-  { id:'win200',    t:6, c:2, i:'spark',   name:'Leyenda',             d:'Gana 200 mesas.' },
-  { id:'countries2',t:7, c:6, i:'portal',  name:'Planeswalker',        d:'Juega en dos países diferentes.' }
+  { id:'win1',       t:1, c:2, i:'crown',   name:'Primera victoria',    d:'Gana una mesa.' },
+  { id:'dmg100',     t:1, c:1, i:'swords',  name:'Cien heridas',        d:'Haz 100 de daño en total.' },
+  { id:'kill1',      t:1, c:5, i:'tomb',    name:'Primera sangre',      d:'Mata a tu primer oponente.' },
+  { id:'life50',     t:1, c:4, i:'chalice', name:'Copa llena',          d:'Llega a 50 vidas en una partida.' },
+  { id:'mesa10',     t:1, c:0, i:'die',     name:'Parroquiano',         d:'Juega 10 mesas.' },
+  { id:'streak2',    t:1, c:6, i:'bolt',    name:'Dos al hilo',         d:'Gana 2 mesas seguidas.' },
+  { id:'constructor',t:1, c:3, i:'cards',   name:'Constructor',         d:'Mata al mismo jugador con 3 mazos diferentes.' },
+  { id:'mesa25',     t:2, c:0, i:'die',     name:'Cliente frecuente',   d:'Juega 25 mesas.' },
+  { id:'win10',      t:2, c:2, i:'crown',   name:'Diez coronas',        d:'Gana 10 mesas.' },
+  { id:'life100',    t:2, c:4, i:'chalice', name:'Corazón de oro',      d:'Llega a 100 vidas en una partida.' },
+  { id:'aggro3',     t:2, c:5, i:'claws',   name:'Agresivo',            d:'Mata al mismo jugador 3 veces.' },
+  { id:'streak3',    t:2, c:6, i:'bolt',    name:'En racha',            d:'Gana 3 mesas seguidas.' },
+  { id:'focus50',    t:2, c:1, i:'swords',  name:'Ensañado',            d:'Haz 50 de daño a un mismo jugador en una partida.' },
+  { id:'resist50',   t:2, c:3, i:'shield',  name:'Aguante',             d:'Recibe 50 de daño en una partida y termínala vivo.' },
+  { id:'dmg1000',    t:3, c:5, i:'flame',   name:'Mil heridas',         d:'Haz 1,000 de daño en total.' },
+  { id:'kill10',     t:3, c:1, i:'tomb',    name:'Verdugo',             d:'Mata a 10 oponentes.' },
+  { id:'deck5',      t:3, c:3, i:'cards',   name:'Arsenal',             d:'Gana con 5 mazos distintos.' },
+  { id:'streak4',    t:3, c:6, i:'bolt',    name:'Encendido',           d:'Gana 4 mesas seguidas.' },
+  { id:'aggro5',     t:3, c:0, i:'claws',   name:'Implacable',          d:'Mata al mismo jugador 5 veces.' },
+  { id:'split2',     t:3, c:4, i:'swords',  name:'Doble filo',          d:'Haz 50 de daño a cada uno de 2 jugadores en una partida.' },
+  { id:'win25',      t:3, c:2, i:'crown',   name:'Campeón local',       d:'Gana 25 mesas.' },
+  { id:'streak5',    t:4, c:6, i:'bolt',    name:'Imparable',           d:'Gana 5 mesas seguidas.' },
+  { id:'revenge',    t:4, c:5, i:'tomb',    name:'Venganza',            d:'Mata a un jugador que ya te ha ganado 5 mesas.' },
+  { id:'split3',     t:4, c:0, i:'flame',   name:'Tormenta de fuego',   d:'Haz 50 de daño a cada uno de 3 jugadores en una partida.' },
+  { id:'resist100',  t:4, c:1, i:'shield',  name:'Muro de piedra',      d:'Recibe 100 de daño en una partida y termínala vivo.' },
+  { id:'groups3',    t:4, c:3, i:'tower',   name:'Visitante',           d:'Gana una mesa en 3 grupos diferentes.' },
+  { id:'win50',      t:4, c:2, i:'crown',   name:'Señor de la taberna', d:'Gana 50 mesas.' },
+  { id:'triple',     t:4, c:4, i:'claws',   name:'Masacre',             d:'Mata a 3 oponentes en una sola partida.' },
+  { id:'streak6',    t:5, c:6, i:'bolt',    name:'Arrasador',           d:'Gana 6 mesas seguidas.' },
+  { id:'streak7',    t:5, c:5, i:'bolt',    name:'Avalancha',           d:'Gana 7 mesas seguidas.' },
+  { id:'groups5',    t:5, c:3, i:'tower',   name:'Trotamundos',         d:'Gana una mesa en 5 grupos diferentes.' },
+  { id:'untouch',    t:5, c:1, i:'shield',  name:'Intocable',           d:'Gana una mesa de 4 o más jugadores sin recibir daño.' },
+  { id:'streak8',    t:6, c:6, i:'bolt',    name:'Dominante',           d:'Gana 8 mesas seguidas.' },
+  { id:'streak9',    t:6, c:5, i:'bolt',    name:'Tirano',              d:'Gana 9 mesas seguidas.' },
+  { id:'unbreak',    t:6, c:1, i:'shield',  name:'Inquebrantable',      d:'Recibe 100 de daño de cada rival en una partida y termínala vivo.' },
+  { id:'win200',     t:6, c:2, i:'spark',   name:'Leyenda',             d:'Gana 200 mesas.' },
+  { id:'life1000',   t:6, c:4, i:'chalice', name:'Elixir eterno',       d:'Llega a 1,000 vidas en una partida.' },
+  { id:'streak10',   t:7, c:6, i:'bolt',    name:'Inmortal',            d:'Gana 10 mesas seguidas.' },
+  { id:'titan',      t:7, c:1, i:'shield',  name:'Titán',               d:'Recibe 1,000 de daño en una partida y termínala vivo.' },
+  { id:'countries2', t:7, c:3, i:'portal',  name:'Planeswalker',        d:'Juega en dos países diferentes. Próximamente.' }
 ];
 const badgeById = id => BADGES.find(b => b.id === id);
 const HEX = (cx, cy, r) => [0,1,2,3,4,5].map(k => { const a = (k * 60 - 90) * Math.PI / 180; return (cx + r * Math.cos(a)).toFixed(1) + ',' + (cy + r * Math.sin(a)).toFixed(1); }).join(' ');
@@ -2828,15 +3463,19 @@ const MESA_FORMATS = [
 const curFormat = () => MESA_FORMATS.find(f => f.id === (game && game.format)) || MESA_FORMATS[0];
 const cmdOn = () => curFormat().cmd;
 const MAX_CMDRS = 3;
-const newPlayer = life => ({ member:null, deck:null, life, poison:0, tax:[0,0,0], energy:0, exp:0, cmd:{}, cmdN:1, mana:{ W:0, U:0, B:0, R:0, G:0, C:0 } });
+const newPlayer = life => ({ member:null, deck:null, conf:null, inv:null, invExp:0, maxLife:life, life, poison:0, tax:[0,0,0], energy:0, exp:0, cmd:{}, cmdN:1, mana:{ W:0, U:0, B:0, R:0, G:0, C:0 } });
 function newGame(layoutId, life, keep){
   const L = LAYOUTS.find(l => l.id === layoutId) || LAYOUTS[5];
   const old = keep && game ? game.players : [];
   const format = (game && game.format) || 'commander';
   const mode = (game && game.mode) || 'quick';
+  const gid = game ? (game.gid || null) : null, lastAct = game ? (game.lastAct || 0) : 0;
+  if(game && !keep) game.players.forEach((p, i) => stopWatch(i));
   game = { layout:L.id, startLife:life, format, mode, phase: mode === 'turns' ? 'setup' : 'playing', turn:null, round:0, turnStart:0, turnLog:[], events:[], kills:{}, sword:null,
-    started:Date.now(), starter:null, prompted:false, cmdTarget:null,
-    players: Array.from({ length:L.n }, (_, i) => { const p = newPlayer(life); if(old[i]){ p.member = old[i].member; p.deck = old[i].deck; p.cmdN = old[i].cmdN || 1; } return p; }) };
+    started:Date.now(), starter:null, prompted:false, cmdTarget:null, gid, lastAct,
+    players: Array.from({ length:L.n }, (_, i) => { const p = newPlayer(life); if(old[i]){ p.member = old[i].member; p.deck = old[i].deck; p.cmdN = old[i].cmdN || 1; p.conf = old[i].conf || null; p.inv = old[i].inv || null; p.invExp = old[i].invExp || 0; } return p; }) };
+  // Los que se quedan fuera al reducir jugadores: cancelar su solicitud
+  old.slice(L.n).forEach((p, k) => { if(p && p.inv) db.collection('mb_invites').doc(p.inv).update({ status:'cancelled', at:Date.now() }).catch(() => {}); stopWatch(L.n + k); });
   saveGame();
 }
 // Partidas guardadas con la versión anterior
@@ -2847,7 +3486,11 @@ function normalizeGame(){
   if(!game.mode){ game.mode = 'quick'; game.phase = 'playing'; }
   game.events = game.events || []; game.turnLog = game.turnLog || []; game.kills = game.kills || {};
   if(game.sword === undefined) game.sword = null;
+  if(game.gid === undefined) game.gid = null;
   game.players.forEach(p => {
+    // Partidas de la versión anterior: los lugares ocupados por otros necesitan confirmación nueva
+    if(p.member && p.conf === undefined){ if(user && p.member === user.uid) p.conf = 'ok'; else { p.member = null; p.deck = null; p.conf = null; } }
+    if(p.maxLife === undefined) p.maxLife = p.life;
     p.cmdN = p.cmdN || 1;
     if(!Array.isArray(p.tax)) p.tax = [0,0,0];
     p.energy = p.energy || 0; p.exp = p.exp || 0;
@@ -2861,12 +3504,21 @@ function loadGame(){
   if(!game){
     newGame('4a', 40);
     const me = currentMember();
-    if(me) game.players[0].member = me.id;
+    if(me){ game.players[0].member = me.id; game.players[0].conf = 'ok'; }
+    game.gid = store.get('lastGid_' + user.uid, null);
     saveGame();
+  }
+  // El grupo de la mesa: el último usado (si sigo en él)
+  if(game.gid && !groupById(game.gid)) game.gid = null;
+  if(game.gid === null && !game.lastAct){ const lg = store.get('lastGid_' + user.uid, null); if(groupById(lg)) game.gid = lg; }
+  // Después de 18 horas los lugares vuelven a invitado (menos el mío)
+  if(game.lastAct && Date.now() - game.lastAct > 18 * 3600e3){
+    game.players.forEach((p, i) => { if(p.member && p.member !== user.uid){ if(p.inv) db.collection('mb_invites').doc(p.inv).update({ status:'cancelled', at:Date.now() }).catch(() => {}); clearSeatState(i); } });
+    game.lastAct = Date.now(); saveGame();
   }
 }
 const isDead = p => p.life <= 0 || p.poison >= 10 || Object.values(p.cmd || {}).some(v => (Array.isArray(v) ? v : [v]).some(x => x >= 21));
-const pName = i => { const p = game.players[i], m = p && p.member ? memberById(p.member) : null; return m ? m.name : `Jugador ${i + 1}`; };
+const pName = i => { const p = game.players[i], m = p && p.member ? memberById(p.member) : null; return m ? m.name : `Invitado ${i + 1}`; };
 
 function renderMesa(animTurn){
   if(!game) loadGame();
@@ -2876,16 +3528,21 @@ function renderMesa(animTurn){
   const setup = lockedMesa();
   $('#app').innerHTML = `<div class="mesa ${cm ? 'cmd-mode' : ''} ${setup ? 'setup' : ''} ${turnsPlaying() ? 'turns' : ''}" id="mesa" style="grid-template-rows:repeat(${L.rows},1fr);grid-template-columns:repeat(${L.cols},1fr)">
     ${game.players.map((_, i) => cellHtml(i)).join('')}
-    ${cm ? `<button class="hub ${hubAnim || cmdAnim ? 'pop' : ''}" data-act="cmdExit" aria-label="Volver al juego" title="Volver al juego"><span class="hexo"><span class="hexi">${MICO.dagger}</span></span></button>`
-         : setup && game.phase === 'ready' ? `<button class="hub start pop" data-act="mesaPlay" aria-label="Iniciar partida" title="Iniciar partida"><span class="hexo"><span class="hexi">${MICO.play}<small>PLAY</small></span></span></button><button class="hubalt" data-act="whoStarts">Cambiar</button>`
-         : setup && !mesaMenuForce ? `<button class="hub who pop" data-act="whoStarts" aria-label="¿Quién empieza?" title="¿Quién empieza?"><span class="hexo"><span class="hexi">${MICO.dice}<small>¿QUIÉN<br>EMPIEZA?</small></span></span></button>`
-         : `<button class="hub ${hubAnim ? 'pop' : ''}" data-act="mesaMenu" aria-label="Menú de la mesa" title="Menú"><span class="hexo"><span class="hexi">${markImg()}<span class="x">✕</span></span></span></button>`}
+    ${hubHtml()}
     <div id="mesaOv"></div>
   </div>`;
   mesaMenuOpen = false;
   requestAnimationFrame(sizeMesa);
   if(mesaPanel) renderCounters(mesaPanel.i, mesaPanel.t);
   startTurnTick();
+  resumeInvites();
+}
+function hubHtml(){
+  const cm = game.cmdTarget != null, setup = lockedMesa(), wait = seatPending().length > 0;
+  return cm ? `<button class="hub ${hubAnim || cmdAnim ? 'pop' : ''}" data-act="cmdExit" aria-label="Volver al juego" title="Volver al juego"><span class="hexo"><span class="hexi">${MICO.dagger}</span></span></button>`
+    : setup && game.phase === 'ready' ? `<button class="hub start ${wait ? 'wait' : ''} pop" data-act="mesaPlay" aria-label="Iniciar partida" title="${wait ? 'Falta que confirmen jugadores' : 'Iniciar partida'}"><span class="hexo"><span class="hexi">${MICO.play}<small>PLAY</small></span></span></button><button class="hubalt" data-act="whoStarts">Cambiar</button>`
+    : setup && !mesaMenuForce ? `<button class="hub who pop" data-act="whoStarts" aria-label="¿Quién empieza?" title="¿Quién empieza?"><span class="hexo"><span class="hexi">${MICO.dice}<small>¿QUIÉN<br>EMPIEZA?</small></span></span></button>`
+    : `<button class="hub ${hubAnim ? 'pop' : ''}" data-act="mesaMenu" aria-label="Menú de la mesa" title="Menú"><span class="hexo"><span class="hexi">${markImg()}<span class="x">✕</span></span></span></button>`;
 }
 // ¿El botón del menú (centro de la mesa) queda a la derecha de este jugador, visto desde su lado?
 function hubOnRight(i){
@@ -2926,7 +3583,7 @@ function cellHtml(i){
     <div class="prot" style="--rot:${rot}deg">
       ${art ? `<div class="pbg" style="background-image:url('${art}')"></div>` : `<div class="pbg free"><img src="${LOGO_SRC}" alt=""></div>`}
       <div class="ptl">
-        <button class="pname" data-act="pickPlayer" data-i="${i}">${m ? `<b>${esc(m.name)}</b><span>${esc(p.deck ? p.deck.name : 'Toca para elegir mazo')}</span>` : `<b>Jugador ${i + 1}</b><span>Toca para elegir jugador y mazo</span>`}</button>
+        <button class="pname ${p.conf === 'wait' ? 'wait' : ''}" data-act="pickPlayer" data-i="${i}">${m ? `<b>${esc(m.name)}</b><span>${p.conf === 'wait' ? '⏳ Esperando confirmación' : esc(p.deck ? p.deck.name : 'Toca para elegir mazo')}</span>` : `<b>Invitado ${i + 1}</b><span>${game.gid ? 'Toca para sentar a un jugador' : 'Sin grupo · juega como invitado'}</span>`}</button>
         ${tp && !dead ? `<button class="psword ${sw ? 'on' : ''}" data-act="swordToggle" data-i="${i}" title="Espada: atribuir daño o vidas a este jugador" aria-label="Espada">${sw ? `<span class="fire">${'<i></i>'.repeat(12)}</span>` : ''}${MICO.sword}</button>` : ''}
       </div>
       ${bdg.length ? `<div class="pbadges">${bdg.map(b => `<span class="bdg" title="${esc(b.name)} · ${BSHAPE[b.t - 1]}">${badgeSvg(b)}</span>`).join('')}</div>` : ''}
@@ -2992,9 +3649,10 @@ let saveT = null;
 const saveGameSoon = () => { clearTimeout(saveT); saveT = setTimeout(saveGame, 300); };
 function changeLife(i, d){
   const p = game.players[i]; if(!p) return;
-  if(lockedMesa()){ lockedToast(); return; }
+  if(blocked()) return;
   const wasDead = isDead(p), src = curSource();
   p.life += d;
+  if(p.life > (p.maxLife || 0)) p.maxLife = p.life;
   logEv('life', i, d); syncUndo();
   trackKill(i, wasDead, src);
   const cell = $('#pc' + i); if(!cell) return;
@@ -3250,7 +3908,7 @@ function cmdPreview(cell, lx, w){
   return el;
 }
 function enterCmd(i, lx, w){
-  if(lockedMesa()){ lockedToast(); return; }
+  if(blocked()) return;
   game.cmdTarget = i; mesaPanel = null; saveGameSoon();
   cmdAnim = { mode:'in', i, from: lx == null ? null : (lx > 0 ? lx - w : lx + w) };
   renderMesa();
@@ -3285,19 +3943,23 @@ function renderCounters(i, t){
 }
 
 // ---------- Menú central y hojas ----------
+const freshAt = {};
 function showSheet(html){
   const ov = $('#mesaOv'); if(!ov) return;
+  waitSeat = null; delete ov.dataset.pick;
   ov.innerHTML = `<div class="ov-back" data-act="mesaCloseOv"></div><div class="sheet">${html}</div>`;
   ov.classList.add('on'); $('#mesa').classList.add('sheet-open'); $('#mesa').classList.remove('menu-open'); mesaMenuOpen = false;
 }
 function closeOv(){
   const ov = $('#mesaOv'); if(!ov) return;
   if(mesaMenuForce && mesaMenuOpen && lockedMesa()){ mesaMenuForce = false; ov.classList.remove('on'); ov.innerHTML = ''; mesaMenuOpen = false; renderMesa(); return; }
-  ov.classList.remove('on'); ov.innerHTML = '';
-  $('#mesa').classList.remove('sheet-open', 'menu-open'); mesaMenuOpen = false;
+  ov.classList.remove('on'); ov.innerHTML = ''; delete ov.dataset.pick;
+  $('#mesa').classList.remove('sheet-open', 'menu-open'); mesaMenuOpen = false; waitSeat = null;
 }
 function openMenu(){
-  const items = [['mesaLayout','Jugadores','#3CCB7F'],[lockedMesa() ? 'whoStarts' : 'mesaRoll','¿Quién empieza?','#F59E0B'],['mesaDice','Dados','#38C6E8']];
+  const items = [];
+  if(myGroups.length){ const g = groupById(game.gid), nm = g ? g.name : 'Sin grupo'; items.push(['mesaGroup', 'Grupo: ' + (nm.length > 14 ? nm.slice(0, 13) + '…' : nm), '#2DD4BF']); }
+  items.push(['mesaLayout','Jugadores','#3CCB7F'],[lockedMesa() ? 'whoStarts' : 'mesaRoll','¿Quién empieza?','#F59E0B'],['mesaDice','Dados','#38C6E8']);
   items.push(['mesaMode', turnsOn() ? 'Modo: por turnos' : 'Modo: rápida', '#FF9F43']);
   items.push(['mesaSettings','Ajustes','#A78BFA']);
   if(!lockedMesa()) items.push(['mesaEnd','Terminar partida','#FF5C8A']);
@@ -3322,18 +3984,39 @@ function layoutSheet(){
     <div class="lgrid">${LAYOUTS.filter(l => l.n === n).map(l => `<button class="lthumb ${l.id === game.layout ? 'on' : ''}" data-act="mesaSetLayout" data-l="${l.id}" title="Orientación ${l.id}">${layoutThumb(l)}</button>`).join('')}</div>
     <div class="sheet-actions"><button class="btn ghost" data-act="mesaCloseOv">Cerrar</button></div>`);
 }
-function pickPlayerSheet(i, memberId){
+function pickPlayerSheet(i, memberId, justConfirmed){
   const p = game.players[i];
+  // Lista al día (jugadores que entraron al grupo hace poco), como mucho cada 15 s
+  if(!memberId && game.gid && Date.now() - (freshAt[game.gid] || 0) > 15000){
+    freshAt[game.gid] = Date.now();
+    freshGroup(game.gid).then(() => { const ov = $('#mesaOv'); if(ov && ov.dataset.pick === String(i)) pickPlayerSheet(i); });
+  }
   if(!memberId){
-    showSheet(`<h3>¿Quién se sienta aquí?</h3><p class="lead">Lugar ${i + 1}. Elige a un jugador (los que ya han entrado a Mana Beer) y luego su mazo.</p>
-      <div class="mgrid">${members.map(m => `<button class="mbtn ${p.member === m.id ? 'on' : ''}" data-act="pickMember" data-i="${i}" data-m="${m.id}">${avatarHtml(m, 'style="width:52px;height:52px;font-size:20px;border:2px solid #B9781A"')}${esc(m.name)}${m.uid === user.uid ? ' (tú)' : ''}<small>${memberDecks(m).length} mazo(s)</small></button>`).join('')}</div>
-      <div class="sheet-actions">${p.member ? `<button class="btn ghost danger" data-act="clearSeat" data-i="${i}">Dejar el lugar vacío</button>` : ''}<button class="btn ghost" data-act="mesaCloseOv">Cerrar</button></div>`);
+    const g = groupById(game.gid);
+    const seated = new Set(game.players.map((q, j) => j !== i ? q.member : null).filter(Boolean));
+    const list = members.filter(m => m.uid === user.uid || (g && (g.uids || []).includes(m.uid))).filter(m => !seated.has(m.id));
+    showSheet(`<h3>¿Quién se sienta aquí?</h3><p class="lead">Lugar ${i + 1}. ${g ? `Jugadores de <b>${esc(g.name)}</b>. Cada jugador debe aceptar desde su cuenta (tiene 30 segundos).` : 'Sin grupo: aquí solo puedes sentarte tú y los demás juegan como invitados. Elige un grupo en el menú para sentar a tus amigos.'}</p>
+      <div class="mgrid">${list.map(m => `<button class="mbtn ${p.member === m.id ? 'on' : ''}" data-act="pickMember" data-i="${i}" data-m="${m.id}">${avatarHtml(m, 'style="width:52px;height:52px;font-size:20px;border:2px solid #B9781A"')}${esc(m.name)}${m.uid === user.uid ? ' (tú)' : ''}<small>${memberDecks(m).length} mazo(s)</small></button>`).join('') || '<p class="hint">No hay más jugadores disponibles en este grupo.</p>'}</div>
+      <div class="sheet-actions">${p.member ? `<button class="btn ghost danger" data-act="clearSeat" data-i="${i}">Dejar como invitado</button>` : ''}<button class="btn ghost" data-act="mesaCloseOv">Cerrar</button></div>`);
+    $('#mesaOv').dataset.pick = i;
     return;
   }
   const m = memberById(memberId), ds = memberDecks(m);
-  showSheet(`<h3>${esc(m.name)}: ¿con qué mazo juega?</h3><p class="lead">La ilustración del comandante quedará de fondo en su contador.</p>
+  showSheet(`<h3>${justConfirmed ? `✓ ${esc(m.name)} aceptó · ` : `${esc(m.name)}: `}¿con qué mazo juega?</h3><p class="lead">La ilustración del comandante quedará de fondo en su contador.</p>
     <div class="dgrid">${ds.map(d => `<button class="dbtn ${p.deck && p.deck.id === d.id ? 'on' : ''}" data-act="pickDeck" data-i="${i}" data-m="${m.id}" data-d="${d.id}" style="${artOf(d.artCard, d.art) ? `background-image:url('${artOf(d.artCard, d.art)}')` : ''}"><span><b>${esc(d.name)}</b><small>${esc(d.commander || d.format)}</small></span></button>`).join('') || '<p class="hint">Este jugador aún no tiene mazos cargados.</p>'}</div>
-    <div class="sheet-actions"><button class="btn ghost" data-act="pickPlayer" data-i="${i}">Regresar</button><button class="btn" data-act="pickDeck" data-i="${i}" data-m="${m.id}" data-d="">Jugar sin mazo</button></div>`);
+    <div class="sheet-actions"><button class="btn ghost" data-act="pickOther" data-i="${i}">Cambiar jugador</button><button class="btn" data-act="pickDeck" data-i="${i}" data-m="${m.id}" data-d="">Jugar sin mazo</button></div>`);
+}
+function mesaGroupSheet(){
+  showSheet(`<h3>Grupo de la mesa</h3><p class="lead">Solo podrás sentar a jugadores del grupo elegido, y las partidas cuentan para el Ranking de ese grupo. Las estadísticas cuentan cuando hay al menos 2 jugadores registrados y confirmados.</p>
+    <div class="wlist">${myGroups.map(g => `<button class="wbtn ${game.gid === g.id ? 'on' : ''}" data-act="mesaSetGroup" data-g="${g.id}"><span class="gico2">${GICO.tower}</span><span><b>${esc(g.name)}</b><br><small style="color:var(--muted)">${(g.uids || []).length} jugador(es)</small></span></button>`).join('')}
+      <button class="wbtn ${!game.gid ? 'on' : ''}" data-act="mesaSetGroup" data-g=""><span class="gico2">${GICO.guest}</span><span><b>Sin grupo (invitados)</b><br><small style="color:var(--muted)">Partida casual: no cuenta para estadísticas</small></span></button></div>
+    <div class="sheet-actions"><button class="btn ghost" data-act="mesaCloseOv">Cerrar</button></div>`);
+}
+function setMesaGroup(gid){
+  game.gid = gid || null; store.set('lastGid_' + user.uid, game.gid);
+  const g = groupById(game.gid);
+  game.players.forEach((p, i) => { if(p.member && p.member !== user.uid && !(g && (g.uids || []).includes(p.member))){ if(p.inv) cancelInvite(i); else clearSeatState(i); } });
+  saveGame(); closeOv(); renderMesa(); mesaToast(g ? `Grupo: ${g.name}` : 'Sin grupo: todos juegan como invitados');
 }
 function mesaToast(msg){
   const el = document.createElement('div'); el.className = 'mesa-toast'; el.textContent = msg;
@@ -3406,24 +4089,40 @@ function setStarter(i){
   mesaToast(lockedMesa() ? `Empieza ${pName(i)} · hagan mulligan y toquen PLAY` : `Empieza ${pName(i)}`);
 }
 function saveMatch(w){
-  const players = game.players.map(p => snapPlayer(p.member, p.deck ? { ...p.deck, artCard: p.deck.artCard } : null));
+  const ok = i => { const p = game.players[i]; return !!(p.member && p.conf === 'ok'); };
+  const conf = game.players.map((p, i) => ok(i) ? i : -1).filter(i => i >= 0);
+  const g = groupById(game.gid);
+  const rematch = () => {
+    newGame(game.layout, game.startLife, true);
+    game.players.forEach(p => { if(p.member && p.member !== user.uid){ p.conf = null; p.inv = null; } });
+    game.lastAct = Date.now(); saveGame(); renderMesa();
+    // Revancha: cada jugador vuelve a confirmar
+    game.players.forEach((p, i) => { if(p.member && p.member !== user.uid) sendInvite(i); });
+  };
+  if(conf.length < 2){
+    rematch();
+    mesaToast('Partida terminada. No se guardó: se necesitan al menos 2 jugadores registrados y confirmados.');
+    return;
+  }
+  const players = game.players.map((p, i) => { const q = snapPlayer(ok(i) ? p.member : null, ok(i) && p.deck ? { ...p.deck, artCard: p.deck.artCard } : null); q.maxLife = p.maxLife || game.startLife; if(!ok(i)) q.memberName = `Invitado ${i + 1}`; return q; });
   const m = { date:Date.now(), minutes: Math.max(1, Math.round((Date.now() - game.started) / 60000)), startLife: game.startLife, players, winner:w, starter: game.starter == null ? -1 : game.starter, createdBy: user.uid, createdByName: user.name,
-    mode: game.mode || 'quick', format: game.format || '' };
+    mode: game.mode || 'quick', format: game.format || '', gid: game.gid || '', gname: g ? g.name : '', uids: conf.map(i => game.players[i].member) };
   if(turnsOn()){
     const st = computeStats();
     players.forEach((p, i) => { p.stats = st[i]; });
     m.rounds = game.round;
     m.events = game.events.slice(0, 2000).map(e => [e.r, e.a, e.s, e.x, e.k, e.d, e.slot || 0].join('|'));
   }
-  matchList.unshift({ ...m, id:'local-' + uid() });
-  db.collection('mb_partidas').add(m).then(ref => { matchList[0].id = ref.id; }).catch(e => { console.error(e); mesaToast('No se pudo guardar la partida en la nube.'); });
-  newGame(game.layout, game.startLife, true);
-  renderMesa();
+  const local = { ...m, id:'local-' + uid() };
+  matchList.unshift(local);
+  db.collection('mb_partidas').add(m).then(ref => { local.id = ref.id; }).catch(e => { console.error(e); mesaToast('No se pudo guardar la partida en la nube.'); });
+  updateMyBadges();
+  rematch();
   mesaToast(`Partida guardada · Gana ${players[w].memberName}. ¡Salud!`);
 }
 const mesaActions = {
   mesaMenu(){ mesaMenuOpen ? closeOv() : openMenu(); },
-  mesaCloseOv(){ closeOv(); },
+  mesaCloseOv(){ if(waitSeat != null){ const i = waitSeat; waitSeat = null; cancelInvite(i); renderCell(i); refreshHub(); } closeOv(); },
   mesaExit(){ closeOv(); view = { tab:'decks', deckId:null, statusFilter:null }; render(); },
   mesaLayout(){ pickN = null; layoutSheet(); },
   mesaLayoutN(el){ pickN = +el.dataset.n; layoutSheet(); },
@@ -3432,7 +4131,7 @@ const mesaActions = {
   whoStarts(){ whoStartsSheet(); },
   pickStarter(el){ setStarter(+el.dataset.i); },
   showMenu(){ closeOv(); mesaMenuForce = true; renderMesa(); openMenu(); },
-  mesaPlay(){ if(game.starter != null) startTurns(game.starter); },
+  mesaPlay(){ if(seatPending().length){ pendingToast(); return; } if(game.starter != null) startTurns(game.starter); },
   mesaDice(){ diceSheet(); },
   diceRoll(el){ diceRoll(el.dataset.k); },
   ctrMana(el){ const i = +el.dataset.i; ctrMana[i] = !ctrMana[i]; renderCell(i); },
@@ -3481,7 +4180,7 @@ const mesaActions = {
     const arr = Array.isArray(tgt.cmd[a]) ? tgt.cmd[a] : (tgt.cmd[a] = []);
     const cur = arr[k] || 0, nv = Math.max(0, cur + d);
     if(nv === cur) return;
-    if(lockedMesa()){ lockedToast(); return; }
+    if(blocked()) return;
     const wasDead = isDead(tgt);
     arr[k] = nv; tgt.life -= (nv - cur);
     logEv('cmd', T, -(nv - cur), a, k); syncUndo();
@@ -3506,21 +4205,25 @@ const mesaActions = {
   },
   mesaSaveMatch(el){ closeOv(); saveMatch(+el.dataset.i); },
   mesaDiscard(){ newGame(game.layout, game.startLife, true); renderMesa(); mesaToast('Partida descartada'); },
-  pickPlayer(el){ pickPlayerSheet(+el.dataset.i); },
-  pickMember(el){ pickPlayerSheet(+el.dataset.i, el.dataset.m); },
+  pickPlayer(el){ const i = +el.dataset.i, p = game.players[i]; if(p.conf === 'wait') waitingSheet(i); else if(p.member && p.conf === 'ok') pickPlayerSheet(i, p.member); else pickPlayerSheet(i); },
+  pickMember(el){ seatMember(+el.dataset.i, el.dataset.m); },
+  mesaGroup(){ mesaGroupSheet(); },
+  mesaSetGroup(el){ setMesaGroup(el.dataset.g); },
+  cancelWait(el){ const i = +el.dataset.i; waitSeat = null; cancelInvite(i); renderCell(i); refreshHub(); closeOv(); mesaToast('Solicitud cancelada.'); },
+  pickOther(el){ const i = +el.dataset.i, p = game.players[i]; waitSeat = null; if(p.member && p.member !== user.uid){ cancelInvite(i); renderCell(i); refreshHub(); } pickPlayerSheet(i); },
   pickDeck(el){
     const i = +el.dataset.i, m = memberById(el.dataset.m), d = memberDecks(m).find(x => x.id === el.dataset.d);
-    game.players[i].member = m.id;
+    if(game.players[i].member !== m.id || game.players[i].conf !== 'ok') return;
     game.players[i].deck = d ? { id:d.id, name:d.name, commander:d.commander, artCard:d.artCard, art: artOf(d.artCard, d.art) } : null;
     saveGame(); closeOv(); renderCell(i);
   },
-  clearSeat(el){ const i = +el.dataset.i; game.players[i].member = null; game.players[i].deck = null; saveGame(); closeOv(); renderCell(i); },
+  clearSeat(el){ const i = +el.dataset.i; cancelInvite(i); closeOv(); renderCell(i); refreshHub(); },
   counters(el){ renderCounters(+el.dataset.i, el.dataset.t); },
   closeCounters(el){ mesaPanel = null; const h = $('#cp' + el.dataset.i); if(h) h.innerHTML = ''; },
   cnt(el){
     const i = +el.dataset.i, p = game.players[i], d = +el.dataset.d, k = el.dataset.k;
+    if(blocked()) return;
     if(k === 'poison'){
-      if(lockedMesa()){ lockedToast(); return; }
       const wasDead = isDead(p), before = p.poison, src = curSource();
       p.poison = Math.max(0, p.poison + d);
       logEv('poison', i, p.poison - before); trackKill(i, wasDead, src); syncUndo();

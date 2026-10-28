@@ -1,7 +1,7 @@
 // Mana Beer — service worker
 // Guarda la página para abrirla rápido (y sin internet) y las imágenes de cartas de Scryfall.
 // Al subir una versión nueva de la página, cambia VERSION para que los celulares la descarguen.
-const VERSION = 'mb-2026-10-28-1';
+const VERSION = 'mb-2026-10-28-2';
 const SHELL = VERSION + '-shell';
 const IMAGES = 'mb-images';
 const MAX_IMAGES = 800;
