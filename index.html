@@ -878,6 +878,79 @@ img.avatar{object-fit:cover;padding:0}
 .hub.start.wait .hexi svg,.hub.start.wait .hexi small{color:#FF8A8A}
 .hub.start.wait{animation:hubAlarm .8s ease-in-out infinite}
 @keyframes hubAlarm{0%,100%{transform:translate(-50%,-50%) scale(1);filter:drop-shadow(0 4px 14px rgba(0,0,0,.8))}50%{transform:translate(-50%,-50%) scale(1.1);filter:drop-shadow(0 0 22px rgba(255,50,50,.95))}}
+
+/* ===== v11 · administración y guía ===== */
+.sa-chip{display:inline-block;background:var(--gold-text);color:var(--honey-ink);font-size:10px;font-weight:800;letter-spacing:.06em;padding:1px 7px;border-radius:999px;vertical-align:middle;text-transform:uppercase}
+.adm-list{display:flex;flex-direction:column;gap:10px}
+.adm-g{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.adm-g.open{border-color:#6B4E22}
+.adm-head{display:grid;grid-template-columns:40px minmax(0,1fr) auto auto;gap:14px;align-items:center;padding:12px 14px}
+.adm-t b{display:block;font-size:16px}.adm-t small{color:var(--muted);font-size:12px}
+.adm-stats{display:flex;gap:16px}
+.adm-stats span{display:flex;flex-direction:column;align-items:flex-end;font-size:11px;color:var(--muted);white-space:nowrap}
+.adm-stats b{font-size:15px;color:var(--foam)}
+.adm-acts{display:flex;gap:6px}
+.adm-acts svg{width:15px;height:15px}
+.adm-body{border-top:1px solid var(--line);padding:6px 14px 10px;background:rgba(0,0,0,.15)}
+.adm-mem{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.adm-mem:last-child{border-bottom:none}
+.adm-bdg{display:flex;gap:3px;align-items:center}
+.adm-bdg .bdg{width:26px;height:26px}
+.adm-bdg small{color:var(--muted);font-size:11px;margin-left:6px;white-space:nowrap}
+.adm-nog{display:flex;flex-wrap:wrap;gap:6px}
+.adm-chip{display:inline-flex;align-items:center;gap:6px;background:var(--surface-3);border-radius:999px;padding:3px 10px 3px 3px;font-size:13px}
+@media (max-width:800px){
+  .adm-head{grid-template-columns:40px minmax(0,1fr)}
+  .adm-stats{grid-column:1 / -1;justify-content:space-between}
+  .adm-stats span{align-items:flex-start}
+  .adm-acts{grid-column:1 / -1}
+  .adm-acts .btn{flex:1;justify-content:center}
+  .adm-mem{grid-template-columns:36px minmax(0,1fr)}
+  .adm-bdg{grid-column:2}
+}
+/* Guía */
+.gd-idx{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 10px;margin-bottom:8px;position:sticky;top:64px;z-index:5;background:linear-gradient(180deg,var(--bg,#120d08) 70%,transparent)}
+.gd-idx button{flex:none;background:var(--surface-3);border:1px solid var(--line);color:var(--foam);border-radius:999px;padding:7px 14px;font-size:13px;cursor:pointer;white-space:nowrap}
+.gd-idx button:hover{border-color:var(--honey)}
+.gd-wrap{display:flex;flex-direction:column;gap:16px;max-width:1000px;margin:0 auto}
+.gd-idx{justify-content:center}
+.gd-sec{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.gd-h{display:flex;gap:14px;align-items:flex-start;margin-bottom:12px}
+.gd-ic{width:46px;height:46px;flex:none;border-radius:12px;background:rgba(242,181,46,.12);display:flex;align-items:center;justify-content:center;color:var(--honey-2)}
+.gd-ic svg{width:26px;height:26px}
+.gd-h h2{margin:0;font-family:var(--brand);font-size:20px;letter-spacing:.03em;background:var(--gold-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+.gd-h p{margin:3px 0 0;color:var(--muted);line-height:1.45}
+.gd-sub{font-family:var(--brand);font-size:14px;color:var(--honey-2);letter-spacing:.05em;margin:16px 0 8px}
+.gd-steps{margin:0;padding:0;list-style:none;counter-reset:st;display:flex;flex-direction:column;gap:8px}
+.gd-steps li{counter-increment:st;position:relative;padding:10px 12px 10px 46px;background:var(--surface-3);border-radius:10px;line-height:1.45}
+.gd-steps li::before{content:counter(st);position:absolute;left:12px;top:9px;width:24px;height:24px;border-radius:50%;background:var(--gold-text);color:var(--honey-ink);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+.gd-k{display:inline-flex;align-items:center;gap:4px;background:rgba(242,181,46,.14);border:1px solid rgba(242,181,46,.4);color:var(--honey-2);border-radius:6px;padding:0 6px;font-size:13px;font-weight:600;white-space:nowrap}
+.gd-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.gd-tile{background:var(--surface-3);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px}
+.gd-ti{width:38px;height:38px;border-radius:10px;background:rgba(242,181,46,.12);color:var(--honey-2);display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+.gd-ti svg{width:22px;height:22px}
+.gd-big{font-size:16px;letter-spacing:.02em}
+.gd-tile b{font-size:15px}.gd-tile small{color:var(--muted);line-height:1.45;font-size:13px}
+.gd-legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.gd-legend>div{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;background:var(--surface-3);border-radius:12px;padding:14px 10px}
+.gd-legend b{font-size:14px}.gd-legend small{color:var(--muted);font-size:12.5px;line-height:1.4}
+.gd-legend em{color:var(--honey-2);font-style:normal;font-weight:600}
+.gd-note{margin:12px 0 0;padding:10px 12px;border-left:3px solid var(--honey);background:rgba(242,181,46,.07);border-radius:0 10px 10px 0;color:var(--foam);font-size:13.5px;line-height:1.45}
+.gd-modes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gd-modes>div{background:var(--surface-3);border-radius:12px;padding:12px;border-top:3px solid var(--honey)}
+.gd-modes>div:last-child{border-top-color:#E0A11F}
+.gd-modes b{display:block;margin-bottom:3px}.gd-modes small b{display:inline;margin:0;color:var(--honey-2)}.gd-modes small{color:var(--muted);line-height:1.45;font-size:13px}
+@media (max-width:640px){.gd-modes{grid-template-columns:1fr}}
+.gd-shapes{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:12px}
+.gd-shape{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
+.gd-shape .bdg{width:52px;height:52px}
+.gd-shape small{font-size:11px;color:var(--muted)}
+@media (max-width:640px){.gd-shapes{grid-template-columns:repeat(4,1fr)}}
+.gd-list{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;line-height:1.45}
+.gd-faq details{background:var(--surface-3);border-radius:10px;padding:10px 12px;margin-bottom:8px}
+.gd-faq summary{cursor:pointer;font-weight:600}
+.gd-faq p{margin:8px 0 0;color:var(--muted);line-height:1.45}
+.rk-lbl{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-right:-2px}
 </style>
 </head>
 <body>
@@ -988,6 +1061,8 @@ function saveCat(){ const real = {}; Object.keys(cat).forEach(k => { if(!cat[k].
 
 // ---------- Íconos de interfaz ----------
 const I = {
+  guide:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M9 8h7M9 11.5h5"/></svg>',
+  shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8 3v6c0 5-3.6 8.6-8 10-4.4-1.4-8-5-8-10v-6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>',
   search:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>',
   plus:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
   upload:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>',
@@ -1562,7 +1637,7 @@ function render(){
   keepAwake(false);
   const tabsDef = [['decks','Mis mazos',I.nDecks],['inv','Mi inventario',I.nInv],['mesa','La Mesa',I.nMesa],['rank','Ranking',I.nRank],['more','Más',I.nMore]];
   const shortLbl = { decks:'Mazos', inv:'Inventario', mesa:'La Mesa', rank:'Ranking', more:'Más' };
-  const isOn = t => view.tab === t || (t === 'more' && view.tab === 'wish');
+  const isOn = t => view.tab === t || (t === 'more' && ['wish', 'guide', 'admin'].includes(view.tab));
   const tabAct = t => t === 'more' ? 'data-act="moreMenu"' : `data-act="goTab" data-tab="${t}"`;
   $('#app').innerHTML = `
   <header class="topbar"><div class="topbar-in">
@@ -1580,6 +1655,8 @@ function render(){
   if(view.tab === 'inv') renderInv();
   if(view.tab === 'wish') renderWish();
   if(view.tab === 'rank') renderRanking();
+  if(view.tab === 'guide') renderGuide();
+  if(view.tab === 'admin'){ if(user.admin) renderAdmin(); else { view.tab = 'decks'; renderDecks(); } }
 }
 
 // Nombre para el saludo: en la versión final viene de la cuenta de Google (displayName)
@@ -1593,7 +1670,7 @@ function renderDecks(){
   <div class="page-h band" style="${bandStyle(0)}">
     <div><div class="kicker">La taberna</div><h1>Mis mazos</h1>
       <p>Toca un mazo para ver sus cartas y asignar copias de tu inventario.</p></div>
-    <div class="greet">Bienvenido, ${esc(userName())}, eres el mejor campeón. ¡Te mando besos!</div>
+    <div class="greet">Bienvenido, ${esc(userName())}. ¿Qué tienes planeado para hoy?</div>
     <button class="btn primary" data-act="newDeck">${I.plus}Nuevo mazo</button>
   </div>
   <div class="toolbar">
@@ -2029,7 +2106,9 @@ function moreMenu(){
     <h2>Más</h2>
     <div class="more-list">
       <button class="more-it" data-act="goTab" data-tab="wish">${I.nWish}<span><b>Wishlist</b><small>Lo que te falta para tus mazos y lo que quieres conseguir</small></span></button>
-      <button class="more-it" data-act="profileModal">${avatarHtml(user)}<span><b>Mi perfil</b><small>Nombre y foto que ven los demás</small></span></button>
+      <button class="more-it" data-act="goTab" data-tab="guide">${I.guide}<span><b>Guía de uso</b><small>Cómo funciona Mana Beer, paso a paso</small></span></button>
+      <button class="more-it" data-act="profileModal">${avatarHtml(user)}<span><b>Mi perfil</b><small>Nombre y foto que ven los demás${user.admin ? ' · <span class="sa-chip">Superadmin</span>' : ''}</small></span></button>
+      ${user.admin ? `<button class="more-it" data-act="goTab" data-tab="admin">${I.shield}<span><b>Administración</b><small>Todos los grupos, sus jugadores y partidas</small></span></button>` : ''}
       ${!isStandalone() ? `<button class="more-it" data-act="${installAvailable() ? 'installApp' : 'profileModal'}">${I.install}<span><b>Instalar la app</b><small>Tenla en tu pantalla de inicio</small></span></button>` : ''}
       <button class="more-it danger" data-act="logout">${I.logout}<span><b>Cerrar sesión</b><small>${esc(user.email)}</small></span></button>
     </div>
@@ -2487,6 +2566,10 @@ const actions = {
   gLeave(el){ leaveGroup(el.dataset.g); },
   gDelete(el){ deleteGroup(el.dataset.g); },
   migrateMB(){ migrateModal(); },
+  adminReload(){ renderAdmin(true); },
+  adminToggle(el){ adminOpen[el.dataset.g] = !adminOpen[el.dataset.g]; renderAdmin(); },
+  adminDelete(el){ adminDeleteGroup(el.dataset.g); },
+  guideGo(el){ const t = $('#gd-' + el.dataset.s); if(t) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 80, behavior:'smooth' }); },
   noop(){}
 };
 document.addEventListener('click', e => {
@@ -2590,7 +2673,7 @@ async function profileModal(){
   const draw = () => {
     const opts = AVATAR_CARDS.map(n => cat[key(n)]).filter(e => e && e.art && !e.demo && !e.missing);
     const preview = { name: ($('#pfName') ? $('#pfName').value : user.name) || user.name, photo: user.photo, avatar: pick };
-    $('#pfHead').innerHTML = `${avatarHtml(preview)}<div><b style="font-size:18px">${esc(preview.name)}</b><div class="hint" style="margin-top:2px">${esc(user.email)}</div></div>`;
+    $('#pfHead').innerHTML = `${avatarHtml(preview)}<div><b style="font-size:18px">${esc(preview.name)}</b>${user.admin ? ' <span class="sa-chip">Superadmin</span>' : ''}<div class="hint" style="margin-top:2px">${esc(user.email)}</div></div>`;
     $('#pfGrid').innerHTML = (user.photo ? `<button class="av-opt ${!pick ? 'on' : ''}" data-pf="" style="background-image:url('${esc(user.photo)}')" title="Foto de Google"><span>Google</span></button>` : '')
       + (opts.length ? opts.map(e => `<button class="av-opt ${pick && pick.card === e.name ? 'on' : ''}" data-pf="${esc(e.name)}" style="background-image:url('${e.art}')" title="${esc(e.name)}"><span>${esc(e.name.split(',')[0])}</span></button>`).join('')
          : `<p class="hint" style="grid-column:1/-1">${scryOffline ? 'Sin conexión con Scryfall: las ilustraciones aparecerán cuando vuelva la conexión.' : 'Cargando ilustraciones…'}</p>`);
@@ -3073,6 +3156,175 @@ async function updateMyBadges(silent){
   if(!silent && nuevos.length) toast(`¡Nueva insignia: ${nuevos.map(id => badgeById(id).name).join(', ')}!`);
 }
 
+
+// =========================================================
+//   ADMINISTRACIÓN (solo superadmin): todos los grupos
+// =========================================================
+let adminData = null, adminQ = '', adminOpen = {};
+async function loadAdminData(){
+  const [gs, us, ms] = await Promise.all([db.collection('mb_grupos').get(), db.collection('mb_users').get(), db.collection('mb_partidas').get()]);
+  const users = {};
+  us.docs.forEach(d => { const x = d.data() || {}; users[d.id] = { id:d.id, uid:d.id, name: x.displayName || x.name || 'Jugador', photo: x.photo || '', avatar: x.avatar || null, badges: x.badges || [], lastLogin: x.lastLogin || 0 }; });
+  const matches = ms.docs.map(d => ({ ...d.data(), id:d.id }));
+  const groups = gs.docs.map(d => {
+    const g = { ...d.data(), id:d.id };
+    const gm = matches.filter(m => m.gid === g.id);
+    g.matchCount = gm.length;
+    g.lastMatch = gm.reduce((a, m) => Math.max(a, m.date || 0), 0);
+    g.monthCount = gm.filter(m => m.date > Date.now() - 30 * 864e5).length;
+    return g;
+  }).sort((a, b) => (b.lastMatch || 0) - (a.lastMatch || 0) || a.name.localeCompare(b.name));
+  const inGroup = new Set(groups.flatMap(g => g.uids || []));
+  adminData = { users, groups, matches, noGroup: Object.values(users).filter(u => !inGroup.has(u.id)) };
+}
+async function renderAdmin(force){
+  if(!adminData || force){
+    $('#main').innerHTML = `<div class="empty"><b>Cargando grupos…</b>Leyendo todos los grupos, jugadores y partidas.</div>`;
+    try{ await loadAdminData(); }catch(e){ console.error(e); $('#main').innerHTML = `<div class="empty"><b>No se pudo cargar</b>Revisa que las reglas de Firestore estén publicadas. ${esc(e.message || e.code || '')}</div>`; return; }
+    if(view.tab !== 'admin') return;
+  }
+  const A = adminData, q = gKey(adminQ);
+  const fmtD = t => t ? new Date(t).toLocaleDateString('es-MX', { day:'numeric', month:'short', year:'numeric' }) : 'Sin partidas';
+  const list = A.groups.filter(g => !q || g.nameKey.includes(q));
+  const memberRow = (g, u) => {
+    const p = A.users[u] || { id:u, name:'Jugador (sin perfil)', badges:[] };
+    const role = u === g.owner ? 'Dueño' : (g.admins || []).includes(u) ? 'Administrador' : 'Jugador';
+    const bs = topBadges(p, 6);
+    return `<div class="adm-mem">${avatarHtml(p, 'style="width:36px;height:36px;font-size:15px"')}<div class="gname"><b>${esc(p.name)}</b><small>${role}${p.lastLogin ? ' · entró ' + fmtD(p.lastLogin) : ''}</small></div>
+      <div class="adm-bdg">${bs.map(b => `<span class="bdg" title="${esc(b.name)}">${badgeSvg(b)}</span>`).join('')}<small>${(p.badges || []).length} logro(s)</small></div></div>`;
+  };
+  $('#main').innerHTML = `
+  <div class="page-h band" style="${bandStyle(2)}">
+    <div><div class="kicker">Superadmin</div><h1>Administración</h1><p>Todos los grupos creados en Mana Beer, sus jugadores y su actividad.</p></div>
+    <button class="btn" data-act="adminReload">Actualizar</button>
+  </div>
+  <div class="metrics">
+    <div class="metric"><small>Grupos</small><b>${A.groups.length}</b><div class="sub">${A.groups.filter(g => g.open).length} abiertos · ${A.groups.filter(g => !g.open).length} cerrados</div></div>
+    <div class="metric"><small>Jugadores registrados</small><b>${Object.keys(A.users).length}</b><div class="sub">${A.noGroup.length} sin grupo</div></div>
+    <div class="metric"><small>Partidas guardadas</small><b>${A.matches.length}</b><div class="sub">${A.matches.filter(m => m.date > Date.now() - 30 * 864e5).length} en los últimos 30 días</div></div>
+    <div class="metric"><small>Grupo más activo</small><b style="font-size:17px">${A.groups.slice().sort((a, b) => b.matchCount - a.matchCount)[0] ? esc(A.groups.slice().sort((a, b) => b.matchCount - a.matchCount)[0].name) : '—'}</b><div class="sub">por partidas jugadas</div></div>
+  </div>
+  <div class="toolbar"><div class="search">${I.search}<input class="input" id="admQ" placeholder="Buscar grupo por nombre" value="${esc(adminQ)}"></div></div>
+  <div class="adm-list">${list.map(g => {
+    const owner = A.users[g.owner], admins = (g.admins || []).filter(u => u !== g.owner).map(u => A.users[u]).filter(Boolean), open = !!adminOpen[g.id];
+    return `<div class="adm-g ${open ? 'open' : ''}">
+      <div class="adm-head">
+        <div class="gico">${g.open ? GICO.open : GICO.lock}</div>
+        <div class="adm-t"><b>${esc(g.name)}</b><small>${g.open ? 'Abierto' : 'Cerrado'} · Dueño: ${esc(owner ? owner.name : '—')}${admins.length ? ' · Admins: ' + admins.map(a => esc(a.name)).join(', ') : ''}</small></div>
+        <div class="adm-stats"><span><b>${(g.uids || []).length}/${g.limit}</b>jugadores</span><span><b>${g.matchCount}</b>partidas</span><span><b>${g.lastMatch ? fmtD(g.lastMatch) : '—'}</b>última partida</span></div>
+        <div class="adm-acts"><button class="btn sm" data-act="adminToggle" data-g="${g.id}">${open ? 'Ocultar' : 'Ver jugadores'}</button><button class="btn sm ghost danger" data-act="adminDelete" data-g="${g.id}">${I.trash}Eliminar</button></div>
+      </div>
+      ${open ? `<div class="adm-body">${(g.uids || []).map(u => memberRow(g, u)).join('') || '<p class="hint">Sin jugadores.</p>'}</div>` : ''}
+    </div>`; }).join('') || '<div class="empty"><b>No hay grupos con ese nombre</b></div>'}</div>
+  ${A.noGroup.length ? `<div class="rsec" style="margin-top:18px"><h3><span>Jugadores sin grupo</span><small class="hint" style="font-family:var(--font);letter-spacing:0">${A.noGroup.length}</small></h3>
+    <div class="adm-nog">${A.noGroup.map(p => `<span class="adm-chip">${avatarHtml(p, 'style="width:24px;height:24px;font-size:11px"')}${esc(p.name)}</span>`).join('')}</div></div>` : ''}`;
+  const inp = $('#admQ');
+  inp.addEventListener('input', e => { adminQ = e.target.value; const pos = e.target.selectionStart; renderAdmin(); const n = $('#admQ'); n.focus(); n.setSelectionRange(pos, pos); });
+}
+function adminDeleteGroup(gid){
+  const g = adminData.groups.find(x => x.id === gid); if(!g) return;
+  confirmModal('¿Eliminar el grupo?', `Se elimina <b>${esc(g.name)}</b> para sus ${(g.uids || []).length} jugador(es). Sus ${g.matchCount} partida(s) se conservan en la trayectoria de cada jugador. No se puede deshacer.`, 'Sí, eliminar', async () => {
+    const ref = db.collection('mb_grupos').doc(gid);
+    await ref.collection('privado').doc('clave').delete().catch(() => {});
+    await db.collection('mb_nombres').doc(g.nameKey).delete().catch(() => {});
+    await ref.delete();
+    adminData.groups = adminData.groups.filter(x => x.id !== gid);
+    if(groupById(gid)){ myGroups = myGroups.filter(x => x.id !== gid); if(game && game.gid === gid){ game.gid = null; saveGame(); } }
+    toast(`Grupo «${g.name}» eliminado.`);
+    setTimeout(() => renderAdmin(true), 60);
+  });
+}
+
+// =========================================================
+//   GUÍA DE USO
+// =========================================================
+function renderGuide(){
+  const sec = (id, icon, title, lead, body) => `<section class="gd-sec" id="gd-${id}"><div class="gd-h"><span class="gd-ic">${icon}</span><div><h2>${title}</h2><p>${lead}</p></div></div>${body}</section>`;
+  const steps = arr => `<ol class="gd-steps">${arr.map(x => `<li>${x}</li>`).join('')}</ol>`;
+  const tiles = arr => `<div class="gd-tiles">${arr.map(([ic, t, d]) => `<div class="gd-tile"><span class="gd-ti">${ic}</span><b>${t}</b><small>${d}</small></div>`).join('')}</div>`;
+  const chip = (t, ic) => `<span class="gd-k">${ic || ''}${t}</span>`;
+  const shapes = BSHAPE.map((n, k) => `<div class="gd-shape"><span class="bdg">${badgeSvg({ t:k + 1, c:[0,1,2,3,4,5,6][k], i:['die','crown','swords','tomb','chalice','cards','portal'][k], name:n })}</span><small>${k + 1} · ${n}</small></div>`).join('');
+  const IDX = [['start','Empezar'],['decks','Mis mazos'],['inv','Inventario'],['marks','Escudos de cartas'],['wish','Wishlist'],['mesa','La Mesa'],['groups','Grupos y Ranking'],['badges','Insignias y logros'],['faq','Preguntas']];
+  $('#main').innerHTML = `
+  <div class="page-h band" style="${bandStyle(1)}">
+    <div><div class="kicker">Ayuda</div><h1>Guía de uso</h1><p>Todo lo que necesitas para sacarle jugo a Mana Beer, en pocos minutos.</p></div>
+  </div>
+  <nav class="gd-idx">${IDX.map(([id, t]) => `<button data-act="guideGo" data-s="${id}">${t}</button>`).join('')}</nav>
+  <div class="gd-wrap">
+  ${sec('start', I.users, 'Empezar', 'Entras con tu cuenta de Google y listo: tus mazos, inventario y partidas quedan guardados en tu cuenta.', tiles([
+    [I.users, 'Mi perfil', 'En «Más → Mi perfil» elige el nombre y la ilustración que verán los demás.'],
+    [I.install, 'Instala la app', 'Android/PC: botón «Instalar». iPhone/iPad: en Safari toca Compartir → «Agregar a pantalla de inicio».'],
+    [I.shield, 'Tu información es tuya', 'Nadie ve tu inventario ni tu wishlist. Los demás solo ven tu nombre, tus mazos e insignias.']
+  ]))}
+  ${sec('decks', I.nDecks, 'Mis mazos', 'Tu colección de mazos, con la ilustración del comandante.', steps([
+    `Toca ${chip('+ Nuevo mazo', '')}, ponle nombre y formato, y pega la lista de cartas (o la liga de Moxfield).`,
+    'Filtra por color, formato o nombre. El orden «Más cartas faltantes» te dice qué mazo está más incompleto.',
+    'Toca un mazo para ver sus cartas. Toca una carta para ver su texto, legalidad, precio y popularidad en EDHREC; usa las flechas para pasar a la siguiente.'
+  ]))}
+  ${sec('inv', I.nInv, 'Mi inventario', 'Las cartas que tienes físicamente. De aquí salen las copias que asignas a tus mazos.', steps([
+    'Agrega cartas una por una con el buscador, o sube un archivo de Excel con muchas a la vez.',
+    'Arriba verás cuántas tienes, cuántas están asignadas a mazos, cuántas libres, cuántas te faltan y el valor aproximado. Toca cualquiera de esos números para filtrar la lista.',
+    'Cambia la cantidad de una carta directamente en su renglón.'
+  ]))}
+  ${sec('marks', emb('blue', 'cards', 26), 'Escudos de las cartas', 'Dentro de cada mazo, cada carta lleva un escudo que dice si la tienes. El color cambia solo, según tu inventario.', `
+    <div class="gd-legend">
+      <div>${emb('blue', 'cards', 40)}<b>Disponible</b><small>Tienes copias libres. <em>Tócalo</em> para asignarle una a este mazo.</small></div>
+      <div>${emb('green', 'check', 40)}<b>Asignada</b><small>Ya tiene su copia en este mazo. <em>Tócalo</em> para liberarla.</small></div>
+      <div>${emb('amber', 'lock', 40)}<b>Sin disponibilidad</b><small>La tienes, pero todas tus copias están en otros mazos.</small></div>
+      <div>${emb('gray', 'empty', 40)}<b>No la tengo</b><small>No está en tu inventario.</small></div>
+      <div>${emb('purple', 'star', 40)}<b>En wishlist</b><small>La estrella manda o quita la carta de tu wishlist.</small></div>
+    </div>
+    <p class="gd-note">Tip: en un mazo, «Faltantes a wishlist» manda de un jalón todo lo que no tienes.</p>`)}
+  ${sec('wish', I.nWish, 'Wishlist', 'Lo que te falta y lo que quieres conseguir.', steps([
+    'Se llena con la estrella de cada carta o con «Faltantes a wishlist» desde un mazo.',
+    'Descárgala en Excel para llevarla a la tienda.'
+  ]))}
+  ${sec('mesa', I.nMesa, 'La Mesa', 'El contador de vidas para jugar en persona. Cada jugador ve su contador de frente.', `
+    <h3 class="gd-sub">Antes de jugar</h3>
+    ${steps([
+      `Abre el ${chip('menú del centro')} y elige ${chip('Grupo')}, ${chip('Jugadores')} (cuántos y cómo se sientan) y ${chip('Ajustes')} (formato y vidas).`,
+      'Toca el nombre de cada lugar para sentar a un jugador de tu grupo. Le llega un aviso a su Mana Beer y tiene <b>30 segundos</b> para aceptar.',
+      'Cuando acepta, eliges con qué mazo juega. Si no acepta, ese lugar juega como invitado.'
+    ])}
+    <h3 class="gd-sub">Dos modos de partida</h3>
+    <div class="gd-modes">
+      <div><b>Partida rápida</b><small>Solo contadores. Ideal para jugar casual. Cuenta victorias para el Ranking.</small></div>
+      <div><b>Por turnos</b><small>«¿Quién empieza?» → hagan mulligan → <b>PLAY</b>. Se registra quién hizo daño a quién y desbloquea títulos e insignias de combate. PLAY se pone rojo si falta que alguien confirme.</small></div>
+    </div>
+    <h3 class="gd-sub">Cómo se usa</h3>
+    ${tiles([
+      ['<b class="gd-big">− +</b>', 'Toca', 'Resta o suma 1 vida.'],
+      ['<b class="gd-big">±10</b>', 'Mantén presionado', 'Resta o suma de 10 en 10.'],
+      ['<b class="gd-big">⇆</b>', 'Desliza a los lados', 'Abre daño de comandante y tus contadores: veneno, impuesto, energía, experiencia y maná.'],
+      [MICO.sword, 'Espada', 'Si haces daño o ganas vidas fuera de tu turno, toca tu espada (se enciende en fuego) y luego mueve los contadores.'],
+      [MICO.undo, 'Deshacer', 'El botón ↺ junto a «Pasar turno» deshace el último movimiento.'],
+      [MICO.dice, 'Dados', 'Menú → Dados: quién empieza, jugador al azar, d20, d6 o moneda.']
+    ])}
+    <p class="gd-note">La partida se guarda al terminar (o desde Menú → Terminar partida) cuando hay al menos <b>2 jugadores registrados y confirmados</b>.</p>`)}
+  ${sec('groups', GICO.tower, 'Grupos y Ranking', 'Un grupo es la comunidad de una tienda o de tus amigos.', tiles([
+    [I.plus, 'Crear grupo', 'En Ranking. Elige nombre, cuántos jugadores (hasta 50) y si es abierto o cerrado con contraseña.'],
+    [I.search, 'Buscar y entrar', 'Busca el grupo por nombre y entra. Si es cerrado, pide la contraseña.'],
+    [GICO.gear, 'Administrar', 'El engrane del grupo: editar, nombrar administradores, sacar jugadores o salirte.'],
+    [I.nRank, 'Ranking', 'En «Mis grupos» eliges un grupo para ver quién es el más fuerte ahí, o «Mi trayectoria» para tus estadísticas de todos tus grupos.']
+  ]))}
+  ${sec('badges', badgeSvg({ t:4, c:2, i:'crown', name:'Insignias' }), 'Insignias y logros', 'Se ganan jugando. Las primeras son fáciles; cada vez cuestan más.', `
+    <div class="gd-shapes">${shapes}</div>
+    <ul class="gd-list">
+      <li><b>La forma</b> dice qué tan difícil fue: de la Ficha (fácil) a la Leyenda.</li>
+      <li><b>El color</b> distingue cada insignia dentro de su forma.</li>
+      <li>Se ven en tu contador de La Mesa (tus 5 mejores), en el Ranking del grupo y en «Mi trayectoria», donde también ves los logros que te faltan y cuánto llevas.</li>
+      <li>Los logros de <b>matar, hacer daño o resistir</b> solo cuentan en partidas <b>por turnos</b>.</li>
+    </ul>`)}
+  ${sec('faq', I.warn, 'Preguntas frecuentes', 'Lo que más nos preguntan.', `<div class="gd-faq">
+    <details><summary>No me aparece un amigo para sentarlo en La Mesa</summary><p>Tiene que estar en el grupo que elegiste en el menú de La Mesa. Pídele que busque el grupo y entre.</p></details>
+    <details><summary>A mi amigo no le llegó la invitación</summary><p>Debe tener Mana Beer abierta en su celular con su cuenta. Si se vencen los 30 segundos, vuelve a tocar su lugar.</p></details>
+    <details><summary>¿Por qué no se guardó la partida?</summary><p>Solo se guardan partidas con al menos 2 jugadores registrados que aceptaron. Las partidas con invitados son casuales.</p></details>
+    <details><summary>Me equivoqué al cambiar una vida</summary><p>Toca ↺ (deshacer). En partida por turnos, también puedes corregir antes de confirmar el final.</p></details>
+    <details><summary>¿Pierdo mis datos si cambio de celular?</summary><p>No. Todo está en tu cuenta: entra con el mismo Google y ahí estará.</p></details>
+  </div>`)}
+  </div>`;
+}
+
 // =========================================================
 //   RANKING
 // =========================================================
@@ -3090,7 +3342,8 @@ function rankHead(sc, g, sub){
   return `<div class="page-h band" style="${bandStyle(3)}">
     <div><div class="kicker">El salón de la fama</div><h1>Ranking</h1><p>${sub}</p></div>
     <div class="rk-actions">
-      <select class="input" id="rkScope" aria-label="Grupos">${myGroups.map(x => `<option value="${x.id}" ${x.id === sc ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}<option value="me" ${sc === 'me' ? 'selected' : ''}>★ Mi trayectoria</option></select>
+      <label class="rk-lbl" for="rkScope">Mis grupos</label>
+      <select class="input" id="rkScope" aria-label="Mis grupos">${myGroups.map(x => `<option value="${x.id}" ${x.id === sc ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}<option value="me" ${sc === 'me' ? 'selected' : ''}>★ Mi trayectoria</option></select>
       ${g ? `<button class="btn icon" data-act="groupAdmin" data-g="${g.id}" title="Grupo: jugadores y ajustes" aria-label="Administrar grupo">${GICO.gear}</button>` : ''}
       <button class="btn" data-act="searchGroup">${I.search}Buscar grupo</button>
       <button class="btn primary" data-act="createGroup">${I.plus}Crear grupo</button>
