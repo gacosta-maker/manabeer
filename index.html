@@ -951,6 +951,65 @@ img.avatar{object-fit:cover;padding:0}
 .gd-faq summary{cursor:pointer;font-weight:600}
 .gd-faq p{margin:8px 0 0;color:var(--muted);line-height:1.45}
 .rk-lbl{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-right:-2px}
+
+/* ===== v12 · agregar cartas al mazo ===== */
+.add-empty{background:var(--surface);border:1px dashed #6B4E22;border-radius:16px;padding:22px;text-align:center}
+.add-empty>b{font-family:var(--brand);font-size:20px;color:var(--honey-2)}
+.add-empty p{color:var(--muted);margin:6px 0 16px}
+.add-ways{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:720px;margin:0 auto}
+.add-ways button{display:flex;flex-direction:column;align-items:center;gap:4px;background:var(--surface-3);border:1px solid var(--line);border-radius:12px;padding:16px 10px;color:var(--foam);cursor:pointer}
+.add-ways button:hover{border-color:var(--honey)}
+.add-ways svg{width:28px;height:28px;color:var(--honey-2)}
+.add-ways small{color:var(--muted);font-size:12px}
+@media (max-width:640px){.add-ways{grid-template-columns:1fr}}
+.ac-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--bg);padding:4px;border-radius:12px;margin-bottom:12px}
+.ac-tabs button{display:flex;align-items:center;justify-content:center;gap:6px;background:none;border:none;color:var(--muted);padding:9px 6px;border-radius:9px;cursor:pointer;font-weight:600;font-size:13px}
+.ac-tabs button svg{width:16px;height:16px}
+.ac-tabs button.on{background:var(--surface-3);color:var(--honey-2);box-shadow:inset 0 0 0 1px #6B4E22}
+.ac-pane{display:none}.ac-pane.on{display:block}
+.ac-row{display:flex;gap:8px;align-items:center;margin-top:8px}
+.ac-row #adName{flex:1}.ac-row #adQty{width:76px}
+.ac-queue{max-height:220px;overflow:auto;border:1px solid var(--line);border-radius:10px;padding:4px 8px;background:var(--bg)}
+.aq{display:grid;grid-template-columns:30px 26px 30px 1fr 28px;align-items:center;gap:4px;padding:5px 0;border-bottom:1px solid var(--line)}
+.aq:last-child{border-bottom:none}
+.aq b{text-align:center}.aq small{color:var(--muted)}
+.aq-b,.aq-x{width:28px;height:28px;border-radius:8px;border:1px solid var(--line);background:var(--surface-3);color:var(--foam);cursor:pointer}
+.aq-x{color:var(--danger)}
+
+/* ===== v12 · contador en juego: sin nombres, TURNO circular ===== */
+.rround{top:calc(50% - var(--fs) * .62 - 30px);bottom:auto;left:50%;transform:translateX(-50%);font-size:13px;padding:4px 14px}
+.pbl.pbr{left:auto;right:max(14px,6%);bottom:max(14px,8%);flex-direction:row;gap:10px;max-width:none}
+.pcell.flip .pbl.pbr{right:auto;left:max(14px,6%);flex-direction:row-reverse}
+.turnbtn.round{width:78px;height:78px;padding:0;border-radius:50%;justify-content:center;font-size:15px;letter-spacing:.1em;font-weight:900}
+.turnbtn.round::before{width:180%}
+@container prot (max-height:220px){.pbl .turnbtn.round{width:64px;height:64px;padding:0;font-size:13px}}
+@container prot (min-height:380px){.pbl .turnbtn.round{width:98px;height:98px;padding:0;font-size:19px}}
+/* Los contadores activos pasan a la esquina de la espada (abajo), porque TURNO ocupa la contraria */
+.pchips{right:auto;left:max(14px,6%);justify-content:flex-start}
+.pcell.flip .pchips{left:auto;right:max(14px,6%);justify-content:flex-end}
+
+/* ===== v13 · reemplazar lista y PIN ===== */
+.ac-mode{background:var(--surface-3);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:10px}
+.ac-mode>span{font-size:13px;font-weight:600}
+.ac-seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:8px 0 4px}
+.ac-seg button{background:var(--bg);border:1px solid var(--line);color:var(--muted);border-radius:9px;padding:8px;cursor:pointer;font-weight:600;font-size:13px}
+.ac-seg button.on{color:var(--honey-2);border-color:var(--honey);background:rgba(242,181,46,.1)}
+.ac-seg button[data-m=replace].on{color:#FF9A8A;border-color:#E05A4A;background:rgba(224,90,74,.1)}
+.ac-mode .hint{margin:4px 0 0}
+.btn.primary.danger{background:linear-gradient(180deg,#FF8A7A,#C0392B);color:#fff}
+.pin-card{margin-top:14px;background:var(--surface-3);border:1px solid var(--line);border-radius:12px;padding:12px}
+.pin-card b{display:flex;gap:8px;align-items:center}.pin-card small{display:block;color:var(--muted);font-size:12.5px;line-height:1.4;margin-top:3px}
+.pin-row{display:flex;gap:8px;margin-top:10px}.pin-row .input{width:130px;letter-spacing:.5em;text-align:center;font-size:18px}
+.pinpad{margin:4px auto 6px;max-width:300px}
+.pp-t{text-align:center;color:var(--muted);font-size:13px;margin-bottom:8px}
+.pp-dots{display:flex;gap:14px;justify-content:center;margin-bottom:4px}
+.pp-dots i{width:16px;height:16px;border-radius:50%;border:2px solid var(--honey);display:block}
+.pp-dots i.on{background:var(--honey)}
+.pp-dots.shake{animation:ppShake .4s}
+@keyframes ppShake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+.pp-keys{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pp-keys button{height:52px;border-radius:12px;border:1px solid var(--line);background:var(--surface-3);color:var(--foam);font-size:22px;font-weight:700;cursor:pointer}
+.pp-keys button:active{background:rgba(242,181,46,.2)}
 </style>
 </head>
 <body>
@@ -1598,7 +1657,7 @@ async function onAuth(u){
     if(p.avatar) user.avatar = p.avatar;
     const del = (window.firebase && firebase.firestore && firebase.firestore.FieldValue) ? firebase.firestore.FieldValue.delete() : null;
     await userRef().set({ name:user.name, photo:user.photo, lastLogin:Date.now(), email: del }, { merge:true });
-    user.badges = p.badges || [];
+    user.badges = p.badges || []; user.hasPin = !!p.hasPin;
     await loadData();
     await loadGroups();
     await Promise.all([loadPlayers(), loadMatches()]);
@@ -1760,6 +1819,7 @@ function renderDeck(){
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       <button class="btn primary" data-act="assignAllAsk" data-id="${d.id}" title="Revisa y confirma qué copias libres se asignarán">${I.bolt}Asignar disponibles</button>
       <button class="btn" data-act="missingToWishAsk" data-id="${d.id}">${emb('purple','star',18)}Faltantes a wishlist</button>
+      <button class="btn" data-act="addCards" data-id="${d.id}">${I.plus}Agregar cartas</button>
       <button class="btn" data-act="editDeck" data-id="${d.id}">${I.edit}Editar</button>
       <button class="btn danger" data-act="deleteDeck" data-id="${d.id}">${I.trash}</button>
     </div>
@@ -1776,7 +1836,12 @@ function renderDeck(){
       </div>
     </aside>
     <section>
-      ${!main.length ? `<div class="empty"><b>No hay cartas en este estado</b></div>` :
+      ${!main.length && !sf ? `<div class="add-empty"><b>${cm ? 'Tu mazo solo tiene al comandante' : 'Tu mazo todavía no tiene cartas'}</b><p>Agrega el resto de las cartas de la forma que te quede más cómoda:</p>
+        <div class="add-ways">
+          <button data-act="addCards" data-id="${d.id}" data-tab="search">${I.search}<b>Buscar carta</b><small>Una por una, por nombre</small></button>
+          <button data-act="addCards" data-id="${d.id}" data-tab="paste">${I.edit}<b>Pegar lista</b><small>Texto de Moxfield, Archidekt o ManaBox</small></button>
+          <button data-act="addCards" data-id="${d.id}" data-tab="file">${I.file}<b>Subir archivo</b><small>.csv, .xlsx o .txt</small></button>
+        </div></div>` : !main.length ? `<div class="empty"><b>No hay cartas en este estado</b></div>` :
         GROUP_ORDER.filter(g => groups[g]).map(g => `<div class="group"><h3>${g} <em>${groups[g].reduce((a,c)=>a+c.qty,0)}</em></h3>
           <div class="card-grid">${groups[g].sort((a,b)=>a.name.localeCompare(b.name)).map(c => cardTile(d, c)).join('')}</div></div>`).join('')}
     </section>
@@ -2225,6 +2290,144 @@ function deckModal(d){
     else toast(scryOffline ? 'Guardado. Las imágenes se descargarán cuando haya conexión con Scryfall.' : 'Mazo guardado.');
   });
 }
+
+// ---------- Agregar cartas a un mazo: buscar, pegar lista o subir archivo ----------
+function addCardsModal(d, tab){
+  if(!d) return;
+  const queue = new Map();   // nombre → { name, qty, set, cn }
+  const addQ = (c) => { const k = key(c.name) + '|' + (c.set || '') + '|' + (c.cn || ''); if(queue.has(k)) queue.get(k).qty += c.qty; else queue.set(k, { name:c.name, qty:c.qty, set:c.set || '', cn:c.cn || '' }); };
+  openModal(`
+    <h2>Agregar cartas</h2>
+    <p class="lead">A <b>${esc(d.name)}</b> (${esc(d.format)}). Junta las cartas en la lista de abajo y al final confirma.</p>
+    <div class="ac-tabs" role="tablist">
+      <button data-t="search">${I.search}Buscar carta</button>
+      <button data-t="paste">${I.edit}Pegar lista</button>
+      <button data-t="file">${I.file}Subir archivo</button>
+    </div>
+    <div class="ac-pane" data-p="search">
+      <div class="ac-row"><input class="input" id="adName" placeholder="Escribe el nombre de la carta…" autocomplete="off"><input class="input" id="adQty" type="number" min="1" value="1" aria-label="Cantidad"><button class="btn" id="adOne">${I.plus}Agregar</button></div>
+      <p class="hint">Escribe al menos 2 letras y elige de la lista. Enter también la agrega.</p>
+    </div>
+    <div class="ac-mode" id="adModeBox">
+      <span>¿Qué hago con las cartas que ya tiene el mazo?</span>
+      <div class="ac-seg"><button data-m="add" class="on">Agregar a las que ya tiene</button><button data-m="replace">Reemplazar la lista</button></div>
+      <p class="hint" id="adModeHint">Las cartas nuevas se suman a la lista actual del mazo.</p>
+    </div>
+    <div class="ac-pane" data-p="paste">
+      <textarea class="input" id="adList" rows="7" spellcheck="false" placeholder="1 Sol Ring (C21) 263&#10;1 Arcane Signet&#10;8 Swamp"></textarea>
+      <div class="ac-row" style="justify-content:space-between"><p class="hint" style="margin:0">Una carta por línea: <b>cantidad + nombre</b>, opcional <b>(SET) número</b>.</p><button class="btn" id="adPaste">Pasar a la lista</button></div>
+      <div class="check" id="adPasteChk"></div>
+    </div>
+    <div class="ac-pane" data-p="file">
+      <div class="dropzone" id="adDz">${I.file}<div style="margin-top:8px">Arrastra tu archivo aquí o <b style="color:var(--honey-2)">elige uno</b></div><div class="hint">.csv o .xlsx con columnas <b>nombre</b> y <b>cantidad</b> (opcional set y número) · .txt con una carta por línea</div></div>
+      <input type="file" id="adFile" accept=".csv,.xlsx,.xls,.txt" class="hidden">
+      <div class="check" id="adFileChk"></div>
+    </div>
+    <label class="f" style="margin-top:14px">Por agregar <span id="adCount" class="hint"></span></label>
+    <div class="ac-queue" id="adQueue"></div>
+    <div class="check" id="adChk"></div>
+    <div class="modal-actions"><button class="btn ghost" data-act="closeModal">Cancelar</button><button class="btn primary" id="adSave" disabled>Agregar al mazo</button></div>`, true);
+  let mode = 'add';
+  const nowCards = d.cards.filter(c => !c.cmdr).reduce((a, c) => a + c.qty, 0);
+  const setTab = t => { document.querySelectorAll('.ac-tabs button').forEach(b => b.classList.toggle('on', b.dataset.t === t)); document.querySelectorAll('.ac-pane').forEach(p => p.classList.toggle('on', p.dataset.p === t));
+    // Reemplazar solo aplica al pegar lista o subir archivo; buscar una por una siempre agrega
+    $('#adModeBox').style.display = (t === 'search' || !nowCards) ? 'none' : '';
+    if(t === 'search' && mode === 'replace') setMode('add');
+    if(t === 'search') $('#adName').focus(); if(t === 'paste') $('#adList').focus(); };
+  const setMode = m => { mode = m; document.querySelectorAll('.ac-seg button').forEach(b => b.classList.toggle('on', b.dataset.m === m));
+    $('#adModeHint').innerHTML = m === 'replace' ? `<b style="color:var(--danger)">Se quitarán las ${nowCards} carta(s) actuales</b> (menos el comandante) y el mazo quedará solo con la lista nueva. Las copias asignadas de cartas que salgan regresan a tu inventario.` : 'Las cartas nuevas se suman a la lista actual del mazo.';
+    if($('#adSave')) draw(); };
+  document.querySelectorAll('.ac-seg button').forEach(b => b.onclick = () => setMode(b.dataset.m));
+  document.querySelectorAll('.ac-tabs button').forEach(b => b.onclick = () => setTab(b.dataset.t));
+  setTab(tab || 'search');
+  const draw = () => {
+    const list = [...queue.values()], n = list.reduce((a, c) => a + c.qty, 0);
+    $('#adCount').textContent = n ? `· ${n} carta(s)` : '';
+    $('#adQueue').innerHTML = list.length ? list.map((c, i) => `<div class="aq"><button class="aq-b" data-i="${i}" data-d="-1" aria-label="Menos">−</button><b>${c.qty}</b><button class="aq-b" data-i="${i}" data-d="1" aria-label="Más">+</button><span>${esc(c.name)}${c.set ? ` <small>(${esc(c.set.toUpperCase())}) ${esc(c.cn)}</small>` : ''}</span><button class="aq-x" data-i="${i}" aria-label="Quitar">✕</button></div>`).join('') : '<p class="hint">Aún no hay cartas en la lista.</p>';
+    $('#adSave').disabled = !list.length;
+    $('#adSave').textContent = !list.length ? 'Agregar al mazo' : mode === 'replace' ? `Reemplazar la lista con ${n} carta(s)` : `Agregar ${n} carta(s) al mazo`;
+    $('#adSave').classList.toggle('danger', mode === 'replace' && !!list.length);
+    document.querySelectorAll('.aq-b').forEach(b => b.onclick = () => { const c = list[+b.dataset.i]; c.qty = Math.max(1, c.qty + +b.dataset.d); draw(); });
+    document.querySelectorAll('.aq-x').forEach(b => b.onclick = () => { const c = list[+b.dataset.i]; [...queue.entries()].forEach(([k, v]) => { if(v === c) queue.delete(k); }); draw(); });
+  };
+  draw();
+  // Buscar una por una
+  const inp = $('#adName');
+  wireAutocomplete(inp);
+  const one = () => { const n = inp.value.trim(), q = Math.max(1, parseInt($('#adQty').value, 10) || 1); if(n.length < 2){ toast('Escribe el nombre de la carta.'); return; } addQ({ name:n, qty:q }); inp.value = ''; $('#adQty').value = 1; inp.focus(); draw(); };
+  $('#adOne').onclick = one;
+  inp.addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); one(); } });
+  // Pegar lista
+  $('#adPaste').onclick = () => {
+    const r = parseList($('#adList').value), el = $('#adPasteChk');
+    if(r.errors.length){ el.innerHTML = `<div class="err">${r.errors.length} línea(s) con formato no válido</div><ul>${r.errors.slice(0, 20).map(e => `<li>Línea ${e.line}: <code>${esc(e.text)}</code> — ${esc(e.reason)}</li>`).join('')}</ul>`; return; }
+    if(!r.cards.length){ el.innerHTML = '<div class="err">Pega al menos una carta.</div>'; return; }
+    r.cards.forEach(addQ); $('#adList').value = ''; el.innerHTML = `<div class="ok">${r.cards.reduce((a, c) => a + c.qty, 0)} carta(s) pasaron a la lista.</div>`; draw();
+  };
+  // Subir archivo
+  const dz = $('#adDz'), fi = $('#adFile');
+  dz.addEventListener('click', () => fi.click());
+  dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('over'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('over'));
+  const readFile = async file => {
+    const el = $('#adFileChk'); let cards = [];
+    try{
+      if(/\.txt$/i.test(file.name)){
+        const r = parseList(await file.text());
+        if(r.errors.length) el.innerHTML = `<div class="wrn">${r.errors.length} línea(s) no se pudieron leer y se omitieron.</div>`;
+        cards = r.cards;
+      } else {
+        let rows;
+        if(window.XLSX){ const wb = XLSX.read(await file.arrayBuffer(), { type:'array' }); rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { defval:'' }); }
+        else rows = csvToRows(await file.text());
+        const pick = (r, keys) => { for(const k of Object.keys(r)){ if(keys.includes(key(k))) return r[k]; } return ''; };
+        rows.forEach(r => {
+          const n = String(pick(r, ['nombre','name','carta','card','card name'])).trim(); if(!n) return;
+          const q = parseInt(pick(r, ['cantidad','qty','quantity','count','cant']), 10) || 1;
+          const st = String(pick(r, ['set','set code','edicion','edition','codigo'])).trim(), cn = String(pick(r, ['numero','number','collector number','cn','collector_number'])).trim();
+          cards.push({ name:n, qty:q, set: st && cn ? st : '', cn: st && cn ? cn : '' });
+        });
+      }
+    }catch(e){ console.error(e); el.innerHTML = '<div class="err">No se pudo leer el archivo.</div>'; return; }
+    if(!cards.length){ el.innerHTML = '<div class="err">No encontramos cartas. El archivo necesita una columna «nombre» (y «cantidad»), o en .txt una carta por línea.</div>'; return; }
+    cards.forEach(addQ); el.innerHTML = (el.innerHTML || '') + `<div class="ok">${cards.reduce((a, c) => a + c.qty, 0)} carta(s) de «${esc(file.name)}» pasaron a la lista.</div>`; draw();
+  };
+  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('over'); if(e.dataTransfer.files[0]) readFile(e.dataTransfer.files[0]); });
+  fi.addEventListener('change', () => { if(fi.files[0]) readFile(fi.files[0]); fi.value = ''; });
+  // Guardar
+  $('#adSave').onclick = async () => {
+    const list = [...queue.values()]; if(!list.length) return;
+    if(mode === 'replace' && !$('#adSave').dataset.sure){ $('#adSave').dataset.sure = '1'; $('#adSave').textContent = 'Toca otra vez para confirmar el reemplazo'; return; }
+    const btn = $('#adSave'); btn.disabled = true; btn.textContent = 'Buscando en Scryfall…';
+    const notFound = await ensurePrints(list.map(c => ({ name:c.name, set:c.set, cn:c.cn })));
+    if(!scryOffline && notFound.length){
+      $('#adChk').innerHTML = `<div class="err">No se encontraron en Scryfall (revisa el nombre o quítalas de la lista): ${notFound.map(esc).join(', ')}</div>`;
+      btn.disabled = false; btn.textContent = 'Reintentar'; return;
+    }
+    const cmK = (d.cards.find(c => c.cmdr) || {}).name;
+    let added = 0;
+    const old = new Map(d.cards.filter(c => !c.cmdr).map(c => [key(c.name), c]));
+    if(mode === 'replace') d.cards = d.cards.filter(c => c.cmdr);
+    list.forEach(c => {
+      const pk = c.set && c.cn ? printKey(c.set, c.cn) : null;
+      const e = (pk && cat[pk]) || cat[key(c.name)];
+      const name = e && !e.missing && !e.demo ? e.name : c.name;
+      if(cmK && key(name) === key(cmK)) return;
+      const ex = d.cards.find(x => !x.cmdr && key(x.name) === key(name));
+      if(ex){ ex.qty += c.qty; ex.dup = true; }
+      else {
+        // Al reemplazar, la carta que ya estaba conserva sus copias asignadas (hasta la cantidad nueva)
+        const prev = mode === 'replace' ? old.get(key(name)) : null;
+        d.cards.push({ name, qty:c.qty, assigned: prev ? Math.min(prev.assigned || 0, c.qty) : 0, set:c.set || (prev ? prev.set : ''), cn:c.cn || (prev ? prev.cn : ''), print: pk && cat[pk] ? pk : (prev ? prev.print : undefined) });
+      }
+      added += c.qty;
+    });
+    d.cards.forEach(c => { if(!c.cmdr) c.assigned = Math.min(c.assigned || 0, c.qty); });
+    d.updated = Date.now(); saveData(); closeModal(); render();
+    const w = deckWarnings(d);
+    toast((mode === 'replace' ? `Lista de ${d.name} reemplazada: ${added} carta(s).` : `${added} carta(s) agregadas a ${d.name}.`) + (w.length ? ' Avisos: ' + w.map(x => x.text).join(' · ') : ''));
+  };
+}
 // Lee el texto pegado. Formato válido: "1 Nombre", "1x Nombre", "1 Nombre (SET) 123", "1 Nombre (SET) 123 *F*"
 function parseList(txt){
   const map = new Map(), cards = [], errors = [];
@@ -2436,6 +2639,7 @@ const actions = {
   statusFilter(el){ view.statusFilter = el.dataset.s || null; renderDeck(); },
   newDeck(){ deckModal(null); },
   editDeck(el){ deckModal(data.decks.find(x => x.id === el.dataset.id)); },
+  addCards(el){ addCardsModal(data.decks.find(x => x.id === el.dataset.id), el.dataset.tab || 'search'); },
   deleteDeck(el){
     const d = data.decks.find(x => x.id === el.dataset.id); if(!d) return;
     if(!confirm(`¿Eliminar el mazo «${d.name}»? Sus copias asignadas regresan a libres en tu inventario.`)) return;
@@ -2606,7 +2810,7 @@ async function loadPlayers(){
   myGroups.forEach(g => (g.uids || []).forEach(u => ids.add(u)));
   const docs = await Promise.all([...ids].map(id => db.collection('mb_users').doc(id).get().catch(() => null)));
   members = [];
-  docs.forEach(d => { if(!d || !d.exists) return; const x = d.data() || {}; members.push({ id:d.id, uid:d.id, name: x.displayName || x.name || 'Jugador', photo: x.photo || '', avatar: x.avatar || null, decks: x.publicDecks || [], badges: x.badges || [] }); });
+  docs.forEach(d => { if(!d || !d.exists) return; const x = d.data() || {}; members.push({ id:d.id, uid:d.id, name: x.displayName || x.name || 'Jugador', photo: x.photo || '', avatar: x.avatar || null, decks: x.publicDecks || [], badges: x.badges || [], hasPin: !!x.hasPin }); });
   if(!members.some(m => m.uid === user.uid)) members.push({ id:user.uid, uid:user.uid, name:user.name, photo:user.photo, avatar:user.avatar, decks:[], badges: user.badges || [] });
   members.sort((a, b) => a.name.localeCompare(b.name));
 }
@@ -2690,6 +2894,11 @@ async function profileModal(){
     <p class="hint">Así te verán los demás en La Mesa y el Ranking. Si lo dejas vacío, se usa el de tu cuenta de Google (${esc(user.googleName)}).</p>
     <label class="f">Foto de perfil · elige una ilustración</label>
     <div class="av-grid" id="pfGrid"></div>
+    <div class="pin-card">
+      <div><b>PIN para La Mesa ${user.hasPin ? '<span class="chip ok">Activo</span>' : ''}</b><small>4 números. Cuando te sienten en una mesa, puedes teclearlo en el dispositivo de la mesa en vez de aceptar en tu celular. No se lo compartas a nadie.</small></div>
+      <div class="pin-row"><input class="input" id="pfPin" inputmode="numeric" maxlength="4" pattern="[0-9]*" autocomplete="off" placeholder="${user.hasPin ? 'Nuevo PIN' : '••••'}"><button class="btn" id="pfPinSave">${user.hasPin ? 'Cambiar' : 'Crear PIN'}</button></div>
+      <p class="gerr" id="pfPinErr"></p>
+    </div>
     ${isStandalone() ? '' : installAvailable()
       ? `<div class="install-card"><img src="apple-touch-icon.png" alt=""><div><b>Instala Mana Beer en tu celular</b>Ábrela como app, en pantalla completa y con su ícono.</div><button class="btn primary" data-act="installApp">${I.install}Instalar</button></div>`
       : ios ? `<div class="install-card"><img src="apple-touch-icon.png" alt=""><div><b>Instálala en tu iPhone o iPad</b>En Safari toca el botón <b style="display:inline">Compartir</b> (cuadro con flecha) y luego <b style="display:inline">Agregar a pantalla de inicio</b>.</div></div>` : ''}
@@ -2699,6 +2908,18 @@ async function profileModal(){
     </div>`, true);
   $('#pfName').addEventListener('input', draw);
   draw();
+  $('#pfPin').addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4); });
+  $('#pfPinSave').onclick = async () => {
+    const v = $('#pfPin').value, er = $('#pfPinErr'); er.textContent = '';
+    if(!/^\d{4}$/.test(v)){ er.textContent = 'El PIN debe tener 4 números.'; return; }
+    if(/^(\d)\1{3}$/.test(v) || v === '1234' || v === '4321'){ er.textContent = 'Elige uno menos fácil de adivinar.'; return; }
+    try{
+      await db.collection('mb_pins').doc(user.uid).set({ pin:v, at:Date.now() });
+      await userRef().set({ hasPin:true }, { merge:true });
+      user.hasPin = true; const me = currentMember(); if(me) me.hasPin = true;
+      $('#pfPin').value = ''; $('#pfPinSave').textContent = 'Cambiar'; toast('PIN guardado.');
+    }catch(e){ er.textContent = 'No se pudo guardar el PIN: ' + (e.message || e.code); }
+  };
   if(AVATAR_CARDS.some(n => !cat[key(n)] || cat[key(n)].demo || cat[key(n)].seed)){ await ensureCards(AVATAR_CARDS); if($('#pfGrid')) draw(); }
   $('#pfSave').onclick = async () => {
     const name = $('#pfName').value.trim() || user.googleName;
@@ -2832,7 +3053,7 @@ async function joinGroup(gid, pass){
 async function ensureProfiles(uids){
   const miss = (uids || []).filter(u => !memberById(u)); if(!miss.length) return;
   const docs = await Promise.all(miss.map(id => db.collection('mb_users').doc(id).get().catch(() => null)));
-  docs.forEach(d => { if(!d || !d.exists) return; const x = d.data() || {}; members.push({ id:d.id, uid:d.id, name: x.displayName || x.name || 'Jugador', photo: x.photo || '', avatar: x.avatar || null, decks: x.publicDecks || [], badges: x.badges || [] }); });
+  docs.forEach(d => { if(!d || !d.exists) return; const x = d.data() || {}; members.push({ id:d.id, uid:d.id, name: x.displayName || x.name || 'Jugador', photo: x.photo || '', avatar: x.avatar || null, decks: x.publicDecks || [], badges: x.badges || [], hasPin: !!x.hasPin }); });
 }
 async function freshGroup(gid){
   const g = groupById(gid); if(!g) return null;
@@ -2972,7 +3193,26 @@ async function migrateManaBeer(){
 //   CONFIRMACIÓN DE JUGADORES EN LA MESA (30 segundos)
 // =========================================================
 const INV_MS = 30000;
-let invWatch = {}, waitSeat = null, waitTick = null;
+let invWatch = {}, waitSeat = null, waitTick = null, pinBuf = '';
+function drawPin(){ const ds = document.querySelectorAll('#ppDots i'); ds.forEach((x, k) => x.classList.toggle('on', k < pinBuf.length)); }
+async function pinKey(i, k){
+  const p = game.players[i]; if(!p || !p.inv || waitSeat !== i) return;
+  const er = $('#ppErr'); if(er) er.textContent = '';
+  if(k === '⌫'){ pinBuf = pinBuf.slice(0, -1); drawPin(); return; }
+  if(pinBuf.length >= 4) return;
+  pinBuf += k; drawPin();
+  if(pinBuf.length < 4) return;
+  const pin = pinBuf, id = p.inv;
+  try{
+    // La regla de Firestore compara el PIN con el que el jugador guardó (nadie puede leerlo)
+    await db.collection('mb_invites').doc(id).update({ status:'accepted', pin, at:Date.now() });
+    db.collection('mb_invites').doc(id).update({ pin: FV().delete() }).catch(() => {});
+  }catch(e){
+    pinBuf = ''; drawPin();
+    const box = $('#ppDots'); if(box){ box.classList.remove('shake'); void box.offsetWidth; box.classList.add('shake'); }
+    if($('#ppErr')) $('#ppErr').textContent = 'PIN incorrecto';
+  }
+}
 async function sendInvite(i){
   const p = game.players[i], g = groupById(game.gid), now = Date.now();
   const ref = db.collection('mb_invites').doc();
@@ -3022,7 +3262,12 @@ function waitingSheet(i){
   const p = game.players[i];
   showSheet(`<h3>Esperando confirmación</h3><p class="lead"><b>${esc(pName(i))}</b> debe aceptar desde su cuenta, en su Mana Beer abierta.</p>
     <div class="waitbox"><div class="waitring" id="waitRing"><b id="waitSec">30</b><small>segundos</small></div></div>
+    ${(memberById(p.member) || {}).hasPin ? `<div class="pinpad"><div class="pp-t">¿No tiene el celular a la mano? Que escriba su PIN aquí:</div>
+      <div class="pp-dots" id="ppDots"><i></i><i></i><i></i><i></i></div><p class="gerr" id="ppErr" style="text-align:center"></p>
+      <div class="pp-keys">${[1,2,3,4,5,6,7,8,9,'',0,'⌫'].map(k => k === '' ? '<span></span>' : `<button data-act="pinKey" data-i="${i}" data-k="${k}">${k}</button>`).join('')}</div></div>`
+      : '<p class="hint" style="text-align:center">Si crea un PIN en «Mi perfil», la próxima vez podrá confirmar tecleándolo aquí.</p>'}
     <div class="sheet-actions"><button class="btn ghost danger" data-act="cancelWait" data-i="${i}">Cancelar</button><button class="btn ghost" data-act="pickOther" data-i="${i}">Elegir a otro</button></div>`);
+  pinBuf = '';
   waitSeat = i;
   clearInterval(waitTick);
   const tick = () => {
@@ -3050,6 +3295,7 @@ function pendingToast(){ const w = seatPending(); mesaToast(`Falta que confirme$
 function blocked(){
   if(lockedMesa()){ lockedToast(); return true; }
   if(seatPending().length){ pendingToast(); return true; }
+  markBegun();
   return false;
 }
 function refreshHub(){
@@ -3284,7 +3530,8 @@ function renderGuide(){
     ${steps([
       `Abre el ${chip('menú del centro')} y elige ${chip('Grupo')}, ${chip('Jugadores')} (cuántos y cómo se sientan) y ${chip('Ajustes')} (formato y vidas).`,
       'Toca el nombre de cada lugar para sentar a un jugador de tu grupo. Le llega un aviso a su Mana Beer y tiene <b>30 segundos</b> para aceptar.',
-      'Cuando acepta, eliges con qué mazo juega. Si no acepta, ese lugar juega como invitado.'
+      'Cuando acepta, eliges con qué mazo juega. Si no acepta, ese lugar juega como invitado. Si creó un <b>PIN</b> en «Mi perfil», puede teclearlo en la mesa en lugar de usar su celular.',
+      'Solo se confirma una vez por sesión: en las revanchas con los mismos jugadores ya no se pregunta (durante 18 horas).'
     ])}
     <h3 class="gd-sub">Dos modos de partida</h3>
     <div class="gd-modes">
@@ -3803,6 +4050,12 @@ function hubOnRight(i){
   const vx = -((c - 1 + cs / 2) - L.cols / 2), vy = -((r - 1 + rs / 2) - L.rows / 2), a = rot * Math.PI / 180;
   return vx * Math.cos(a) + vy * Math.sin(a) > 0.01;
 }
+function namesHidden(){ return !!game && (turnsOn() ? turnsPlaying() : !!game.begun); }
+function markBegun(){
+  if(!game || turnsOn() || game.begun) return;
+  game.begun = true;
+  game.players.forEach((p, k) => { const c = document.getElementById('pc' + k); if(c){ const n = c.querySelector('.pname'); if(n) n.remove(); } });
+}
 function cellHtml(i){
   const [r, c, rs, cs, rot] = curLayout().cells[i], p = game.players[i];
   const m = p.member ? memberById(p.member) : null;
@@ -3832,11 +4085,12 @@ function cellHtml(i){
   const tp = turnsPlaying(), act = tp && game.turn === i, sw = tp && game.sword === i;
   const inCmd = T != null && (T === i || cmdOn());
   const setupT = lockedMesa(), bdg = m ? topBadges(m, 5) : [];
+  const hideNames = namesHidden();
   return `<div class="pcell ${dead ? 'dead' : ''} ${!turnsOn() && game.starter === i ? 'starter' : ''} ${act ? 'active' : ''} ${sw ? 'sword-on' : ''} ${inCmd ? 'in-cmd' : ''} ${hubOnRight(i) ? 'flip' : ''}" id="pc${i}" data-i="${i}" data-rot="${rot}" style="grid-row:${r} / span ${rs};grid-column:${c} / span ${cs}">
     <div class="prot" style="--rot:${rot}deg">
       ${art ? `<div class="pbg" style="background-image:url('${art}')"></div>` : `<div class="pbg free"><img src="${LOGO_SRC}" alt=""></div>`}
       <div class="ptl">
-        <button class="pname ${p.conf === 'wait' ? 'wait' : ''}" data-act="pickPlayer" data-i="${i}">${m ? `<b>${esc(m.name)}</b><span>${p.conf === 'wait' ? '⏳ Esperando confirmación' : esc(p.deck ? p.deck.name : 'Toca para elegir mazo')}</span>` : `<b>Invitado ${i + 1}</b><span>${game.gid ? 'Toca para sentar a un jugador' : 'Sin grupo · juega como invitado'}</span>`}</button>
+        ${hideNames ? '' : `<button class="pname ${p.conf === 'wait' ? 'wait' : ''}" data-act="pickPlayer" data-i="${i}">${m ? `<b>${esc(m.name)}</b><span>${p.conf === 'wait' ? '⏳ Esperando confirmación' : esc(p.deck ? p.deck.name : 'Toca para elegir mazo')}</span>` : `<b>Invitado ${i + 1}</b><span>${game.gid ? 'Toca para sentar a un jugador' : 'Sin grupo · juega como invitado'}</span>`}</button>`}
         ${tp && !dead ? `<button class="psword ${sw ? 'on' : ''}" data-act="swordToggle" data-i="${i}" title="Espada: atribuir daño o vidas a este jugador" aria-label="Espada">${sw ? `<span class="fire">${'<i></i>'.repeat(12)}</span>` : ''}${MICO.sword}</button>` : ''}
       </div>
       ${bdg.length ? `<div class="pbadges">${bdg.map(b => `<span class="bdg" title="${esc(b.name)} · ${BSHAPE[b.t - 1]}">${badgeSvg(b)}</span>`).join('')}</div>` : ''}
@@ -3848,7 +4102,7 @@ function cellHtml(i){
       <div class="delta" id="dl${i}"></div>
       ${ctrChips(i)}
       ${!turnsOn() && game.starter === i ? '<div class="startflag">¡EMPIEZA!</div>' : ''}
-      ${act ? `<div class="pbl"><button class="turnbtn" data-act="passTurn">${MICO.play}PASAR TURNO</button><button class="pundo ${game.events.length ? '' : 'off'}" data-act="mesaUndo" aria-label="Deshacer el último movimiento" title="Deshacer el último movimiento">${MICO.undo}</button><div class="rtimer">Ronda ${game.round}<br>${fmtMs(Date.now() - game.turnStart)}</div></div>` : ''}
+      ${act ? `<div class="rround rtimer">Ronda ${game.round} · ${fmtMs(Date.now() - game.turnStart)}</div><div class="pbl pbr"><button class="pundo ${game.events.length ? '' : 'off'}" data-act="mesaUndo" aria-label="Deshacer el último movimiento" title="Deshacer el último movimiento">${MICO.undo}</button><button class="turnbtn round" data-act="passTurn" aria-label="Pasar turno" title="Pasar turno">TURNO</button></div>` : ''}
       ${setupT && game.phase === 'ready' && game.starter === i ? '<div class="pbl"><div class="startflag">¡EMPIEZA! · mulligan y luego PLAY</div></div>' : ''}
       ${dead ? '<div class="deadtxt">SIN<br>CERVEZA</div>' : ''}
       <div class="roll" id="roll${i}"></div>
@@ -3903,6 +4157,7 @@ const saveGameSoon = () => { clearTimeout(saveT); saveT = setTimeout(saveGame, 3
 function changeLife(i, d){
   const p = game.players[i]; if(!p) return;
   if(blocked()) return;
+  markBegun();
   const wasDead = isDead(p), src = curSource();
   p.life += d;
   if(p.life > (p.maxLife || 0)) p.maxLife = p.life;
@@ -4126,7 +4381,7 @@ function startTurnTick(){
   turnTick = setInterval(() => {
     if(view.tab !== 'mesa' || !turnsPlaying()){ clearInterval(turnTick); return; }
     const el = document.querySelector('#pc' + game.turn + ' .rtimer');
-    if(el) el.innerHTML = `Ronda ${game.round}<br>${fmtMs(Date.now() - game.turnStart)}`;
+    if(el) el.textContent = `Ronda ${game.round} · ${fmtMs(Date.now() - game.turnStart)}`;
   }, 1000);
 }
 function turnSetupSheet(){
@@ -4347,10 +4602,9 @@ function saveMatch(w){
   const g = groupById(game.gid);
   const rematch = () => {
     newGame(game.layout, game.startLife, true);
-    game.players.forEach(p => { if(p.member && p.member !== user.uid){ p.conf = null; p.inv = null; } });
+    // Revancha: los que ya confirmaron en esta sesión (18 h en esta mesa) siguen confirmados
     game.lastAct = Date.now(); saveGame(); renderMesa();
-    // Revancha: cada jugador vuelve a confirmar
-    game.players.forEach((p, i) => { if(p.member && p.member !== user.uid) sendInvite(i); });
+    game.players.forEach((p, i) => { if(p.member && p.conf !== 'ok' && !p.inv) sendInvite(i); });
   };
   if(conf.length < 2){
     rematch();
@@ -4462,6 +4716,7 @@ const mesaActions = {
   pickMember(el){ seatMember(+el.dataset.i, el.dataset.m); },
   mesaGroup(){ mesaGroupSheet(); },
   mesaSetGroup(el){ setMesaGroup(el.dataset.g); },
+  pinKey(el){ pinKey(+el.dataset.i, el.dataset.k); },
   cancelWait(el){ const i = +el.dataset.i; waitSeat = null; cancelInvite(i); renderCell(i); refreshHub(); closeOv(); mesaToast('Solicitud cancelada.'); },
   pickOther(el){ const i = +el.dataset.i, p = game.players[i]; waitSeat = null; if(p.member && p.member !== user.uid){ cancelInvite(i); renderCell(i); refreshHub(); } pickPlayerSheet(i); },
   pickDeck(el){
