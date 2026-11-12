@@ -814,6 +814,7 @@ img.avatar{object-fit:cover;padding:0}
 .signup .gbtn{margin:0 auto}.signup .err{color:#FF9A8A;min-height:18px;margin:8px 0;font-size:13px}.signup .hint{display:block;line-height:1.5}
 .need-acc{text-align:center}.need-acc .mark{width:56px;height:56px;display:block;margin:0 auto 6px}
 .me.guest .avatar{display:flex;align-items:center;justify-content:center}.me.guest .avatar svg{width:18px;height:18px}
+@media (max-width:640px){.inv-acts{width:100%}.inv-acts .btn{padding-left:12px;padding-right:12px}}
 .gacts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;flex:none}
 .guest-note{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding:12px 14px;border:1px solid rgba(242,181,46,.45);background:rgba(242,181,46,.07);border-radius:12px;font-size:14px}
 .guest-note svg{width:20px;height:20px;color:var(--honey-2);flex:none}.guest-note span{flex:1;min-width:200px}
@@ -2021,8 +2022,9 @@ function renderInv(){
   $('#main').innerHTML = `
   <div class="page-h band" style="${bandStyle(1)}">
     <div><div class="kicker">La bodega</div><h1>Mi inventario</h1><p>Tus cartas físicas. Las asignaciones a mazos se descuentan solas.</p></div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <div class="inv-acts" style="display:flex;gap:8px;flex-wrap:wrap">
       <button class="btn" data-act="importInv">${I.upload}Cargar Excel / CSV</button>
+      <button class="btn" data-act="exportInv" title="Descarga todo tu inventario en Excel">${I.download}Descargar Excel</button>
       <button class="btn primary" data-act="addInv">${I.plus}Agregar carta</button>
     </div>
   </div>
@@ -2960,6 +2962,20 @@ const actions = {
     data.inv[k] = { name:w.name, qty: ((data.inv[k] || {}).qty || 0) + q };
     delete data.wish[k]; saveData(); render();
     toast(`${q} × ${w.name} pasaron a tu inventario. Ya puedes asignarlas en tus mazos.`);
+  },
+  // Todo el inventario (sin filtros). Las dos primeras columnas sirven para volver a cargarlo.
+  exportInv(){
+    const rows = Object.values(data.inv).filter(r => r.qty > 0).sort((a, b) => a.name.localeCompare(b.name)).map(r => {
+      const c = cat[key(r.name)] || {}, i = invInfo(r.name);
+      return { nombre: r.name, cantidad: r.qty, asignadas: i.used, libres: Math.max(0, i.free),
+        'en mazos': i.decks.map(x => x.name + (x.n > 1 ? ' ×' + x.n : '')).join(', '),
+        tipo: c.type || '', colores: (c.ci || []).join(''), rareza: ({ common:'Común', uncommon:'Infrecuente', rare:'Rara', mythic:'Mítica' })[c.rarity] || c.rarity || '', set: c.set ? String(c.set).toUpperCase() : '',
+        'precio US$': c.price ? +c.price.toFixed(2) : '', 'total US$': c.price ? +(c.price * r.qty).toFixed(2) : '' };
+    });
+    if(!rows.length){ toast('Tu inventario está vacío.'); return; }
+    const d = new Date(), f = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    downloadSheet(rows, 'inventario_manabeer_' + f, 'Inventario');
+    toast(`Descargando ${rows.length} cartas (${rows.reduce((a, r) => a + r.cantidad, 0)} copias).`);
   },
   exportWish(){
     const rows = Object.values(data.wish).map(w => ({
