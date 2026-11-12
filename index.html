@@ -765,6 +765,23 @@ img.avatar{object-fit:cover;padding:0}
 .ctrrow.mana{display:grid;grid-template-columns:repeat(2,auto);gap:6px;overflow:visible}
 @container prot (max-height:300px){.cmdrecv.mana .ct{display:none}.cmdrecv.mana .cmain{max-width:112px}}
 @container prot (min-height:301px){.ctrrow.mana{grid-template-columns:repeat(3,auto)}}
+/* Panel de contadores: tamaño normal y, si no caben, se recorren con el dedo (scroll) */
+.cmdrecv .cmain{flex:none}
+.cmdrecv .ctrrow,.cmdrecv .ctrrow.mana{overflow:auto;min-width:0;min-height:0;max-width:100%;max-height:100%;flex:0 1 auto;touch-action:pan-x pan-y;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(255,216,107,.6) transparent}
+.pchips{touch-action:pan-x pan-y;overscroll-behavior:contain;scrollbar-width:none}
+.pchips::-webkit-scrollbar{display:none}
+.pchips{flex-wrap:nowrap!important;overflow-x:auto;overflow-y:hidden;padding:2px}
+.pchips .pctr{flex:none}
+.pchips,.pcell.flip .pchips{justify-content:flex-start!important}
+.pchips.sx{justify-content:flex-start!important}
+.cmdrecv .ctrrow.sx{justify-content:flex-start}
+.cmdrecv .ctrrow.mana.sx{justify-content:start}
+.sx:not(.end){-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}
+.sy:not(.end){-webkit-mask-image:linear-gradient(180deg,#000 78%,transparent);mask-image:linear-gradient(180deg,#000 78%,transparent)}
+/* Celdas angostas y altas (celular en vertical): maná en 2 o 1 columna y contadores en 2 filas */
+@container prot (max-width:470px) and (min-height:301px){.ctrrow.mana{grid-template-columns:repeat(2,auto)}}
+@container prot (max-width:300px){.cmdrecv{padding:10px 6px}.cmdrecv .ctrrow{padding:4px 3px}.hctr button{width:32px}}
+@container prot (max-width:300px) and (min-height:301px){.ctrrow.mana{grid-template-columns:auto}.ctrrow:not(.mana){display:grid;grid-template-columns:repeat(2,auto);max-width:none}}
 .hctr{display:flex;align-items:center;gap:4px;border:2px solid rgba(255,244,214,.5);border-radius:14px;padding:2px}
 .hctr.on{border-color:var(--honey-2)}
 .hctr button{width:34px;height:40px;border:none;background:none;color:#fff6d6;font-size:26px;font-weight:700;cursor:pointer;padding:0;line-height:1}
@@ -785,6 +802,62 @@ img.avatar{object-fit:cover;padding:0}
   .vctr{width:64px}.vctr button{width:62px;height:52px;font-size:34px}.vctr .vbox{width:58px}.vctr .vbox b{font-size:32px}.vctr .vbox i svg{width:30px;height:30px}
   .hctr button{width:48px;height:50px;font-size:30px}.hctr b{font-size:28px;min-width:32px}.hctr .mdot{width:28px;height:28px;font-size:14px}
   .cmdrecv .cback{font-size:16px;padding:11px 24px}.ctrswitch{font-size:14px;padding:9px 18px}
+}
+.guest-card{margin-top:4px;padding:26px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(242,181,46,.08),rgba(0,0,0,0)),var(--surface)}
+.gc-head h2{font-family:var(--brand);font-size:24px;color:var(--honey-2);margin:0 0 6px}.gc-head p{color:var(--muted);max-width:640px;margin:0}
+.gc-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:22px 0}
+.gc-it{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--line);border-radius:16px;background:rgba(0,0,0,.18)}
+.gc-it .shield,.gc-it svg:first-child{width:38px;height:44px;flex:none}.gc-it b{display:block;margin-bottom:3px}.gc-it small{color:var(--muted);font-size:13px;line-height:1.4}
+.gc-actions{display:flex;gap:10px;flex-wrap:wrap}
+.signup{text-align:center;padding:6px 4px 0}.signup .mark{width:64px;height:64px;margin:0 auto 6px;display:block}
+.signup h3{font-family:var(--brand);color:var(--honey-2);font-size:22px;margin:4px 0 8px}.signup p{color:var(--muted);margin:0 auto 18px;max-width:420px}
+.signup .gbtn{margin:0 auto}.signup .err{color:#FF9A8A;min-height:18px;margin:8px 0;font-size:13px}.signup .hint{display:block;line-height:1.5}
+.need-acc{text-align:center}.need-acc .mark{width:56px;height:56px;display:block;margin:0 auto 6px}
+.me.guest .avatar{display:flex;align-items:center;justify-content:center}.me.guest .avatar svg{width:18px;height:18px}
+.gacts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;flex:none}
+.guest-note{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding:12px 14px;border:1px solid rgba(242,181,46,.45);background:rgba(242,181,46,.07);border-radius:12px;font-size:14px}
+.guest-note svg{width:20px;height:20px;color:var(--honey-2);flex:none}.guest-note span{flex:1;min-width:200px}
+.miss-note{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 14px;padding:12px 14px;border:1px solid rgba(255,170,90,.45);background:rgba(255,150,60,.08);border-radius:12px;color:var(--text);font-size:14px}
+.miss-note svg{width:20px;height:20px;color:#FFB26B;flex:none}.miss-note span{flex:1;min-width:200px}
+.selall{display:inline-flex;align-items:center;gap:7px;cursor:pointer;font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap;text-transform:none;letter-spacing:0}
+.selall input,.selbox input{width:18px;height:18px;accent-color:var(--honey);cursor:pointer;margin:0}
+.selbox{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;cursor:pointer;vertical-align:middle}
+.th-sel{text-align:right}
+.tbl-wrap tr.sel td{background:rgba(242,181,46,.07)}
+.selbar-m{display:none}
+@media (max-width:900px){.selbar{bottom:calc(84px + env(safe-area-inset-bottom))}}
+.selbar{position:sticky;bottom:12px;z-index:30;display:none;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px;padding:10px 14px;background:var(--surface-2);border:1px solid var(--honey);border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,.55)}
+.selbar.on{display:flex}.selbar span{flex:1;min-width:150px}
+.btn.danger-solid{background:#C2412F;border-color:#E05A4A;color:#fff}
+.btn.danger-solid svg{width:16px;height:16px}
+@media (max-width:640px){
+  .selbar-m{display:block;margin:0 0 8px 2px}
+  .tbl-wrap tr.sel{border-color:var(--honey)}
+  .tbl-wrap.plain{overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+  .tbl-wrap.plain thead{display:table-header-group}.tbl-wrap.plain tbody{display:table-row-group}
+  .tbl-wrap.plain tr{display:table-row;padding:0;margin:0;border:none;border-radius:0;background:none}
+  .tbl-wrap.plain td{display:table-cell;padding:8px 8px;border-bottom:1px solid var(--line);font-size:13px}
+  .tbl-wrap.plain td[data-l]::before{content:none}
+  .tbl-wrap.plain .act-cell{display:table-cell;white-space:nowrap;text-align:right}
+  .tbl-wrap.plain .act-cell .btn{padding:6px 8px}
+  .modal-actions{flex-wrap:wrap}
+}
+.ro-head{display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
+.ro-head .btn{margin-bottom:6px}
+.ro-list.wiped{opacity:.4;text-decoration:line-through;max-height:90px}
+.wipe-note{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:8px;padding:10px 12px;border:1px solid rgba(224,90,74,.5);background:rgba(224,90,74,.08);border-radius:12px;font-size:13px}
+.wipe-note svg{width:18px;height:18px;color:#FF9A8A;flex:none}.wipe-note span{flex:1;min-width:200px}
+.pctr.manas{gap:3px;padding:4px 6px}
+.pctr.manas .md{min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:12px;font-weight:800;padding:0 4px;border:1.5px solid rgba(0,0,0,.45)}
+@container prot (min-height:380px){.pctr.manas .md{min-width:30px;height:30px;font-size:15px}}
+@container prot (max-height:240px){
+  .pctr{font-size:15px;padding:4px 9px 4px 7px;gap:3px}.pctr svg{width:17px;height:17px}.pctr.tax small{font-size:10px}
+  .pctr.manas{padding:3px 5px;gap:2px}.pctr.manas .md{min-width:19px;height:19px;font-size:11px}
+  .pchips{gap:4px}
+  .cmdrecv{gap:8px;padding:8px}
+  .cmdrecv.mana .cmain{max-width:96px}
+  .cmdrecv .cback{padding:6px 10px;font-size:10px}
+  .ctrswitch{padding:5px 10px;font-size:10px}
 }
 .pundo{width:52px;height:52px;flex:none;border-radius:50%;background:rgba(14,10,6,.78);border:1.5px solid rgba(242,181,46,.6);color:var(--honey-2);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;box-shadow:0 2px 10px rgba(0,0,0,.5)}
 .pundo svg{width:26px;height:26px}
@@ -1646,7 +1719,11 @@ function showLoading(msg){
 }
 // Se ejecuta cada vez que alguien entra o sale
 async function onAuth(u){
-  if(!u){ user = null; render(); return; }
+  if(!u){
+    user = null; data = { inv:{}, decks:[], wish:{} }; myGroups = []; members = []; matchList = []; pubLoaded = false; pubSeen = {}; game = null;
+    if(!['mesa', 'rank', 'guide'].includes(view.tab)) view = { tab:'decks', deckId:null, statusFilter:null };
+    render(); return;
+  }
   showLoading('Sirviendo tu mesa…');
   const email = (u.email || '').toLowerCase();
   user = { uid:u.uid, email, googleName: u.displayName || email.split('@')[0], name: u.displayName || email.split('@')[0], photo: u.photoURL || '', avatar:null, admin: isAdminEmail(email) };
@@ -1666,7 +1743,7 @@ async function onAuth(u){
     loginMsg = 'No se pudo leer la base de datos. Revisa que las reglas de Firestore estén publicadas.';
     await auth.signOut(); return;
   }
-  loginMsg = '';
+  loginMsg = ''; closeModal();
   const withArt = data.decks.filter(d => d.cards && d.cards.length);
   sessionDeckPick = withArt.length ? withArt[Math.floor(Math.random() * withArt.length)].id : null;
   view = { tab:'decks', deckId:null, statusFilter:null };
@@ -1691,7 +1768,6 @@ function initFirebase(){
 //   APP
 // =========================================================
 function render(){
-  if(!user){ renderWelcome(); return; }
   if(view.tab === 'mesa'){ keepAwake(true); renderMesa(); return; }
   keepAwake(false);
   const tabsDef = [['decks','Mis mazos',I.nDecks],['inv','Mi inventario',I.nInv],['mesa','La Mesa',I.nMesa],['rank','Ranking',I.nRank],['more','Más',I.nMore]];
@@ -1705,17 +1781,56 @@ function render(){
     <div class="user">
       ${installAvailable() ? `<button class="icon-btn hide-m" data-act="installApp" title="Instalar la app">${I.install}</button>` : ''}
       <button class="plus-btn" data-act="newDeck" title="Nuevo mazo">${I.plus}</button>
-      <button class="me" data-act="profileModal" title="Mi perfil">${avatarHtml(user)}<span class="me-txt"><b>${esc(user.name)}</b><small>Mi perfil</small></span></button>
+      ${user ? `<button class="me" data-act="profileModal" title="Mi perfil">${avatarHtml(user)}<span class="me-txt"><b>${esc(user.name)}</b><small>Mi perfil</small></span></button>`
+        : `<button class="me guest" data-act="profileModal" title="Crear cuenta o entrar"><span class="avatar">${I.users}</span><span class="me-txt"><b>Crear cuenta</b><small>o entrar</small></span></button>`}
     </div>
   </div></header>
   <main id="main"></main>
   <nav class="bnav">${tabsDef.map(([t, l, ic]) => `<button class="${isOn(t)?'on':''}" ${tabAct(t)}>${ic}${shortLbl[t]}</button>`).join('')}</nav>`;
+  if(!user && ['decks', 'inv', 'wish'].includes(view.tab)){ guestScreen(view.tab); return; }
   if(view.tab === 'decks') view.deckId ? renderDeck() : renderDecks();
   if(view.tab === 'inv') renderInv();
   if(view.tab === 'wish') renderWish();
   if(view.tab === 'rank') renderRanking();
   if(view.tab === 'guide') renderGuide();
-  if(view.tab === 'admin'){ if(user.admin) renderAdmin(); else { view.tab = 'decks'; renderDecks(); } }
+  if(view.tab === 'admin'){ if(user && user.admin) renderAdmin(); else { view.tab = 'decks'; render(); } }
+}
+
+// =========================================================
+//   SIN CUENTA (invitado): se puede ver todo y usar La Mesa;
+//   para crear mazos, inventario, wishlist o grupos se pide cuenta
+// =========================================================
+const myUid = () => user ? user.uid : '';
+function needAccount(what){
+  openModal(`<div class="need-acc">${markImg()}<h2>Necesitas una cuenta</h2>
+    <p class="lead">Solo puedes ${what} con una cuenta registrada. ¿Quieres dar de alta tu cuenta?</p></div>
+    <div class="modal-actions"><button class="btn ghost" data-act="closeModal">Cancelar</button><button class="btn primary" data-act="goSignup">Aceptar</button></div>`);
+  return true;
+}
+const guard = what => !user && needAccount(what);
+const GUEST = {
+  decks:{ band:0, kicker:'La taberna', title:'Mis mazos', act:'newDeck', btn:`${I.plus}Nuevo mazo`,
+    lead:'Arma tus mazos y descubre qué te falta para jugarlos.',
+    items:[['R','Pega tu lista', 'Copia la lista de Moxfield o de donde la tengas y pégala; también puedes subir un archivo.'],['U','Asigna tus copias', 'Cada carta física vive en un solo mazo: siempre sabes dónde está.'],['G','Lo que falta', 'Las cartas que no tienes se van a tu wishlist con un toque.']] },
+  inv:{ band:1, kicker:'La bodega', title:'Mi inventario', act:'importInv', btn:`${I.upload || I.download}Cargar Excel / CSV`,
+    lead:'Todas tus cartas físicas en un solo lugar.',
+    items:[['U','Carga tu colección', 'Sube un Excel o CSV (también el de ManaBox) o agrega carta por carta.'],['W','Libres y asignadas', 'Ve cuántas copias tienes, cuántas están en mazos y cuántas libres.'],['B','Valor de tu colección', 'Precio aproximado de cada carta y del total.']] },
+  wish:{ band:2, kicker:'La lista de compras', title:'Wishlist', act:'addWish', btn:`${I.plus}Agregar carta`,
+    lead:'Lo que les falta a tus mazos y lo que quieres conseguir.',
+    items:[['G','Se arma sola', 'Las cartas que les faltan a tus mazos aparecen aquí.'],['R','Tus antojos', 'Agrega cualquier carta que quieras conseguir.'],['U','Para la tienda', 'Descárgala en Excel y llévala a tu tienda.']] }
+};
+function guestScreen(kind){
+  const g = GUEST[kind];
+  $('#main').innerHTML = `
+  <div class="page-h band" style="${bandStyle(g.band)}">
+    <div><div class="kicker">${g.kicker}</div><h1>${g.title}</h1><p>${g.lead}</p></div>
+    <button class="btn primary" data-act="${g.act}">${g.btn}</button>
+  </div>
+  <div class="guest-card">
+    <div class="gc-head"><h2>Crea tu cuenta para guardar lo tuyo</h2><p>${kind === 'decks' ? 'Tus mazos' : kind === 'inv' ? 'Tu inventario' : 'Tu wishlist'} se guarda${kind === 'decks' ? 'n' : ''} en tu cuenta y solo tú ${kind === 'decks' ? 'los' : 'lo'} puedes editar. Es gratis y entras con Google.</p></div>
+    <div class="gc-items">${g.items.map(([c, t, d]) => `<div class="gc-it">${manaShield(c)}<div><b>${t}</b><small>${d}</small></div></div>`).join('')}</div>
+    <div class="gc-actions"><button class="btn primary" data-act="goSignup">${I.users}Crear cuenta</button><button class="btn ghost" data-act="goTab" data-tab="mesa">${I.nMesa}Mientras, prueba La Mesa</button></div>
+  </div>`;
 }
 
 // Nombre para el saludo: en la versión final viene de la cuenta de Google (displayName)
@@ -1876,6 +1991,11 @@ function cardTile(d, c){
 
 // ---------- MI INVENTARIO ----------
 let invFilter = { kpi:'all', colors:new Set(), type:'' };
+let invSel = new Set(), invDelSure = false;   // selección para eliminar varias cartas a la vez
+// Cartas de la última carga de Excel/CSV que no se encontraron (se guardan en este navegador)
+const missKey = () => 'mb_invmissing_' + (user ? user.uid : '');
+function invMissing(){ try{ return JSON.parse(localStorage.getItem(missKey()) || '[]'); }catch(e){ return []; } }
+function setInvMissing(l){ try{ l.length ? localStorage.setItem(missKey(), JSON.stringify(l)) : localStorage.removeItem(missKey()); }catch(e){} }
 const INV_TYPES = [['','Todos'],['Creature','Criaturas'],['Instant','Instantáneos'],['Sorcery','Conjuros'],['Artifact','Artefactos'],['Enchantment','Encantamientos'],['Planeswalker','Planeswalkers'],['Land','Tierras'],['Battle','Batallas']];
 function invRowsBase(){
   const rows = Object.values(data.inv).map(r => ({ ...r }));
@@ -1919,10 +2039,13 @@ function renderInv(){
     <div style="display:flex;gap:2px" title="Filtrar por identidad de color">${['W','U','B','R','G','C'].map(c => `<button class="colorbtn ${invFilter.colors.has(c)?'on':''}" data-act="invColor" data-c="${c}">${pips([c])}</button>`).join('')}</div>
   </div>
   <div class="toolbar" style="margin-top:-8px">${INV_TYPES.map(([v,l]) => `<button class="typebtn ${invFilter.type===v?'on':''}" data-act="invType" data-t="${v}">${l}</button>`).join('')}</div>
+  ${invMissing().length ? `<div class="miss-note">${I.warn}<span><b>${invMissing().length} carta(s) de tu última carga no se encontraron.</b> Agrégalas por separado con el nombre correcto.</span><button class="btn sm" data-act="invMissing">Ver lista</button></div>` : ''}
+  <div class="selbar-m"><label class="selall"><input type="checkbox" class="invSelAll"> Seleccionar todos</label></div>
   <div class="tbl-wrap"><table>
-    <thead><tr><th></th><th>Carta</th><th>Tengo</th><th>Asignadas</th><th>Libres</th><th>Faltan</th><th>En mazos</th><th>Precio</th><th></th></tr></thead>
+    <thead><tr><th></th><th>Carta</th><th>Tengo</th><th>Asignadas</th><th>Libres</th><th>Faltan</th><th>En mazos</th><th>Precio</th><th class="th-sel"><label class="selall"><input type="checkbox" class="invSelAll"> Seleccionar todos</label></th></tr></thead>
     <tbody id="invBody"></tbody>
-  </table></div>`;
+  </table></div>
+  <div class="selbar" id="invSelBar"></div>`;
   $('#iq').addEventListener('input', e => { invQuery = e.target.value; renderInvBody(); });
   renderInvBody();
 }
@@ -1957,7 +2080,7 @@ function renderInvBody(){
       <td data-l="Faltan">${i.missing ? `<span class="num-warn">${i.missing}</span>` : '—'}</td>
       <td data-l="En mazos"><span>${i.decks.map(x => `<span class="chip ok">${esc(x.name)}${x.n>1?' ×'+x.n:''}</span>`).join('') || '<span style="color:var(--faint)">—</span>'}</span></td>
       <td data-l="Precio" style="white-space:nowrap;color:var(--muted)">${c.price ? 'US$ ' + c.price.toFixed(2) : '—'}</td>
-      <td class="act-cell">${owned ? `<button class="btn ghost sm danger" data-act="delInv" data-card="${esc(r.name)}" title="Quitar del inventario">${I.trash}</button>` : ''}</td>
+      <td class="act-cell">${owned ? `<button class="btn ghost sm danger" data-act="delInv" data-card="${esc(r.name)}" title="Quitar del inventario">${I.trash}</button><label class="selbox" title="Seleccionar"><input type="checkbox" data-sel="${esc(key(r.name))}" ${invSel.has(key(r.name)) ? 'checked' : ''}></label>` : ''}</td>
     </tr>`;
   }).join('') || `<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:30px">Ninguna carta coincide con los filtros.</td></tr>`;
   document.querySelectorAll('[data-inv]').forEach(inp => inp.addEventListener('change', e => {
@@ -1969,6 +2092,27 @@ function renderInvBody(){
     if(v === 0){ delete data.inv[k]; } else data.inv[k].qty = v;
     saveData(); render();
   }));
+  // Selección: solo cuenta lo que se ve con los filtros actuales
+  const visible = rows.filter(r => data.inv[key(r.name)]).map(r => key(r.name));
+  [...invSel].forEach(k => { if(!visible.includes(k)) invSel.delete(k); });
+  document.querySelectorAll('[data-sel]').forEach(cb => cb.addEventListener('change', e => {
+    e.target.checked ? invSel.add(e.target.dataset.sel) : invSel.delete(e.target.dataset.sel);
+    invDelSure = false; syncInvSel(visible);
+  }));
+  document.querySelectorAll('.invSelAll').forEach(cb => { cb.onchange = e => {
+    if(e.target.checked) visible.forEach(k => invSel.add(k)); else invSel.clear();
+    document.querySelectorAll('[data-sel]').forEach(x => x.checked = invSel.has(x.dataset.sel));
+    invDelSure = false; syncInvSel(visible);
+  }; });
+  syncInvSel(visible);
+}
+function syncInvSel(visible){
+  const n = invSel.size, all = visible.length > 0 && visible.every(k => invSel.has(k));
+  document.querySelectorAll('.invSelAll').forEach(cb => { cb.checked = all; cb.indeterminate = n > 0 && !all; cb.disabled = !visible.length; });
+  document.querySelectorAll('[data-sel]').forEach(x => x.closest('tr').classList.toggle('sel', invSel.has(x.dataset.sel)));
+  const bar = $('#invSelBar'); if(!bar) return;
+  bar.classList.toggle('on', n > 0);
+  bar.innerHTML = n ? `<span><b>${n}</b> carta(s) seleccionada(s)</span><button class="btn ghost sm" data-act="invSelClear">Quitar selección</button><button class="btn sm danger-solid" data-act="invSelDel">${I.trash}${invDelSure ? 'Toca otra vez para confirmar' : `Eliminar ${n}`}</button>` : '';
 }
 
 // ---------- WISHLIST ----------
@@ -2172,10 +2316,11 @@ function moreMenu(){
     <div class="more-list">
       <button class="more-it" data-act="goTab" data-tab="wish">${I.nWish}<span><b>Wishlist</b><small>Lo que te falta para tus mazos y lo que quieres conseguir</small></span></button>
       <button class="more-it" data-act="goTab" data-tab="guide">${I.guide}<span><b>Guía de uso</b><small>Cómo funciona Mana Beer, paso a paso</small></span></button>
-      <button class="more-it" data-act="profileModal">${avatarHtml(user)}<span><b>Mi perfil</b><small>Nombre y foto que ven los demás${user.admin ? ' · <span class="sa-chip">Superadmin</span>' : ''}</small></span></button>
-      ${user.admin ? `<button class="more-it" data-act="goTab" data-tab="admin">${I.shield}<span><b>Administración</b><small>Todos los grupos, sus jugadores y partidas</small></span></button>` : ''}
+      ${user ? `<button class="more-it" data-act="profileModal">${avatarHtml(user)}<span><b>Mi perfil</b><small>Nombre y foto que ven los demás${user.admin ? ' · <span class="sa-chip">Superadmin</span>' : ''}</small></span></button>`
+        : `<button class="more-it" data-act="profileModal">${I.users}<span><b>Mi perfil · Crear cuenta</b><small>Crea tu cuenta o entra con Google</small></span></button>`}
+      ${user && user.admin ? `<button class="more-it" data-act="goTab" data-tab="admin">${I.shield}<span><b>Administración</b><small>Todos los grupos, sus jugadores y partidas</small></span></button>` : ''}
       ${!isStandalone() ? `<button class="more-it" data-act="${installAvailable() ? 'installApp' : 'profileModal'}">${I.install}<span><b>Instalar la app</b><small>Tenla en tu pantalla de inicio</small></span></button>` : ''}
-      <button class="more-it danger" data-act="logout">${I.logout}<span><b>Cerrar sesión</b><small>${esc(user.email)}</small></span></button>
+      ${user ? `<button class="more-it danger" data-act="logout">${I.logout}<span><b>Cerrar sesión</b><small>${esc(user.email)}</small></span></button>` : ''}
     </div>
     <div class="modal-actions"><button class="btn ghost" data-act="closeModal">Cerrar</button></div>`);
 }
@@ -2188,7 +2333,7 @@ function deckModal(d){
   const current = d ? d.cards.filter(c => !c.cmdr) : [];
   openModal(`
     <h2>${d ? 'Editar mazo' : 'Nuevo mazo'}</h2>
-    <p class="lead">${d ? 'Puedes cambiar el nombre y agregar cartas pegando texto. La lista actual es de solo lectura.' : 'Pega la lista tal como la exportas de Moxfield, Archidekt o ManaBox: una carta por línea, con cantidad.'}</p>
+    <p class="lead">${d ? 'Puedes cambiar el nombre, agregar cartas pegando texto o borrar la lista actual para poner una completa nueva.' : 'Pega la lista tal como la exportas de Moxfield, Archidekt o ManaBox: una carta por línea, con cantidad.'}</p>
     <label class="f">Nombre del mazo</label>
     <input class="input" id="mdName" placeholder="Ej. Vampiros de Edgar" value="${esc(d ? d.name : '')}">
     <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:12px">
@@ -2198,9 +2343,10 @@ function deckModal(d){
       <div id="mdCmdrWrap"><label class="f">Comandante</label>
         ${cm ? `<div class="input" style="opacity:.75">${esc(cm.name)}</div>` : `<input class="input" id="mdCmdr" placeholder="Escribe para buscar…">`}</div>
     </div>
-    ${d ? `<label class="f">Lista actual (${current.reduce((a,c)=>a+c.qty,0) + (cm ? 1 : 0)} cartas · solo lectura)</label>
-      <div class="ro-list">${esc((cm ? cardLine(cm) + '  ← comandante\n' : '') + current.map(cardLine).join('\n')) || 'Sin cartas'}</div>` : ''}
-    <label class="f">${d ? 'Agregar cartas · pega texto' : 'Lista de cartas · pega texto'}</label>
+    ${d ? `<div class="ro-head"><label class="f">Lista actual (${current.reduce((a,c)=>a+c.qty,0) + (cm ? 1 : 0)} cartas)</label>${current.length ? `<button class="btn ghost sm danger" id="mdWipe" type="button">${I.trash}Borrar lista</button>` : ''}</div>
+      <div class="ro-list" id="mdRo">${esc((cm ? cardLine(cm) + '  ← comandante\n' : '') + current.map(cardLine).join('\n')) || 'Sin cartas'}</div>
+      <div class="wipe-note hidden" id="mdWipeNote">${I.warn}<span>Al guardar se quitarán las <b>${current.reduce((a,c)=>a+c.qty,0)}</b> cartas de la lista actual${cm ? ' (el comandante se queda)' : ''} y el mazo quedará solo con lo que pegues abajo. Las copias asignadas de cartas que salgan regresan a tu inventario.</span><button class="btn ghost sm" id="mdUnwipe" type="button">Deshacer</button></div>` : ''}
+    <label class="f" id="mdListLbl">${d ? 'Agregar cartas · pega texto' : 'Lista de cartas · pega texto'}</label>
     <textarea class="input" id="mdList" rows="${d ? 6 : 12}" placeholder="1 Sol Ring (C21) 263&#10;1 Arcane Signet&#10;1 Arguel's Blood Fast / Temple of Aclazotz (XLN) 90&#10;8 Swamp" spellcheck="false"></textarea>
     <p class="hint">Formato válido: <b>cantidad + nombre</b>, y opcionalmente <b>(SET) número</b>. Con set y número se usa esa edición exacta; sin ellos, la versión predeterminada de Scryfall.</p>
     <div class="check" id="mdCheck"></div>
@@ -2209,6 +2355,17 @@ function deckModal(d){
   const syncCmdr = () => $('#mdCmdrWrap').style.visibility = fmtSel.value === 'Commander' ? 'visible' : 'hidden';
   fmtSel.addEventListener('change', () => { syncCmdr(); check(); }); syncCmdr();
   if($('#mdCmdr')) wireAutocomplete($('#mdCmdr'));
+  // Borrar la lista actual: el mazo se queda solo con lo nuevo (se confirma con doble toque al guardar)
+  let wipe = false, sure = false;
+  const setWipe = on => {
+    wipe = on; sure = false;
+    $('#mdRo').classList.toggle('wiped', on); $('#mdWipeNote').classList.toggle('hidden', !on); $('#mdWipe').classList.toggle('hidden', on);
+    $('#mdListLbl').textContent = on ? 'Nueva lista completa · pega texto' : 'Agregar cartas · pega texto';
+    $('#mdSave').textContent = on ? 'Guardar lista nueva' : 'Guardar cambios'; $('#mdSave').classList.toggle('danger-solid', on);
+    if(on) $('#mdList').focus();
+    check();
+  };
+  if($('#mdWipe')){ $('#mdWipe').onclick = () => setWipe(true); $('#mdUnwipe').onclick = () => setWipe(false); }
   let timer = null;
   $('#mdList').addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(check, 250); });
 
@@ -2216,7 +2373,7 @@ function deckModal(d){
   function evaluate(){
     const fmt = fmtSel.value, res = parseList($('#mdList').value);
     const cmdrName = cm ? cm.name : ($('#mdCmdr') ? $('#mdCmdr').value.trim() : '');
-    const merged = new Map(current.map(c => [key(c.name), { ...c }]));
+    const merged = new Map((wipe ? [] : current).map(c => [key(c.name), { ...c }]));
     res.cards.forEach(c => { const k = key(c.name); if(merged.has(k)) merged.get(k).qty += c.qty; else merged.set(k, { ...c }); });
     if(fmt === 'Commander' && cmdrName) merged.delete(key(cmdrName));
     const list = [...merged.values()];
@@ -2231,7 +2388,7 @@ function deckModal(d){
     if(ev.res.errors.length){
       h += `<div class="err">${ev.res.errors.length} línea(s) con formato no válido · corrígelas para poder guardar</div><ul>${ev.res.errors.slice(0,30).map(e => `<li>Línea ${e.line}: <code>${esc(e.text)}</code> — ${esc(e.reason)}</li>`).join('')}</ul>`;
     }
-    if(ev.res.cards.length) h += `<div class="ok">${ev.res.cards.reduce((a,c)=>a+c.qty,0)} carta(s) válidas ${d ? 'para agregar' : 'en la lista'}${ev.res.cards.filter(c=>c.set).length ? ` · ${ev.res.cards.filter(c=>c.set).length} con edición exacta` : ''}</div>`;
+    if(ev.res.cards.length) h += `<div class="ok">${ev.res.cards.reduce((a,c)=>a+c.qty,0)} carta(s) válidas ${d ? (wipe ? 'en la lista nueva' : 'para agregar') : 'en la lista'}${ev.res.cards.filter(c=>c.set).length ? ` · ${ev.res.cards.filter(c=>c.set).length} con edición exacta` : ''}</div>`;
     if(ev.rules.max && ev.total > ev.rules.max) h += `<div class="err">El mazo quedaría con ${ev.total} cartas: excede el límite de ${ev.rules.max} para ${ev.fmt}. Se guardará con un aviso en el nombre del mazo.</div>`;
     else if(ev.rules.max) h += `<div style="color:var(--muted)">Total del mazo: ${ev.total}/${ev.rules.max}</div>`;
     if(ev.over.length) h += `<div class="wrn">${ev.over.length} carta(s) con más copias de las permitidas (${ev.rules.copies} en ${ev.fmt}):</div><ul>${ev.over.map(c => `<li>${c.qty} × ${esc(c.name)}</li>`).join('')}</ul>`;
@@ -2248,7 +2405,8 @@ function deckModal(d){
     if(!name){ toast('Ponle nombre al mazo.'); return; }
     if(ev.res.errors.length){ toast('Hay líneas con formato no válido. Revisa el recuadro de validación.'); return; }
     if(!d && !ev.res.cards.length && !ev.cmdrName){ toast('Pega al menos una carta.'); return; }
-    if(d && !ev.res.cards.length && name === d.name && !(ev.cmdrName && !cm)){ closeModal(); return; }
+    if(d && !wipe && !ev.res.cards.length && name === d.name && !(ev.cmdrName && !cm)){ closeModal(); return; }
+    if(wipe && !sure){ sure = true; $('#mdSave').textContent = ev.res.cards.length ? 'Toca otra vez para reemplazar la lista' : 'Toca otra vez para dejar el mazo vacío'; return; }
     const btn = $('#mdSave'); btn.disabled = true; btn.textContent = 'Buscando imágenes en Scryfall…';
     const items = ev.res.cards.map(c => ({ name:c.name, set:c.set, cn:c.cn }));
     if(ev.cmdrName && !cm) items.push({ name: ev.cmdrName });
@@ -2277,16 +2435,23 @@ function deckModal(d){
       d.cards.unshift({ name: e && !e.missing ? e.name : ev.cmdrName, qty:1, assigned:0, cmdr:true });
     }
     const cmK = (d.cards.find(c => c.cmdr) || {}).name;
+    const old = new Map(d.cards.filter(c => !c.cmdr).map(c => [key(c.name), c]));
+    if(wipe) d.cards = d.cards.filter(c => c.cmdr);
     ev.res.cards.forEach(c => {
       if(cmK && key(c.name) === key(cmK)) return;
       const ex = d.cards.find(x => !x.cmdr && key(x.name) === key(c.name));
       if(ex){ ex.qty += c.qty; ex.dup = true; }
-      else d.cards.push({ name:c.name, qty:c.qty, assigned:0, dup:!!c.dup, set:c.set, cn:c.cn, print:c.print });
+      else {
+        // Al reemplazar, la carta que ya estaba conserva sus copias asignadas (hasta la cantidad nueva)
+        const prev = wipe ? old.get(key(c.name)) : null;
+        d.cards.push({ name:c.name, qty:c.qty, assigned: prev ? Math.min(prev.assigned || 0, c.qty) : 0, dup:!!c.dup, set:c.set || (prev ? prev.set : ''), cn:c.cn || (prev ? prev.cn : ''), print:c.print || (prev ? prev.print : undefined) });
+      }
     });
     saveData(); closeModal();
     view = { tab:'decks', deckId:d.id, statusFilter:null }; render();
     const w = deckWarnings(d);
-    if(w.length) toast('Guardado con avisos: ' + w.map(x => x.text).join(' · '));
+    if(wipe) toast(`Lista de ${d.name} reemplazada: ${ev.res.cards.reduce((a, c) => a + c.qty, 0)} carta(s).` + (w.length ? ' Avisos: ' + w.map(x => x.text).join(' · ') : ''));
+    else if(w.length) toast('Guardado con avisos: ' + w.map(x => x.text).join(' · '));
     else toast(scryOffline ? 'Guardado. Las imágenes se descargarán cuando haya conexión con Scryfall.' : 'Mazo guardado.');
   });
 }
@@ -2450,7 +2615,7 @@ function parseList(txt){
 }
 
 // ---------- Agregar carta (inventario o wishlist) ----------
-function addCardModal(target){
+function addCardModal(target, miss){
   const isInv = target === 'inv';
   openModal(`
     <h2>${isInv ? 'Agregar carta al inventario' : 'Agregar carta a la wishlist'}</h2>
@@ -2462,6 +2627,12 @@ function addCardModal(target){
     <div class="preview-card" id="acPrev"></div>
     <div class="modal-actions"><button class="btn ghost" data-act="closeModal">Cancelar</button><button class="btn primary" id="acSave">Agregar</button></div>`);
   const inp = $('#acName'); inp.focus();
+  if(miss){
+    inp.value = miss.name; $('#acQty').value = miss.qty;
+    $('#acPrev').innerHTML = `<div class="hint">No encontramos «${esc(miss.name)}». Corrige el nombre y elige la carta de la lista.</div>`;
+    $('#acName').insertAdjacentHTML('beforebegin', `<button class="btn ghost sm" data-act="invMissing" style="margin-bottom:8px">← Volver a la lista</button>`);
+    setTimeout(() => inp.dispatchEvent(new Event('input', { bubbles:true })), 50);
+  }
   wireAutocomplete(inp, async n => {
     if(!n) return;
     await ensureCards([n]);
@@ -2481,6 +2652,11 @@ function addCardModal(target){
       const k = key(c.name);
       data.inv[k] = { name:c.name, qty: ((data.inv[k] || {}).qty || 0) + q };
       toast(`${q} × ${c.name} agregada(s) al inventario.`);
+      if(miss){
+        const l = invMissing().filter(x => key(x.name) !== key(miss.name)); setInvMissing(l);
+        saveData(); render(); if(l.length) missingModal(); else closeModal();
+        return;
+      }
     } else {
       wishEntry(c.name).manual += q;
       toast(`${c.name} agregada a la wishlist.`);
@@ -2541,17 +2717,42 @@ async function readImport(file){
       <span class="chip ok">${ok.length} cartas listas (${ok.reduce((a,x)=>a+x.qty,0)} copias)</span>
       ${bad.length ? `<span class="chip warn">${bad.length} no encontradas</span>` : ''}
     </div>
-    <div class="tbl-wrap" style="max-height:260px"><table style="min-width:0"><thead><tr><th>Carta</th><th>Cantidad</th><th>Estado</th></tr></thead><tbody>
-    ${list.map(x => { const good = ok.includes(x); return `<tr><td>${esc(good ? cat[key(x.name)].name : x.name)}</td><td>${x.qty}</td><td>${good ? '<span class="chip ok">Lista</span>' : '<span class="chip warn">Revisa el nombre</span>'}</td></tr>`; }).join('')}
+    <div class="tbl-wrap plain" style="max-height:260px"><table style="min-width:0"><thead><tr><th>Carta</th><th>Cant.</th><th>Estado</th></tr></thead><tbody>
+    ${bad.concat(ok).map(x => { const good = ok.includes(x); return `<tr><td>${esc(good ? cat[key(x.name)].name : x.name)}</td><td>${x.qty}</td><td>${good ? '<span class="chip ok">Lista</span>' : '<span class="chip warn">Revisa el nombre</span>'}</td></tr>`; }).join('')}
     </tbody></table></div>
-    ${bad.length ? '<p class="hint">Las filas no encontradas no se cargarán. Corrige el nombre en tu archivo y vuelve a subirlo.</p>' : ''}`;
-  const btn = $('#impSave'); btn.classList.toggle('hidden', !ok.length);
-  btn.textContent = `Cargar ${ok.length} cartas`;
+    ${bad.length ? '<p class="hint">Las cartas no encontradas no se cargarán. Al terminar te mostramos la lista para que las agregues por separado con el nombre correcto.</p>' : ''}`;
+  const btn = $('#impSave'); btn.classList.toggle('hidden', !ok.length && !bad.length);
+  btn.textContent = ok.length ? `Cargar ${ok.length} cartas` : 'Guardar lista de no encontradas';
   btn.onclick = () => {
     ok.forEach(x => { const c = cat[key(x.name)], k = key(c.name); data.inv[k] = { name:c.name, qty: ((data.inv[k] || {}).qty || 0) + x.qty }; });
-    saveData(); closeModal(); render();
+    saveData();
+    if(bad.length){
+      const prev = invMissing(), m = new Map(prev.map(x => [key(x.name), x]));
+      bad.forEach(x => { const k = key(x.name); if(m.has(k)) m.get(k).qty += x.qty; else m.set(k, { name:x.name, qty:x.qty }); });
+      setInvMissing([...m.values()]);
+      render(); missingModal(ok.length);
+    } else { closeModal(); render(); }
     toast(`Se cargaron ${ok.length} cartas a tu inventario.`);
   };
+}
+// Lista de cartas que no se cargaron: buscarlas una por una, descargarlas o copiarlas
+function missingModal(loaded){
+  const l = invMissing();
+  if(!l.length){ closeModal(); return; }
+  openModal(`
+    <h2>Cartas que no se cargaron</h2>
+    <p class="lead">${loaded != null ? `Se cargaron <b>${loaded}</b> carta(s). ` : ''}Estas <b>${l.length}</b> no se encontraron por su nombre en Scryfall. Toca <b>Buscar</b> para agregarlas una por una con el nombre correcto, o descarga la lista para corregirla y volver a subirla.</p>
+    <div class="tbl-wrap plain" style="max-height:330px"><table style="min-width:0"><thead><tr><th>Nombre en tu archivo</th><th>Cant.</th><th></th></tr></thead><tbody>
+      ${l.map((m, n) => `<tr><td><b>${esc(m.name)}</b></td><td data-l="Cantidad">${m.qty}</td><td class="act-cell"><button class="btn sm" data-act="missFind" data-n="${n}">${I.search}Buscar</button><button class="btn ghost sm" data-act="missDrop" data-n="${n}" title="Quitar de esta lista">✕</button></td></tr>`).join('')}
+    </tbody></table></div>
+    <p class="hint">La lista se queda guardada en Inventario hasta que la vacíes.</p>
+    <div class="modal-actions">
+      <button class="btn ghost" data-act="missDownload">${I.download}Descargar</button>
+      <button class="btn ghost" data-act="missCopy">Copiar</button>
+      <button class="btn ghost danger" data-act="missClear">Vaciar lista</button>
+      <span style="flex:1"></span>
+      <button class="btn primary" data-act="closeModal">Listo</button>
+    </div>`, true);
 }
 function csvToRows(txt){
   const lines = txt.split(/\r?\n/).filter(l => l.trim());
@@ -2632,12 +2833,12 @@ const actions = {
   goTab(el){
     closeModal();
     view = { tab: el.dataset.tab, deckId:null, statusFilter:null }; render(); window.scrollTo(0,0);
-    if(el.dataset.tab === 'rank' || el.dataset.tab === 'mesa') refreshGroup();
+    if(user && (el.dataset.tab === 'rank' || el.dataset.tab === 'mesa')) refreshGroup();
   },
   openDeck(el){ view = { tab:'decks', deckId: el.dataset.id, statusFilter:null }; render(); window.scrollTo(0,0); },
   toggleColor(el){ const c = el.dataset.c; deckFilter.colors.has(c) ? deckFilter.colors.delete(c) : deckFilter.colors.add(c); renderDecks(); },
   statusFilter(el){ view.statusFilter = el.dataset.s || null; renderDeck(); },
-  newDeck(){ deckModal(null); },
+  newDeck(){ if(guard('crear mazos')) return; deckModal(null); },
   editDeck(el){ deckModal(data.decks.find(x => x.id === el.dataset.id)); },
   addCards(el){ addCardsModal(data.decks.find(x => x.id === el.dataset.id), el.dataset.tab || 'search'); },
   deleteDeck(el){
@@ -2725,12 +2926,12 @@ const actions = {
     p.forEach(({ d, c }) => { wishEntry(c.name).decks[d.id] = Math.max(1, c.qty - c.assigned); });
     saveData(); render(); toast(`${p.length} faltante(s) agregadas a la wishlist.`);
   },
-  addInv(){ addCardModal('inv'); },
+  addInv(){ if(guard('dar de alta cartas en tu inventario')) return; addCardModal('inv'); },
   invKpi(el){ invFilter.kpi = el.dataset.k; if(el.dataset.k === 'all'){ invFilter.colors.clear(); invFilter.type = ''; invQuery = ''; } renderInv(); },
   invColor(el){ const c = el.dataset.c; invFilter.colors.has(c) ? invFilter.colors.delete(c) : invFilter.colors.add(c); renderInv(); },
   invType(el){ invFilter.type = el.dataset.t; renderInv(); },
-  addWish(){ addCardModal('wish'); },
-  importInv(){ importModal(); },
+  addWish(){ if(guard('agregar cartas a tu wishlist')) return; addCardModal('wish'); },
+  importInv(){ if(guard('cargar cartas a tu inventario')) return; importModal(); },
   templateInv(){ downloadSheet([{ nombre:'Sol Ring', cantidad:2 }, { nombre:'Blood Artist', cantidad:1 }], 'plantilla_inventario_manabeer', 'Inventario'); },
   delInv(el){
     const name = el.dataset.card, i = invInfo(name);
@@ -2739,6 +2940,20 @@ const actions = {
     delete data.inv[key(name)]; saveData(); render();
   },
   delWish(el){ delete data.wish[key(el.dataset.card)]; saveData(); render(); },
+  invSelClear(){ invSel.clear(); invDelSure = false; renderInvBody(); },
+  invSelDel(){
+    if(!invDelSure){ invDelSure = true; syncInvSel([...invSel]); return; }
+    let del = 0; const kept = [];
+    [...invSel].forEach(k => { const r = data.inv[k]; if(!r) return; const i = invInfo(r.name); if(i.used > 0) kept.push(r.name); else { delete data.inv[k]; del++; } });
+    invSel.clear(); invDelSure = false; saveData(); render();
+    toast(`Se eliminaron ${del} carta(s) del inventario.` + (kept.length ? ` ${kept.length} no se eliminaron porque tienen copias asignadas a mazos: ${kept.slice(0, 5).join(', ')}${kept.length > 5 ? '…' : ''}.` : ''));
+  },
+  invMissing(){ missingModal(); },
+  missFind(el){ const l = invMissing(), m = l[+el.dataset.n]; if(m) addCardModal('inv', m); },
+  missDrop(el){ const l = invMissing(); l.splice(+el.dataset.n, 1); setInvMissing(l); l.length ? missingModal() : (closeModal(), render()); },
+  missClear(){ setInvMissing([]); closeModal(); render(); },
+  missCopy(){ const t = invMissing().map(m => `${m.qty} ${m.name}`).join('\n'); (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast('Lista copiada.'), () => toast('No se pudo copiar.')); },
+  missDownload(){ downloadSheet(invMissing().map(m => ({ nombre:m.name, cantidad:m.qty })), 'cartas_no_encontradas_manabeer', 'No encontradas'); },
   bought(el){
     const k = key(el.dataset.card), w = data.wish[k]; if(!w) return;
     const q = wishTotal(w);
@@ -2760,10 +2975,12 @@ const actions = {
   profileModal(){ profileModal(); },
   moreMenu(){ moreMenu(); },
   installApp(){ installApp(); },
-  createGroup(){ createGroupModal(); },
+  createGroup(){ if(guard('crear grupos')) return; createGroupModal(); },
+  goSignup(){ closeModal(); if(view.tab === 'mesa') closeOv(); guestProfileModal(); },
+  viewGroup(el){ const g = gFound.find(x => x.id === el.dataset.g); if(!g) return; if(!pubGroups.some(x => x.id === g.id)) pubGroups.push(g); rankFilter.scope = g.id; closeModal(); view = { tab:'rank', deckId:null, statusFilter:null }; render(); },
   searchGroup(){ searchGroupModal(); },
-  joinGroup(el){ joinGroup(el.dataset.g); },
-  joinGroupPass(el){ const v = ($('#gpi_' + el.dataset.g) || {}).value || ''; if(!v.trim()){ const e = $('#gpe_' + el.dataset.g); if(e) e.textContent = 'Escribe la contraseña.'; return; } joinGroup(el.dataset.g, v.trim()); },
+  joinGroup(el){ if(guard('entrar a un grupo')) return; joinGroup(el.dataset.g); },
+  joinGroupPass(el){ if(guard('entrar a un grupo')) return; const v = ($('#gpi_' + el.dataset.g) || {}).value || ''; if(!v.trim()){ const e = $('#gpe_' + el.dataset.g); if(e) e.textContent = 'Escribe la contraseña.'; return; } joinGroup(el.dataset.g, v.trim()); },
   groupAdmin(el){ groupAdminModal(el.dataset.g); },
   gRole(el){ setGroupRole(el.dataset.g, el.dataset.u, el.dataset.r === '1').catch(e => toast('No se pudo cambiar: ' + (e.message || e.code))); },
   gKick(el){ kickFromGroup(el.dataset.g, el.dataset.u); },
@@ -2796,7 +3013,29 @@ let members = [];           // perfiles públicos de los jugadores de mis grupos
 let matchList = [];
 let myGroups = [];          // grupos donde estoy: { id, name, nameKey, open, limit, owner, admins, uids }
 const gKey = n => String(n || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/\s+/g, ' ').trim().replace(/\//g, '-');
-const groupById = id => myGroups.find(g => g.id === id);
+let pubGroups = [], pubLoaded = false, pubSeen = {};   // grupos que ve un invitado (solo lectura)
+const groupById = id => myGroups.find(g => g.id === id) || pubGroups.find(g => g.id === id);
+async function loadPublicGroups(){
+  try{
+    const sn = await db.collection('mb_grupos').orderBy('nameKey').limit(40).get();
+    const got = sn.docs.map(d => ({ ...d.data(), id:d.id }));
+    got.forEach(g => { if(!pubGroups.some(x => x.id === g.id)) pubGroups.push(g); });
+    pubGroups.sort((a, b) => ((b.uids || []).length - (a.uids || []).length) || a.name.localeCompare(b.name));
+  }catch(e){ console.warn('grupos públicos', e); }
+  pubLoaded = true;
+}
+// Partidas y jugadores de un grupo, para verlo sin cuenta
+async function loadGroupView(g){
+  if(!g || pubSeen[g.id]) return;
+  pubSeen[g.id] = true;
+  try{
+    const sn = await db.collection('mb_partidas').where('gid', '==', g.id).get();
+    const have = new Set(matchList.map(m => m.id));
+    sn.docs.forEach(d => { if(!have.has(d.id)) matchList.push({ ...d.data(), id:d.id }); });
+    matchList.sort((a, b) => b.date - a.date);
+    await ensureProfiles(g.uids || []);
+  }catch(e){ console.warn('grupo', e); pubSeen[g.id] = false; }
+}
 const isGroupAdmin = g => !!(g && user && (g.owner === user.uid || (g.admins || []).includes(user.uid)));
 const FV = () => firebase.firestore.FieldValue;
 async function loadGroups(){
@@ -2872,7 +3111,22 @@ const AVATAR_CARDS = ['The Master of Keys', "Atraxa, Praetors' Voice", 'Edgar Ma
   "Light-Paws, Emperor's Voice", 'Zur the Enchanter', 'Animar, Soul of Elements', 'Derevi, Empyrial Tactician', 'Hapatra, Vizier of Poisons',
   'Selvala, Heart of the Wilds', 'Avacyn, Angel of Hope', 'Karador, Ghost Chieftain', 'Narset, Enlightened Master', 'Lord Windgrace',
   'Rhys the Redeemed', 'Feather, the Redeemed', 'Najeela, the Blade-Blossom', 'The Gitrog Monster', 'Old Gnawbone'];
+function guestProfileModal(){
+  openModal(`
+    <h2>Mi perfil</h2>
+    <div class="signup">
+      ${markImg()}
+      <h3>Crea tu cuenta</h3>
+      <p>Con tu cuenta guardas tus mazos, tu inventario y tu wishlist, entras a los grupos de tu tienda y tus partidas cuentan para el Ranking.</p>
+      <button class="btn primary gbtn" type="button" id="enterBtn"><svg viewBox="0 0 48 48" width="20" height="20" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Crear cuenta con Google</button>
+      <div class="err" id="loginErr">${esc(loginMsg)}</div>
+      <small class="hint">¿Ya tienes cuenta? Usa el mismo botón para entrar.<br>Tu inventario y tu wishlist solo los ves tú. Los demás solo ven tu nombre, tus mazos e insignias.</small>
+    </div>
+    <div class="modal-actions"><button class="btn ghost" data-act="closeModal">Cerrar</button></div>`);
+  $('#enterBtn').addEventListener('click', e => { e.preventDefault(); signIn(); });
+}
 async function profileModal(){
+  if(!user){ guestProfileModal(); return; }
   let pick = user.avatar ? { ...user.avatar } : null;
   const draw = () => {
     const opts = AVATAR_CARDS.map(n => cat[key(n)]).filter(e => e && e.art && !e.demo && !e.missing);
@@ -3023,9 +3277,9 @@ async function runGroupSearch(){
     const sn = await db.collection('mb_grupos').orderBy('nameKey').startAt(q).endAt(q + '').limit(20).get();
     gFound = sn.docs.map(d => ({ ...d.data(), id:d.id }));
     box.innerHTML = gFound.length ? gFound.map(g => {
-      const n = (g.uids || []).length, mine = (g.uids || []).includes(user.uid), full = n >= g.limit;
+      const n = (g.uids || []).length, mine = !!user && (g.uids || []).includes(user.uid), full = n >= g.limit;
       return `<div class="grow"><div class="gico">${g.open ? GICO.open : GICO.lock}</div><div class="gname"><b>${esc(g.name)}</b><small>${n}/${g.limit} jugadores · ${g.open ? 'Abierto' : 'Cerrado'}</small></div>
-        ${mine ? '<span class="chip ok">Ya eres miembro</span>' : full ? '<span class="chip">Lleno</span>' : `<button class="btn primary sm" data-act="joinGroup" data-g="${g.id}">Entrar</button>`}</div>
+        <span class="gacts">${!user ? `<button class="btn sm" data-act="viewGroup" data-g="${g.id}">Ver ranking</button>` : ''}${mine ? '<span class="chip ok">Ya eres miembro</span>' : full ? '<span class="chip">Lleno</span>' : `<button class="btn primary sm" data-act="joinGroup" data-g="${g.id}">Entrar</button>`}</span></div>
         ${!mine && !full && !g.open ? `<div class="gpass" id="gp_${g.id}" style="display:none"><input class="input" placeholder="Contraseña del grupo" id="gpi_${g.id}"><button class="btn primary sm" data-act="joinGroupPass" data-g="${g.id}">Aceptar</button><p class="gerr" id="gpe_${g.id}"></p></div>` : ''}`;
     }).join('') : '<p class="hint">No hay grupos que empiecen con ese nombre.</p>';
   }catch(e){ console.error(e); box.innerHTML = '<p class="gerr">No se pudo buscar. Revisa tu conexión.</p>'; }
@@ -3497,7 +3751,7 @@ function renderGuide(){
   </div>
   <nav class="gd-idx">${IDX.map(([id, t]) => `<button data-act="guideGo" data-s="${id}">${t}</button>`).join('')}</nav>
   <div class="gd-wrap">
-  ${sec('start', I.users, 'Empezar', 'Entras con tu cuenta de Google y listo: tus mazos, inventario y partidas quedan guardados en tu cuenta.', tiles([
+  ${sec('start', I.users, 'Empezar', 'Sin cuenta puedes usar La Mesa y ver el Ranking de los grupos. Para guardar tus mazos, inventario y wishlist, entrar a grupos y que tus partidas cuenten, crea tu cuenta con Google en «Mi perfil».', tiles([
     [I.users, 'Mi perfil', 'En «Más → Mi perfil» elige el nombre y la ilustración que verán los demás.'],
     [I.install, 'Instala la app', 'Android/PC: botón «Instalar». iPhone/iPad: en Safari toca Compartir → «Agregar a pantalla de inicio».'],
     [I.shield, 'Tu información es tuya', 'Nadie ve tu inventario ni tu wishlist. Los demás solo ven tu nombre, tus mazos e insignias.']
@@ -3577,6 +3831,7 @@ function renderGuide(){
 // =========================================================
 let rankFilter = { scope:null, deck:'', myDeck:'' };
 function rankScope(){
+  if(!user){ let sc = rankFilter.scope; if(!pubGroups.some(g => g.id === sc)) sc = pubGroups[0] ? pubGroups[0].id : null; rankFilter.scope = sc; return sc; }
   let sc = rankFilter.scope || store.get('rankScope', null);
   if(sc !== 'me' && !groupById(sc)) sc = myGroups[0] ? myGroups[0].id : 'me';
   rankFilter.scope = sc; return sc;
@@ -3589,14 +3844,15 @@ function rankHead(sc, g, sub){
   return `<div class="page-h band" style="${bandStyle(3)}">
     <div><div class="kicker">El salón de la fama</div><h1>Ranking</h1><p>${sub}</p></div>
     <div class="rk-actions">
-      <label class="rk-lbl" for="rkScope">Mis grupos</label>
-      <select class="input" id="rkScope" aria-label="Mis grupos">${myGroups.map(x => `<option value="${x.id}" ${x.id === sc ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}<option value="me" ${sc === 'me' ? 'selected' : ''}>★ Mi trayectoria</option></select>
-      ${g ? `<button class="btn icon" data-act="groupAdmin" data-g="${g.id}" title="Grupo: jugadores y ajustes" aria-label="Administrar grupo">${GICO.gear}</button>` : ''}
+      <label class="rk-lbl" for="rkScope">${user ? 'Mis grupos' : 'Grupos'}</label>
+      <select class="input" id="rkScope" aria-label="${user ? 'Mis grupos' : 'Grupos'}">${(user ? myGroups : pubGroups).map(x => `<option value="${x.id}" ${x.id === sc ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}${user ? `<option value="me" ${sc === 'me' ? 'selected' : ''}>★ Mi trayectoria</option>` : ''}</select>
+      ${g && user ? `<button class="btn icon" data-act="groupAdmin" data-g="${g.id}" title="Grupo: jugadores y ajustes" aria-label="Administrar grupo">${GICO.gear}</button>` : ''}
       <button class="btn" data-act="searchGroup">${I.search}Buscar grupo</button>
       <button class="btn primary" data-act="createGroup">${I.plus}Crear grupo</button>
     </div>
   </div>
-  ${user.admin && !groupById('manabeer') ? `<div class="mig-card"><div><b>Grupo Mana Beer</b>Crea el grupo con tus amigos registrados y pásale las partidas que ya existen.</div><button class="btn primary" data-act="migrateMB">Crear y pasar partidas</button></div>` : ''}`;
+  ${!user ? `<div class="guest-note">${I.users}<span>Estás viendo el Ranking sin cuenta. Para entrar a un grupo y que tus partidas cuenten, <b>crea tu cuenta</b>.</span><button class="btn sm primary" data-act="goSignup">Crear cuenta</button></div>` : ''}
+  ${user && user.admin && !groupById('manabeer') ? `<div class="mig-card"><div><b>Grupo Mana Beer</b>Crea el grupo con tus amigos registrados y pásale las partidas que ya existen.</div><button class="btn primary" data-act="migrateMB">Crear y pasar partidas</button></div>` : ''}`;
 }
 function headToHead(list, deckId){
   const H = {};
@@ -3620,6 +3876,13 @@ function bindRankControls(){
   const md = $('#rkMyDeck'); if(md) md.onchange = e => { rankFilter.myDeck = e.target.value; renderRanking(); };
 }
 function renderRanking(){
+  if(!user){
+    if(!pubLoaded){ $('#main').innerHTML = rankHead(null, null, 'Cargando grupos…') + '<div class="empty"><b>Abriendo el salón de la fama…</b></div>'; loadPublicGroups().then(() => { if(view.tab === 'rank' && !user) renderRanking(); }); return; }
+    const g = groupById(rankScope());
+    if(!g){ $('#main').innerHTML = rankHead(null, null, 'Aún no hay grupos.') + `<div class="empty"><b>Todavía no hay grupos</b>Crea el de tu tienda o tus amigos.</div>`; bindRankControls(); return; }
+    if(!pubSeen[g.id]){ $('#main').innerHTML = rankHead(g.id, g, 'Cargando partidas de ' + esc(g.name) + '…') + '<div class="empty"><b>Cargando…</b></div>'; bindRankControls(); loadGroupView(g).then(() => { if(view.tab === 'rank' && !user) renderRanking(); }); return; }
+    renderRankingGroup(g); bindRankControls(); return;
+  }
   const sc = rankScope();
   if(sc === 'me') renderRankingMe(); else renderRankingGroup(groupById(sc));
   bindRankControls();
@@ -4005,15 +4268,16 @@ function loadGame(){
     newGame('4a', 40);
     const me = currentMember();
     if(me){ game.players[0].member = me.id; game.players[0].conf = 'ok'; }
-    game.gid = store.get('lastGid_' + user.uid, null);
+    game.gid = user ? store.get('lastGid_' + user.uid, null) : null;
     saveGame();
   }
   // El grupo de la mesa: el último usado (si sigo en él)
   if(game.gid && !groupById(game.gid)) game.gid = null;
-  if(game.gid === null && !game.lastAct){ const lg = store.get('lastGid_' + user.uid, null); if(groupById(lg)) game.gid = lg; }
+  if(!user){ game.gid = null; game.players.forEach(p => { p.member = null; p.conf = null; }); }
+  if(user && game.gid === null && !game.lastAct){ const lg = store.get('lastGid_' + user.uid, null); if(groupById(lg)) game.gid = lg; }
   // Después de 18 horas los lugares vuelven a invitado (menos el mío)
   if(game.lastAct && Date.now() - game.lastAct > 18 * 3600e3){
-    game.players.forEach((p, i) => { if(p.member && p.member !== user.uid){ if(p.inv) db.collection('mb_invites').doc(p.inv).update({ status:'cancelled', at:Date.now() }).catch(() => {}); clearSeatState(i); } });
+    game.players.forEach((p, i) => { if(p.member && p.member !== myUid()){ if(p.inv) db.collection('mb_invites').doc(p.inv).update({ status:'cancelled', at:Date.now() }).catch(() => {}); clearSeatState(i); } });
     game.lastAct = Date.now(); saveGame();
   }
 }
@@ -4131,7 +4395,8 @@ function ctrRow(i){
 function ctrChips(i){
   const p = game.players[i];
   const on = ctrList(i).filter(c => c.v > 0).map(c => `<button class="pctr ${c.cls}" data-act="openCtr" data-i="${i}" title="${c.t}">${c.k === 'tax' ? `<small>${c.ico}</small>` : c.ico}${c.v}</button>`);
-  MANA_KEYS.filter(k => (p.mana[k] || 0) > 0).forEach(k => on.push(`<button class="mpip2" data-act="openCtr" data-i="${i}" data-m="1" style="background:${PIPC[k][0]};color:${PIPC[k][1]}" title="Maná ${k}">${p.mana[k]}</button>`));
+  const mk = MANA_KEYS.filter(k => (p.mana[k] || 0) > 0);
+  if(mk.length) on.push(`<button class="pctr manas" data-act="openCtr" data-i="${i}" data-m="1" title="Maná">${mk.map(k => `<i class="md" style="background:${PIPC[k][0]};color:${PIPC[k][1]}">${p.mana[k]}</i>`).join('')}</button>`);
   return on.length ? `<div class="pchips">${on.join('')}</div>` : '';
 }
 // Si el navegador entiende "container queries", el tamaño lo resuelve el CSS (también al girar la pantalla).
@@ -4145,11 +4410,33 @@ function sizeCell(cell){
   pr.style.setProperty('--fs', Math.max(28, Math.min(w * .36, h * .5)) + 'px');
 }
 const cellRO = (!CQ && 'ResizeObserver' in window) ? new ResizeObserver(es => es.forEach(e => sizeCell(e.target))) : null;
-function sizeMesa(){ document.querySelectorAll('.pcell').forEach(c => { sizeCell(c); if(cellRO) cellRO.observe(c); }); }
+function sizeMesa(){ document.querySelectorAll('.pcell').forEach(c => { sizeCell(c); fitCell(c); if(cellRO) cellRO.observe(c); }); }
+// Que los contadores nunca se salgan de la celda: se quedan de tamaño normal y, si no caben, se recorren con el dedo
+function markScroll(el){
+  const sx = el.scrollWidth > el.clientWidth + 2, sy = el.scrollHeight > el.clientHeight + 2;
+  el.classList.toggle('sx', sx && !sy); el.classList.toggle('sy', sy);
+  const upd = () => el.classList.toggle('end', sy ? el.scrollTop + el.clientHeight >= el.scrollHeight - 4 : el.scrollLeft + el.clientWidth >= el.scrollWidth - 4);
+  upd(); if(!el.__sc){ el.__sc = 1; el.addEventListener('scroll', upd, { passive:true }); }
+}
+function fitCell(cell){
+  if(!cell) return;
+  const pr = cell.querySelector('.prot'); if(!pr) return;
+  const ch = cell.querySelector('.pchips');
+  if(ch){
+    // En celdas altas y angostas (celular en vertical) hay espacio a lo ancho debajo de la vida
+    const tall = pr.clientHeight > pr.clientWidth * 1.25;
+    ch.style.maxWidth = tall ? (cell.querySelector('.turnbtn') ? '62%' : '88%') : '58%';
+    ch.classList.remove('sx', 'sy', 'end'); markScroll(ch);
+  }
+  const row = cell.querySelector('.cmdrecv .ctrrow');
+  if(row) markScroll(row);
+}
+let fitT = null;
+window.addEventListener('resize', () => { clearTimeout(fitT); fitT = setTimeout(() => { if(view.tab === 'mesa') document.querySelectorAll('.pcell').forEach(fitCell); }, 120); });
 function renderCell(i){
   const old = $('#pc' + i); if(!old) return;
   old.outerHTML = cellHtml(i);
-  sizeCell($('#pc' + i));
+  sizeCell($('#pc' + i)); fitCell($('#pc' + i));
   if(mesaPanel && mesaPanel.i === i) renderCounters(i, mesaPanel.t);
 }
 let saveT = null;
@@ -4192,11 +4479,25 @@ function checkWinner(){
 //  · tocar − / +           → resta o suma 1 de vida
 //  · mantener presionado    → resta o suma de 10 en 10
 //  · deslizar a los lados   → modo daño de comandante para ese jugador (en su propio sentido de lectura)
-let gesture = null, suppressClickUntil = 0, suppressCell = -1;
+let gesture = null, suppressClickUntil = 0, suppressCell = -1, scrollDrag = null;
+document.addEventListener('pointermove', e => {
+  const d = scrollDrag; if(!d) return;
+  const dx = e.clientX - d.x0, dy = e.clientY - d.y0;
+  if(!d.moved && Math.hypot(dx, dy) > 8) d.moved = true;
+  if(!d.moved) return;
+  const a = -d.rot * Math.PI / 180, lx = dx * Math.cos(a) - dy * Math.sin(a), ly = dx * Math.sin(a) + dy * Math.cos(a);
+  d.el.scrollLeft = d.sl - lx; d.el.scrollTop = d.st - ly;
+});
+const endScrollDrag = () => { const d = scrollDrag; scrollDrag = null; if(d && d.moved){ suppressClickUntil = Date.now() + 350; suppressCell = d.i; } };
+document.addEventListener('pointerup', endScrollDrag);
+document.addEventListener('pointercancel', endScrollDrag);
 document.addEventListener('pointerdown', e => {
   if(!game || view.tab !== 'mesa') return;
   const cell = e.target.closest('.pcell');
   if(!cell || e.target.closest('.cpanel')) return;
+  // Recorrer contadores con el dedo (la celda está girada: el arrastre se convierte a su propio eje)
+  const sc = e.target.closest('.ctrrow.sx, .ctrrow.sy, .pchips.sx');
+  if(sc){ scrollDrag = { el:sc, i:+cell.dataset.i, rot:+cell.dataset.rot, x0:e.clientX, y0:e.clientY, sl:sc.scrollLeft, st:sc.scrollTop, moved:false }; return; }
   const btn = e.target.closest('.lifebtn');
   if(btn) e.preventDefault();
   const pr = cell.querySelector('.prot'), side = Math.abs(+cell.dataset.rot) === 90, rc = cell.getBoundingClientRect();
@@ -4493,6 +4794,11 @@ function layoutSheet(){
     <div class="sheet-actions"><button class="btn ghost" data-act="mesaCloseOv">Cerrar</button></div>`);
 }
 function pickPlayerSheet(i, memberId, justConfirmed){
+  if(!user){
+    showSheet(`<h3>Lugar ${i + 1}</h3><p class="lead">Sin cuenta todos juegan como invitados y la partida no se guarda. Con una cuenta puedes sentar a los jugadores de tu grupo, elegir sus mazos y que las partidas cuenten para el Ranking.</p>
+      <div class="sheet-actions"><button class="btn ghost" data-act="mesaCloseOv">Seguir como invitado</button><button class="btn primary" data-act="goSignup">Crear cuenta</button></div>`);
+    return;
+  }
   const p = game.players[i];
   // Lista al día (jugadores que entraron al grupo hace poco), como mucho cada 15 s
   if(!memberId && game.gid && Date.now() - (freshAt[game.gid] || 0) > 15000){
@@ -4606,6 +4912,13 @@ function saveMatch(w){
     game.lastAct = Date.now(); saveGame(); renderMesa();
     game.players.forEach((p, i) => { if(p.member && p.conf !== 'ok' && !p.inv) sendInvite(i); });
   };
+  if(!user){
+    const wn = pName(w);
+    rematch();
+    showSheet(`<h3>¡Gana ${esc(wn)}!</h3><p class="lead">Esta partida no se guardó. <b>Crea tu cuenta para guardar tus partidas y entrar al Ranking.</b></p>
+      <div class="sheet-actions"><button class="btn ghost" data-act="mesaCloseOv">Seguir jugando</button><button class="btn primary" data-act="goSignup">Crear cuenta</button></div>`);
+    return;
+  }
   if(conf.length < 2){
     rematch();
     mesaToast('Partida terminada. No se guardó: se necesitan al menos 2 jugadores registrados y confirmados.');
