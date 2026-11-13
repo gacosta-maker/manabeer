@@ -818,6 +818,126 @@ img.avatar{object-fit:cover;padding:0}
 .gacts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;flex:none}
 .guest-note{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding:12px 14px;border:1px solid rgba(242,181,46,.45);background:rgba(242,181,46,.07);border-radius:12px;font-size:14px}
 .guest-note svg{width:20px;height:20px;color:var(--honey-2);flex:none}.guest-note span{flex:1;min-width:200px}
+/* ===== v16: vistas, menús, categorías, secciones del mazo, versiones ===== */
+.vswitch{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-left:auto;background:var(--surface-2)}
+.vswitch button{background:none;border:none;color:var(--muted);padding:7px 10px;cursor:pointer;display:flex;align-items:center}
+.vswitch button+button{border-left:1px solid var(--line)}
+.vswitch button.on{background:rgba(242,181,46,.16);color:var(--honey-2)}
+.vswitch .ico{width:18px;height:18px}
+.catbar{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:-8px 0 16px}
+.catlbl{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--faint);margin-right:2px}
+.catlbl .ico,.typebtn .ico,.typebtn svg{width:14px;height:14px;vertical-align:-2px}
+.typebtn em{font-style:normal;opacity:.65;margin-left:3px}
+.typebtn.add{border-style:dashed;display:inline-flex;align-items:center;gap:4px}
+.catchip{display:inline-flex;align-items:center;gap:4px;margin-top:4px;font-size:11px;color:var(--honey-2);background:rgba(242,181,46,.1);border:1px solid rgba(242,181,46,.35);border-radius:999px;padding:1px 8px}
+.catchip .ico{width:11px;height:11px}
+.cn-btn{display:block}
+.thumb-btn,.cn-btn{background:none;border:none;padding:0;cursor:zoom-in;color:inherit;text-align:left;font:inherit}
+.cn-btn b{display:block}.cn-btn:hover b{color:var(--honey-2);text-decoration:underline;text-underline-offset:3px}
+.dots{padding:5px 6px!important}.dots .ico{width:16px;height:16px}
+.mcard .dots{position:absolute;right:6px;bottom:6px;z-index:3;width:30px;height:30px;border-radius:50%;background:rgba(10,8,14,.82);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;opacity:.85}
+.mcard .dots:hover{opacity:1;border-color:var(--honey)}
+.mcard .dots ~ .qty,.mcard .qty{right:42px}
+.edhp{position:absolute;left:36px;bottom:8px;z-index:2;font-size:11px;font-weight:800;padding:2px 7px;border-radius:6px;background:rgba(10,8,14,.88);border:1px solid var(--line);color:var(--muted)}
+.edhp.mid{color:#B5D4F4;border-color:#378ADD}.edhp.hi{color:#C0DD97;border-color:#639922}
+.tl-row .edhp{position:static;flex:none}
+.selbar-m.always{display:block;margin:0 0 8px 2px}
+/* Lista de texto */
+.tlist{columns:4 250px;column-gap:22px}
+.tl-col{break-inside:avoid;margin-bottom:18px}
+.tl-col h4{font-family:var(--brand);color:var(--honey-2);font-size:15px;margin:0 0 6px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.tl-col h4 em{font-style:normal;color:var(--faint);font-size:12px;margin-left:4px}
+.tl-row{display:flex;align-items:center;gap:6px;padding:2px 4px;border-radius:7px;min-height:30px}
+.tl-row:hover{background:rgba(255,255,255,.04)}
+.tl-row.sel{background:rgba(242,181,46,.08)}
+.tl-row .selbox{width:24px;height:24px}.tl-row .selbox input{width:15px;height:15px}
+.tl-q{min-width:20px;text-align:right;color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
+.tl-n{flex:1;min-width:0;background:none;border:none;color:var(--text);text-align:left;padding:3px 2px;cursor:pointer;font:inherit;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-n:hover{color:var(--honey-2)}
+.tl-a{font-size:11px;color:#C0DD97}.tl-c{color:var(--honey-2);display:flex}.tl-c .ico,.tl-c svg{width:14px;height:14px}
+.tl-st{background:none;border:none;padding:0;cursor:pointer;display:flex}
+.tl-free{font-size:11px;color:var(--faint);white-space:nowrap}.tl-free.ok{color:#B5D4F4}
+.tl-row .dots{opacity:.55}.tl-row:hover .dots{opacity:1}
+/* Imágenes del inventario */
+.inv-grid .icard{cursor:zoom-in}
+.icard .iq{position:absolute;top:8px;right:8px;z-index:2;background:rgba(10,8,14,.9);border:1px solid var(--honey);color:var(--honey-2);font-weight:800;font-size:13px;padding:2px 8px;border-radius:7px}
+.icard .iq.no{border-color:var(--line);color:var(--faint)}
+.icard .iu{position:absolute;top:8px;left:8px;z-index:2;font-size:11px;font-weight:700;background:rgba(23,52,4,.9);border:1px solid #639922;color:#C0DD97;padding:2px 6px;border-radius:6px}
+.icard .ic{position:absolute;left:8px;bottom:42px;z-index:2;display:flex;align-items:center;gap:4px;font-size:11px;background:rgba(10,8,14,.88);border:1px solid rgba(242,181,46,.5);color:var(--honey-2);padding:2px 7px;border-radius:999px;max-width:calc(100% - 16px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.icard .ic .ico{width:11px;height:11px;flex:none}
+.icard .itools{position:absolute;left:6px;right:6px;bottom:6px;display:flex;justify-content:space-between;align-items:center;z-index:3}
+.icard .itools .selbox{width:30px;height:30px;border-radius:8px;background:rgba(10,8,14,.82);border:1px solid var(--line)}
+.icard .itools .dots{position:static}
+.icard.sel .cimg{outline:3px solid var(--honey);outline-offset:-1px}
+/* Menú contextual */
+.pop{position:fixed;z-index:80;min-width:230px;max-width:300px;max-height:70vh;overflow:auto;background:var(--surface-2);border:1px solid var(--line-2,var(--line));border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.6);padding:6px}
+.pop-h{font-size:12px;color:var(--faint);padding:6px 10px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pop-sub{display:flex;align-items:center;gap:6px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--honey-2);padding:8px 10px 2px}
+.pop-sub .ico{width:13px;height:13px}
+.pop-it{display:flex;align-items:center;gap:8px;width:100%;background:none;border:none;color:var(--text);text-align:left;padding:9px 10px;border-radius:9px;cursor:pointer;font:inherit;font-size:14px}
+.pop-it:hover{background:rgba(242,181,46,.1)}
+.pop-it .ico{width:16px;height:16px;flex:none;color:var(--muted)}
+.pop-it.danger{color:#FF9A8A}.pop-it.danger .ico{color:#FF9A8A}
+.pop-dot{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--muted);flex:none}.pop-dot.on{background:var(--honey);border-color:var(--honey)}
+.pop-sep{height:1px;background:var(--line);margin:5px 4px}
+.catman{display:flex;flex-direction:column;gap:8px}.cm-row{display:flex;gap:8px;align-items:center}.cm-row .input{flex:1}
+.cd-cat{display:flex;align-items:center;gap:10px;margin-top:10px}.cd-cat span{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:13px}.cd-cat .ico{width:14px;height:14px}.cd-cat select{max-width:220px}
+/* Versiones */
+.vers{display:flex;flex-direction:column;gap:6px;max-height:300px;overflow:auto;margin-top:8px;padding-right:4px}
+.vr{display:flex;align-items:center;gap:10px;padding:6px 8px;border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.15)}
+.vr.on{border-color:var(--honey);background:rgba(242,181,46,.07)}
+.vr img{width:34px;border-radius:3px;flex:none}
+.vr-i{flex:1;min-width:0}.vr-i b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.vr-i small{display:block;color:var(--faint);font-size:11px}
+.vr label{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--muted)}
+.vr .vq{width:54px;padding:5px 6px;text-align:center}
+.vr .vq:disabled{opacity:.3}
+/* Secciones del mazo */
+.deck-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:16px}
+.boards{display:inline-flex;gap:4px;padding:4px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;flex-wrap:wrap}
+.boards button{background:none;border:none;color:var(--muted);padding:7px 14px;border-radius:9px;cursor:pointer;font:inherit;font-weight:600;font-size:14px}
+.boards button em{font-style:normal;font-weight:500;opacity:.7;margin-left:4px;font-size:12px}
+.boards button.on{background:rgba(242,181,46,.16);color:var(--honey-2)}
+.deck-tools{display:flex;gap:10px;align-items:center;margin-left:auto}
+.deck-tools .vswitch{margin-left:0}
+.edh-tg{display:inline-flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:6px 12px 6px 8px;cursor:pointer;font:inherit;font-size:13px;font-weight:600}
+.edh-tg .sw{width:30px;height:18px;border-radius:999px;background:var(--surface-3,#2a2520);border:1px solid var(--line);position:relative;transition:.15s}
+.edh-tg .sw::after{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--muted);transition:.15s}
+.edh-tg.on{color:var(--honey-2);border-color:var(--honey)}
+.edh-tg.on .sw{background:rgba(242,181,46,.35);border-color:var(--honey)}.edh-tg.on .sw::after{left:14px;background:var(--honey-2)}
+.bcard .bfree{position:absolute;top:8px;left:8px;z-index:2;font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;background:rgba(10,8,14,.88);border:1px solid var(--line);color:var(--faint)}
+.bcard .bfree.ok{color:#B5D4F4;border-color:#378ADD}
+.swlist{display:flex;flex-direction:column;gap:6px;max-height:50vh;overflow:auto}
+.sw-it{display:flex;align-items:center;gap:10px;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:6px 10px;cursor:pointer;color:var(--text);text-align:left;font:inherit}
+.sw-it:hover{border-color:var(--honey)}.sw-it img{width:36px;border-radius:3px}.sw-it span{flex:1;min-width:0}.sw-it b{display:block;font-size:14px}.sw-it small{color:var(--faint);font-size:12px}
+.sw-it .edhp{position:static}
+.ac-board{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px}.ac-board>span{font-size:13px;color:var(--muted)}
+.aq-bd{font-style:normal;font-size:11px;color:var(--honey-2);border:1px solid rgba(242,181,46,.4);border-radius:999px;padding:0 6px;margin-left:4px}
+.boards button.top{color:var(--honey-2)}
+.top-hide{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);cursor:pointer}
+.top-hide input{accent-color:var(--honey);width:16px;height:16px}
+.vswitch button.txt{font-weight:700;font-size:13px;padding:7px 11px}
+.edhp.big{font-size:13px;padding:3px 9px;left:8px;bottom:8px}
+.tcard.ind .cimg{filter:saturate(.5) brightness(.75)}
+.bcard .bfree.in{color:#C0DD97;border-color:#639922}
+.cd-addto{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:10px}
+.cd-cats{display:flex;flex-wrap:wrap;gap:6px}
+.cd-cat{align-items:flex-start}
+.pop-chk{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--muted);flex:none;position:relative}
+.pop-chk.on{background:var(--honey);border-color:var(--honey)}
+.pop-chk.on::after{content:"";position:absolute;left:4px;top:1px;width:5px;height:9px;border:solid #2a1a05;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.pop-chk.some::after{content:"";position:absolute;left:3px;right:3px;top:6px;height:2px;background:var(--honey)}
+.cd-deck{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.cd-qty{display:flex;align-items:center;gap:8px;margin-right:6px}
+.cd-qty b{min-width:22px;text-align:center;font-size:18px}.cd-qty span{color:var(--muted);font-size:13px}
+.cd-qty .btn{width:34px;justify-content:center;padding:6px 0;font-size:18px}
+.toast.undo{display:flex;align-items:center;gap:12px;pointer-events:auto}
+.hovcard{position:fixed;left:0;top:0;width:250px;border-radius:12px;z-index:90;pointer-events:none;box-shadow:0 18px 40px rgba(0,0,0,.7)}
+@media (max-width:640px){
+  .tlist{columns:1}
+  .deck-tools{margin-left:0;width:100%;justify-content:space-between}
+  .vswitch{margin-left:0}
+  .toolbar .vswitch{margin-left:auto}
+}
 .miss-note{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 14px;padding:12px 14px;border:1px solid rgba(255,170,90,.45);background:rgba(255,150,60,.08);border-radius:12px;color:var(--text);font-size:14px}
 .miss-note svg{width:20px;height:20px;color:#FFB26B;flex:none}.miss-note span{flex:1;min-width:200px}
 .selall{display:inline-flex;align-items:center;gap:7px;cursor:pointer;font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap;text-transform:none;letter-spacing:0}
@@ -1136,7 +1256,7 @@ let auth = null, db = null, fbReady = false;
 let loginMsg = '';           // mensaje en la pantalla de bienvenida (errores)
 let sessionDeckPick = null;  // mazo cuyo comandante adorna el banner en esta sesión
 let cat = store.get('cat', {});           // catálogo cacheado de Scryfall
-let data = { inv:{}, decks:[], wish:{} }; // inventario, mazos, wishlist del usuario
+let data = { inv:{}, decks:[], wish:{}, invCats:[] }; // inventario, mazos, wishlist y categorías del usuario
 let view = { tab:'decks', deckId:null, statusFilter:null };
 let deckFilter = { q:'', colors:new Set(), format:'', sort:'recent' };
 let invQuery = '', wishQuery = '';
@@ -1152,12 +1272,13 @@ let saved = { inv:'', wish:'', decks:{} }, saveTimer = null, saving = false, dir
 async function loadData(){
   const ref = userRef();
   const [inv, wish, decks] = await Promise.all([ref.collection('data').doc('inv').get(), ref.collection('data').doc('wish').get(), ref.collection('decks').get()]);
-  data = { inv:{}, decks:[], wish:{} };
-  ((inv.exists && inv.data().items) || []).forEach(r => { if(r && r.name) data.inv[key(r.name)] = { name:r.name, qty:r.qty || 0 }; });
+  data = { inv:{}, decks:[], wish:{}, invCats:[] };
+  ((inv.exists && inv.data().items) || []).forEach(r => { if(r && r.name){ const e = { ...r, name:r.name, qty:r.qty || 0 }; if(e.cat && !e.cats) e.cats = [e.cat]; delete e.cat; if(e.cats && !e.cats.length) delete e.cats; data.inv[key(r.name)] = e; } });
+  data.invCats = (inv.exists && inv.data().cats) || [];
   ((wish.exists && wish.data().items) || []).forEach(w => { if(w && w.name) data.wish[key(w.name)] = { manual:0, decks:{}, note:'', added:Date.now(), ...w }; });
   decks.forEach(doc => data.decks.push({ ...doc.data(), id: doc.id }));
   seedCatalog();
-  saved = { inv: JSON.stringify(Object.values(data.inv)), wish: JSON.stringify(Object.values(data.wish)), decks:{}, pub:'' };
+  saved = { inv: JSON.stringify([Object.values(data.inv), data.invCats]), wish: JSON.stringify(Object.values(data.wish)), decks:{}, pub:'' };
   data.decks.forEach(d => saved.decks[d.id] = JSON.stringify(d));
   usageCache = null;
 }
@@ -1174,10 +1295,10 @@ async function flushData(){
     const ref = userRef(), batch = db.batch(); let ops = 0;
     enrichStored();
     const inv = Object.values(data.inv), wish = Object.values(data.wish);
-    const sInv = JSON.stringify(inv), sWish = JSON.stringify(wish), next = {};
+    const sInv = JSON.stringify([inv, data.invCats || []]), sWish = JSON.stringify(wish), next = {};
     const pub = publicDecks(), sPub = JSON.stringify(pub);
     if(sPub !== saved.pub){ batch.set(ref, { publicDecks: pub, name: user.name }, { merge:true }); ops++; }
-    if(sInv !== saved.inv){ batch.set(ref.collection('data').doc('inv'), { items: inv, updated: Date.now() }); ops++; }
+    if(sInv !== saved.inv){ batch.set(ref.collection('data').doc('inv'), { items: inv, cats: data.invCats || [], updated: Date.now() }); ops++; }
     if(sWish !== saved.wish){ batch.set(ref.collection('data').doc('wish'), { items: wish, updated: Date.now() }); ops++; }
     data.decks.forEach(d => { const js = JSON.stringify(d); next[d.id] = js; if(saved.decks[d.id] !== js){ const { id, ...rest } = d; batch.set(ref.collection('decks').doc(d.id), rest); ops++; } });
     Object.keys(saved.decks).forEach(id => { if(!next[id]){ batch.delete(ref.collection('decks').doc(id)); ops++; } });
@@ -1194,6 +1315,12 @@ function saveCat(){ const real = {}; Object.keys(cat).forEach(k => { if(!cat[k].
 
 // ---------- Íconos de interfaz ----------
 const I = {
+  dots:'<svg class="ico" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="12" cy="19" r="1.9"/></svg>',
+  vTable:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 15h18M9 4v16"/></svg>',
+  vList:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>',
+  vGrid:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7.5" height="10" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="10" rx="1.5"/><rect x="3" y="15" width="7.5" height="6" rx="1.5"/><rect x="13.5" y="15" width="7.5" height="6" rx="1.5"/></svg>',
+  tag:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>',
+  swap:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"/></svg>',
   guide:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M9 8h7M9 11.5h5"/></svg>',
   shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8 3v6c0 5-3.6 8.6-8 10-4.4-1.4-8-5-8-10v-6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>',
   search:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>',
@@ -1287,7 +1414,7 @@ function toEntry(c){
   const iu = c.image_uris || face.image_uris || {};
   const pr = c.prices || {}, faces = c.card_faces || [], lg = c.legalities || {};
   const legal = {}; ['commander','standard','pioneer','modern','legacy','vintage','pauper','brawl'].forEach(f => { if(lg[f]) legal[f] = lg[f]; });
-  return { name:c.name, img:iu.normal||'', small:iu.small||'', art:iu.art_crop||'', ci:c.color_identity||[], type:c.type_line||face.type_line||'', cmc:c.cmc||0, set:c.set, cn:c.collector_number, price: parseFloat(pr.usd || pr.usd_foil || pr.usd_etched || 0) || 0,
+  return { name:c.name, img:iu.normal||'', small:iu.small||'', art:iu.art_crop||'', ci:c.color_identity||[], type:c.type_line||face.type_line||'', cmc:c.cmc||0, set:c.set, cn:c.collector_number, price: parseFloat(pr.usd || pr.usd_foil || pr.usd_etched || 0) || 0, priceFoil: parseFloat(pr.usd_foil || pr.usd_etched || 0) || 0, setCode: c.set,
     mana: c.mana_cost != null ? c.mana_cost : faces.map(f => f.mana_cost).filter(Boolean).join(' // '),
     oracle: c.oracle_text != null ? c.oracle_text : faces.map(f => `${f.name} — ${f.type_line || ''}\n${f.oracle_text || ''}${f.power != null ? `\n${f.power}/${f.toughness}` : ''}`).join('\n\n'),
     pow: c.power != null ? c.power : face.power, tou: c.toughness != null ? c.toughness : face.toughness,
@@ -1339,10 +1466,13 @@ function setLoading(on){
   if(loadingCount <= 0 && el){ el.remove(); loadingCount = 0; }
 }
 // Trae de Scryfall las cartas que no estén en caché (en bloques de 75). Devuelve los nombres no encontrados.
+// Cara frontal de una carta doble o dividida: «A // B», «A / B» o «A//B» → «A»
+const frontFace = n => String(n || '').split(/\s*\/\/\s*|\s+\/\s+/)[0].trim();
+const isMissingStale = e => e && e.missing && (!e.at || Date.now() - e.at > 6 * 3600e3);
 async function ensureCards(names){
   const orig = {};
   names.forEach(n => { if(n) orig[key(n)] = n.trim(); });
-  const need = Object.keys(orig).filter(k => !cat[k] || cat[k].demo || cat[k].seed);
+  const need = Object.keys(orig).filter(k => !cat[k] || cat[k].demo || cat[k].seed || isMissingStale(cat[k]));
   const notFound = [];
   if(!need.length) return notFound;
   setLoading(true);
@@ -1350,9 +1480,10 @@ async function ensureCards(names){
     for(let i = 0; i < need.length; i += 75){
       const chunk = need.slice(i, i + 75);
       try{
+        // Scryfall encuentra las cartas dobles por su cara frontal; el nombre completo a veces no
         const r = await fetch('https://api.scryfall.com/cards/collection', {
           method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-          body: JSON.stringify({ identifiers: chunk.map(k => ({ name: orig[k] })) })
+          body: JSON.stringify({ identifiers: chunk.map(k => ({ name: frontFace(orig[k]) })) })
         });
         const j = await r.json();
         (j.data || []).forEach(c => {
@@ -1360,7 +1491,25 @@ async function ensureCards(names){
           cat[key(c.name)] = e;
           if(c.card_faces) c.card_faces.forEach(f => { cat[key(f.name)] = e; });
         });
-        (j.not_found || []).forEach(nf => { if(nf.name){ cat[key(nf.name)] = { name:nf.name, missing:true }; notFound.push(nf.name); } });
+        // Lo que no apareció: se intenta con búsqueda aproximada (corrige faltas de ortografía y nombres de cartas dobles)
+        const left = chunk.filter(k => !cat[k] || cat[k].missing || cat[k].demo || cat[k].seed);
+        for(const k of left){
+          const ff = cat[key(frontFace(orig[k]))];
+          if(ff && !ff.missing && !ff.demo && !ff.seed){ cat[k] = ff; continue; }
+          let hit = null;
+          if(left.length <= 40){
+            try{
+              const rr = await fetch('https://api.scryfall.com/cards/named?fuzzy=' + encodeURIComponent(frontFace(orig[k])));
+              if(rr.ok){ const c = await rr.json(); if(c && c.object === 'card') hit = c; }
+            }catch(e){}
+            await sleep(90);
+          }
+          if(hit){
+            const e = toEntry(hit);
+            cat[key(hit.name)] = e; cat[k] = e;
+            if(hit.card_faces) hit.card_faces.forEach(f => { cat[key(f.name)] = e; });
+          } else { cat[k] = { name:orig[k], missing:true, at:Date.now() }; notFound.push(orig[k]); }
+        }
         scryOffline = false;
       }catch(err){
         scryOffline = true;
@@ -1630,6 +1779,14 @@ function wishEntry(name){
 }
 function cleanWish(k){ const w = data.wish[k]; if(w && wishTotal(w) <= 0) delete data.wish[k]; }
 
+let lastRemoved = null;
+function toastUndo(msg){
+  document.querySelectorAll('.toast.undo').forEach(t => t.remove());
+  const el = document.createElement('div');
+  el.className = 'toast undo'; el.innerHTML = `<span>${esc(msg)}</span><button class="btn sm" data-act="undoRemove">Deshacer</button>`;
+  $('#toasts').appendChild(el);
+  setTimeout(() => el.remove(), 6000);
+}
 // ---------- Avisos ----------
 function toast(msg){
   const el = document.createElement('div');
@@ -1721,7 +1878,7 @@ function showLoading(msg){
 // Se ejecuta cada vez que alguien entra o sale
 async function onAuth(u){
   if(!u){
-    user = null; data = { inv:{}, decks:[], wish:{} }; myGroups = []; members = []; matchList = []; pubLoaded = false; pubSeen = {}; game = null;
+    user = null; data = { inv:{}, decks:[], wish:{}, invCats:[] }; myGroups = []; members = []; matchList = []; pubLoaded = false; pubSeen = {}; game = null;
     if(!['mesa', 'rank', 'guide'].includes(view.tab)) view = { tab:'decks', deckId:null, statusFilter:null };
     render(); return;
   }
@@ -1915,53 +2072,218 @@ function renderDeckGrid(){
 }
 
 // ---------- VISTA DE UN MAZO ----------
+let deckBoardSel = {};                         // sección que se ve de cada mazo
+let deckView = store.get('deckView', 'grid');   // grid | list
+let deckShown = { id:null, board:'main', list:[] };
+let edhOn = store.get('edhOn', false);
+// Agrega cartas al sideboard o maybeboard (se suman si ya están)
+function addToBoard(d, b, c){
+  const L = boardList(d, b);
+  const pk = c.set && c.cn ? printKey(c.set, c.cn) : null;
+  const e = (pk && cat[pk]) || cat[key(c.name)];
+  const name = e && !e.missing && !e.demo ? e.name : c.name;
+  const ex = L.find(x => key(x.name) === key(name));
+  if(ex) ex.qty += c.qty;
+  else L.push({ name, qty:c.qty, set:c.set || '', cn:c.cn || '', print: pk && cat[pk] ? pk : undefined });
+}
+// Mueve una copia de una sección a otra. Al salir del mazo se liberan las copias asignadas que sobren.
+function moveCard(d, name, from, to, all){
+  const A = boardList(d, from), c = A.find(x => key(x.name) === key(name));
+  if(!c || c.cmdr) return 0;
+  const n = all ? c.qty : 1;
+  c.qty -= n;
+  if(from === 'main') c.assigned = Math.min(c.assigned || 0, c.qty);
+  if(c.qty <= 0) A.splice(A.indexOf(c), 1);
+  const B = boardList(d, to), ex = B.find(x => key(x.name) === key(name));
+  if(ex) ex.qty += n;
+  else { const nc = { name:c.name, qty:n, set:c.set || '', cn:c.cn || '' }; if(c.print) nc.print = c.print; if(to === 'main') nc.assigned = 0; B.push(nc); }
+  return n;
+}
+// ---------- % de inclusión en EDHREC (mazos con el mismo comandante) ----------
+let edhData = {};   // slug → { map:{ nombre:pct }, n } | { err:true } | { loading:true }
+const edhSlug = n => frontFace(n).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/['’,.!]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+function deckEdhSlug(d){
+  const cms = d.cards.filter(c => c.cmdr).map(c => edhSlug(c.name)).sort();
+  return cms.length ? cms.join('-') : '';
+}
+async function loadEdh(d){
+  const sl = deckEdhSlug(d); if(!sl || edhData[sl]) return;
+  edhData[sl] = { loading:true };
+  try{
+    const r = await fetch(`https://json.edhrec.com/pages/commanders/${sl}.json`);
+    if(!r.ok) throw new Error('http ' + r.status);
+    const j = await r.json();
+    const lists = ((j.container || {}).json_dict || {}).cardlists || [];
+    const map = {}, exact = {};
+    lists.forEach(l => (l.cardviews || []).forEach(v => {
+      if(!v.name) return;
+      const r = v.potential_decks ? v.num_decks / v.potential_decks : (v.inclusion != null && j.num_decks_avg ? v.inclusion / j.num_decks_avg : null);
+      if(r == null) return;
+      map[key(v.name)] = Math.round(100 * r); if(!exact[key(v.name)] || exact[key(v.name)].r < r) exact[key(v.name)] = { name:v.name, r };
+    }));
+    const cmk = d.cards.filter(c => c.cmdr).map(c => key(c.name));
+    const list = Object.values(exact).filter(x => !cmk.includes(key(x.name))).sort((a, b) => b.r - a.r).map(x => ({ name:x.name, pct:Math.round(100 * x.r) }));
+    edhData[sl] = { map, list, n: j.num_decks_avg || 0 };
+  }catch(e){
+    console.warn('EDHREC', e); edhData[sl] = { err:true };
+    toast('No se pudo leer EDHREC desde aquí. Intenta más tarde o abre la carta en EDHREC.');
+  }
+  if(view.tab === 'decks' && view.deckId === d.id) renderKeepScroll();
+}
+function edhPct(d, name, force){
+  if(!edhOn && !force) return null;
+  const x = edhData[deckEdhSlug(d)]; if(!x || !x.map) return null;
+  const k = key(name), v = x.map[k] != null ? x.map[k] : x.map[key(frontFace(name))];
+  return v != null ? v : null;
+}
+const edhPill = (d, name) => { const v = edhPct(d, name); return v == null ? '' : `<span class="edhp ${v >= 50 ? 'hi' : v >= 20 ? 'mid' : ''}" title="${v}% de los mazos de EDHREC con este comandante la usan">${v}%</span>`; };
+
 function renderDeck(){
   const d = data.decks.find(x => x.id === view.deckId);
   if(!d){ view.deckId = null; renderDecks(); return; }
   const s = deckStats(d), art = deckArt(d), cm = d.cards.find(c => c.cmdr);
   const sf = view.statusFilter;
-  const main = d.cards.filter(c => !c.cmdr && (!sf || cardStatus(c) === sf));
+  let board = deckBoardSel[d.id] || 'main';
+  if(board === 'top' && !cm) board = 'main';
+  if(board === 'top'){ renderDeckTop(d, s, art, cm); return; }
+  const side = d.side || [], maybe = d.maybe || [];
+  const cntB = L => L.reduce((a, c) => a + c.qty, 0);
+  const canEdh = !!cm;
+  if(edhOn && canEdh) loadEdh(d);
+  const L = board === 'main' ? d.cards.filter(c => !c.cmdr && (!sf || cardStatus(c) === sf)) : boardList(d, board);
   const groups = {};
-  main.forEach(c => { const g = typeGroup(c.name); (groups[g] = groups[g] || []).push(c); });
+  L.forEach(c => { const g = typeGroup(c.name); (groups[g] = groups[g] || []).push(c); });
+  const order = [];
+  if(board === 'main' && cm && (!sf || cardStatus(cm) === sf) && deckView === 'list') order.push(cm.name);
+  GROUP_ORDER.filter(g => groups[g]).forEach(g => groups[g].sort((a, b) => a.name.localeCompare(b.name)).forEach(c => order.push(c.name)));
+  if(board === 'main' && cm && deckView !== 'list' && (!sf || cardStatus(cm) === sf)) order.unshift(cm.name);
+  deckShown = { id:d.id, board, list:order };
+  const edhState = edhData[deckEdhSlug(d)] || {};
+  const tile = c => board === 'main' ? cardTile(d, c) : boardTile(d, c, board);
+  const listRow = c => {
+    const st = board === 'main' ? cardStatus(c) : null, i = invInfo(c.name);
+    return `<div class="tl-row">
+      <span class="tl-q">${c.qty}</span>
+      <button class="tl-n" data-act="cardDetail" data-deck="${d.id}" data-card="${esc(c.name)}" data-board="${board}" data-hover="${esc(c.name)}" data-hover-print="${esc(c.print || '')}">${esc(c.name)}</button>
+      ${edhPill(d, c.name)}
+      ${st ? `<button class="tl-st" data-act="toggleAssign" data-deck="${d.id}" data-card="${esc(c.name)}" title="${esc(ST[st].t)}">${emb(ST[st].p, ST[st].gl, 18)}</button>` : `<span class="tl-free ${i.free > 0 ? 'ok' : ''}" title="Copias libres en tu inventario">${i.free > 0 ? i.free + ' libre' + (i.free > 1 ? 's' : '') : i.owned ? 'sin libres' : 'no la tienes'}</span>`}
+      ${c.cmdr ? `<span class="tl-c" title="Comandante">${I.crown}</span>` : dotsBtn('deckMenu', c.name, `data-deck="${d.id}" data-board="${board}"`)}
+    </div>`;
+  };
+  const body = !L.length && board === 'main' && !sf ? `<div class="add-empty"><b>${cm ? 'Tu mazo solo tiene al comandante' : 'Tu mazo todavía no tiene cartas'}</b><p>Agrega el resto de las cartas de la forma que te quede más cómoda:</p>
+        <div class="add-ways">
+          <button data-act="addCards" data-id="${d.id}" data-tab="search">${I.search}<b>Buscar carta</b><small>Una por una, por nombre</small></button>
+          <button data-act="addCards" data-id="${d.id}" data-tab="paste">${I.edit}<b>Pegar lista</b><small>Texto de Moxfield, Archidekt o ManaBox</small></button>
+          <button data-act="addCards" data-id="${d.id}" data-tab="file">${I.file}<b>Subir archivo</b><small>.csv, .xlsx o .txt</small></button>
+        </div></div>`
+    : !L.length && board !== 'main' ? `<div class="add-empty"><b>${board === 'side' ? 'El sideboard está vacío' : 'El maybeboard está vacío'}</b><p>${board === 'side' ? 'Cartas para probar o cambiar el ritmo del mazo. No cuentan para el total del mazo.' : 'Cartas que te gustaría conseguir para probarlas en el mazo. No cuentan para el total del mazo.'}</p>
+        <div class="add-ways"><button data-act="addCards" data-id="${d.id}" data-tab="search" data-board="${board}">${I.search}<b>Buscar carta</b><small>Una por una</small></button><button data-act="addCards" data-id="${d.id}" data-tab="paste" data-board="${board}">${I.edit}<b>Pegar lista</b><small>Una carta por línea</small></button></div>
+        <p class="hint">También puedes mover cartas del mazo con el menú ⋮ de cada carta.</p></div>`
+    : !L.length ? `<div class="empty"><b>No hay cartas en este estado</b></div>`
+    : deckView === 'list'
+      ? `<div class="tlist">${board === 'main' && cm && (!sf || cardStatus(cm) === sf) ? `<div class="tl-col"><h4>Comandante <em>1</em></h4>${listRow(cm)}</div>` : ''}${GROUP_ORDER.filter(g => groups[g]).map(g => `<div class="tl-col"><h4>${g} <em>${groups[g].reduce((a, c) => a + c.qty, 0)}</em></h4>${groups[g].map(listRow).join('')}</div>`).join('')}</div>`
+      : GROUP_ORDER.filter(g => groups[g]).map(g => `<div class="group"><h3>${g} <em>${groups[g].reduce((a,c)=>a+c.qty,0)}</em></h3>
+          <div class="card-grid">${groups[g].map(tile).join('')}</div></div>`).join('');
 
-  $('#main').innerHTML = `
+  $('#main').innerHTML = deckHero(d, s, art, board) + `
+  <div class="deck-layout">
+    <aside class="side">
+      ${deckAside(d, cm, s, sf)}
+    </aside>
+    <section>
+      <div class="deck-bar">
+        ${boardTabs(d, board, s)}
+        <div class="deck-tools">
+          ${canEdh ? `<button class="edh-tg ${edhOn ? 'on' : ''}" data-act="edhToggle" title="Muestra en cada carta el % de mazos de EDHREC con este comandante que la usan"><span class="sw"></span>% EDHREC${edhOn && edhState.loading ? ' …' : edhOn && edhState.err ? ' · sin datos' : ''}</button>` : ''}
+          ${viewSwitch('deck', deckView, [['grid', I.vGrid, 'Imágenes'], ['list', I.vList, 'Lista de texto']])}
+        </div>
+      </div>
+      ${board === 'main' && sf ? `<p class="hint" style="margin:0 0 10px">Viendo: ${ST[sf].t}.</p>` : ''}
+      ${body}
+    </section>
+  </div>`;
+}
+function deckHero(d, s, art, board){
+  const side = d.side || [], maybe = d.maybe || [], cntB = L => L.reduce((a, c) => a + c.qty, 0);
+  return `
   <div class="deck-hero" style="${art ? `background-image:url('${art}')` : ''}"><div class="deck-hero-in">
     <div>
       <button class="back" data-act="goTab" data-tab="decks">${I.back}Mis mazos</button>
       <h1>${esc(d.name)}</h1>
-      <div style="display:flex;gap:10px;align-items:center;color:var(--muted)">${pips(deckColors(d))}<span>${esc(d.format)} · ${s.tot} cartas · ${s.asg} asignadas</span></div>
+      <div style="display:flex;gap:10px;align-items:center;color:var(--muted)">${pips(deckColors(d))}<span>${esc(d.format)} · ${s.tot} cartas · ${s.asg} asignadas${side.length ? ` · Sideboard ${cntB(side)}` : ''}${maybe.length ? ` · Maybeboard ${cntB(maybe)}` : ''}</span></div>
       <div>${deckWarnings(d).map(w => `<span class="limit-warn ${w.kind === 'copies' ? 'amber' : ''}">${I.warn}${esc(w.text)}</span>`).join('')}</div>
     </div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       <button class="btn primary" data-act="assignAllAsk" data-id="${d.id}" title="Revisa y confirma qué copias libres se asignarán">${I.bolt}Asignar disponibles</button>
       <button class="btn" data-act="missingToWishAsk" data-id="${d.id}">${emb('purple','star',18)}Faltantes a wishlist</button>
-      <button class="btn" data-act="addCards" data-id="${d.id}">${I.plus}Agregar cartas</button>
+      <button class="btn" data-act="addCards" data-id="${d.id}" data-board="${board}">${I.plus}Agregar cartas</button>
       <button class="btn" data-act="editDeck" data-id="${d.id}">${I.edit}Editar</button>
       <button class="btn danger" data-act="deleteDeck" data-id="${d.id}">${I.trash}</button>
     </div>
-  </div></div>
-
-  <div class="deck-layout">
-    <aside class="side">
-      ${cm ? `<div class="panel cmdr"><div class="cmdr-label">${I.crown}Comandante</div><div class="mcard s-${cardStatus(cm)}" style="position:relative" data-act="cardDetail" data-deck="${d.id}" data-card="${esc(cm.name)}" title="Ver detalle">${cardImg(cm.name, '', cm.print)}${badgeHtml(d, cm, 48)}${starHtml(d, cm, 36)}</div></div>` : ''}
+  </div></div>`;
+}
+function boardTabs(d, board, s){
+  const cntB = L => L.reduce((a, c) => a + c.qty, 0), cm = d.cards.some(c => c.cmdr);
+  return `<div class="boards" role="tablist">${BOARDS.map(([b, l]) => `<button class="${board === b ? 'on' : ''}" data-act="deckBoard" data-deck="${d.id}" data-b="${b}">${l} <em>${b === 'main' ? s.tot : cntB(boardList(d, b))}</em></button>`).join('')}${cm ? `<button class="${board === 'top' ? 'on' : ''} top" data-act="deckBoard" data-deck="${d.id}" data-b="top" title="Las cartas más usadas con este comandante según EDHREC">★ Más comunes</button>` : ''}</div>`;
+}
+function deckAside(d, cm, s, sf){
+  return `${cm ? `<div class="panel cmdr"><div class="cmdr-label">${I.crown}Comandante</div><div class="mcard s-${cardStatus(cm)}" style="position:relative" data-act="cardDetail" data-deck="${d.id}" data-card="${esc(cm.name)}" data-board="main" title="Ver detalle">${cardImg(cm.name, '', cm.print)}${badgeHtml(d, cm, 48)}${starHtml(d, cm, 36)}</div></div>` : ''}
       <div class="panel">
         <h4>Estado del mazo</h4>
         ${['asig','disp','sin','no'].map(k => `<button class="sfilter ${sf===k?'on':''}" data-act="statusFilter" data-s="${k}"><span>${emb(ST[k].p, ST[k].gl, 22)}${ST[k].t}</span><b>${s.cnt[k]}</b></button>`).join('')}
         ${sf ? `<button class="btn ghost sm" style="margin-top:8px;width:100%;justify-content:center" data-act="statusFilter" data-s="">Ver todas</button>` : ''}
         <p class="hint">Toca el escudo azul de una carta para asignarle una copia; tócalo en verde para liberarla. Naranja y gris no se pueden asignar: usa la estrella para mandarlas a la wishlist.</p>
-      </div>
-    </aside>
+      </div>`;
+}
+
+// ---------- «Más comunes»: lo que más se usa con este comandante (EDHREC) ----------
+let topN = store.get('topN', 15), topHideIn = store.get('topHideIn', true), topReq = {};
+function renderDeckTop(d, s, art, cm){
+  const sl = deckEdhSlug(d), x = edhData[sl] || {};
+  if(!x.list && !x.err && !x.loading) loadEdh(d);
+  const inDeck = n => d.cards.some(c => key(c.name) === key(n)), where = n => ['side', 'maybe'].find(b => boardList(d, b).some(c => key(c.name) === key(n)));
+  let L = (x.list || []).filter(t => !topHideIn || !inDeck(t.name)).slice(0, topN);
+  // datos de las cartas (imagen, tipo) una sola vez por lista
+  const need = L.map(t => t.name).filter(n => !cat[key(n)] || cat[key(n)].seed || cat[key(n)].demo);
+  const rk = sl + '|' + topN + '|' + topHideIn;
+  if(need.length && !topReq[rk]){ topReq[rk] = 1; ensureCards(need).then(() => { if(view.tab === 'decks' && view.deckId === d.id && deckBoardSel[d.id] === 'top') renderKeepScroll(); }); }
+  deckShown = { id:d.id, board:'top', list:L.map(t => t.name) };
+  const tile = t => { const i = invInfo(t.name), w = where(t.name), ind = inDeck(t.name);
+    return `<div class="mcard bcard tcard ${ind ? 'ind' : ''}" data-act="topDetail" data-deck="${d.id}" data-card="${esc(t.name)}" title="Ver detalle">
+      ${cardImg(t.name)}
+      <span class="bfree ${ind ? 'in' : i.free > 0 ? 'ok' : ''}">${ind ? 'Ya en el mazo' : w ? 'En ' + boardName(w) : i.free > 0 ? `${i.free} libre${i.free > 1 ? 's' : ''}` : i.owned ? 'Sin libres' : 'No la tienes'}</span>
+      <span class="edhp big ${t.pct >= 50 ? 'hi' : t.pct >= 20 ? 'mid' : ''}" title="${t.pct}% de los mazos de EDHREC con este comandante la usan">${t.pct}%</span>
+      ${ind ? '' : dotsBtn('topMenu', t.name, `data-deck="${d.id}"`)}
+    </div>`; };
+  const body = x.loading || (!x.list && !x.err) ? `<div class="empty"><b>Consultando EDHREC…</b>Buscando las cartas más usadas con ${esc(cm.name)}.</div>`
+    : x.err ? `<div class="empty"><b>No se pudo leer EDHREC</b>Intenta más tarde o <a class="cd-link" href="https://edhrec.com/commanders/${esc(sl)}" target="_blank" rel="noopener">ábrelo en EDHREC ↗</a></div>`
+    : !L.length ? `<div class="empty"><b>Ya tienes en tu mazo todas las más comunes</b>Desmarca «Ocultar las que ya están en el mazo» para verlas.</div>`
+    : `<div class="card-grid">${L.map(tile).join('')}</div>`;
+  $('#main').innerHTML = deckHero(d, s, art, 'top') + `
+  <div class="deck-layout">
+    <aside class="side">${deckAside(d, cm, s, null)}</aside>
     <section>
-      ${!main.length && !sf ? `<div class="add-empty"><b>${cm ? 'Tu mazo solo tiene al comandante' : 'Tu mazo todavía no tiene cartas'}</b><p>Agrega el resto de las cartas de la forma que te quede más cómoda:</p>
-        <div class="add-ways">
-          <button data-act="addCards" data-id="${d.id}" data-tab="search">${I.search}<b>Buscar carta</b><small>Una por una, por nombre</small></button>
-          <button data-act="addCards" data-id="${d.id}" data-tab="paste">${I.edit}<b>Pegar lista</b><small>Texto de Moxfield, Archidekt o ManaBox</small></button>
-          <button data-act="addCards" data-id="${d.id}" data-tab="file">${I.file}<b>Subir archivo</b><small>.csv, .xlsx o .txt</small></button>
-        </div></div>` : !main.length ? `<div class="empty"><b>No hay cartas en este estado</b></div>` :
-        GROUP_ORDER.filter(g => groups[g]).map(g => `<div class="group"><h3>${g} <em>${groups[g].reduce((a,c)=>a+c.qty,0)}</em></h3>
-          <div class="card-grid">${groups[g].sort((a,b)=>a.name.localeCompare(b.name)).map(c => cardTile(d, c)).join('')}</div></div>`).join('')}
+      <div class="deck-bar">${boardTabs(d, 'top', s)}
+        <div class="deck-tools">
+          <label class="top-hide"><input type="checkbox" id="topHide" ${topHideIn ? 'checked' : ''}> Ocultar las que ya están en el mazo</label>
+          <div class="vswitch" role="group" aria-label="Cuántas mostrar">${[15, 30, 50].map(n => `<button class="${topN === n ? 'on' : ''} txt" data-act="topN" data-n="${n}">${n}</button>`).join('')}</div>
+        </div>
+      </div>
+      <p class="hint" style="margin:0 0 12px">Las ${topN} cartas más usadas con <b>${esc(cm.name)}</b> en EDHREC${x.n ? ` (${x.n.toLocaleString('es-MX')} mazos)` : ''}. Con el menú ⋮ agrégalas al mazo, al sideboard, al maybeboard o a tu wishlist.</p>
+      ${body}
     </section>
   </div>`;
+  const hb = $('#topHide'); if(hb) hb.onchange = () => { topHideIn = hb.checked; store.set('topHideIn', topHideIn); renderDeck(); };
+}
+function topMenuHtml(d, name){
+  const at = `data-deck="${d.id}" data-card="${esc(name)}"`;
+  return `<div class="pop-h">${esc(name)}</div>
+    ${popItem(`${I.search}Ver detalle`, 'topDetail', at)}
+    <div class="pop-sep"></div>
+    ${popItem(`${I.plus}Agregar al Mazo`, 'topAdd', at + ' data-to="main"')}
+    ${popItem(`${I.plus}Agregar al Sideboard`, 'topAdd', at + ' data-to="side"')}
+    ${popItem(`${I.plus}Agregar al Maybeboard`, 'topAdd', at + ' data-to="maybe"')}
+    ${popItem(`${emb('purple', 'star', 16)}Agregar a mi wishlist`, 'topAdd', at + ' data-to="wish"')}`;
 }
 function badgeHtml(d, c, size){
   const s = cardStatus(c), conf = ST[s], i = invInfo(c.name);
@@ -1981,17 +2303,52 @@ function cardTile(d, c){
   const s = cardStatus(c);
   const over = overCopies(d.format, [c]).length > 0;
   const dupTxt = over ? (d.format === 'Commander' ? `${c.qty} copias` : `${c.qty} > ${(FORMAT_RULES[d.format]||{}).copies}`) : 'Repetida';
-  return `<div class="mcard s-${s}" data-act="cardDetail" data-deck="${d.id}" data-card="${esc(c.name)}" title="Ver detalle">
+  return `<div class="mcard s-${s}" data-act="cardDetail" data-deck="${d.id}" data-card="${esc(c.name)}" data-board="main" title="Ver detalle">
     ${cardImg(c.name, '', c.print)}
     ${badgeHtml(d, c, 40)}
     ${starHtml(d, c, 32)}
     ${c.qty > 1 ? `<span class="qty" title="Copias asignadas / necesarias">${c.assigned}/${c.qty}</span>` : ''}
     ${(isDupWarn(d, c) || over) ? `<span class="dup" title="${over ? 'Más copias de las permitidas en ' + esc(d.format) : 'Esta carta aparece repetida en la lista'}">${I.warn}${dupTxt}</span>` : ''}
+    ${edhPill(d, c.name)}
+    ${c.cmdr ? '' : dotsBtn('deckMenu', c.name, `data-deck="${d.id}" data-board="main"`)}
   </div>`;
+}
+// Carta del sideboard o maybeboard: sin asignación, solo muestra si la tienes libre
+function boardTile(d, c, b){
+  const i = invInfo(c.name);
+  return `<div class="mcard bcard" data-act="cardDetail" data-deck="${d.id}" data-card="${esc(c.name)}" data-board="${b}" title="Ver detalle">
+    ${cardImg(c.name, '', c.print)}
+    <span class="bfree ${i.free > 0 ? 'ok' : ''}">${i.free > 0 ? `${i.free} libre${i.free > 1 ? 's' : ''}` : i.owned ? 'Sin libres' : 'No la tienes'}</span>
+    ${c.qty > 1 ? `<span class="qty">×${c.qty}</span>` : ''}
+    ${edhPill(d, c.name)}
+    ${dotsBtn('deckMenu', c.name, `data-deck="${d.id}" data-board="${b}"`)}
+  </div>`;
+}
+function deckMenuHtml(d, name, b){
+  const others = BOARDS.filter(x => x[0] !== b);
+  const at = `data-deck="${d.id}" data-card="${esc(name)}" data-from="${b}"`;
+  return `<div class="pop-h">${esc(name)}</div>
+    ${popItem(`${I.search}Ver detalle`, 'cardDetail', `data-deck="${d.id}" data-card="${esc(name)}" data-board="${b}"`)}
+    <div class="pop-sep"></div>
+    ${others.map(([t, l]) => popItem(`→ Mover ${t === 'main' ? 'al Mazo' : 'al ' + l}`, 'deckMove', `${at} data-to="${t}"`)).join('')}
+    ${others.filter(([t]) => boardList(d, t).some(c => !c.cmdr)).map(([t, l]) => popItem(`${I.swap}Cambiar por una ${t === 'main' ? 'del Mazo' : 'del ' + l}…`, 'deckSwapAsk', `${at} data-to="${t}"`)).join('')}
+    <div class="pop-sep"></div>
+    ${(() => { const c = boardList(d, b).find(x => key(x.name) === key(name)), q = c ? c.qty : 1, where = b === 'main' ? 'del mazo' : 'del ' + boardName(b);
+      return q > 1 ? popItem(`${I.trash}Quitar 1 copia`, 'deckRemove', at + ' data-n="1"', 'danger') + popItem(`${I.trash}Quitar las ${q} copias ${where}`, 'deckRemove', at, 'danger')
+                   : popItem(`${I.trash}Quitar ${where}`, 'deckRemove', at, 'danger'); })()}`;
+}
+function swapModal(d, name, from, to){
+  const L = boardList(d, to).filter(c => !c.cmdr).sort((a, b) => a.name.localeCompare(b.name));
+  openModal(`<h2>Cambiar ${esc(name)}</h2><p class="lead">Elige la carta ${to === 'main' ? 'del Mazo' : 'del ' + boardName(to)} que entra en su lugar. ${esc(name)} se va ${to === 'main' ? 'al Mazo' : 'al ' + boardName(to)}.</p>
+    <input class="input" id="swq" placeholder="Buscar carta" style="margin-bottom:10px">
+    <div class="swlist" id="swl">${L.map(c => `<button class="sw-it" data-act="deckSwap" data-deck="${d.id}" data-card="${esc(name)}" data-from="${from}" data-to="${to}" data-other="${esc(c.name)}" data-hover="${esc(c.name)}">${(cat[key(c.name)] || {}).small ? `<img src="${cat[key(c.name)].small}" alt="" loading="lazy">` : ''}<span><b>${esc(c.name)}</b><small>${esc((cat[key(c.name)] || {}).type || '')}</small></span>${edhPill(d, c.name)}</button>`).join('')}</div>
+    <div class="modal-actions"><button class="btn ghost" data-act="closeModal">Cancelar</button></div>`, true);
+  $('#swq').focus();
+  $('#swq').addEventListener('input', e => { const q = key(e.target.value); document.querySelectorAll('#swl .sw-it').forEach(b => b.style.display = key(b.dataset.other).includes(q) ? '' : 'none'); });
 }
 
 // ---------- MI INVENTARIO ----------
-let invFilter = { kpi:'all', colors:new Set(), type:'' };
+let invFilter = { kpi:'all', colors:new Set(), type:'', cat:'' };
 let invSel = new Set(), invDelSure = false;   // selección para eliminar varias cartas a la vez
 // Cartas de la última carga de Excel/CSV que no se encontraron (se guardan en este navegador)
 const missKey = () => 'mb_invmissing_' + (user ? user.uid : '');
@@ -2005,11 +2362,28 @@ function invRowsBase(){
   }
   return rows;
 }
+// Precio de una entrada del inventario: cada versión registrada (set/número, normal o foil) con su precio;
+// las copias sin versión usan el precio de la versión predeterminada de Scryfall.
+function printPrice(p){ const e = cat[printKey(p.set, p.cn)]; if(!e) return 0; return p.foil ? (e.priceFoil || e.price || 0) : (e.price || e.priceFoil || 0); }
+function invPrice(r){
+  const base = (cat[key(r.name)] || {}).price || 0;
+  let tot = 0, n = 0;
+  (r.prints || []).forEach(p => { const q = Math.min(p.qty || 0, r.qty - n); if(q <= 0) return; tot += (printPrice(p) || base) * q; n += q; });
+  tot += base * Math.max(0, r.qty - n);
+  return tot;
+}
+const unitPrice = r => r.qty ? invPrice(r) / r.qty : (cat[key(r.name)] || {}).price || 0;
 function invValue(){
   let v = 0, priced = 0;
-  Object.values(data.inv).forEach(r => { const c = cat[key(r.name)]; if(c && c.price){ v += c.price * r.qty; priced++; } });
+  Object.values(data.inv).forEach(r => { const t = invPrice(r); if(t){ v += t; priced++; } });
   return { v, priced };
 }
+let invView = store.get('invView', 'table');   // table | list | grid
+let invRowsShown = [];                          // filas visibles (orden actual), para el detalle con anterior/siguiente
+// Cada carta puede estar en varias categorías (p. ej. Sol Ring en «Ramp» y en «Artefactos»)
+const catsOf = r => !r ? [] : Array.isArray(r.cats) ? r.cats : r.cat ? [r.cat] : [];
+const catOf = r => catsOf(r).join(', ');
+const hasCat = (r, c) => catsOf(r).includes(c);
 function renderInv(){
   const rows = Object.values(data.inv);
   const totCopies = rows.reduce((a,r)=>a+r.qty,0);
@@ -2019,11 +2393,13 @@ function renderInv(){
   const val = invValue();
   const k = invFilter.kpi;
   const kpi = (id, label, value, cls, sub) => `<div class="metric click ${k===id?'on':''}" data-act="invKpi" data-k="${id}" title="Toca para filtrar"><small>${label}</small><b class="${cls||''}">${value}</b>${sub?`<div class="sub">${sub}</div>`:''}</div>`;
+  const cats = data.invCats || [], cf = invFilter.cat || '';
+  const cnt = c => c ? rows.filter(r => hasCat(r, c)).length : rows.filter(r => !catsOf(r).length).length;
   $('#main').innerHTML = `
   <div class="page-h band" style="${bandStyle(1)}">
     <div><div class="kicker">La bodega</div><h1>Mi inventario</h1><p>Tus cartas físicas. Las asignaciones a mazos se descuentan solas.</p></div>
     <div class="inv-acts" style="display:flex;gap:8px;flex-wrap:wrap">
-      <button class="btn" data-act="importInv">${I.upload}Cargar Excel / CSV</button>
+      <button class="btn" data-act="importInv">${I.upload}Cargar cartas</button>
       <button class="btn" data-act="exportInv" title="Descarga todo tu inventario en Excel">${I.download}Descargar Excel</button>
       <button class="btn primary" data-act="addInv">${I.plus}Agregar carta</button>
     </div>
@@ -2034,23 +2410,37 @@ function renderInv(){
     ${kpi('used','Asignadas a mazos',used,'num-ok','Ver las que están en mazos')}
     ${kpi('free','Libres',totCopies - used,'','Ver las que tienen copias libres')}
     ${kpi('missing','Copias que faltan para tus mazos',missing,'num-warn','Ver las que te faltan')}
-    <div class="metric" title="Precio de referencia en US$ de Scryfall (TCGplayer)"><small>Valor de mi inventario</small><b>${val.priced ? 'US$ ' + val.v.toLocaleString('es-MX', { minimumFractionDigits:2, maximumFractionDigits:2 }) : '—'}</b><div class="sub">${val.priced ? `Con precio: ${val.priced} de ${rows.length} cartas` : 'Se calcula al conectar con Scryfall'}</div></div>
+    <div class="metric" title="Precio de referencia en US$ de Scryfall (TCGplayer), según la versión de cada carta"><small>Valor de mi inventario</small><b>${val.priced ? 'US$ ' + val.v.toLocaleString('es-MX', { minimumFractionDigits:2, maximumFractionDigits:2 }) : '—'}</b><div class="sub">${val.priced ? `Con precio: ${val.priced} de ${rows.length} cartas` : 'Se calcula al conectar con Scryfall'}</div></div>
   </div>
   <div class="toolbar">
     <div class="search">${I.search}<input class="input" id="iq" placeholder="Buscar carta" value="${esc(invQuery)}"></div>
     <div style="display:flex;gap:2px" title="Filtrar por identidad de color">${['W','U','B','R','G','C'].map(c => `<button class="colorbtn ${invFilter.colors.has(c)?'on':''}" data-act="invColor" data-c="${c}">${pips([c])}</button>`).join('')}</div>
+    ${viewSwitch('inv', invView, [['table', I.vTable, 'Tabla'], ['list', I.vList, 'Lista de texto'], ['grid', I.vGrid, 'Imágenes']])}
   </div>
   <div class="toolbar" style="margin-top:-8px">${INV_TYPES.map(([v,l]) => `<button class="typebtn ${invFilter.type===v?'on':''}" data-act="invType" data-t="${v}">${l}</button>`).join('')}</div>
+  <div class="catbar">
+    <span class="catlbl">${I.tag}Categorías</span>
+    <button class="typebtn ${!cf ? 'on' : ''}" data-act="invCatF" data-c="">Todas</button>
+    ${cats.map(c => `<button class="typebtn ${cf === c ? 'on' : ''}" data-act="invCatF" data-c="${esc(c)}">${esc(c)} <em>${cnt(c)}</em></button>`).join('')}
+    ${cats.length ? `<button class="typebtn ${cf === '__none' ? 'on' : ''}" data-act="invCatF" data-c="__none">Sin categoría <em>${cnt('')}</em></button>` : ''}
+    <button class="typebtn add" data-act="invCatNew">${I.plus}Nueva</button>
+    ${cats.length ? `<button class="typebtn add" data-act="invCatManage" title="Cambiar nombre o borrar categorías">${GICO.gear}Editar</button>` : ''}
+  </div>
   ${invMissing().length ? `<div class="miss-note">${I.warn}<span><b>${invMissing().length} carta(s) de tu última carga no se encontraron.</b> Agrégalas por separado con el nombre correcto.</span><button class="btn sm" data-act="invMissing">Ver lista</button></div>` : ''}
-  <div class="selbar-m"><label class="selall"><input type="checkbox" class="invSelAll"> Seleccionar todos</label></div>
-  <div class="tbl-wrap"><table>
-    <thead><tr><th></th><th>Carta</th><th>Tengo</th><th>Asignadas</th><th>Libres</th><th>Faltan</th><th>En mazos</th><th>Precio</th><th class="th-sel"><label class="selall"><input type="checkbox" class="invSelAll"> Seleccionar todos</label></th></tr></thead>
-    <tbody id="invBody"></tbody>
-  </table></div>
+  <div class="selbar-m ${invView !== 'table' ? 'always' : ''}"><label class="selall"><input type="checkbox" class="invSelAll"> Seleccionar todos</label></div>
+  <div id="invView"></div>
   <div class="selbar" id="invSelBar"></div>`;
   $('#iq').addEventListener('input', e => { invQuery = e.target.value; renderInvBody(); });
   renderInvBody();
 }
+// Selector de vista (tabla, lista de texto, imágenes)
+function viewSwitch(scope, cur, opts){
+  return `<div class="vswitch" role="group" aria-label="Vista">${opts.map(([v, ic, t]) => `<button class="${cur === v ? 'on' : ''}" data-act="setView" data-scope="${scope}" data-v="${v}" title="${t}" aria-label="${t}">${ic}</button>`).join('')}</div>`;
+}
+const catChip = r => catsOf(r).map(c => `<span class="catchip">${I.tag}${esc(c)}</span>`).join(' ');
+const selBox = (r, owned) => owned ? `<label class="selbox" title="Seleccionar"><input type="checkbox" data-sel="${esc(key(r.name))}" ${invSel.has(key(r.name)) ? 'checked' : ''}></label>` : '';
+const dotsBtn = (act, name, extra) => `<button class="btn ghost sm dots" data-act="${act}" data-card="${esc(name)}" ${extra || ''} title="Opciones" aria-label="Opciones">${I.dots}</button>`;
+const money = v => v ? 'US$ ' + v.toFixed(2) : '—';
 function renderInvBody(){
   const q = key(invQuery), f = invFilter;
   let rows = invRowsBase().filter(r => {
@@ -2060,6 +2450,8 @@ function renderInvBody(){
     if(f.kpi === 'free' && i.free <= 0) return false;
     if(f.kpi === 'missing' && i.missing <= 0) return false;
     if(f.type && !(c.type || '').split('//')[0].includes(f.type)) return false;
+    if(f.cat === '__none' && catsOf(data.inv[key(r.name)]).length) return false;
+    if(f.cat && f.cat !== '__none' && !hasCat(data.inv[key(r.name)], f.cat)) return false;
     if(f.colors.size){
       const ci = c.ci || [];
       for(const col of f.colors){ if(col === 'C'){ if(ci.length) return false; } else if(!ci.includes(col)) return false; }
@@ -2067,25 +2459,48 @@ function renderInvBody(){
     return true;
   });
   rows.sort(f.kpi === 'copies' ? (a,b) => b.qty - a.qty || a.name.localeCompare(b.name) : f.kpi === 'missing' ? (a,b) => invInfo(b.name).missing - invInfo(a.name).missing : (a,b) => a.name.localeCompare(b.name));
+  invRowsShown = rows.map(r => r.name);
+  const box = $('#invView');
   if(!Object.keys(data.inv).length && f.kpi !== 'missing'){
-    $('#invBody').innerHTML = `<tr><td colspan="9"><div class="empty" style="border:none"><b>La bodega está vacía</b>Agrega cartas una por una o sube un Excel.</div></td></tr>`;
-    return;
+    box.innerHTML = `<div class="empty"><b>La bodega está vacía</b>Agrega cartas una por una, pega una lista o sube un Excel.</div>`;
+    syncInvSel([]); return;
   }
-  $('#invBody').innerHTML = rows.map(r => {
-    const i = invInfo(r.name), c = cat[key(r.name)] || {}, owned = !!data.inv[key(r.name)];
-    return `<tr>
-      <td>${c.small ? `<img class="thumb" src="${c.small}" alt="" loading="lazy">` : '<div class="thumb ph"></div>'}</td>
-      <td class="cname"><b>${esc(c.name || r.name)}</b><small>${esc(c.type || (c.missing ? 'No encontrada en Scryfall' : ''))}</small></td>
-      <td data-l="Tengo">${owned ? `<input class="input qtyin" type="number" min="0" value="${r.qty}" data-inv="${esc(r.name)}">` : '<span class="chip">No la tengo</span>'}</td>
-      <td data-l="Asignadas">${i.used ? `<span class="num-ok">${i.used}</span>` : '0'}</td>
-      <td data-l="Libres">${Math.max(0, i.free)}</td>
-      <td data-l="Faltan">${i.missing ? `<span class="num-warn">${i.missing}</span>` : '—'}</td>
-      <td data-l="En mazos"><span>${i.decks.map(x => `<span class="chip ok">${esc(x.name)}${x.n>1?' ×'+x.n:''}</span>`).join('') || '<span style="color:var(--faint)">—</span>'}</span></td>
-      <td data-l="Precio" style="white-space:nowrap;color:var(--muted)">${c.price ? 'US$ ' + c.price.toFixed(2) : '—'}</td>
-      <td class="act-cell">${owned ? `<button class="btn ghost sm danger" data-act="delInv" data-card="${esc(r.name)}" title="Quitar del inventario">${I.trash}</button><label class="selbox" title="Seleccionar"><input type="checkbox" data-sel="${esc(key(r.name))}" ${invSel.has(key(r.name)) ? 'checked' : ''}></label>` : ''}</td>
-    </tr>`;
-  }).join('') || `<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:30px">Ninguna carta coincide con los filtros.</td></tr>`;
-  document.querySelectorAll('[data-inv]').forEach(inp => inp.addEventListener('change', e => {
+  const none = `<div class="empty" style="padding:30px">Ninguna carta coincide con los filtros.</div>`;
+  if(invView === 'list'){
+    // Lista de texto agrupada por tipo; al pasar el cursor por el nombre se ve la carta
+    const groups = {};
+    rows.forEach(r => { const g = typeGroup(r.name); (groups[g] = groups[g] || []).push(r); });
+    box.innerHTML = rows.length ? `<div class="tlist">${GROUP_ORDER.filter(g => groups[g]).map(g => `<div class="tl-col"><h4>${g} <em>${groups[g].reduce((a, r) => a + r.qty, 0)}</em></h4>
+      ${groups[g].map(r => { const owned = !!data.inv[key(r.name)], i = invInfo(r.name);
+        return `<div class="tl-row ${invSel.has(key(r.name)) ? 'sel' : ''}">${selBox(r, owned)}<span class="tl-q">${owned ? r.qty : 0}</span><button class="tl-n" data-act="invDetail" data-card="${esc(r.name)}" data-hover="${esc(r.name)}">${esc(r.name)}</button>${i.used ? `<span class="tl-a" title="Asignadas a mazos">${i.used}⛉</span>` : ''}${catOf(data.inv[key(r.name)]) ? `<span class="tl-c" title="${esc(catOf(data.inv[key(r.name)]))}">${I.tag}</span>` : ''}${owned ? dotsBtn('invMenu', r.name) : ''}</div>`; }).join('')}</div>`).join('')}</div>` : none;
+  } else if(invView === 'grid'){
+    box.innerHTML = rows.length ? `<div class="card-grid inv-grid">${rows.map(r => { const owned = !!data.inv[key(r.name)], i = invInfo(r.name), e = data.inv[key(r.name)];
+      return `<div class="mcard icard ${invSel.has(key(r.name)) ? 'sel' : ''}" data-act="invDetail" data-card="${esc(r.name)}" title="Ver detalle">
+        ${cardImg(r.name)}
+        ${owned ? `<span class="iq">×${r.qty}</span>` : '<span class="iq no">0</span>'}
+        ${i.used ? `<span class="iu" title="Asignadas a mazos">${i.used} en mazos</span>` : ''}
+        ${e && catsOf(e).length ? `<span class="ic" title="${esc(catOf(e))}">${I.tag}${esc(catOf(e))}</span>` : ''}
+        <div class="itools">${selBox(r, owned)}${owned ? dotsBtn('invMenu', r.name) : ''}</div>
+      </div>`; }).join('')}</div>` : none;
+  } else {
+    box.innerHTML = `<div class="tbl-wrap"><table>
+      <thead><tr><th></th><th>Carta</th><th>Tengo</th><th>Asignadas</th><th>Libres</th><th>Faltan</th><th>En mazos</th><th>Precio</th><th class="th-sel"><label class="selall"><input type="checkbox" class="invSelAll"> Seleccionar todos</label></th></tr></thead>
+      <tbody>${rows.map(r => {
+        const i = invInfo(r.name), c = cat[key(r.name)] || {}, e = data.inv[key(r.name)], owned = !!e;
+        return `<tr class="${invSel.has(key(r.name)) ? 'sel' : ''}">
+          <td><button class="thumb-btn" data-act="invDetail" data-card="${esc(r.name)}" data-hover="${esc(r.name)}" title="Ver detalle">${c.small ? `<img class="thumb" src="${c.small}" alt="" loading="lazy">` : '<div class="thumb ph"></div>'}</button></td>
+          <td class="cname"><button class="cn-btn" data-act="invDetail" data-card="${esc(r.name)}" data-hover="${esc(r.name)}"><b>${esc(c.name || r.name)}</b></button><small>${esc(c.type || (c.missing ? 'No encontrada en Scryfall' : ''))}</small>${owned ? catChip(e) : ''}</td>
+          <td data-l="Tengo">${owned ? `<input class="input qtyin" type="number" min="0" value="${r.qty}" data-inv="${esc(r.name)}">` : '<span class="chip">No la tengo</span>'}</td>
+          <td data-l="Asignadas">${i.used ? `<span class="num-ok">${i.used}</span>` : '0'}</td>
+          <td data-l="Libres">${Math.max(0, i.free)}</td>
+          <td data-l="Faltan">${i.missing ? `<span class="num-warn">${i.missing}</span>` : '—'}</td>
+          <td data-l="En mazos"><span>${i.decks.map(x => `<span class="chip ok">${esc(x.name)}${x.n>1?' ×'+x.n:''}</span>`).join('') || '<span style="color:var(--faint)">—</span>'}</span></td>
+          <td data-l="Precio" style="white-space:nowrap;color:var(--muted)" title="${owned && (e.prints || []).length ? 'Según las versiones que registraste' : 'Versión predeterminada de Scryfall'}">${money(owned ? unitPrice(e) : c.price)}</td>
+          <td class="act-cell">${owned ? `<button class="btn ghost sm danger" data-act="delInv" data-card="${esc(r.name)}" title="Quitar del inventario">${I.trash}</button>${selBox(r, owned)}${dotsBtn('invMenu', r.name)}` : ''}</td>
+        </tr>`;
+      }).join('') || `<tr><td colspan="9">${none}</td></tr>`}</tbody></table></div>`;
+  }
+  box.querySelectorAll('[data-inv]').forEach(inp => inp.addEventListener('change', e => {
     const name = e.target.dataset.inv, k = key(name), v = Math.max(0, parseInt(e.target.value) || 0), i = invInfo(name);
     if(v < i.used){
       toast(`Tienes ${i.used} copia(s) de ${name} asignadas a mazos. Libéralas antes de bajar la cantidad.`);
@@ -2097,10 +2512,13 @@ function renderInvBody(){
   // Selección: solo cuenta lo que se ve con los filtros actuales
   const visible = rows.filter(r => data.inv[key(r.name)]).map(r => key(r.name));
   [...invSel].forEach(k => { if(!visible.includes(k)) invSel.delete(k); });
-  document.querySelectorAll('[data-sel]').forEach(cb => cb.addEventListener('change', e => {
-    e.target.checked ? invSel.add(e.target.dataset.sel) : invSel.delete(e.target.dataset.sel);
-    invDelSure = false; syncInvSel(visible);
-  }));
+  document.querySelectorAll('[data-sel]').forEach(cb => {
+    cb.addEventListener('click', e => e.stopPropagation());
+    cb.addEventListener('change', e => {
+      e.target.checked ? invSel.add(e.target.dataset.sel) : invSel.delete(e.target.dataset.sel);
+      invDelSure = false; syncInvSel(visible);
+    });
+  });
   document.querySelectorAll('.invSelAll').forEach(cb => { cb.onchange = e => {
     if(e.target.checked) visible.forEach(k => invSel.add(k)); else invSel.clear();
     document.querySelectorAll('[data-sel]').forEach(x => x.checked = invSel.has(x.dataset.sel));
@@ -2111,10 +2529,112 @@ function renderInvBody(){
 function syncInvSel(visible){
   const n = invSel.size, all = visible.length > 0 && visible.every(k => invSel.has(k));
   document.querySelectorAll('.invSelAll').forEach(cb => { cb.checked = all; cb.indeterminate = n > 0 && !all; cb.disabled = !visible.length; });
-  document.querySelectorAll('[data-sel]').forEach(x => x.closest('tr').classList.toggle('sel', invSel.has(x.dataset.sel)));
+  document.querySelectorAll('[data-sel]').forEach(x => { const row = x.closest('tr, .tl-row, .icard'); if(row) row.classList.toggle('sel', invSel.has(x.dataset.sel)); });
   const bar = $('#invSelBar'); if(!bar) return;
   bar.classList.toggle('on', n > 0);
-  bar.innerHTML = n ? `<span><b>${n}</b> carta(s) seleccionada(s)</span><button class="btn ghost sm" data-act="invSelClear">Quitar selección</button><button class="btn sm danger-solid" data-act="invSelDel">${I.trash}${invDelSure ? 'Toca otra vez para confirmar' : `Eliminar ${n}`}</button>` : '';
+  bar.innerHTML = n ? `<span><b>${n}</b> carta(s) seleccionada(s)</span><button class="btn ghost sm" data-act="invSelClear">Quitar selección</button><button class="btn sm" data-act="invSelCat">${I.tag}Asignar categoría</button><button class="btn sm danger-solid" data-act="invSelDel">${I.trash}${invDelSure ? 'Toca otra vez para confirmar' : `Eliminar ${n}`}</button>` : '';
+}
+
+// ---------- Vista previa de la carta al pasar el cursor (solo con mouse) ----------
+const canHover = window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches;
+let hovEl = null;
+function hovPos(e){ if(!hovEl) return; const w = 250, h = 349; let x = e.clientX + 22, y = e.clientY - h / 2; if(x + w > innerWidth - 8) x = e.clientX - w - 22; y = Math.max(8, Math.min(innerHeight - h - 8, y)); hovEl.style.transform = `translate(${x}px,${y}px)`; }
+document.addEventListener('mouseover', e => {
+  if(!canHover) return;
+  const t = e.target.closest('[data-hover], [data-hover-img]');
+  if(!t){ if(hovEl){ hovEl.remove(); hovEl = null; } return; }
+  let src = t.dataset.hoverImg;
+  if(!src){ const pk = t.dataset.hoverPrint; const c = (pk && cat[pk]) || cat[key(t.dataset.hover)]; src = c && c.img; }
+  if(!src) return;
+  if(!hovEl){ hovEl = document.createElement('img'); hovEl.className = 'hovcard'; document.body.appendChild(hovEl); }
+  if(hovEl.getAttribute('src') !== src) hovEl.src = src;
+  hovPos(e);
+});
+document.addEventListener('mousemove', e => { if(hovEl) hovPos(e); }, { passive:true });
+document.addEventListener('pointerdown', () => { if(hovEl){ hovEl.remove(); hovEl = null; } }, true);
+
+// ---------- Menú contextual (3 puntitos) ----------
+function openPop(anchor, html){
+  closePop();
+  const r = anchor.getBoundingClientRect();
+  const el = document.createElement('div');
+  el.className = 'pop'; el.id = 'pop'; el.innerHTML = html;
+  document.body.appendChild(el);
+  const w = el.offsetWidth, h = el.offsetHeight;
+  let x = r.right - w, y = r.bottom + 6;
+  if(x < 8) x = 8; if(x + w > innerWidth - 8) x = innerWidth - 8 - w;
+  if(y + h > innerHeight - 8) y = Math.max(8, r.top - h - 6);
+  el.style.left = x + 'px'; el.style.top = y + 'px';
+  popAt = Date.now();
+}
+function closePop(){ const p = $('#pop'); if(p) p.remove(); }
+document.addEventListener('pointerdown', e => { const p = $('#pop'); if(p && !p.contains(e.target) && !e.target.closest('.dots')) closePop(); }, true);
+let popAt = 0;
+window.addEventListener('scroll', () => { if(Date.now() - popAt > 400) closePop(); }, { passive:true });
+const popItem = (label, act, attrs, cls) => `<button class="pop-it ${cls || ''}" data-act="${act}" ${attrs || ''}>${label}</button>`;
+function invMenuHtml(names){
+  const cats = data.invCats || [], one = names.length === 1 ? data.inv[key(names[0])] : null;
+  const enc = esc(JSON.stringify(names));
+  return `${one ? `<div class="pop-h">${esc(one.name)}</div>` + popItem(`${I.search}Ver detalle`, 'invDetail', `data-card="${esc(one.name)}"`) : `<div class="pop-h">${names.length} cartas</div>`}
+    <div class="pop-sub">${I.tag}Asignar categoría</div>
+    ${cats.map(c => { const n = names.filter(nm => hasCat(data.inv[key(nm)], c)).length, st = n === names.length ? 'on' : n ? 'some' : '';
+      return popItem(`<span class="pop-chk ${st}"></span>${esc(c)}`, 'invToggleCat', `data-names="${enc}" data-c="${esc(c)}"`); }).join('')}
+    ${popItem(`${I.plus}Nueva categoría…`, 'invCatNew', `data-names="${enc}"`)}
+    ${names.some(n => catsOf(data.inv[key(n)]).length) ? popItem('Quitar todas las categorías', 'invSetCat', `data-names="${enc}" data-c=""`) : ''}
+    ${one ? `<div class="pop-sep"></div>${popItem(`${I.trash}Quitar del inventario`, 'delInv', `data-card="${esc(one.name)}"`, 'danger')}` : ''}`;
+}
+// Agrega una categoría (c) a las cartas, o con c vacío les quita todas
+function setInvCat(names, c){
+  let n = 0;
+  names.forEach(nm => { const e = data.inv[key(nm)]; if(!e) return; const cur = catsOf(e); delete e.cat; if(c){ e.cats = cur.includes(c) ? cur : [...cur, c]; } else delete e.cats; n++; });
+  saveData(); closePop(); renderKeepScroll();
+  toast(c ? `${n} carta(s) en «${c}».` : `Se quitaron las categorías a ${n} carta(s).`);
+}
+// Prende o apaga una categoría: si todas las cartas ya la tienen se quita; si no, se agrega a todas
+function toggleInvCat(names, c){
+  const es = names.map(nm => data.inv[key(nm)]).filter(Boolean);
+  const all = es.every(e => hasCat(e, c));
+  es.forEach(e => { const l = catsOf(e).filter(x => x !== c); delete e.cat; if(!all) l.push(c); if(l.length) e.cats = l; else delete e.cats; });
+  saveData();
+  const pop = $('#pop'); if(pop) pop.innerHTML = invMenuHtml(names);   // el menú se queda abierto
+  if(view.tab === 'inv') renderKeepScroll();
+  if(cdState && cdState.mode === 'inv') renderDetail();
+}
+function newCatModal(names){
+  openModal(`<h2>Nueva categoría</h2><p class="lead">Por ejemplo: Bulk, Para vender, Carpeta azul, Intercambio…</p>
+    <input class="input" id="ncName" maxlength="30" placeholder="Nombre de la categoría">
+    <div class="err" id="ncErr"></div>
+    <div class="modal-actions"><button class="btn ghost" data-act="closeModal">Cancelar</button><button class="btn primary" id="ncSave">${names && names.length ? `Crear y asignar a ${names.length}` : 'Crear'}</button></div>`);
+  const inp = $('#ncName'); inp.focus();
+  const go = () => {
+    const v = inp.value.trim().replace(/\s+/g, ' ');
+    if(!v){ $('#ncErr').textContent = 'Escribe un nombre.'; return; }
+    if((data.invCats || []).some(c => key(c) === key(v))){ $('#ncErr').textContent = 'Esa categoría ya existe.'; return; }
+    data.invCats = (data.invCats || []).concat(v);
+    closeModal();
+    if(names && names.length) setInvCat(names, v); else { saveData(); renderKeepScroll(); toast(`Categoría «${v}» creada.`); }
+  };
+  $('#ncSave').onclick = go; inp.addEventListener('keydown', e => { if(e.key === 'Enter') go(); });
+}
+function manageCatsModal(){
+  const cats = data.invCats || [];
+  openModal(`<h2>Categorías</h2><p class="lead">Cambia el nombre o borra una categoría. Al borrarla, sus cartas se quedan en tu inventario sin categoría.</p>
+    <div class="catman">${cats.map((c, i) => `<div class="cm-row"><input class="input" data-ci="${i}" value="${esc(c)}" maxlength="30"><span class="hint">${Object.values(data.inv).filter(r => hasCat(r, c)).length} cartas</span><button class="btn ghost sm danger" data-act="invCatDel" data-i="${i}">${I.trash}</button></div>`).join('')}</div>
+    <div class="modal-actions"><button class="btn ghost" data-act="closeModal">Cancelar</button><button class="btn primary" id="cmSave">Guardar</button></div>`);
+  $('#cmSave').onclick = () => {
+    const next = [...cats];
+    document.querySelectorAll('[data-ci]').forEach(inp => { const i = +inp.dataset.ci, v = inp.value.trim(); if(v && v !== cats[i] && !next.some((x, j) => j !== i && key(x) === key(v))){ Object.values(data.inv).forEach(r => { if(hasCat(r, cats[i])){ r.cats = catsOf(r).map(x => x === cats[i] ? v : x); delete r.cat; } }); if(invFilter.cat === cats[i]) invFilter.cat = v; next[i] = v; } });
+    data.invCats = next; saveData(); closeModal(); render();
+  };
+}
+
+// ---------- Detalle de carta del inventario (con anterior/siguiente según los filtros) ----------
+function openInvDetail(name){
+  const list = invRowsShown.length ? [...invRowsShown] : [name];
+  let idx = list.findIndex(n => key(n) === key(name));
+  if(idx < 0){ list.unshift(name); idx = 0; }
+  cdState = { mode:'inv', list, idx };
+  renderDetail();
 }
 
 // ---------- WISHLIST ----------
@@ -2210,12 +2730,12 @@ function deckOrder(d){
   GROUP_ORDER.filter(g => groups[g]).forEach(g => groups[g].sort((a,b) => a.name.localeCompare(b.name)).forEach(c => out.push(c.name)));
   return out;
 }
-function openDetail(deckId, name){
+function openDetail(deckId, name, board){
   const d = data.decks.find(x => x.id === deckId); if(!d) return;
-  const list = deckOrder(d);
+  const list = (deckShown.id === deckId && deckShown.list.length) ? [...deckShown.list] : deckOrder(d);
   let idx = list.findIndex(n => key(n) === key(name));
   if(idx < 0){ list.unshift(name); idx = 0; }
-  cdState = { deckId, list, idx };
+  cdState = { deckId, list, idx, board: board || deckShown.board || 'main' };
   renderDetail();
 }
 // Símbolos de maná: {W} {2} {W/U} {T}…
@@ -2257,16 +2777,81 @@ async function fetchCardFull(name, print){
     saveCat(); scryOffline = false; return e;
   }catch(err){ scryOffline = true; return null; }
 }
+// Cartas de un mazo por sección: mazo principal, sideboard y maybeboard
+const BOARDS = [['main','Mazo'], ['side','Sideboard'], ['maybe','Maybeboard']];
+const boardName = b => (BOARDS.find(x => x[0] === b) || BOARDS[0])[1];
+const boardList = (d, b) => b === 'side' ? (d.side = d.side || []) : b === 'maybe' ? (d.maybe = d.maybe || []) : d.cards;
+function findInDeck(d, name, pref){
+  const order = pref ? [pref, ...['main', 'side', 'maybe'].filter(b => b !== pref)] : ['main', 'side', 'maybe'];
+  for(const b of order){ const c = boardList(d, b).find(x => key(x.name) === key(name)); if(c) return { c, board:b }; }
+  return { c:null, board:null };
+}
+let versCache = {};   // versiones (impresiones) de cada carta, de Scryfall
+async function loadVersions(name){
+  const k = key(name);
+  if(versCache[k]) return versCache[k];
+  const out = []; let url = 'https://api.scryfall.com/cards/search?unique=prints&order=released&q=' + encodeURIComponent('!"' + frontFace(name) + '"');
+  try{
+    for(let page = 0; url && page < 3; page++){
+      const r = await fetch(url); if(!r.ok) break;
+      const j = await r.json();
+      (j.data || []).forEach(c => { const e = toEntry(c); cat[printKey(c.set, c.collector_number)] = e; out.push({ set:c.set, cn:c.collector_number, setName:c.set_name, year:(c.released_at || '').slice(0, 4), price:parseFloat((c.prices || {}).usd || 0) || 0, priceFoil:e.priceFoil, small:e.small, finishes:c.finishes || [] }); });
+      url = j.has_more ? j.next_page : null;
+    }
+    saveCat();
+  }catch(e){ scryOffline = true; }
+  versCache[k] = out;
+  return out;
+}
+function versionsHtml(name, mode, cur){
+  const v = versCache[key(name)];
+  if(!v) return `<button class="btn sm" data-act="cdVers">${I.search}Ver versiones y precios</button>`;
+  if(!v.length) return `<p class="hint">${scryOffline ? 'Sin conexión con Scryfall.' : 'No encontramos versiones.'}</p>`;
+  if(mode === 'inv'){
+    const e = data.inv[key(name)]; if(!e) return '';
+    const pq = (set, cn, foil) => ((e.prints || []).find(p => p.set === set && p.cn === cn && !!p.foil === foil) || {}).qty || 0;
+    const reg = (e.prints || []).reduce((a, p) => a + (p.qty || 0), 0);
+    return `<p class="hint">Indica cuántas copias tienes de cada versión para calcular su precio. Registradas: <b>${reg}</b> de ${e.qty}; las demás usan el precio de la versión predeterminada.</p>
+      <div class="vers">${v.map(x => `<div class="vr ${pq(x.set, x.cn, false) || pq(x.set, x.cn, true) ? 'on' : ''}">
+        ${x.small ? `<img src="${x.small}" alt="" loading="lazy" data-hover-img="${x.small.replace('/small/', '/normal/')}">` : ''}
+        <div class="vr-i"><b>${esc(x.setName)}</b><small>${String(x.set).toUpperCase()} · #${esc(x.cn)} · ${x.year}</small><small>Normal ${money(x.price)} · Foil ${money(x.priceFoil)}</small></div>
+        <label title="Copias normales">N <input class="input vq" type="number" min="0" value="${pq(x.set, x.cn, false)}" data-vset="${esc(x.set)}" data-vcn="${esc(x.cn)}" data-vfoil="0" ${x.finishes.includes('nonfoil') || !x.finishes.length ? '' : 'disabled'}></label>
+        <label title="Copias foil">F <input class="input vq" type="number" min="0" value="${pq(x.set, x.cn, true)}" data-vset="${esc(x.set)}" data-vcn="${esc(x.cn)}" data-vfoil="1" ${x.finishes.some(f => f !== 'nonfoil') ? '' : 'disabled'}></label>
+      </div>`).join('')}</div>`;
+  }
+  return `<p class="hint">Elige la versión que usas en este mazo (cambia la imagen y el precio).</p>
+    <div class="vers">${v.map(x => { const on = cur && cur === printKey(x.set, x.cn);
+      return `<div class="vr ${on ? 'on' : ''}">${x.small ? `<img src="${x.small}" alt="" loading="lazy" data-hover-img="${x.small.replace('/small/', '/normal/')}">` : ''}
+      <div class="vr-i"><b>${esc(x.setName)}</b><small>${String(x.set).toUpperCase()} · #${esc(x.cn)} · ${x.year}</small><small>Normal ${money(x.price)} · Foil ${money(x.priceFoil)}</small></div>
+      ${on ? '<span class="chip ok">En uso</span>' : `<button class="btn sm" data-act="cdUsePrint" data-set="${esc(x.set)}" data-cn="${esc(x.cn)}">Usar</button>`}</div>`; }).join('')}</div>`;
+}
 function renderDetail(){
   if(!cdState) return;
-  const d = data.decks.find(x => x.id === cdState.deckId); if(!d){ closeModal(); return; }
   const name = cdState.list[cdState.idx];
-  const c = d.cards.find(x => key(x.name) === key(name)); if(!c){ closeModal(); return; }
+  const inv = cdState.mode === 'inv', top = cdState.mode === 'top';
+  let d = null, c = null, board = 'main';
+  if(inv){ const r = data.inv[key(name)]; c = r ? { ...r } : { name, qty:0 }; }
+  else if(top){ d = data.decks.find(x => x.id === cdState.deckId); if(!d){ closeModal(); return; } c = { name, qty:0 }; board = 'top'; }
+  else {
+    d = data.decks.find(x => x.id === cdState.deckId); if(!d){ closeModal(); return; }
+    const f = findInDeck(d, name, cdState.board); c = f.c; board = f.board;
+    if(!c){ closeModal(); return; }
+  }
   const e = (c.print && cat[c.print]) || cat[key(c.name)] || {};
-  const s = cardStatus(c), i = invInfo(c.name), n = cdState.list.length;
+  const i = invInfo(c.name), n = cdState.list.length;
   const pt = e.pow != null && e.pow !== undefined ? `${e.pow} / ${e.tou}` : e.loy != null ? `Lealtad ${e.loy}` : e.def != null ? `Defensa ${e.def}` : '';
   const legal = e.legal ? Object.keys(LEGAL_LBL).filter(f => e.legal[f]).map(f => { const st = LEGAL_ST[e.legal[f]] || LEGAL_ST.not_legal; return `<span class="lg ${st[0]}" title="${st[1]}">${LEGAL_LBL[f]}</span>`; }).join('') : '';
   const myDecks = data.decks.filter(x => x.cards.some(y => key(y.name) === key(c.name)));
+  const s = !inv && board === 'main' ? cardStatus(c) : null;
+ const imgBlock = top
+    ? `<div class="mcard" style="position:relative">${cardImg(c.name)}</div><div class="cd-st chip ok">${edhPct(d, c.name, true) != null ? edhPct(d, c.name, true) + '% de los mazos con este comandante' : 'Más comunes'}</div>
+       <div class="cd-addto">${[['main', 'Al Mazo'], ['side', 'Al Sideboard'], ['maybe', 'Al Maybeboard'], ['wish', 'A la wishlist']].map(([t, l]) => `<button class="btn sm ${t === 'main' ? 'primary' : ''}" data-act="topAdd" data-deck="${d.id}" data-card="${esc(c.name)}" data-to="${t}">${I.plus}${l}</button>`).join('')}</div>`
+    : inv
+    ? `<div class="mcard" style="position:relative">${cardImg(c.name)}</div><div class="cd-st chip ${c.qty ? 'info' : ''}">${c.qty ? `Tienes ${c.qty}` : 'No la tienes'}${catsOf(c).length ? ' · ' + esc(catOf(c)) : ''}</div>`
+    : board === 'main'
+      ? `<div class="mcard s-${s}" style="position:relative">${cardImg(c.name, '', c.print)}${badgeHtml(d, c, 52)}${starHtml(d, c, 40)}</div><div class="cd-st chip ${ST[s].chip}">${ST[s].t}${c.cmdr ? ' · Comandante' : ''}</div>`
+      : `<div class="mcard" style="position:relative">${cardImg(c.name, '', c.print)}</div><div class="cd-st chip">${boardName(board)} · ${i.free > 0 ? `${i.free} libre(s) en tu inventario` : i.owned ? 'Sin copias libres' : 'No la tienes'}</div>`;
+  const totalVal = inv && c.qty ? invPrice(c) : 0;
   const html = `
     <div class="cd-nav">
       <button class="btn sm" data-act="cdPrev" ${cdState.idx === 0 ? 'disabled' : ''}>${I.back}Anterior</button>
@@ -2275,32 +2860,49 @@ function renderDetail(){
       <button class="btn ghost sm cd-x" data-act="closeModal" aria-label="Cerrar">✕</button>
     </div>
     <div class="cd">
-      <div class="cd-img">
-        <div class="mcard s-${s}" style="position:relative">${cardImg(c.name, '', c.print)}${badgeHtml(d, c, 52)}${starHtml(d, c, 40)}</div>
-        <div class="cd-st chip ${ST[s].chip}">${ST[s].t}${c.cmdr ? ' · Comandante' : ''}</div>
-      </div>
+      <div class="cd-img">${imgBlock}</div>
       <div class="cd-info">
         <div class="cd-head"><h2>${esc(e.name || c.name)}</h2><span class="cd-mana">${manaHtml(e.mana)}</span></div>
         <div class="cd-type">${esc(e.type || '')}</div>
-        ${e.full ? `<div class="cd-text">${oracleHtml(e.oracle)}</div>` : `<div class="cd-text"><p class="hint">${scryOffline ? 'Sin conexión con Scryfall: el texto aparecerá cuando vuelva la conexión.' : 'Cargando el texto de la carta…'}</p></div>`}
+        ${e.full ? `<div class="cd-text">${oracleHtml(e.oracle)}</div>` : `<div class="cd-text"><p class="hint">${scryOffline ? 'Sin conexión con Scryfall: el texto aparecerá cuando vuelva la conexión.' : e.missing ? 'No encontramos esta carta en Scryfall.' : 'Cargando el texto de la carta…'}</p></div>`}
         ${pt ? `<div class="cd-pt">${esc(pt)}</div>` : ''}
+        ${d && !inv && !top && !c.cmdr ? `<div class="cd-sec"><h4>En ${board === 'main' ? 'este mazo' : 'el ' + boardName(board)}</h4>
+          <div class="cd-deck">
+            <div class="cd-qty"><button class="btn sm" data-act="deckRemove" data-deck="${d.id}" data-card="${esc(c.name)}" data-from="${board}" data-n="1" ${c.qty <= 1 ? 'disabled' : ''} aria-label="Una copia menos">−</button><b>${c.qty}</b><button class="btn sm" data-act="cdQtyUp" aria-label="Una copia más">+</button><span>${c.qty === 1 ? 'copia' : 'copias'}</span></div>
+            ${BOARDS.filter(x => x[0] !== board).map(([t, l]) => `<button class="btn ghost sm" data-act="deckMove" data-deck="${d.id}" data-card="${esc(c.name)}" data-from="${board}" data-to="${t}">→ ${t === 'main' ? 'Mazo' : l}</button>`).join('')}
+            <button class="btn sm danger" data-act="deckRemove" data-deck="${d.id}" data-card="${esc(c.name)}" data-from="${board}">${I.trash}Quitar ${board === 'main' ? 'del mazo' : ''}</button>
+          </div></div>` : ''}
         <div class="cd-sec"><h4>En tu colección</h4>
-          <div class="cd-chips"><span class="chip">Tengo ${i.owned}</span><span class="chip info">Libres ${Math.max(0, i.free)}</span><span class="chip ok">Asignadas ${i.used}</span>${c.qty > 1 ? `<span class="chip">Este mazo usa ${c.qty}</span>` : ''}</div>
+          <div class="cd-chips"><span class="chip">Tengo ${i.owned}</span><span class="chip info">Libres ${Math.max(0, i.free)}</span><span class="chip ok">Asignadas ${i.used}</span>${!inv && c.qty > 1 ? `<span class="chip">Este mazo usa ${c.qty}</span>` : ''}${totalVal ? `<span class="chip" title="Según las versiones registradas">Valor US$ ${totalVal.toFixed(2)}</span>` : ''}</div>
           <div class="cd-chips" style="margin-top:6px">${myDecks.map(x => `<span class="chip mana">${esc(x.name)}</span>`).join('')}</div>
+          ${inv && data.inv[key(c.name)] ? `<div class="cd-cat"><span>${I.tag}Categorías</span><div class="cd-cats">${(data.invCats || []).map(x => `<button class="typebtn ${hasCat(c, x) ? 'on' : ''}" data-act="invToggleCat" data-names="${esc(JSON.stringify([c.name]))}" data-c="${esc(x)}">${hasCat(c, x) ? '✓ ' : ''}${esc(x)}</button>`).join('')}<button class="typebtn add" data-act="invCatNew" data-names="${esc(JSON.stringify([c.name]))}">${I.plus}Nueva</button></div></div>` : ''}
         </div>
         ${legal ? `<div class="cd-sec"><h4>Legalidad</h4><div class="cd-legal">${legal}</div></div>` : ''}
         ${e.full ? `<div class="cd-sec"><h4>Datos</h4><div class="cd-chips">
           ${e.edh ? `<span class="chip" title="Posición de popularidad general en EDHREC">EDHREC #${e.edh.toLocaleString('es-MX')}</span>` : ''}
+          ${!inv && d && edhPct(d, c.name, top) != null ? `<span class="chip ok" title="Mazos de EDHREC con este comandante que la usan">${edhPct(d, c.name, top)}% de inclusión</span>` : ''}
           ${e.price ? `<span class="chip">US$ ${e.price.toFixed(2)}</span>` : ''}
           ${e.rarity ? `<span class="chip">${esc({common:'Común',uncommon:'Infrecuente',rare:'Rara',mythic:'Mítica'}[e.rarity] || e.rarity)}</span>` : ''}
           ${e.setName ? `<span class="chip">${esc(e.setName)}</span>` : ''}
           ${e.gc ? `<span class="chip warn" title="Carta marcada como Game Changer en Commander">Game Changer</span>` : ''}
         </div>${e.edhUrl ? `<a class="cd-link" href="${esc(e.edhUrl)}" target="_blank" rel="noopener">Ver en EDHREC ↗</a>` : ''}</div>` : ''}
+        ${(inv && data.inv[key(c.name)]) || (!inv && !top && !e.missing) ? `<div class="cd-sec"><h4>Versiones</h4><div id="cdVers">${versionsHtml(c.name, inv ? 'inv' : 'deck', c.print)}</div></div>` : ''}
       </div>
     </div>`;
   if($('#modal-root .modal.cdm')) $('#modal-root .modal.cdm').innerHTML = html;
   else { openModal(html, true); const m = $('#modal-root .modal'); if(m) m.classList.add('cdm'); }
-  if(!e.full){
+  document.querySelectorAll('#cdVers .vq').forEach(inp => inp.addEventListener('change', () => {
+    const r = data.inv[key(c.name)]; if(!r) return;
+    const set = inp.dataset.vset, cn = inp.dataset.vcn, foil = inp.dataset.vfoil === '1', q = Math.max(0, parseInt(inp.value) || 0);
+    r.prints = (r.prints || []).filter(p => !(p.set === set && p.cn === cn && !!p.foil === foil));
+    if(q) r.prints.push(foil ? { set, cn, qty:q, foil:true } : { set, cn, qty:q });
+    if(!r.prints.length) delete r.prints;
+    const reg = (r.prints || []).reduce((a, p) => a + p.qty, 0);
+    if(reg > r.qty){ r.qty = reg; toast(`Ahora tienes ${reg} copia(s) de ${r.name}.`); }
+    saveData(); renderDetail();
+    if(view.tab === 'inv') renderInvBody();
+  }));
+  if(!e.full && !e.missing){
     const want = cdState.idx;
     fetchCardFull(c.name, c.print).then(r => { if(r && cdState && cdState.idx === want) renderDetail(); });
   }
@@ -2376,7 +2978,7 @@ function deckModal(d){
     const fmt = fmtSel.value, res = parseList($('#mdList').value);
     const cmdrName = cm ? cm.name : ($('#mdCmdr') ? $('#mdCmdr').value.trim() : '');
     const merged = new Map((wipe ? [] : current).map(c => [key(c.name), { ...c }]));
-    res.cards.forEach(c => { const k = key(c.name); if(merged.has(k)) merged.get(k).qty += c.qty; else merged.set(k, { ...c }); });
+    res.cards.forEach(c => { if(c.board) return; const k = key(c.name); if(merged.has(k)) merged.get(k).qty += c.qty; else merged.set(k, { ...c }); });
     if(fmt === 'Commander' && cmdrName) merged.delete(key(cmdrName));
     const list = [...merged.values()];
     const total = list.reduce((a,c) => a + c.qty, 0) + (fmt === 'Commander' && cmdrName ? 1 : 0);
@@ -2440,6 +3042,7 @@ function deckModal(d){
     const old = new Map(d.cards.filter(c => !c.cmdr).map(c => [key(c.name), c]));
     if(wipe) d.cards = d.cards.filter(c => c.cmdr);
     ev.res.cards.forEach(c => {
+      if(c.board){ addToBoard(d, c.board, c); return; }
       if(cmK && key(c.name) === key(cmK)) return;
       const ex = d.cards.find(x => !x.cmdr && key(x.name) === key(c.name));
       if(ex){ ex.qty += c.qty; ex.dup = true; }
@@ -2459,13 +3062,15 @@ function deckModal(d){
 }
 
 // ---------- Agregar cartas a un mazo: buscar, pegar lista o subir archivo ----------
-function addCardsModal(d, tab){
+function addCardsModal(d, tab, board0){
   if(!d) return;
-  const queue = new Map();   // nombre → { name, qty, set, cn }
-  const addQ = (c) => { const k = key(c.name) + '|' + (c.set || '') + '|' + (c.cn || ''); if(queue.has(k)) queue.get(k).qty += c.qty; else queue.set(k, { name:c.name, qty:c.qty, set:c.set || '', cn:c.cn || '' }); };
+  let tgt = board0 || 'main';
+  const queue = new Map();   // nombre → { name, qty, set, cn, board? }
+  const addQ = (c) => { const k = (c.board || '') + '|' + key(c.name) + '|' + (c.set || '') + '|' + (c.cn || ''); if(queue.has(k)) queue.get(k).qty += c.qty; else queue.set(k, { name:c.name, qty:c.qty, set:c.set || '', cn:c.cn || '', board:c.board || '' }); };
   openModal(`
     <h2>Agregar cartas</h2>
     <p class="lead">A <b>${esc(d.name)}</b> (${esc(d.format)}). Junta las cartas en la lista de abajo y al final confirma.</p>
+    <div class="ac-board"><span>Agregar a</span><div class="ac-seg" id="adBoard">${BOARDS.map(([b, l]) => `<button data-b="${b}" class="${tgt === b ? 'on' : ''}">${l}</button>`).join('')}</div></div>
     <div class="ac-tabs" role="tablist">
       <button data-t="search">${I.search}Buscar carta</button>
       <button data-t="paste">${I.edit}Pegar lista</button>
@@ -2495,14 +3100,19 @@ function addCardsModal(d, tab){
     <div class="check" id="adChk"></div>
     <div class="modal-actions"><button class="btn ghost" data-act="closeModal">Cancelar</button><button class="btn primary" id="adSave" disabled>Agregar al mazo</button></div>`, true);
   let mode = 'add';
-  const nowCards = d.cards.filter(c => !c.cmdr).reduce((a, c) => a + c.qty, 0);
+  let nowCards = boardList(d, tgt).filter(c => !c.cmdr).reduce((a, c) => a + c.qty, 0);
+  document.querySelectorAll('#adBoard button').forEach(b => b.onclick = () => {
+    tgt = b.dataset.b; document.querySelectorAll('#adBoard button').forEach(x => x.classList.toggle('on', x === b));
+    nowCards = boardList(d, tgt).filter(c => !c.cmdr).reduce((a, c) => a + c.qty, 0);
+    const t = (document.querySelector('.ac-tabs button.on') || {}).dataset; setTab(t ? t.t : 'search'); setMode(mode);
+  });
   const setTab = t => { document.querySelectorAll('.ac-tabs button').forEach(b => b.classList.toggle('on', b.dataset.t === t)); document.querySelectorAll('.ac-pane').forEach(p => p.classList.toggle('on', p.dataset.p === t));
     // Reemplazar solo aplica al pegar lista o subir archivo; buscar una por una siempre agrega
     $('#adModeBox').style.display = (t === 'search' || !nowCards) ? 'none' : '';
     if(t === 'search' && mode === 'replace') setMode('add');
     if(t === 'search') $('#adName').focus(); if(t === 'paste') $('#adList').focus(); };
   const setMode = m => { mode = m; document.querySelectorAll('.ac-seg button').forEach(b => b.classList.toggle('on', b.dataset.m === m));
-    $('#adModeHint').innerHTML = m === 'replace' ? `<b style="color:var(--danger)">Se quitarán las ${nowCards} carta(s) actuales</b> (menos el comandante) y el mazo quedará solo con la lista nueva. Las copias asignadas de cartas que salgan regresan a tu inventario.` : 'Las cartas nuevas se suman a la lista actual del mazo.';
+    $('#adModeHint').innerHTML = m === 'replace' ? `<b style="color:var(--danger)">Se quitarán las ${nowCards} carta(s) actuales de ${tgt === 'main' ? 'el mazo' : 'el ' + boardName(tgt)}</b>${tgt === 'main' ? ' (menos el comandante)' : ''} y quedará solo con la lista nueva. Las copias asignadas de cartas que salgan regresan a tu inventario.` : 'Las cartas nuevas se suman a la lista actual del mazo.';
     if($('#adSave')) draw(); };
   document.querySelectorAll('.ac-seg button').forEach(b => b.onclick = () => setMode(b.dataset.m));
   document.querySelectorAll('.ac-tabs button').forEach(b => b.onclick = () => setTab(b.dataset.t));
@@ -2510,9 +3120,9 @@ function addCardsModal(d, tab){
   const draw = () => {
     const list = [...queue.values()], n = list.reduce((a, c) => a + c.qty, 0);
     $('#adCount').textContent = n ? `· ${n} carta(s)` : '';
-    $('#adQueue').innerHTML = list.length ? list.map((c, i) => `<div class="aq"><button class="aq-b" data-i="${i}" data-d="-1" aria-label="Menos">−</button><b>${c.qty}</b><button class="aq-b" data-i="${i}" data-d="1" aria-label="Más">+</button><span>${esc(c.name)}${c.set ? ` <small>(${esc(c.set.toUpperCase())}) ${esc(c.cn)}</small>` : ''}</span><button class="aq-x" data-i="${i}" aria-label="Quitar">✕</button></div>`).join('') : '<p class="hint">Aún no hay cartas en la lista.</p>';
+    $('#adQueue').innerHTML = list.length ? list.map((c, i) => `<div class="aq"><button class="aq-b" data-i="${i}" data-d="-1" aria-label="Menos">−</button><b>${c.qty}</b><button class="aq-b" data-i="${i}" data-d="1" aria-label="Más">+</button><span>${esc(c.name)}${c.set ? ` <small>(${esc(c.set.toUpperCase())}) ${esc(c.cn)}</small>` : ''}${c.board ? ` <em class="aq-bd">${boardName(c.board)}</em>` : ''}</span><button class="aq-x" data-i="${i}" aria-label="Quitar">✕</button></div>`).join('') : '<p class="hint">Aún no hay cartas en la lista.</p>';
     $('#adSave').disabled = !list.length;
-    $('#adSave').textContent = !list.length ? 'Agregar al mazo' : mode === 'replace' ? `Reemplazar la lista con ${n} carta(s)` : `Agregar ${n} carta(s) al mazo`;
+    $('#adSave').textContent = !list.length ? 'Agregar' : mode === 'replace' ? `Reemplazar la lista con ${n} carta(s)` : `Agregar ${n} carta(s) ${tgt === 'main' ? 'al mazo' : 'al ' + boardName(tgt)}`;
     $('#adSave').classList.toggle('danger', mode === 'replace' && !!list.length);
     document.querySelectorAll('.aq-b').forEach(b => b.onclick = () => { const c = list[+b.dataset.i]; c.qty = Math.max(1, c.qty + +b.dataset.d); draw(); });
     document.querySelectorAll('.aq-x').forEach(b => b.onclick = () => { const c = list[+b.dataset.i]; [...queue.entries()].forEach(([k, v]) => { if(v === c) queue.delete(k); }); draw(); });
@@ -2573,9 +3183,14 @@ function addCardsModal(d, tab){
     }
     const cmK = (d.cards.find(c => c.cmdr) || {}).name;
     let added = 0;
+    // Cartas que van al sideboard o maybeboard (por la sección elegida o porque la lista traía esas secciones)
+    const toB = list.filter(c => (c.board || tgt) !== 'main');
+    if(mode === 'replace' && tgt !== 'main'){ if(tgt === 'side') d.side = []; else d.maybe = []; }
+    toB.forEach(c => { addToBoard(d, c.board || tgt, c); added += c.qty; });
+    const mainL = list.filter(c => (c.board || tgt) === 'main');
     const old = new Map(d.cards.filter(c => !c.cmdr).map(c => [key(c.name), c]));
-    if(mode === 'replace') d.cards = d.cards.filter(c => c.cmdr);
-    list.forEach(c => {
+    if(mode === 'replace' && tgt === 'main') d.cards = d.cards.filter(c => c.cmdr);
+    mainL.forEach(c => {
       const pk = c.set && c.cn ? printKey(c.set, c.cn) : null;
       const e = (pk && cat[pk]) || cat[key(c.name)];
       const name = e && !e.missing && !e.demo ? e.name : c.name;
@@ -2592,16 +3207,20 @@ function addCardsModal(d, tab){
     d.cards.forEach(c => { if(!c.cmdr) c.assigned = Math.min(c.assigned || 0, c.qty); });
     d.updated = Date.now(); saveData(); closeModal(); render();
     const w = deckWarnings(d);
-    toast((mode === 'replace' ? `Lista de ${d.name} reemplazada: ${added} carta(s).` : `${added} carta(s) agregadas a ${d.name}.`) + (w.length ? ' Avisos: ' + w.map(x => x.text).join(' · ') : ''));
+    if(tgt !== 'main' || toB.length){ deckBoardSel[d.id] = toB.length && !mainL.length ? (toB[0].board || tgt) : deckBoardSel[d.id]; render(); }
+    toast((mode === 'replace' ? `Lista de ${d.name} reemplazada: ${added} carta(s).` : `${added} carta(s) agregadas a ${d.name}${toB.length && mainL.length ? ` (${toB.reduce((a, c) => a + c.qty, 0)} al sideboard/maybeboard)` : ''}.`) + (w.length ? ' Avisos: ' + w.map(x => x.text).join(' · ') : ''));
   };
 }
 // Lee el texto pegado. Formato válido: "1 Nombre", "1x Nombre", "1 Nombre (SET) 123", "1 Nombre (SET) 123 *F*"
 function parseList(txt){
   const map = new Map(), cards = [], errors = [];
+  let board = '';   // '' = mazo; 'side' / 'maybe' cuando la lista trae esas secciones (Moxfield, Archidekt…)
   txt.split(/\r?\n/).forEach((line, idx) => {
     const l = line.trim();
-    if(!l || /^(\/\/|#)/.test(l)) return;
-    if(/^(deck|mazo|main|mainboard|main deck|sideboard|commander|comandante|maybeboard|considering|companion|tokens?)\s*:?\s*(\(\d+\))?\s*$/i.test(l)) return;
+    if(!l) return;
+    const hd = l.replace(/^\/\/\s*/, '').match(/^(deck|mazo|main|mainboard|main deck|sideboard|side|commander|comandante|maybeboard|maybe|considering|companion|tokens?)\s*:?\s*(\(\d+\))?\s*$/i);
+    if(hd){ const h = hd[1].toLowerCase(); board = /^side/.test(h) ? 'side' : /^(maybe|considering)/.test(h) ? 'maybe' : ''; return; }
+    if(/^(\/\/|#)/.test(l)) return;
     const m = l.match(/^(\d+)\s*[xX]?\s+(.+?)(?:\s+\(([A-Za-z0-9]{2,8})\)(?:\s+([A-Za-z0-9★\-]+))?)?(?:\s+\*[A-Za-z]+\*)*\s*$/);
     if(!m){ errors.push({ line: idx + 1, text: l, reason: /^\d/.test(l) ? 'Falta el nombre de la carta' : 'Debe empezar con la cantidad (ej. «1 Sol Ring»)' }); return; }
     const q = parseInt(m[1]);
@@ -2609,9 +3228,9 @@ function parseList(txt){
     if(q < 1){ errors.push({ line: idx + 1, text: l, reason: 'La cantidad debe ser 1 o más' }); return; }
     if(/[\[\]{}<>|]/.test(n) || n.length < 2){ errors.push({ line: idx + 1, text: l, reason: 'El nombre tiene caracteres no válidos' }); return; }
     if(!n.includes('//') && /\s\/\s/.test(n)) n = n.replace(/\s+\/\s+/, ' // '); // cartas de dos caras como las exporta Moxfield
-    const k = key(n);
+    const k = board + '|' + key(n);
     if(map.has(k)){ const e = map.get(k); e.qty += q; e.dup = true; }
-    else { const e = { name:n, qty:q, set:m[3] || '', cn:m[4] || '' }; map.set(k, e); cards.push(e); }
+    else { const e = { name:n, qty:q, set:m[3] || '', cn:m[4] || '' }; if(board) e.board = board; map.set(k, e); cards.push(e); }
   });
   return { cards, errors };
 }
@@ -2668,12 +3287,23 @@ function addCardModal(target, miss){
 }
 
 // ---------- Cargar Excel / CSV ----------
-function importModal(){
+function importModal(tab){
   openModal(`
-    <h2>Cargar inventario desde Excel o CSV</h2>
-    <p class="lead">El archivo necesita dos columnas: <b>nombre</b> y <b>cantidad</b>. También funcionan las exportaciones de ManaBox (Name, Quantity).</p>
-    <div class="dropzone" id="dz">${I.file}<div style="margin-top:8px">Arrastra tu archivo aquí o <b style="color:var(--honey-2)">elige uno</b></div><div class="hint">.xlsx, .xls o .csv</div></div>
-    <input type="file" id="dzFile" accept=".xlsx,.xls,.csv" class="hidden">
+    <h2>Cargar cartas a tu inventario</h2>
+    <p class="lead">Pega una lista como en tus mazos o sube un Excel/CSV. Si la cantidad trae <b>(SET) número</b> o columnas de set y número, se guarda esa versión para calcular su precio.</p>
+    <div class="ac-tabs" role="tablist">
+      <button data-t="paste">${I.edit}Pegar lista</button>
+      <button data-t="file">${I.file}Subir archivo</button>
+    </div>
+    <div class="ac-pane" data-p="paste">
+      <textarea class="input" id="impList" rows="8" spellcheck="false" placeholder="4 Lightning Bolt&#10;1 Sol Ring (C21) 263&#10;1 Arguel's Blood Fast / Temple of Aclazotz (XLN) 90&#10;10 Swamp"></textarea>
+      <div class="ac-row" style="justify-content:space-between"><p class="hint" style="margin:0">Una carta por línea: <b>cantidad + nombre</b>, opcional <b>(SET) número</b>. Sirve el texto de Moxfield, Archidekt o ManaBox.</p><button class="btn" id="impPaste">Revisar lista</button></div>
+      <div class="check" id="impPasteChk"></div>
+    </div>
+    <div class="ac-pane" data-p="file">
+      <div class="dropzone" id="dz">${I.file}<div style="margin-top:8px">Arrastra tu archivo aquí o <b style="color:var(--honey-2)">elige uno</b></div><div class="hint">.xlsx, .xls, .csv o .txt · columnas <b>nombre</b> y <b>cantidad</b> (opcional set, número y foil). Funcionan las exportaciones de ManaBox.</div></div>
+      <input type="file" id="dzFile" accept=".xlsx,.xls,.csv,.txt" class="hidden">
+    </div>
     <div id="impPrev"></div>
     <div class="modal-actions">
       <button class="btn ghost" data-act="templateInv">${I.download}Descargar plantilla</button>
@@ -2681,16 +3311,29 @@ function importModal(){
       <button class="btn ghost" data-act="closeModal">Cancelar</button>
       <button class="btn primary hidden" id="impSave">Cargar</button>
     </div>`, true);
+  const setTab = t => { document.querySelectorAll('.ac-tabs button').forEach(b => b.classList.toggle('on', b.dataset.t === t)); document.querySelectorAll('.ac-pane').forEach(p => p.classList.toggle('on', p.dataset.p === t)); if(t === 'paste') $('#impList').focus(); };
+  document.querySelectorAll('.ac-tabs button').forEach(b => b.onclick = () => setTab(b.dataset.t));
+  setTab(tab || 'paste');
+  $('#impPaste').onclick = () => {
+    const r = parseList($('#impList').value), el = $('#impPasteChk');
+    el.innerHTML = r.errors.length ? `<div class="wrn">${r.errors.length} línea(s) no se pudieron leer y se omitirán:</div><ul>${r.errors.slice(0, 12).map(e => `<li>Línea ${e.line}: <code>${esc(e.text)}</code> — ${esc(e.reason)}</li>`).join('')}</ul>` : '';
+    if(!r.cards.length){ el.innerHTML += '<div class="err">Pega al menos una carta.</div>'; return; }
+    processImport(r.cards.map(c => ({ name:c.name, qty:c.qty, set:c.set, cn:c.cn })));
+  };
   const dz = $('#dz'), fi = $('#dzFile');
   dz.addEventListener('click', () => fi.click());
   dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('over'); });
   dz.addEventListener('dragleave', () => dz.classList.remove('over'));
   dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('over'); if(e.dataTransfer.files[0]) readImport(e.dataTransfer.files[0]); });
-  fi.addEventListener('change', () => { if(fi.files[0]) readImport(fi.files[0]); });
+  fi.addEventListener('change', () => { if(fi.files[0]) readImport(fi.files[0]); fi.value = ''; });
 }
 async function readImport(file){
   let rows = [];
   try{
+    if(/\.txt$/i.test(file.name)){
+      const r = parseList(await file.text());
+      processImport(r.cards.map(c => ({ name:c.name, qty:c.qty, set:c.set, cn:c.cn }))); return;
+    }
     if(window.XLSX){
       const buf = await file.arrayBuffer();
       const wb = XLSX.read(buf, { type:'array' });
@@ -2700,33 +3343,57 @@ async function readImport(file){
     }
   }catch(e){ toast('No se pudo leer el archivo.'); return; }
   const pick = (r, keys) => { for(const k of Object.keys(r)){ if(keys.includes(key(k))) return r[k]; } return ''; };
-  const merged = new Map();
+  const list = [];
   rows.forEach(r => {
     const n = String(pick(r, ['nombre','name','carta','card','card name'])).trim();
     const q = parseInt(pick(r, ['cantidad','qty','quantity','count','cant'])) || 1;
     if(!n) return;
-    const k = key(n);
-    if(merged.has(k)) merged.get(k).qty += q; else merged.set(k, { name:n, qty:q });
+    const st = String(pick(r, ['set','set code','edicion','edición','edition','codigo set'])).trim(), cn = String(pick(r, ['numero','número','number','collector number','collector_number','cn'])).trim();
+    const fo = key(pick(r, ['foil','acabado','finish']));
+    list.push({ name:n, qty:q, set: st && cn ? st : '', cn: st && cn ? cn : '', foil: ['foil','yes','si','sí','true','1','etched'].includes(fo) });
   });
-  const list = [...merged.values()];
-  if(!list.length){ $('#impPrev').innerHTML = `<p class="hint" style="color:var(--danger)">No encontramos la columna «nombre». Usa la plantilla.</p>`; return; }
-  $('#impPrev').innerHTML = `<p class="hint">Buscando ${list.length} cartas en Scryfall…</p>`;
-  await ensureCards(list.map(x => x.name));
-  const ok = list.filter(x => cat[key(x.name)] && !cat[key(x.name)].missing);
-  const bad = list.filter(x => !ok.includes(x));
-  $('#impPrev').innerHTML = `
+  processImport(list);
+}
+// Revisa en Scryfall (con versión exacta si viene) y muestra qué se cargará
+async function processImport(raw){
+  const box = $('#impPrev'); if(!box) return;
+  if(!raw.length){ box.innerHTML = `<p class="hint" style="color:var(--danger)">No encontramos cartas. Revisa que haya columna «nombre» o una carta por línea.</p>`; return; }
+  box.innerHTML = `<p class="hint">Buscando ${raw.length} cartas en Scryfall…</p>`;
+  await ensurePrints(raw.map(x => ({ name:x.name, set:x.set, cn:x.cn })));
+  const resolve = x => { const pk = x.set && x.cn ? printKey(x.set, x.cn) : null; const e = (pk && cat[pk]) || cat[key(x.name)]; return e && !e.missing ? e : null; };
+  // Se juntan por carta (las versiones se guardan aparte)
+  const merged = new Map(), bad = [];
+  raw.forEach(x => {
+    const e = resolve(x);
+    if(!e){ const b = bad.find(y => key(y.name) === key(x.name)); if(b) b.qty += x.qty; else bad.push({ name:x.name, qty:x.qty }); return; }
+    const k = key(e.name);
+    if(!merged.has(k)) merged.set(k, { name:e.name, qty:0, prints:[] });
+    const m = merged.get(k); m.qty += x.qty;
+    if(x.set && x.cn && cat[printKey(x.set, x.cn)]){ const set = String(x.set).toLowerCase(), cn = String(x.cn); const p = m.prints.find(p => p.set === set && p.cn === cn && !!p.foil === !!x.foil); if(p) p.qty += x.qty; else m.prints.push(x.foil ? { set, cn, qty:x.qty, foil:true } : { set, cn, qty:x.qty }); }
+  });
+  const ok = [...merged.values()];
+  box.innerHTML = `
     <div style="display:flex;gap:10px;margin:14px 0 8px;flex-wrap:wrap">
       <span class="chip ok">${ok.length} cartas listas (${ok.reduce((a,x)=>a+x.qty,0)} copias)</span>
       ${bad.length ? `<span class="chip warn">${bad.length} no encontradas</span>` : ''}
     </div>
     <div class="tbl-wrap plain" style="max-height:260px"><table style="min-width:0"><thead><tr><th>Carta</th><th>Cant.</th><th>Estado</th></tr></thead><tbody>
-    ${bad.concat(ok).map(x => { const good = ok.includes(x); return `<tr><td>${esc(good ? cat[key(x.name)].name : x.name)}</td><td>${x.qty}</td><td>${good ? '<span class="chip ok">Lista</span>' : '<span class="chip warn">Revisa el nombre</span>'}</td></tr>`; }).join('')}
+    ${bad.map(x => `<tr><td>${esc(x.name)}</td><td>${x.qty}</td><td><span class="chip warn">Revisa el nombre</span></td></tr>`).join('')}
+    ${ok.map(x => `<tr><td>${esc(x.name)}${x.prints.length ? ` <small class="hint">${x.prints.map(p => `${p.set.toUpperCase()} #${esc(p.cn)}${p.foil ? ' foil' : ''}`).join(', ')}</small>` : ''}</td><td>${x.qty}</td><td><span class="chip ok">Lista</span></td></tr>`).join('')}
     </tbody></table></div>
     ${bad.length ? '<p class="hint">Las cartas no encontradas no se cargarán. Al terminar te mostramos la lista para que las agregues por separado con el nombre correcto.</p>' : ''}`;
   const btn = $('#impSave'); btn.classList.toggle('hidden', !ok.length && !bad.length);
   btn.textContent = ok.length ? `Cargar ${ok.length} cartas` : 'Guardar lista de no encontradas';
   btn.onclick = () => {
-    ok.forEach(x => { const c = cat[key(x.name)], k = key(c.name); data.inv[k] = { name:c.name, qty: ((data.inv[k] || {}).qty || 0) + x.qty }; });
+    ok.forEach(x => {
+      const k = key(x.name), cur = data.inv[k] || { name:x.name, qty:0 };
+      cur.qty += x.qty;
+      if(x.prints.length){
+        cur.prints = cur.prints || [];
+        x.prints.forEach(p => { const ex = cur.prints.find(y => y.set === p.set && y.cn === p.cn && !!y.foil === !!p.foil); if(ex) ex.qty += p.qty; else cur.prints.push(p); });
+      }
+      data.inv[k] = cur;
+    });
     saveData();
     if(bad.length){
       const prev = invMissing(), m = new Map(prev.map(x => [key(x.name), x]));
@@ -2842,7 +3509,7 @@ const actions = {
   statusFilter(el){ view.statusFilter = el.dataset.s || null; renderDeck(); },
   newDeck(){ if(guard('crear mazos')) return; deckModal(null); },
   editDeck(el){ deckModal(data.decks.find(x => x.id === el.dataset.id)); },
-  addCards(el){ addCardsModal(data.decks.find(x => x.id === el.dataset.id), el.dataset.tab || 'search'); },
+  addCards(el){ addCardsModal(data.decks.find(x => x.id === el.dataset.id), el.dataset.tab || 'search', el.dataset.board || (deckShown.id === el.dataset.id ? deckShown.board : 'main')); },
   deleteDeck(el){
     const d = data.decks.find(x => x.id === el.dataset.id); if(!d) return;
     if(!confirm(`¿Eliminar el mazo «${d.name}»? Sus copias asignadas regresan a libres en tu inventario.`)) return;
@@ -2876,7 +3543,103 @@ const actions = {
     saveData(); renderKeepScroll();
     if(cdState) renderDetail();
   },
-  cardDetail(el){ openDetail(el.dataset.deck, el.dataset.card); },
+  cardDetail(el){ closePop(); openDetail(el.dataset.deck, el.dataset.card, el.dataset.board); },
+  // ----- Secciones del mazo, vistas y menú de cada carta -----
+  topN(el){ topN = +el.dataset.n; store.set('topN', topN); renderDeck(); },
+  topMenu(el){ const d = data.decks.find(x => x.id === el.dataset.deck); if(d) openPop(el, topMenuHtml(d, el.dataset.card)); },
+  topDetail(el){
+    closePop();
+    const list = deckShown.board === 'top' && deckShown.list.length ? [...deckShown.list] : [el.dataset.card];
+    let idx = list.findIndex(n => key(n) === key(el.dataset.card)); if(idx < 0){ list.unshift(el.dataset.card); idx = 0; }
+    cdState = { mode:'top', deckId:el.dataset.deck, list, idx }; renderDetail();
+  },
+  topAdd(el){
+    const d = data.decks.find(x => x.id === el.dataset.deck); if(!d) return;
+    const nm = el.dataset.card, to = el.dataset.to; closePop();
+    if(to === 'wish'){ const w = wishEntry(nm); w.manual = (w.manual || 0) + 1; saveData(); toast(`${nm} se agregó a tu wishlist.`); return; }
+    if(to === 'main'){ const ex = d.cards.find(c => !c.cmdr && key(c.name) === key(nm)); if(ex) ex.qty += 1; else d.cards.push({ name:nm, qty:1, assigned:0 }); }
+    else addToBoard(d, to, { name:nm, qty:1 });
+    d.updated = Date.now(); saveData();
+    if(cdState && cdState.mode === 'top'){ closeModal(); }
+    renderKeepScroll();
+    toast(`${nm} → ${boardName(to)}.` + (to === 'main' ? ' Ya puedes asignarle una copia.' : ''));
+  },
+  deckBoard(el){ deckBoardSel[el.dataset.deck] = el.dataset.b; view.statusFilter = null; renderDeck(); },
+  setView(el){
+    if(el.dataset.scope === 'inv'){ invView = el.dataset.v; store.set('invView', invView); renderInv(); }
+    else { deckView = el.dataset.v; store.set('deckView', deckView); renderDeck(); }
+  },
+  edhToggle(){ edhOn = !edhOn; store.set('edhOn', edhOn); renderKeepScroll(); },
+  deckMenu(el){ const d = data.decks.find(x => x.id === el.dataset.deck); if(d) openPop(el, deckMenuHtml(d, el.dataset.card, el.dataset.board)); },
+  deckMove(el){
+    const d = data.decks.find(x => x.id === el.dataset.deck); if(!d) return;
+    const n = moveCard(d, el.dataset.card, el.dataset.from, el.dataset.to);
+    closePop(); if(!n) return;
+    if(cdState && cdState.deckId === d.id && !cdState.mode){
+      const still = boardList(d, el.dataset.from).some(x => key(x.name) === key(el.dataset.card));
+      if(!still){ cdState.list = cdState.list.filter(x => key(x) !== key(el.dataset.card)); if(!cdState.list.length) closeModal(); else { cdState.idx = Math.min(cdState.idx, cdState.list.length - 1); renderDetail(); } }
+      else renderDetail();
+    }
+    d.updated = Date.now(); saveData(); renderKeepScroll();
+    toast(`${el.dataset.card} → ${boardName(el.dataset.to)}.`);
+  },
+  deckSwapAsk(el){ const d = data.decks.find(x => x.id === el.dataset.deck); closePop(); if(d) swapModal(d, el.dataset.card, el.dataset.from, el.dataset.to); },
+  deckSwap(el){
+    const d = data.decks.find(x => x.id === el.dataset.deck); if(!d) return;
+    const a = el.dataset.card, b = el.dataset.other, from = el.dataset.from, to = el.dataset.to;
+    moveCard(d, a, from, to); moveCard(d, b, to, from);
+    d.updated = Date.now(); saveData(); closeModal(); renderKeepScroll();
+    toast(`Cambio hecho: entra ${b}, sale ${a} (al ${boardName(to)}).`);
+  },
+  deckRemove(el){
+    const d = data.decks.find(x => x.id === el.dataset.deck); if(!d) return;
+    const from = el.dataset.from, L = boardList(d, from), c = L.find(x => key(x.name) === key(el.dataset.card));
+    closePop(); if(!c || c.cmdr) return;
+    const one = el.dataset.n === '1' && c.qty > 1, where = from === 'main' ? 'del mazo' : 'del ' + boardName(from);
+    const snap = JSON.stringify({ c, i:L.indexOf(c) });
+    if(one){ c.qty -= 1; if(from === 'main') c.assigned = Math.min(c.assigned || 0, c.qty); }
+    else L.splice(L.indexOf(c), 1);
+    d.updated = Date.now(); saveData();
+    // Si estaba abierto el detalle, se pasa a la siguiente carta
+    if(cdState && cdState.deckId === d.id && !one){
+      cdState.list = cdState.list.filter(n => key(n) !== key(c.name));
+      if(!cdState.list.length) closeModal(); else { cdState.idx = Math.min(cdState.idx, cdState.list.length - 1); renderDetail(); }
+    } else if(cdState && cdState.deckId === d.id) renderDetail();
+    renderKeepScroll();
+    lastRemoved = { deckId:d.id, from, snap, one, name:c.name };
+    toastUndo(one ? `Se quitó 1 copia de ${c.name}.` : `${c.name} se quitó ${where}.`);
+  },
+  cdQtyUp(){
+    if(!cdState || cdState.mode) return;
+    const d = data.decks.find(x => x.id === cdState.deckId); if(!d) return;
+    const f = findInDeck(d, cdState.list[cdState.idx], cdState.board); if(!f.c || f.c.cmdr) return;
+    f.c.qty += 1; d.updated = Date.now(); saveData(); renderDetail(); renderKeepScroll();
+  },
+  undoRemove(){
+    const r = lastRemoved; lastRemoved = null; if(!r) return;
+    const d = data.decks.find(x => x.id === r.deckId); if(!d) return;
+    const L = boardList(d, r.from), o = JSON.parse(r.snap);
+    const cur = L.find(x => key(x.name) === key(r.name));
+    if(r.one && cur){ cur.qty += 1; cur.assigned = o.c.assigned || 0; }
+    else if(!cur) L.splice(Math.min(o.i, L.length), 0, o.c);
+    d.updated = Date.now(); saveData(); renderKeepScroll();
+    document.querySelectorAll('.toast.undo').forEach(t => t.remove());
+    toast(`Listo, ${r.name} regresó.`);
+  },
+  // ----- Detalle: versiones -----
+  async cdVers(){
+    if(!cdState) return;
+    const nm = cdState.list[cdState.idx]; const box = $('#cdVers'); if(box) box.innerHTML = '<p class="hint">Buscando versiones en Scryfall…</p>';
+    await loadVersions(nm); if(cdState && cdState.list[cdState.idx] === nm) renderDetail();
+  },
+  cdUsePrint(el){
+    if(!cdState || cdState.mode === 'inv') return;
+    const d = data.decks.find(x => x.id === cdState.deckId); if(!d) return;
+    const f = findInDeck(d, cdState.list[cdState.idx], cdState.board); if(!f.c) return;
+    f.c.set = el.dataset.set; f.c.cn = el.dataset.cn; f.c.print = printKey(el.dataset.set, el.dataset.cn);
+    d.updated = Date.now(); saveData(); renderDetail(); if(view.tab === 'decks') renderKeepScroll();
+    toast('Versión actualizada.');
+  },
   cdPrev(){ if(cdState && cdState.idx > 0){ cdState.idx--; renderDetail(); } },
   cdNext(){ if(cdState && cdState.idx < cdState.list.length - 1){ cdState.idx++; renderDetail(); } },
   assignAllAsk(el){
@@ -2932,10 +3695,26 @@ const actions = {
   invKpi(el){ invFilter.kpi = el.dataset.k; if(el.dataset.k === 'all'){ invFilter.colors.clear(); invFilter.type = ''; invQuery = ''; } renderInv(); },
   invColor(el){ const c = el.dataset.c; invFilter.colors.has(c) ? invFilter.colors.delete(c) : invFilter.colors.add(c); renderInv(); },
   invType(el){ invFilter.type = el.dataset.t; renderInv(); },
+  invCatF(el){ invFilter.cat = el.dataset.c; renderInv(); },
+  invCatNew(el){ closePop(); let names = null; try{ names = el.dataset.names ? JSON.parse(el.dataset.names) : null; }catch(e){} newCatModal(names); },
+  invCatManage(){ manageCatsModal(); },
+  invCatDel(el){
+    const c = (data.invCats || [])[+el.dataset.i]; if(c == null) return;
+    data.invCats = data.invCats.filter(x => x !== c);
+    Object.values(data.inv).forEach(r => { if(hasCat(r, c)){ const l = catsOf(r).filter(x => x !== c); delete r.cat; if(l.length) r.cats = l; else delete r.cats; } });
+    if(invFilter.cat === c) invFilter.cat = '';
+    saveData(); data.invCats.length ? manageCatsModal() : closeModal(); render();
+  },
+  invMenu(el){ openPop(el, invMenuHtml([el.dataset.card])); },
+  invSelCat(el){ openPop(el, invMenuHtml([...invSel].map(k => (data.inv[k] || {}).name).filter(Boolean))); },
+  invToggleCat(el){ let names = []; try{ names = JSON.parse(el.dataset.names); }catch(e){} toggleInvCat(names, el.dataset.c); },
+  invSetCat(el){ let names = []; try{ names = JSON.parse(el.dataset.names); }catch(e){} setInvCat(names, el.dataset.c); },
+  invDetail(el){ closePop(); openInvDetail(el.dataset.card); },
   addWish(){ if(guard('agregar cartas a tu wishlist')) return; addCardModal('wish'); },
   importInv(){ if(guard('cargar cartas a tu inventario')) return; importModal(); },
   templateInv(){ downloadSheet([{ nombre:'Sol Ring', cantidad:2 }, { nombre:'Blood Artist', cantidad:1 }], 'plantilla_inventario_manabeer', 'Inventario'); },
   delInv(el){
+    closePop();
     const name = el.dataset.card, i = invInfo(name);
     if(i.used > 0){ toast(`No se puede quitar: ${i.used} copia(s) están asignadas a mazos.`); return; }
     if(!confirm(`¿Quitar ${name} de tu inventario?`)) return;
@@ -2970,7 +3749,8 @@ const actions = {
       return { nombre: r.name, cantidad: r.qty, asignadas: i.used, libres: Math.max(0, i.free),
         'en mazos': i.decks.map(x => x.name + (x.n > 1 ? ' ×' + x.n : '')).join(', '),
         tipo: c.type || '', colores: (c.ci || []).join(''), rareza: ({ common:'Común', uncommon:'Infrecuente', rare:'Rara', mythic:'Mítica' })[c.rarity] || c.rarity || '', set: c.set ? String(c.set).toUpperCase() : '',
-        'precio US$': c.price ? +c.price.toFixed(2) : '', 'total US$': c.price ? +(c.price * r.qty).toFixed(2) : '' };
+        categorías: catOf(r), versiones: (r.prints || []).map(p => `${p.qty}× ${p.set.toUpperCase()} #${p.cn}${p.foil ? ' foil' : ''}`).join(', '),
+        'precio US$': unitPrice(r) ? +unitPrice(r).toFixed(2) : '', 'total US$': invPrice(r) ? +invPrice(r).toFixed(2) : '' };
     });
     if(!rows.length){ toast('Tu inventario está vacío.'); return; }
     const d = new Date(), f = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
