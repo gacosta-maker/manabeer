@@ -841,7 +841,9 @@ img.avatar{object-fit:cover;padding:0}
 .edhp{position:absolute;left:36px;bottom:8px;z-index:2;font-size:11px;font-weight:800;padding:2px 7px;border-radius:6px;background:rgba(10,8,14,.88);border:1px solid var(--line);color:var(--muted)}
 .edhp.mid{color:#B5D4F4;border-color:#378ADD}.edhp.hi{color:#C0DD97;border-color:#639922}
 .tl-row .edhp{position:static;flex:none}
-.selbar-m.always{display:block;margin:0 0 8px 2px}
+.selbar-m.always{display:flex;margin:0 0 8px 2px}
+.selbar-m{align-items:center;justify-content:space-between;gap:10px}.selbar-m .sortm{width:auto;padding:6px 10px;font-size:13px}
+@media (min-width:641px){.selbar-m:not(.always) .sortm{display:none}}
 /* Lista de texto */
 .tlist{columns:4 250px;column-gap:22px}
 .tl-col{break-inside:avoid;margin-bottom:18px}
@@ -931,6 +933,11 @@ img.avatar{object-fit:cover;padding:0}
 .cd-qty b{min-width:22px;text-align:center;font-size:18px}.cd-qty span{color:var(--muted);font-size:13px}
 .cd-qty .btn{width:34px;justify-content:center;padding:6px 0;font-size:18px}
 .toast.undo{display:flex;align-items:center;gap:12px;pointer-events:auto}
+.th-sort{background:none;border:none;color:inherit;font:inherit;font-weight:inherit;text-transform:inherit;letter-spacing:inherit;cursor:pointer;padding:0;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.th-sort .ar{font-size:10px;opacity:.45}
+.th-sort:hover .ar,.th-sort.on .ar{opacity:1}
+.th-sort.on{color:var(--honey-2)}
+.btn.on-wish{border-color:#7F77DD;color:#CECBF6}
 .hovcard{position:fixed;left:0;top:0;width:250px;border-radius:12px;z-index:90;pointer-events:none;box-shadow:0 18px 40px rgba(0,0,0,.7)}
 @media (max-width:640px){
   .tlist{columns:1}
@@ -952,7 +959,7 @@ img.avatar{object-fit:cover;padding:0}
 .btn.danger-solid{background:#C2412F;border-color:#E05A4A;color:#fff}
 .btn.danger-solid svg{width:16px;height:16px}
 @media (max-width:640px){
-  .selbar-m{display:block;margin:0 0 8px 2px}
+  .selbar-m{display:flex;margin:0 0 8px 2px}
   .tbl-wrap tr.sel{border-color:var(--honey)}
   .tbl-wrap.plain{overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px}
   .tbl-wrap.plain thead{display:table-header-group}.tbl-wrap.plain tbody{display:table-row-group}
@@ -995,6 +1002,11 @@ img.avatar{object-fit:cover;padding:0}
 .hub.who{animation:hubBreath 1.8s ease-in-out infinite}
 .hub.start .hexi svg{width:40px;height:40px}
 .hub.start .hexi small{font-size:13px;letter-spacing:.16em}
+/* Botón central redondo (antes hexágono) */
+.hub{width:84px;height:84px;aspect-ratio:1}
+.hub.who,.hub.start{width:106px;height:106px}
+.hexo,.hexi{clip-path:none!important;border-radius:50%}
+.hexo{padding:4px}
 .hubalt{position:absolute;left:50%;top:calc(50% + 64px);transform:translateX(-50%);z-index:41;background:rgba(14,10,6,.85);border:1px solid rgba(242,181,46,.55);color:var(--honey-2);border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;letter-spacing:.06em;cursor:pointer}
 .mesa.sheet-open .hubalt,.mesa.menu-open .hubalt{display:none}
 .wbtn.on{border-color:var(--honey);box-shadow:0 0 0 2px rgba(242,181,46,.4)}
@@ -2293,6 +2305,12 @@ function badgeHtml(d, c, size){
   tip += clickable ? (s === 'asig' ? ' · Toca para liberar' : ' · Toca para asignar') : '';
   return `<button class="emb-btn ${clickable ? '' : 'locked'}" data-act="toggleAssign" data-deck="${d.id}" data-card="${esc(c.name)}" title="${esc(tip)}" aria-label="${esc(tip)}">${emb(conf.p, conf.gl, size)}</button>`;
 }
+// La wishlist recuerda para qué mazo y sección es cada carta: «idMazo» (mazo) o «idMazo~side» / «idMazo~maybe»
+const wishKeyFor = (d, b) => !b || b === 'main' ? d.id : d.id + '~' + b;
+function starBoard(d, c, b, size){
+  const w = data.wish[key(c.name)], on = !!(w && w.decks && w.decks[wishKeyFor(d, b)]);
+  return `<button class="star-btn" data-act="toggleStar" data-deck="${d.id}" data-card="${esc(c.name)}" data-board="${b}" title="${on ? 'En wishlist · toca para quitar' : 'Agregar a wishlist'}">${emb(on ? 'purple' : 'dim', on ? 'star' : 'staro', size)}</button>`;
+}
 function starHtml(d, c, size){
   const s = cardStatus(c);
   if(s !== 'sin' && s !== 'no') return '';
@@ -2318,6 +2336,7 @@ function boardTile(d, c, b){
   const i = invInfo(c.name);
   return `<div class="mcard bcard" data-act="cardDetail" data-deck="${d.id}" data-card="${esc(c.name)}" data-board="${b}" title="Ver detalle">
     ${cardImg(c.name, '', c.print)}
+    ${starBoard(d, c, b, 32)}
     <span class="bfree ${i.free > 0 ? 'ok' : ''}">${i.free > 0 ? `${i.free} libre${i.free > 1 ? 's' : ''}` : i.owned ? 'Sin libres' : 'No la tienes'}</span>
     ${c.qty > 1 ? `<span class="qty">×${c.qty}</span>` : ''}
     ${edhPill(d, c.name)}
@@ -2332,6 +2351,8 @@ function deckMenuHtml(d, name, b){
     <div class="pop-sep"></div>
     ${others.map(([t, l]) => popItem(`→ Mover ${t === 'main' ? 'al Mazo' : 'al ' + l}`, 'deckMove', `${at} data-to="${t}"`)).join('')}
     ${others.filter(([t]) => boardList(d, t).some(c => !c.cmdr)).map(([t, l]) => popItem(`${I.swap}Cambiar por una ${t === 'main' ? 'del Mazo' : 'del ' + l}…`, 'deckSwapAsk', `${at} data-to="${t}"`)).join('')}
+    ${(() => { const w = data.wish[key(name)], on = !!(w && w.decks && w.decks[wishKeyFor(d, b)]);
+      return popItem(`${emb(on ? 'dim' : 'purple', 'star', 16)}${on ? 'Quitar de mi wishlist' : 'Agregar a mi wishlist'}`, 'toggleStar', `data-deck="${d.id}" data-card="${esc(name)}" data-board="${b}"`); })()}
     <div class="pop-sep"></div>
     ${(() => { const c = boardList(d, b).find(x => key(x.name) === key(name)), q = c ? c.qty : 1, where = b === 'main' ? 'del mazo' : 'del ' + boardName(b);
       return q > 1 ? popItem(`${I.trash}Quitar 1 copia`, 'deckRemove', at + ' data-n="1"', 'danger') + popItem(`${I.trash}Quitar las ${q} copias ${where}`, 'deckRemove', at, 'danger')
@@ -2379,7 +2400,8 @@ function invValue(){
   return { v, priced };
 }
 let invView = store.get('invView', 'table');   // table | list | grid
-let invRowsShown = [];                          // filas visibles (orden actual), para el detalle con anterior/siguiente
+let invRowsShown = [];
+let invSort = null;   // { col, dir } al tocar el título de una columna (1 = ascendente, -1 = descendente)                          // filas visibles (orden actual), para el detalle con anterior/siguiente
 // Cada carta puede estar en varias categorías (p. ej. Sol Ring en «Ramp» y en «Artefactos»)
 const catsOf = r => !r ? [] : Array.isArray(r.cats) ? r.cats : r.cat ? [r.cat] : [];
 const catOf = r => catsOf(r).join(', ');
@@ -2427,10 +2449,12 @@ function renderInv(){
     ${cats.length ? `<button class="typebtn add" data-act="invCatManage" title="Cambiar nombre o borrar categorías">${GICO.gear}Editar</button>` : ''}
   </div>
   ${invMissing().length ? `<div class="miss-note">${I.warn}<span><b>${invMissing().length} carta(s) de tu última carga no se encontraron.</b> Agrégalas por separado con el nombre correcto.</span><button class="btn sm" data-act="invMissing">Ver lista</button></div>` : ''}
-  <div class="selbar-m ${invView !== 'table' ? 'always' : ''}"><label class="selall"><input type="checkbox" class="invSelAll"> Seleccionar todos</label></div>
+  <div class="selbar-m ${invView !== 'table' ? 'always' : ''}"><label class="selall"><input type="checkbox" class="invSelAll"> Seleccionar todos</label>
+    <select class="input sortm" id="invSortM" aria-label="Ordenar">${[['', 'Ordenar…'], ['name:1', 'Nombre A–Z'], ['name:-1', 'Nombre Z–A'], ['qty:-1', 'Más copias'], ['qty:1', 'Menos copias'], ['used:-1', 'Más asignadas'], ['free:-1', 'Más libres'], ['missing:-1', 'Más faltantes'], ['price:-1', 'Precio mayor'], ['price:1', 'Precio menor']].map(([v, l]) => `<option value="${v}" ${invSort && v === invSort.col + ':' + invSort.dir ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
   <div id="invView"></div>
   <div class="selbar" id="invSelBar"></div>`;
   $('#iq').addEventListener('input', e => { invQuery = e.target.value; renderInvBody(); });
+  $('#invSortM').onchange = e => { const v = e.target.value; invSort = v ? { col:v.split(':')[0], dir:+v.split(':')[1] } : null; renderInvBody(); };
   renderInvBody();
 }
 // Selector de vista (tabla, lista de texto, imágenes)
@@ -2458,7 +2482,12 @@ function renderInvBody(){
     }
     return true;
   });
-  rows.sort(f.kpi === 'copies' ? (a,b) => b.qty - a.qty || a.name.localeCompare(b.name) : f.kpi === 'missing' ? (a,b) => invInfo(b.name).missing - invInfo(a.name).missing : (a,b) => a.name.localeCompare(b.name));
+  if(invSort){
+    const val = r => { const i = invInfo(r.name), e = data.inv[key(r.name)];
+      switch(invSort.col){ case 'qty': return e ? r.qty : 0; case 'used': return i.used; case 'free': return Math.max(0, i.free); case 'missing': return i.missing;
+        case 'decks': return i.decks.length; case 'price': return e ? unitPrice(e) : ((cat[key(r.name)] || {}).price || 0); default: return 0; } };
+    rows.sort(invSort.col === 'name' ? (a, b) => invSort.dir * a.name.localeCompare(b.name) : (a, b) => invSort.dir * (val(a) - val(b)) || a.name.localeCompare(b.name));
+  } else rows.sort(f.kpi === 'copies' ? (a,b) => b.qty - a.qty || a.name.localeCompare(b.name) : f.kpi === 'missing' ? (a,b) => invInfo(b.name).missing - invInfo(a.name).missing : (a,b) => a.name.localeCompare(b.name));
   invRowsShown = rows.map(r => r.name);
   const box = $('#invView');
   if(!Object.keys(data.inv).length && f.kpi !== 'missing'){
@@ -2484,7 +2513,7 @@ function renderInvBody(){
       </div>`; }).join('')}</div>` : none;
   } else {
     box.innerHTML = `<div class="tbl-wrap"><table>
-      <thead><tr><th></th><th>Carta</th><th>Tengo</th><th>Asignadas</th><th>Libres</th><th>Faltan</th><th>En mazos</th><th>Precio</th><th class="th-sel"><label class="selall"><input type="checkbox" class="invSelAll"> Seleccionar todos</label></th></tr></thead>
+      <thead><tr><th></th>${[['name', 'Nombre'], ['qty', 'Tengo'], ['used', 'Asignadas'], ['free', 'Libres'], ['missing', 'Faltan'], ['decks', 'En mazos'], ['price', 'Precio']].map(([c, l]) => `<th><button class="th-sort ${invSort && invSort.col === c ? 'on' : ''}" data-act="invSort" data-col="${c}" title="Ordenar por ${l.toLowerCase()}">${l}<span class="ar">${invSort && invSort.col === c ? (invSort.dir > 0 ? '▲' : '▼') : '↕'}</span></button></th>`).join('')}<th class="th-sel"><label class="selall"><input type="checkbox" class="invSelAll"> Seleccionar todos</label></th></tr></thead>
       <tbody>${rows.map(r => {
         const i = invInfo(r.name), c = cat[key(r.name)] || {}, e = data.inv[key(r.name)], owned = !!e;
         return `<tr class="${invSel.has(key(r.name)) ? 'sel' : ''}">
@@ -2528,7 +2557,7 @@ function renderInvBody(){
 }
 function syncInvSel(visible){
   const n = invSel.size, all = visible.length > 0 && visible.every(k => invSel.has(k));
-  document.querySelectorAll('.invSelAll').forEach(cb => { cb.checked = all; cb.indeterminate = n > 0 && !all; cb.disabled = !visible.length; });
+  document.querySelectorAll('.invSelAll').forEach(cb => { cb.checked = all; cb.indeterminate = false; cb.disabled = !visible.length; });
   document.querySelectorAll('[data-sel]').forEach(x => { const row = x.closest('tr, .tl-row, .icard'); if(row) row.classList.toggle('sel', invSel.has(x.dataset.sel)); });
   const bar = $('#invSelBar'); if(!bar) return;
   bar.classList.toggle('on', n > 0);
@@ -2673,7 +2702,7 @@ function renderWishBody(){
   }
   $('#wishBody').innerHTML = rows.map(w => {
     const c = cat[key(w.name)] || {}, i = invInfo(w.name);
-    const decks = Object.entries(w.decks || {}).map(([id, n]) => { const d = data.decks.find(x => x.id === id); return d ? `<span class="chip mana">${esc(d.name)}${n>1?' ×'+n:''}</span>` : ''; }).join('');
+    const decks = Object.entries(w.decks || {}).map(([id, n]) => { const [did, b] = id.split('~'); const d = data.decks.find(x => x.id === did); return d ? `<span class="chip mana">${esc(d.name)}${b ? ' · ' + boardName(b) : ''}${n>1?' ×'+n:''}</span>` : ''; }).join('');
     const inv = i.free > 0 ? `<span class="chip info">${i.free} libre(s)</span>` : i.owned > 0 ? `<span class="chip warn">Todas asignadas</span>` : `<span class="chip">No la tengo</span>`;
     return `<tr>
       <td>${c.small ? `<img class="thumb" src="${c.small}" alt="" loading="lazy">` : '<div class="thumb ph"></div>'}</td>
@@ -2850,7 +2879,7 @@ function renderDetail(){
     ? `<div class="mcard" style="position:relative">${cardImg(c.name)}</div><div class="cd-st chip ${c.qty ? 'info' : ''}">${c.qty ? `Tienes ${c.qty}` : 'No la tienes'}${catsOf(c).length ? ' · ' + esc(catOf(c)) : ''}</div>`
     : board === 'main'
       ? `<div class="mcard s-${s}" style="position:relative">${cardImg(c.name, '', c.print)}${badgeHtml(d, c, 52)}${starHtml(d, c, 40)}</div><div class="cd-st chip ${ST[s].chip}">${ST[s].t}${c.cmdr ? ' · Comandante' : ''}</div>`
-      : `<div class="mcard" style="position:relative">${cardImg(c.name, '', c.print)}</div><div class="cd-st chip">${boardName(board)} · ${i.free > 0 ? `${i.free} libre(s) en tu inventario` : i.owned ? 'Sin copias libres' : 'No la tienes'}</div>`;
+      : `<div class="mcard" style="position:relative">${cardImg(c.name, '', c.print)}${starBoard(d, c, board, 40)}</div><div class="cd-st chip">${boardName(board)} · ${i.free > 0 ? `${i.free} libre(s) en tu inventario` : i.owned ? 'Sin copias libres' : 'No la tienes'}</div>`;
   const totalVal = inv && c.qty ? invPrice(c) : 0;
   const html = `
     <div class="cd-nav">
@@ -2870,6 +2899,8 @@ function renderDetail(){
           <div class="cd-deck">
             <div class="cd-qty"><button class="btn sm" data-act="deckRemove" data-deck="${d.id}" data-card="${esc(c.name)}" data-from="${board}" data-n="1" ${c.qty <= 1 ? 'disabled' : ''} aria-label="Una copia menos">−</button><b>${c.qty}</b><button class="btn sm" data-act="cdQtyUp" aria-label="Una copia más">+</button><span>${c.qty === 1 ? 'copia' : 'copias'}</span></div>
             ${BOARDS.filter(x => x[0] !== board).map(([t, l]) => `<button class="btn ghost sm" data-act="deckMove" data-deck="${d.id}" data-card="${esc(c.name)}" data-from="${board}" data-to="${t}">→ ${t === 'main' ? 'Mazo' : l}</button>`).join('')}
+            ${(() => { const w = data.wish[key(c.name)], on = !!(w && w.decks && w.decks[wishKeyFor(d, board)]);
+              return `<button class="btn sm ${on ? 'on-wish' : ''}" data-act="toggleStar" data-deck="${d.id}" data-card="${esc(c.name)}" data-board="${board}">${emb(on ? 'purple' : 'dim', on ? 'star' : 'staro', 16)}${on ? 'En wishlist' : 'A la wishlist'}</button>`; })()}
             <button class="btn sm danger" data-act="deckRemove" data-deck="${d.id}" data-card="${esc(c.name)}" data-from="${board}">${I.trash}Quitar ${board === 'main' ? 'del mazo' : ''}</button>
           </div></div>` : ''}
         <div class="cd-sec"><h4>En tu colección</h4>
@@ -3514,7 +3545,7 @@ const actions = {
     const d = data.decks.find(x => x.id === el.dataset.id); if(!d) return;
     if(!confirm(`¿Eliminar el mazo «${d.name}»? Sus copias asignadas regresan a libres en tu inventario.`)) return;
     data.decks = data.decks.filter(x => x !== d);
-    Object.keys(data.wish).forEach(k => { const w = data.wish[k]; if(w.decks && w.decks[d.id]){ delete w.decks[d.id]; cleanWish(k); } });
+    Object.keys(data.wish).forEach(k => { const w = data.wish[k]; if(w.decks){ let ch = false; Object.keys(w.decks).forEach(id => { if(id === d.id || id.startsWith(d.id + '~')){ delete w.decks[id]; ch = true; } }); if(ch) cleanWish(k); } });
     saveData(); view = { tab:'decks', deckId:null, statusFilter:null }; render();
     toast('Mazo eliminado. Las copias regresaron a tu inventario.');
   },
@@ -3536,10 +3567,13 @@ const actions = {
     if(cdState) renderDetail();
   },
   toggleStar(el){
-    const { d, c } = findDeckCard(el.dataset.deck, el.dataset.card); if(!c) return;
-    const k = key(c.name), w = data.wish[k];
-    if(w && w.decks && w.decks[d.id]){ delete w.decks[d.id]; cleanWish(k); }
-    else { wishEntry(c.name).decks[d.id] = Math.max(1, c.qty - c.assigned); }
+    closePop();
+    const b = el.dataset.board || 'main';
+    const d = data.decks.find(x => x.id === el.dataset.deck); if(!d) return;
+    const c = boardList(d, b).find(x => key(x.name) === key(el.dataset.card)); if(!c) return;
+    const k = key(c.name), w = data.wish[k], wk = wishKeyFor(d, b);
+    if(w && w.decks && w.decks[wk]){ delete w.decks[wk]; cleanWish(k); toast(`${c.name} salió de tu wishlist.`); }
+    else { wishEntry(c.name).decks[wk] = b === 'main' ? Math.max(1, c.qty - c.assigned) : Math.max(1, c.qty); toast(`${c.name} → wishlist (${b === 'main' ? d.name : d.name + ' · ' + boardName(b)}).`); }
     saveData(); renderKeepScroll();
     if(cdState) renderDetail();
   },
@@ -3692,7 +3726,13 @@ const actions = {
     saveData(); render(); toast(`${p.length} faltante(s) agregadas a la wishlist.`);
   },
   addInv(){ if(guard('dar de alta cartas en tu inventario')) return; addCardModal('inv'); },
-  invKpi(el){ invFilter.kpi = el.dataset.k; if(el.dataset.k === 'all'){ invFilter.colors.clear(); invFilter.type = ''; invQuery = ''; } renderInv(); },
+  invSort(el){
+    const c = el.dataset.col;
+    // Primer toque: nombre de la A a la Z; números de mayor a menor. Segundo toque: al revés.
+    invSort = invSort && invSort.col === c ? { col:c, dir:-invSort.dir } : { col:c, dir: c === 'name' ? 1 : -1 };
+    renderInvBody();
+  },
+  invKpi(el){ invSort = null; invFilter.kpi = el.dataset.k; if(el.dataset.k === 'all'){ invFilter.colors.clear(); invFilter.type = ''; invQuery = ''; } renderInv(); },
   invColor(el){ const c = el.dataset.c; invFilter.colors.has(c) ? invFilter.colors.delete(c) : invFilter.colors.add(c); renderInv(); },
   invType(el){ invFilter.type = el.dataset.t; renderInv(); },
   invCatF(el){ invFilter.cat = el.dataset.c; renderInv(); },
